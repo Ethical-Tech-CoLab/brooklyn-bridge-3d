@@ -35,6 +35,39 @@ published rather than hidden.
 
 ---
 
+## How to review this model
+
+```powershell
+cd viewer; npm install; npm run dev      # http://localhost:5174
+```
+
+Orbit-drag, scroll to zoom, right-drag to pan. Click any part and the right panel lists the control
+rows its geometry rests on, with values, grades and source IDs — or says plainly that there are none.
+The toolbar button swaps to HO 1:87.1 and re-reports every extent in millimetres. Give the window
+some width; below about 1100 px the side rails stack under the viewport.
+
+**Do this first: untick `INFERRED` and `ASSUMED`.** The bridge nearly vanishes. Everything that
+disappears is something reasoned rather than read, which makes it the fastest way to find where this
+model is bluffing.
+
+**Where the model is weakest — aim here rather than at the parts that are already defensible:**
+
+| What | Why it deserves attack |
+|---|---|
+| **The cable sag is wrong, and left wrong** | 121.5 ft, a ratio of 1:13.1, against the 1:7–1:12 band typical of suspension bridges. The cause is CTL-102: the saddle sits at the tower summit, which the drawing plainly contradicts. It was *not* tuned to look respectable — see the argument in [GEOMETRY-CONTROL.md](GEOMETRY-CONTROL.md) §4.2, and disagree with it if you think a fitted-then-graded-`D` value would serve a reader better. |
+| **Truss and cable transverse spacing** | CTL-104/105 put them at 38 ft and 15 ft off centreline, bounded only by the 85 ft deck. Sight down the bridge axis: this is the weakest visible geometry in the model. OQ-002. |
+| **Towers above the waterline** | The 59 × 140 ft plan is grade `A` *only at mean high water*. The taper to the top is invented, which is why `tower_*_shaft` is the one grade-`D` part in an otherwise grade-`A` system. OQ-004. |
+| **Caisson orientation** | 168/172 × 102 ft is solidly sourced, but *which axis is which* is reasoning. Rotated 90° the foundations are wrong, and no current test would catch it. OQ-005. |
+| **The Promenade** | `INFERRED` at a guessed 12 ft above the roadway — probably the first thing a New Yorker would notice being wrong. OQ-013. |
+
+**Other ways in.** Drag `mesh/glb/control_skeleton.glb` onto any glTF viewer for pure shape critique
+without the metadata. Read [SOURCE-REGISTER.md](SOURCE-REGISTER.md) for the six conflicts — four are
+settled with reasoning you are invited to dispute. And check the sources directly: the HAER measured
+drawing and both Roebling reports are committed under [sources/drawings/](sources/drawings), so every
+grade `A` number can be traced back to the sheet it came off.
+
+---
+
 ## What the sources gave us
 
 The Brooklyn Bridge is the luckiest of the three East River bridges in the national record, and this
