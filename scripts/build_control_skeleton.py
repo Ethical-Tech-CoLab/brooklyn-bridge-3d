@@ -1,0 +1,1415 @@
+"""Build the Brooklyn Bridge control skeleton from GEOMETRY-CONTROL.md.
+
+This script carries **no dimensions of its own**. Every number it uses is read from a control table
+in GEOMETRY-CONTROL.md through ``control_model``. If a value is needed and is not in that document,
+the build fails rather than inventing it.
+
+Outputs::
+
+    mesh/glb/control_skeleton.glb          prototype scale, metres
+    mesh/glb/control_skeleton.gltf         + .bin sidecar
+    mesh/glb/control_skeleton_ho.glb       1:87.1
+    viewer/public/control_skeleton.glb     served copies
+    viewer/public/control_skeleton_ho.glb
+    viewer/public/parts.json
+    viewer/metadata/parts.json             part metadata, one record per node
+    viewer/metadata/build_report.json      counts, derived values, consistency checks
+    viewer/metadata/scale_ho.json          HO reporting table
+    cad/procedural/control_skeleton_geometry.json   raw derived geometry, for other toolchains
+
+Run::
+
+    python scripts/build_control_skeleton.py
+"""
+
+from __future__ import annotations
+
+import json
+import math
+import sys
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any, Iterable, Sequence
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from control_model import ControlDocumentError, ControlModel, load_control_model  # noqa: E402
+from export_gltf import (  # noqa: E402
+    GltfBuilder,
+    box_mesh_data,
+    prism_mesh_data,
+    tube_mesh_data,
+)
+from normalize_units import HO_SCALE_DENOMINATOR, ho_report, is_linear  # noqa: E402
+
+REPO = Path(__file__).resolve().parents[1]
+CONTROL_DOC = REPO / "GEOMETRY-CONTROL.md"
+BUILDER_VERSION = "build_control_skeleton.py@1.0.0"
+
+GRADE_ORDER = {"A": 0, "B": 1, "C": 2, "D": 3}
+
+MATERIAL_COLORS = {
+    "masonry": (0.72, 0.66, 0.58, 1.0),
+    "concrete": (0.62, 0.62, 0.60, 1.0),
+    "steel_structural": (0.42, 0.47, 0.53, 1.0),
+    "steel_wire": (0.85, 0.72, 0.35, 1.0),
+    "roadway_surface": (0.34, 0.34, 0.36, 1.0),
+    "reference": (0.30, 0.75, 0.85, 1.0),
+}
+
+
+class BuildError(RuntimeError):
+    """Raised when the control document cannot support the geometry being asked for."""
+
+
+# --------------------------------------------------------------------------- parts
+
+
+@dataclass
+class Part:
+    part_id: str
+    system: str
+    subsystem: str
+    control_refs: list[str]
+    source_basis: list[str]
+    open_questions: list[str] = field(default_factory=list)
+    notes: str = ""
+    primitives: list[dict[str, Any]] = field(default_factory=list)
+    bbox_min: list[float] = field(default_factory=list)
+    bbox_max: list[float] = field(default_factory=list)
+    confidence: str = "D"
+    provenance: str = "ASSUMED"
+    material: str = ""
+    material_id: str = ""
+    material_confidence: str = "D"
+
+    def to_metadata(self) -> dict[str, Any]:
+        return {
+            "part_id": self.part_id,
+            "system": self.system,
+            "subsystem": self.subsystem,
+            "source_basis": self.source_basis,
+            "control_refs": self.control_refs,
+            "confidence": self.confidence,
+            "provenance": self.provenance,
+            "material": self.material,
+            "material_id": self.material_id,
+            "material_confidence": self.material_confidence,
+            "open_questions": self.open_questions,
+            "prototype_units": "meters",
+            "ho_scale_units": "millimeters",
+            "bbox_min_m": self.bbox_min,
+            "bbox_max_m": self.bbox_max,
+            "notes": self.notes,
+            "review_status": "milestone-1-unreviewed",
+            "last_modified_by_agent": BUILDER_VERSION,
+        }
+
+
+class Skeleton:
+    """Accumulates parts and derives their confidence, provenance and material from the controls."""
+
+    def __init__(self, model: ControlModel) -> None:
+        self.model = model
+        self.parts: list[Part] = []
+
+    def add(
+        self,
+        part_id: str,
+        system: str,
+        subsystem: str,
+        control_refs: Sequence[str],
+        source_basis: Sequence[str],
+        primitives: Sequence[dict[str, Any]],
+        open_questions: Sequence[str] = (),
+        notes: str = "",
+    ) -> Part:
+        refs = list(control_refs)
+        unknown = [r for r in refs if r not in self.model.by_id]
+        if unknown:
+            raise BuildError(
+                f"part {part_id!r} references control IDs that are not in "
+                f"{CONTROL_DOC.name}: {', '.join(unknown)}"
+            )
+
+        part = Part(
+            part_id=part_id,
+            system=system,
+            subsystem=subsystem,
+            control_refs=refs,
+            source_basis=list(source_basis),
+            open_questions=list(open_questions),
+            notes=notes,
+            primitives=list(primitives),
+        )
+        part.confidence = self._confidence(refs)
+        part.provenance = self._provenance(refs, part.source_basis)
+
+        rule = self.model.material_for(part_id)
+        part.material = rule.material
+        part.material_id = rule.material_id
+        part.material_confidence = rule.confidence
+
+        lo, hi = _bounds(part.primitives)
+        part.bbox_min, part.bbox_max = lo, hi
+        self.parts.append(part)
+        return part
+
+    def _confidence(self, refs: Sequence[str]) -> str:
+        """Weakest link across every control the part's geometry rests on."""
+        if not refs:
+            return "D"
+        return max((self.model.by_id[r].confidence for r in refs), key=lambda g: GRADE_ORDER[g])
+
+    def _provenance(self, refs: Sequence[str], source_basis: Sequence[str]) -> str:
+        """Derived, never declared. See CONFIDENCE-MODEL.md section 2.
+
+        Computed rather than hardcoded so that the day a survey or photogrammetry set is ingested,
+        MEASURED stops being zero on its own.
+        """
+        placeholder_refs = [r for r in refs if self.model.by_id[r].is_placeholder]
+        sourced_refs = [r for r in refs if not self.model.by_id[r].is_placeholder]
+
+        if "photogrammetry" in source_basis or "survey" in source_basis:
+            return "MEASURED"
+        if "control_dimension" not in source_basis or not sourced_refs:
+            return "ASSUMED"
+        if placeholder_refs or "inferred" in source_basis:
+            return "INFERRED"
+        return "DOCUMENTED"
+
+
+def _bounds(primitives: Iterable[dict[str, Any]]) -> tuple[list[float], list[float]]:
+    lo = [math.inf] * 3
+    hi = [-math.inf] * 3
+    for prim in primitives:
+        for point in prim["positions"]:
+            for i in range(3):
+                lo[i] = min(lo[i], point[i])
+                hi[i] = max(hi[i], point[i])
+    if lo[0] is math.inf:
+        return [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]
+    return [round(v, 6) for v in lo], [round(v, 6) for v in hi]
+
+
+# ----------------------------------------------------------------------- geometry
+
+
+def _box(lo: Sequence[float], hi: Sequence[float]) -> dict[str, Any]:
+    positions, normals, indices = box_mesh_data(lo, hi)
+    return {"kind": "tri", "positions": positions, "normals": normals, "indices": indices}
+
+
+def _prism(bottom: Sequence[Sequence[float]], top: Sequence[Sequence[float]]) -> dict[str, Any]:
+    positions, normals, indices = prism_mesh_data(bottom, top)
+    return {"kind": "tri", "positions": positions, "normals": normals, "indices": indices}
+
+
+def _tube(points: Sequence[Sequence[float]], radius: float, sides: int = 8) -> dict[str, Any]:
+    positions, normals, indices = tube_mesh_data(points, radius, sides)
+    return {"kind": "tri", "positions": positions, "normals": normals, "indices": indices}
+
+
+def _lines(segments: Sequence[Sequence[Sequence[float]]]) -> dict[str, Any]:
+    positions: list[Sequence[float]] = []
+    indices: list[int] = []
+    for start, end in segments:
+        base = len(positions)
+        positions.append(start)
+        positions.append(end)
+        indices.extend((base, base + 1))
+    return {"kind": "line", "positions": positions, "normals": None, "indices": indices}
+
+
+def _polyline(points: Sequence[Sequence[float]]) -> dict[str, Any]:
+    return _lines([(points[i], points[i + 1]) for i in range(len(points) - 1)])
+
+
+def _slab(x0: float, x1: float, z0: float, z1: float, half_width: float, thickness: float) -> dict[str, Any]:
+    """A deck segment: a ruled solid whose top runs from (x0, z0) to (x1, z1)."""
+    bottom = [
+        (x0, -half_width, z0 - thickness),
+        (x1, -half_width, z1 - thickness),
+        (x1, half_width, z1 - thickness),
+        (x0, half_width, z0 - thickness),
+    ]
+    top = [
+        (x0, -half_width, z0),
+        (x1, -half_width, z1),
+        (x1, half_width, z1),
+        (x0, half_width, z0),
+    ]
+    return _prism(bottom, top)
+
+
+def _plan_ring(x0: float, x1: float, half_width: float, z: float) -> list[tuple[float, float, float]]:
+    return [
+        (x0, -half_width, z),
+        (x1, -half_width, z),
+        (x1, half_width, z),
+        (x0, half_width, z),
+    ]
+
+
+# ------------------------------------------------------------------------- build
+
+
+def build(model: ControlModel) -> tuple[Skeleton, dict[str, Any]]:
+    m = model.m  # control value in metres
+    raw = model.raw  # control value in its declared unit
+
+    model.require(
+        "main_span",
+        "side_span_each",
+        "bridge_proper_length",
+        "total_length_including_approaches",
+        "manhattan_approach_length",
+        "brooklyn_approach_length",
+        "center_clearance_above_mhw",
+        "tower_height_above_mhw",
+        "deck_width",
+    )
+
+    # ---- longitudinal stations (GEOMETRY-CONTROL.md section 4.1)
+    main_span = m("main_span")
+    side_span = m("side_span_each")
+    x_twr_b = main_span / 2.0
+    x_twr_m = -x_twr_b
+    x_anc_b = x_twr_b + side_span
+    x_anc_m = -x_anc_b
+    anchorage_x = m("anchorage_extent_x")
+    # SRC-002's five lettered dimensions sum to its stated 5989 ft with zero residual, and the
+    # 129 ft anchorage is not one of them, so the block sits INSIDE the approach dimension rather
+    # than beyond it. See GEOMETRY-CONTROL.md section 4.1.
+    x_appr_m = x_anc_m - m("manhattan_approach_length")
+    x_appr_b = x_anc_b + m("brooklyn_approach_length")
+    x_anc_m_rear = x_anc_m - anchorage_x
+    x_anc_b_rear = x_anc_b + anchorage_x
+
+    # ---- consistency identities, asserted rather than assumed
+    checks: list[dict[str, Any]] = []
+
+    def check(check_id: str, description: str, lhs: float, rhs: float, tol_m: float) -> None:
+        residual = lhs - rhs
+        checks.append(
+            {
+                "id": check_id,
+                "description": description,
+                "value_m": round(lhs, 6),
+                "expected_m": round(rhs, 6),
+                "residual_m": round(residual, 6),
+                "residual_ft": round(residual / 0.3048, 4),
+                "tolerance_m": tol_m,
+                "passed": abs(residual) <= tol_m,
+            }
+        )
+
+    check(
+        "CHK-001",
+        "main_span + 2 x side_span_each == bridge_proper_length",
+        main_span + 2 * side_span,
+        m("bridge_proper_length"),
+        1e-6,
+    )
+    check(
+        "CHK-002",
+        "bridge_proper_length + both approaches == total_length_including_approaches",
+        m("bridge_proper_length") + m("manhattan_approach_length") + m("brooklyn_approach_length"),
+        m("total_length_including_approaches"),
+        1e-6,
+    )
+    check(
+        "CHK-003",
+        "Manhattan terminus + gradient x approach roadway length == anchorage rear roadway level",
+        m("manhattan_terminus_above_mhw")
+        + raw("manhattan_approach_gradient")
+        * (m("manhattan_approach_length") - anchorage_x),
+        m("anchorage_roadway_rear_above_mhw"),
+        1.0,
+    )
+    check(
+        "CHK-004",
+        "Brooklyn terminus + gradient x approach roadway length == anchorage rear roadway level",
+        m("brooklyn_terminus_above_mhw")
+        + raw("brooklyn_approach_gradient") * (m("brooklyn_approach_length") - anchorage_x),
+        m("anchorage_roadway_rear_above_mhw"),
+        1.0,
+    )
+
+    # ---- elevations (GEOMETRY-CONTROL.md section 4.2)
+    z_clearance = m("center_clearance_above_mhw")
+    z_truss_bottom = z_clearance
+    z_truss_top = z_clearance + m("stiffening_truss_depth_present")
+    z_deck_mid = z_truss_bottom + m("deck_structure_depth")
+    z_tower_top = m("tower_height_above_mhw")
+    z_saddle = z_tower_top - m("cable_saddle_drop_below_tower_top")
+    z_cable_mid = z_truss_top + m("min_suspender_length_at_midspan")
+    z_anchor_front = m("anchorage_roadway_front_above_mhw")
+    z_anchor_rear = m("anchorage_roadway_rear_above_mhw")
+    z_tower_roadway = m("roadway_clearance_at_tower_above_mhw")
+    z_arch_crown = z_tower_roadway + m("tower_vault_height_above_roadway")
+    z_arch_springing = z_arch_crown - m("tower_arch_height_above_springing")
+    z_found_m = -m("caisson_depth_below_mhw_manhattan")
+    z_found_b = -m("caisson_depth_below_mhw_brooklyn")
+    caisson_height = m("caisson_air_chamber_height") + m("caisson_roof_thickness")
+    z_term_m = m("manhattan_terminus_above_mhw")
+    z_term_b = m("brooklyn_terminus_above_mhw")
+    z_promenade_mid = z_deck_mid + m("promenade_elevation_above_roadway")
+
+    # ---- the pointed arch closes on itself: the sourced radius, width and height agree
+    arch_half = m("tower_arch_width") / 2.0
+    arch_radius = m("tower_arch_radius")
+    arch_centre_offset = arch_radius - arch_half
+    arch_rise_from_radius = math.sqrt(max(arch_radius**2 - arch_centre_offset**2, 0.0))
+    check(
+        "CHK-005",
+        "two-centred arch of sourced radius and width reaches the sourced arch height",
+        arch_rise_from_radius,
+        m("tower_arch_height_above_springing"),
+        0.2,
+    )
+
+    # ---- transverse layout (section 4.3)
+    half_deck = m("deck_width") / 2.0
+    half_beam = m("floor_beam_length") / 2.0
+    y_outer = m("truss_offset_outer")
+    y_inner = m("truss_offset_inner")
+    half_tower_y = m("tower_extent_y_at_mhw") / 2.0
+    half_tower_x = m("tower_extent_x_at_mhw") / 2.0
+    half_tower_x_top = m("tower_extent_x_at_top") / 2.0
+    half_tower_y_top = m("tower_extent_y_at_top") / 2.0
+
+    cable_lines = [
+        ("south_outer", -y_outer),
+        ("south_inner", -y_inner),
+        ("north_inner", +y_inner),
+        ("north_outer", +y_outer),
+    ]
+    if len(cable_lines) != int(raw("main_cable_count")):
+        raise BuildError(
+            f"the model lays out {len(cable_lines)} cables but CTL "
+            f"{model.id_of('main_cable_count')} says there are {int(raw('main_cable_count'))}"
+        )
+
+    # ---- suspender pitch, derived from the sourced count (section 4.4)
+    suspenders_per_cable = int(raw("suspender_count")) // int(raw("main_cable_count"))
+    suspender_pitch = m("bridge_proper_length") / suspenders_per_cable
+    stays_per_group = int(raw("diagonal_stay_count")) // (
+        int(raw("main_cable_count")) * int(raw("tower_count")) * 2
+    )
+    stay_reach = stays_per_group * suspender_pitch
+
+    sk = Skeleton(model)
+
+    # ------------------------------------------------------------------ stations
+    station_top = z_tower_top * 1.05
+    for station_id, x, label in (
+        ("station_manhattan_approach_end", x_appr_m, "Park Row"),
+        ("station_manhattan_anchorage", x_anc_m, "Manhattan anchorage, river face"),
+        ("station_manhattan_tower", x_twr_m, "Manhattan tower centerline"),
+        ("station_midspan", 0.0, "Main span midpoint — model origin"),
+        ("station_brooklyn_tower", x_twr_b, "Brooklyn tower centerline"),
+        ("station_brooklyn_anchorage", x_anc_b, "Brooklyn anchorage, river face"),
+        ("station_brooklyn_approach_end", x_appr_b, "Adams Street"),
+    ):
+        refs = _station_refs(model, station_id)
+        sk.add(
+            station_id,
+            "reference",
+            "station",
+            refs,
+            ["control_dimension"],
+            [_lines([((x, 0.0, -half_deck), (x, 0.0, station_top))])],
+            notes=label,
+        )
+
+    # -------------------------------------------------------------------- towers
+    for end, x_c, z_found in (("manhattan", x_twr_m, z_found_m), ("brooklyn", x_twr_b, z_found_b)):
+        caisson_long = (
+            m("caisson_long_dimension_manhattan")
+            if end == "manhattan"
+            else m("caisson_long_dimension_brooklyn")
+        )
+        caisson_short = m("caisson_short_dimension")
+        cs_x = caisson_short / 2.0
+        cs_y = caisson_long / 2.0
+        depth_ref = (
+            "caisson_depth_below_mhw_manhattan"
+            if end == "manhattan"
+            else "caisson_depth_below_mhw_brooklyn"
+        )
+        long_ref = (
+            "caisson_long_dimension_manhattan"
+            if end == "manhattan"
+            else "caisson_long_dimension_brooklyn"
+        )
+
+        sk.add(
+            f"tower_{end}_caisson",
+            "towers",
+            "foundation",
+            model.ids_of(
+                depth_ref,
+                long_ref,
+                "caisson_short_dimension",
+                "caisson_air_chamber_height",
+                "caisson_roof_thickness",
+            ),
+            ["control_dimension", "inferred"],
+            [_box((x_c - cs_x, -cs_y, z_found), (x_c + cs_x, cs_y, z_found + caisson_height))],
+            open_questions=["OQ-005"],
+            notes=(
+                "Caisson footprint is sourced; the assignment of the 168/172 ft dimension to the "
+                "transverse axis is reasoned from the tower being 140 ft wide and having to stand "
+                "on it. See OQ-005."
+            ),
+        )
+        sk.add(
+            f"tower_{end}_foundation_block",
+            "towers",
+            "foundation",
+            model.ids_of(
+                depth_ref,
+                long_ref,
+                "caisson_short_dimension",
+                "tower_extent_x_at_mhw",
+                "tower_extent_y_at_mhw",
+            ),
+            ["control_dimension", "inferred"],
+            [
+                _prism(
+                    _plan_ring(x_c - cs_x, x_c + cs_x, cs_y, z_found + caisson_height),
+                    _plan_ring(x_c - half_tower_x, x_c + half_tower_x, half_tower_y, 0.0),
+                )
+            ],
+            open_questions=["OQ-004"],
+            notes="Both ends are sourced; the taper between them is reasoned.",
+        )
+        sk.add(
+            f"tower_{end}_shaft",
+            "towers",
+            "masonry",
+            model.ids_of(
+                "tower_extent_x_at_mhw",
+                "tower_extent_y_at_mhw",
+                "tower_extent_x_at_top",
+                "tower_extent_y_at_top",
+                "tower_height_above_mhw",
+            ),
+            ["control_dimension", "drawing"],
+            [
+                _prism(
+                    _plan_ring(x_c - half_tower_x, x_c + half_tower_x, half_tower_y, 0.0),
+                    _plan_ring(
+                        x_c - half_tower_x_top, x_c + half_tower_x_top, half_tower_y_top, z_tower_top
+                    ),
+                )
+            ],
+            open_questions=["OQ-004"],
+            notes=(
+                "Height and plan at mean high water are grade A from SRC-002. The plan at the top "
+                "is a placeholder, so the taper is INFERRED."
+            ),
+        )
+
+        # The two pointed arches. Three shafts of equal width is reasoning, not a source statement.
+        shaft_width = (m("tower_extent_y_at_mhw") - 2 * m("tower_arch_width")) / 3.0
+        arch_offset = m("tower_arch_width") / 2.0 + shaft_width / 2.0
+        for index, y_c in ((1, -arch_offset), (2, +arch_offset)):
+            sk.add(
+                f"tower_{end}_arch_{index}",
+                "towers",
+                "arch",
+                model.ids_of(
+                    "tower_arch_width",
+                    "tower_arch_radius",
+                    "tower_arch_height_above_springing",
+                    "tower_vault_height_above_roadway",
+                    "roadway_clearance_at_tower_above_mhw",
+                ),
+                ["control_dimension", "drawing", "inferred"],
+                [
+                    _polyline(
+                        _pointed_arch_outline(
+                            x_c,
+                            y_c,
+                            arch_half,
+                            arch_radius,
+                            arch_centre_offset,
+                            z_tower_roadway,
+                            z_arch_springing,
+                        )
+                    )
+                ],
+                open_questions=["OQ-004"],
+                notes=(
+                    "Arch width, radius and height are grade A and mutually consistent (CHK-005). "
+                    "The transverse position assumes three equal shafts across the sourced 140 ft "
+                    "tower width; that division is reasoned."
+                ),
+            )
+
+    # ---------------------------------------------------------------- anchorages
+    for end, sign in (("manhattan", -1.0), ("brooklyn", +1.0)):
+        x_front = x_anc_m if end == "manhattan" else x_anc_b
+        x_step = x_front + sign * m("anchorage_rear_offset_station")
+        x_rear = x_front + sign * anchorage_x
+        w_base_front = m("anchorage_base_width_front") / 2.0
+        w_base_rear = m("anchorage_base_width_rear") / 2.0
+        w_top_front = m("anchorage_top_width_front") / 2.0
+        w_top_rear = m("anchorage_top_width_rear") / 2.0
+
+        sk.add(
+            f"anchorage_{end}_front_block",
+            "anchorages",
+            "masonry",
+            model.ids_of(
+                "anchorage_extent_x",
+                "anchorage_rear_offset_station",
+                "anchorage_base_width_front",
+                "anchorage_top_width_front",
+                "anchorage_roadway_front_above_mhw",
+            ),
+            ["control_dimension"],
+            [
+                _prism(
+                    _plan_ring(min(x_front, x_step), max(x_front, x_step), w_base_front, 0.0),
+                    _plan_ring(min(x_front, x_step), max(x_front, x_step), w_top_front, z_anchor_front),
+                )
+            ],
+            open_questions=["OQ-006"],
+            notes="SRC-004 dimensions the New York anchorage; symmetry with Brooklyn is OQ-006.",
+        )
+        sk.add(
+            f"anchorage_{end}_rear_block",
+            "anchorages",
+            "masonry",
+            model.ids_of(
+                "anchorage_extent_x",
+                "anchorage_rear_offset_station",
+                "anchorage_base_width_rear",
+                "anchorage_top_width_rear",
+                "anchorage_roadway_rear_above_mhw",
+            ),
+            ["control_dimension"],
+            [
+                _prism(
+                    _plan_ring(min(x_step, x_rear), max(x_step, x_rear), w_base_rear, 0.0),
+                    _plan_ring(min(x_step, x_rear), max(x_step, x_rear), w_top_rear, z_anchor_rear),
+                )
+            ],
+            open_questions=["OQ-006"],
+        )
+        sk.add(
+            f"anchorage_{end}_cornice",
+            "anchorages",
+            "masonry",
+            model.ids_of(
+                "anchorage_cornice_height",
+                "anchorage_top_length",
+                "anchorage_top_width_rear",
+                "anchorage_roadway_front_above_mhw",
+            ),
+            ["control_dimension", "inferred"],
+            [
+                _box(
+                    (
+                        min(x_front, x_rear),
+                        -w_top_rear,
+                        z_anchor_front - m("anchorage_cornice_height"),
+                    ),
+                    (max(x_front, x_rear), w_top_rear, z_anchor_front),
+                )
+            ],
+            open_questions=["OQ-006"],
+            notes="Cornice height is sourced; wrapping it around the full top plan is reasoned.",
+        )
+
+    # ---------------------------------------------------------------- deck chain
+    deck_thickness = m("deck_structure_depth")
+    deck_chain: list[tuple[str, float, float, float, float, list[str], list[str], str]] = [
+        (
+            "deck_manhattan_approach",
+            x_appr_m,
+            x_anc_m_rear,
+            z_term_m,
+            z_anchor_rear,
+            model.ids_of(
+                "manhattan_approach_length",
+                "manhattan_terminus_above_mhw",
+                "anchorage_roadway_rear_above_mhw",
+                "deck_width",
+                "deck_structure_depth",
+            ),
+            ["control_dimension", "drawing"],
+            "Park Row to the landward face of the Manhattan anchorage.",
+        ),
+        (
+            "deck_manhattan_anchorage_top",
+            x_anc_m_rear,
+            x_anc_m,
+            z_anchor_rear,
+            z_anchor_front,
+            model.ids_of(
+                "anchorage_extent_x",
+                "anchorage_roadway_rear_above_mhw",
+                "anchorage_roadway_front_above_mhw",
+                "deck_width",
+                "deck_structure_depth",
+            ),
+            ["control_dimension"],
+            'SRC-004: "The top surface is to be sloped to the grade of the roadway, of which it '
+            'will form part."',
+        ),
+        (
+            "deck_manhattan_side_span",
+            x_anc_m,
+            x_twr_m,
+            z_anchor_front,
+            z_tower_roadway,
+            model.ids_of(
+                "side_span_each",
+                "anchorage_roadway_front_above_mhw",
+                "roadway_clearance_at_tower_above_mhw",
+                "deck_width",
+                "deck_structure_depth",
+            ),
+            ["control_dimension", "drawing"],
+            "",
+        ),
+        (
+            "deck_main_span_manhattan_half",
+            x_twr_m,
+            0.0,
+            z_tower_roadway,
+            z_deck_mid,
+            model.ids_of(
+                "main_span",
+                "roadway_clearance_at_tower_above_mhw",
+                "center_clearance_above_mhw",
+                "deck_width",
+                "deck_structure_depth",
+            ),
+            ["control_dimension"],
+            "The deck crests at midspan; SRC-002 draws that camber.",
+        ),
+        (
+            "deck_main_span_brooklyn_half",
+            0.0,
+            x_twr_b,
+            z_deck_mid,
+            z_tower_roadway,
+            model.ids_of(
+                "main_span",
+                "roadway_clearance_at_tower_above_mhw",
+                "center_clearance_above_mhw",
+                "deck_width",
+                "deck_structure_depth",
+            ),
+            ["control_dimension"],
+            "",
+        ),
+        (
+            "deck_brooklyn_side_span",
+            x_twr_b,
+            x_anc_b,
+            z_tower_roadway,
+            z_anchor_front,
+            model.ids_of(
+                "side_span_each",
+                "anchorage_roadway_front_above_mhw",
+                "roadway_clearance_at_tower_above_mhw",
+                "deck_width",
+                "deck_structure_depth",
+            ),
+            ["control_dimension", "drawing"],
+            "",
+        ),
+        (
+            "deck_brooklyn_anchorage_top",
+            x_anc_b,
+            x_anc_b_rear,
+            z_anchor_front,
+            z_anchor_rear,
+            model.ids_of(
+                "anchorage_extent_x",
+                "anchorage_roadway_rear_above_mhw",
+                "anchorage_roadway_front_above_mhw",
+                "deck_width",
+                "deck_structure_depth",
+            ),
+            ["control_dimension"],
+            "",
+        ),
+        (
+            "deck_brooklyn_approach",
+            x_anc_b_rear,
+            x_appr_b,
+            z_anchor_rear,
+            z_term_b,
+            model.ids_of(
+                "brooklyn_approach_length",
+                "brooklyn_terminus_above_mhw",
+                "anchorage_roadway_rear_above_mhw",
+                "deck_width",
+                "deck_structure_depth",
+            ),
+            ["control_dimension", "drawing"],
+            "Landward face of the Brooklyn anchorage to Adams Street.",
+        ),
+    ]
+    for part_id, x0, x1, z0, z1, refs, basis, note in deck_chain:
+        sk.add(
+            part_id,
+            "deck_system",
+            "roadway",
+            refs,
+            basis,
+            [_slab(x0, x1, z0, z1, half_deck, deck_thickness)],
+            open_questions=["OQ-003", "OQ-013"],
+            notes=note,
+        )
+
+    # ------------------------------------------------------------------ promenade
+    half_promenade = m("promenade_width_present") / 2.0
+    promenade_lift = m("promenade_elevation_above_roadway")
+    for part_id, x0, x1, z0, z1 in (
+        ("promenade_manhattan_approach", x_appr_m, x_anc_m, z_term_m, z_anchor_front),
+        ("promenade_suspended", x_anc_m, x_anc_b, z_anchor_front, z_anchor_front),
+        ("promenade_brooklyn_approach", x_anc_b, x_appr_b, z_anchor_front, z_term_b),
+    ):
+        if part_id == "promenade_suspended":
+            sk.add(
+                part_id,
+                "deck_system",
+                "promenade",
+                model.ids_of(
+                    "promenade_width_present",
+                    "promenade_elevation_above_roadway",
+                    "bridge_proper_length",
+                    "anchorage_roadway_front_above_mhw",
+                    "center_clearance_above_mhw",
+                ),
+                ["control_dimension", "inferred"],
+                [
+                    _slab(
+                        x0,
+                        0.0,
+                        z_anchor_front + promenade_lift,
+                        z_promenade_mid,
+                        half_promenade,
+                        deck_thickness / 2.0,
+                    ),
+                    _slab(
+                        0.0,
+                        x1,
+                        z_promenade_mid,
+                        z_anchor_front + promenade_lift,
+                        half_promenade,
+                        deck_thickness / 2.0,
+                    ),
+                ],
+                open_questions=["OQ-013"],
+                notes=(
+                    "The Promenade is documented to exist (SRC-006 photographs it as its own group "
+                    "of plates, SRC-002 draws it) but no read source dimensions it, so it is "
+                    "INFERRED, not ASSUMED."
+                ),
+            )
+            continue
+        sk.add(
+            part_id,
+            "deck_system",
+            "promenade",
+            model.ids_of(
+                "promenade_width_present",
+                "promenade_elevation_above_roadway",
+                "manhattan_approach_length" if "manhattan" in part_id else "brooklyn_approach_length",
+                "anchorage_roadway_front_above_mhw",
+            ),
+            ["control_dimension", "inferred"],
+            [_slab(x0, x1, z0 + promenade_lift, z1 + promenade_lift, half_promenade, deck_thickness / 2.0)],
+            open_questions=["OQ-013"],
+        )
+
+    # -------------------------------------------------------------- main cables
+    cable_radius = m("main_cable_diameter") / 2.0
+    cable_refs = model.ids_of(
+        "main_span",
+        "tower_height_above_mhw",
+        "cable_saddle_drop_below_tower_top",
+        "min_suspender_length_at_midspan",
+        "main_cable_diameter",
+        "main_cable_count",
+        "truss_offset_outer",
+        "truss_offset_inner",
+    )
+    for name, y in cable_lines:
+        main_points = [
+            (x, y, _parabola(x, x_twr_b, z_saddle, z_cable_mid))
+            for x in _linspace(x_twr_m, x_twr_b, 121)
+        ]
+        sk.add(
+            f"cable_main_{name}_main_span",
+            "cables",
+            "main_cable",
+            cable_refs,
+            ["control_dimension", "inferred"],
+            [_tube(main_points, cable_radius)],
+            open_questions=["OQ-001", "OQ-002"],
+            notes=(
+                "Parabolic approximation. The sag rests on two placeholders (CTL-101, CTL-102) so "
+                "the whole curve is grade D — see OQ-001 and the sag discussion in "
+                "GEOMETRY-CONTROL.md section 4.2."
+            ),
+        )
+        for end, x_t, x_a in (("manhattan", x_twr_m, x_anc_m), ("brooklyn", x_twr_b, x_anc_b)):
+            sk.add(
+                f"cable_main_{name}_side_span_{end}",
+                "cables",
+                "main_cable",
+                cable_refs + model.ids_of("side_span_each", "anchorage_roadway_front_above_mhw"),
+                ["control_dimension", "inferred"],
+                [_tube([(x_t, y, z_saddle), (x_a, y, z_anchor_front)], cable_radius)],
+                open_questions=["OQ-001", "OQ-002"],
+                notes="Straight chord; the true side-span curve is not registered.",
+            )
+
+    # --------------------------------------------------------------- suspenders
+    suspender_refs = model.ids_of(
+        "suspender_count",
+        "main_cable_count",
+        "bridge_proper_length",
+        "truss_offset_outer",
+        "truss_offset_inner",
+        "stiffening_truss_depth_present",
+        "center_clearance_above_mhw",
+    )
+    for name, y in cable_lines:
+        for span, x0, x1 in (
+            ("manhattan_side_span", x_anc_m, x_twr_m),
+            ("main_span", x_twr_m, x_twr_b),
+            ("brooklyn_side_span", x_twr_b, x_anc_b),
+        ):
+            segments = []
+            count = max(int(round(abs(x1 - x0) / suspender_pitch)), 1)
+            for i in range(1, count):
+                x = x0 + (x1 - x0) * i / count
+                if span == "main_span":
+                    z_top = _parabola(x, x_twr_b, z_saddle, z_cable_mid)
+                else:
+                    t = (x - x0) / (x1 - x0)
+                    z_top = z_anchor_front + (z_saddle - z_anchor_front) * (
+                        t if span.startswith("manhattan") else 1.0 - t
+                    )
+                segments.append(((x, y, z_top), (x, y, z_truss_top)))
+            if not segments:
+                continue
+            sk.add(
+                f"suspender_group_{name}_{span}",
+                "suspenders",
+                "vertical_suspender",
+                suspender_refs,
+                ["control_dimension", "inferred"],
+                [_lines(segments)],
+                open_questions=["OQ-001", "OQ-002"],
+                notes=(
+                    f"{len(segments)} suspenders at the derived pitch of "
+                    f"{suspender_pitch / 0.3048:.2f} ft. The total count is grade A (CTL-044); "
+                    "distributing it evenly is reasoning, so these are INFERRED."
+                ),
+            )
+
+    # ------------------------------------------------------------ diagonal stays
+    stay_refs = model.ids_of(
+        "diagonal_stay_count",
+        "main_cable_count",
+        "tower_count",
+        "tower_height_above_mhw",
+        "suspender_count",
+        "bridge_proper_length",
+        "stiffening_truss_depth_present",
+        "center_clearance_above_mhw",
+    )
+    for name, y in cable_lines:
+        for end, x_t in (("manhattan", x_twr_m), ("brooklyn", x_twr_b)):
+            for direction, sign in (("inboard", 1.0 if end == "manhattan" else -1.0), ("outboard", -1.0 if end == "manhattan" else 1.0)):
+                segments = []
+                for i in range(1, stays_per_group + 1):
+                    x = x_t + sign * i * suspender_pitch
+                    if not (x_anc_m <= x <= x_anc_b):
+                        continue
+                    segments.append(((x_t, y, z_saddle), (x, y, z_truss_top)))
+                if not segments:
+                    continue
+                sk.add(
+                    f"stay_{name}_{end}_{direction}",
+                    "stays",
+                    "diagonal_stay",
+                    stay_refs,
+                    ["control_dimension", "inferred"],
+                    [_lines(segments)],
+                    open_questions=["OQ-001"],
+                    notes=(
+                        "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES "
+                        "CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count "
+                        "is grade A (CTL-045); the reach is derived from the suspender pitch, so "
+                        f"each fan reaches {stay_reach / 0.3048:.0f} ft and is INFERRED."
+                    ),
+                )
+
+    # ------------------------------------------------------ stiffening trusses
+    truss_refs = model.ids_of(
+        "stiffening_truss_count_present",
+        "stiffening_truss_depth_present",
+        "center_clearance_above_mhw",
+        "truss_offset_outer",
+        "truss_offset_inner",
+    )
+    truss_lines = [
+        ("outer_south", -y_outer),
+        ("inner_south", -y_inner),
+        ("inner_north", +y_inner),
+        ("outer_north", +y_outer),
+    ]
+    if len(truss_lines) != int(raw("stiffening_truss_count_present")):
+        raise BuildError("truss layout disagrees with the present-day truss count control")
+    truss_web = 1.0
+    for name, y in truss_lines:
+        for span, x0, x1 in (
+            ("manhattan_side_span", x_anc_m, x_twr_m),
+            ("main_span", x_twr_m, x_twr_b),
+            ("brooklyn_side_span", x_twr_b, x_anc_b),
+        ):
+            sk.add(
+                f"truss_{name}_{span}",
+                "deck_system",
+                "stiffening_truss",
+                truss_refs,
+                ["control_dimension", "inferred"],
+                [
+                    _box(
+                        (min(x0, x1), y - truss_web / 2.0, z_truss_bottom),
+                        (max(x0, x1), y + truss_web / 2.0, z_truss_top),
+                    )
+                ],
+                open_questions=["OQ-002", "OQ-010"],
+                notes=(
+                    "Depth is grade A (CTL-076). The count is reasoned from SRC-001 note 2 "
+                    "(CTL-077, grade B) and the transverse position is a placeholder, so the "
+                    "envelope is INFERRED."
+                ),
+            )
+
+    # -------------------------------------------------------------- floor beams
+    beam_refs = model.ids_of(
+        "floor_beam_length",
+        "floor_beam_depth",
+        "suspender_count",
+        "main_cable_count",
+        "bridge_proper_length",
+        "center_clearance_above_mhw",
+    )
+    for span, x0, x1 in (
+        ("manhattan_side_span", x_anc_m, x_twr_m),
+        ("main_span", x_twr_m, x_twr_b),
+        ("brooklyn_side_span", x_twr_b, x_anc_b),
+    ):
+        segments = []
+        count = max(int(round(abs(x1 - x0) / suspender_pitch)), 1)
+        for i in range(1, count):
+            x = x0 + (x1 - x0) * i / count
+            segments.append(((x, -half_beam, z_truss_bottom), (x, half_beam, z_truss_bottom)))
+        if not segments:
+            continue
+        sk.add(
+            f"floor_beam_group_{span}",
+            "deck_system",
+            "floor_beam",
+            beam_refs,
+            ["control_dimension", "inferred"],
+            [_lines(segments)],
+            open_questions=["OQ-013"],
+            notes="86 ft long (CTL-071, grade A) at the derived suspender pitch.",
+        )
+
+    # --------------------------------------------------------------- approaches
+    for end, x0, x1, z0, z1 in (
+        ("manhattan", x_appr_m, x_anc_m_rear, z_term_m, z_anchor_rear),
+        ("brooklyn", x_anc_b_rear, x_appr_b, z_anchor_rear, z_term_b),
+    ):
+        length_ref = (
+            "manhattan_approach_length" if end == "manhattan" else "brooklyn_approach_length"
+        )
+        sk.add(
+            f"approach_girder_{end}",
+            "approaches",
+            "viaduct",
+            model.ids_of(length_ref, "approach_girder_depth", "deck_width"),
+            ["control_dimension", "inferred"],
+            [
+                _slab(
+                    x0,
+                    x1,
+                    z0 - deck_thickness,
+                    z1 - deck_thickness,
+                    half_deck * 0.9,
+                    m("approach_girder_depth"),
+                )
+            ],
+            open_questions=["OQ-007"],
+            notes="Extent is grade A; the structural depth is a placeholder.",
+        )
+        segments = []
+        span_len = abs(x1 - x0)
+        count = max(int(span_len / m("approach_bent_spacing")), 1)
+        for i in range(1, count):
+            x = x0 + (x1 - x0) * i / count
+            z_top = z0 + (z1 - z0) * i / count - deck_thickness - m("approach_girder_depth")
+            for y in (-half_deck * 0.6, half_deck * 0.6):
+                segments.append(((x, y, 0.0), (x, y, z_top)))
+        if segments:
+            sk.add(
+                f"approach_bent_group_{end}",
+                "approaches",
+                "viaduct",
+                model.ids_of("approach_bent_spacing", "approach_bent_width_x", length_ref),
+                ["placeholder"],
+                [_lines(segments)],
+                open_questions=["OQ-007"],
+                notes=(
+                    "ASSUMED. Nothing in the register locates a single approach support. The "
+                    "rhythm exists only so the approaches read as supported viaducts; it is "
+                    "excluded from every dimension callout."
+                ),
+            )
+
+    derived = {
+        "stations_m": {
+            "STA-APPR-END-M": round(x_appr_m, 4),
+            "STA-ANC-M-REAR": round(x_anc_m_rear, 4),
+            "STA-ANC-M": round(x_anc_m, 4),
+            "STA-TWR-M": round(x_twr_m, 4),
+            "STA-MID": 0.0,
+            "STA-TWR-B": round(x_twr_b, 4),
+            "STA-ANC-B": round(x_anc_b, 4),
+            "STA-ANC-B-REAR": round(x_anc_b_rear, 4),
+            "STA-APPR-END-B": round(x_appr_b, 4),
+        },
+        "elevations_m": {
+            "ELV-FOUNDATION-M": round(z_found_m, 4),
+            "ELV-FOUNDATION-B": round(z_found_b, 4),
+            "ELV-DATUM": 0.0,
+            "ELV-TOWER-ROADWAY": round(z_tower_roadway, 4),
+            "ELV-CLEARANCE": round(z_clearance, 4),
+            "ELV-TRUSS-TOP": round(z_truss_top, 4),
+            "ELV-DECK-MID": round(z_deck_mid, 4),
+            "ELV-PROMENADE-MID": round(z_promenade_mid, 4),
+            "ELV-ARCH-SPRINGING": round(z_arch_springing, 4),
+            "ELV-ARCH-CROWN": round(z_arch_crown, 4),
+            "ELV-CABLE-MID": round(z_cable_mid, 4),
+            "ELV-SADDLE": round(z_saddle, 4),
+            "ELV-TOWER-TOP": round(z_tower_top, 4),
+            "ELV-ANCHOR-POINT": round(z_anchor_front, 4),
+        },
+        "cable_sag_m": round(z_saddle - z_cable_mid, 4),
+        "cable_sag_ft": round((z_saddle - z_cable_mid) / 0.3048, 3),
+        "cable_sag_ratio": round(main_span / max(z_saddle - z_cable_mid, 1e-9), 3),
+        "cable_sag_confidence": "D",
+        "suspender_pitch_m": round(suspender_pitch, 4),
+        "suspender_pitch_ft": round(suspender_pitch / 0.3048, 3),
+        "suspenders_per_cable": suspenders_per_cable,
+        "stays_per_group": stays_per_group,
+        "stay_reach_ft": round(stay_reach / 0.3048, 2),
+        "deck_chain_ids": [row[0] for row in deck_chain],
+        "checks": checks,
+    }
+    return sk, derived
+
+
+def _station_refs(model: ControlModel, station_id: str) -> list[str]:
+    mapping = {
+        "station_manhattan_approach_end": ("manhattan_approach_length", "total_length_including_approaches"),
+        "station_manhattan_anchorage": ("side_span_each", "main_span"),
+        "station_manhattan_tower": ("main_span",),
+        "station_midspan": ("main_span",),
+        "station_brooklyn_tower": ("main_span",),
+        "station_brooklyn_anchorage": ("side_span_each", "main_span"),
+        "station_brooklyn_approach_end": ("brooklyn_approach_length", "total_length_including_approaches"),
+    }
+    return model.ids_of(*mapping[station_id])
+
+
+def _parabola(x: float, half_span: float, z_end: float, z_vertex: float) -> float:
+    return z_vertex + (z_end - z_vertex) * (x / half_span) ** 2
+
+
+def _linspace(a: float, b: float, n: int) -> list[float]:
+    return [a + (b - a) * i / (n - 1) for i in range(n)]
+
+
+def _pointed_arch_outline(
+    x_c: float,
+    y_c: float,
+    half_width: float,
+    radius: float,
+    centre_offset: float,
+    z_base: float,
+    z_springing: float,
+) -> list[tuple[float, float, float]]:
+    """Two-centred pointed arch outline in the transverse plane of a tower."""
+    points: list[tuple[float, float, float]] = [
+        (x_c, y_c - half_width, z_base),
+        (x_c, y_c - half_width, z_springing),
+    ]
+    steps = 24
+    # Left half: arc centred at +centre_offset, swept from the left springing point to the crown.
+    start = math.atan2(0.0, -half_width - centre_offset)
+    crown_angle = math.atan2(
+        math.sqrt(max(radius**2 - centre_offset**2, 0.0)), -centre_offset
+    )
+    for i in range(steps + 1):
+        ang = start + (crown_angle - start) * i / steps
+        points.append(
+            (x_c, y_c + centre_offset + radius * math.cos(ang), z_springing + radius * math.sin(ang))
+        )
+    start = math.atan2(0.0, half_width + centre_offset)
+    crown_angle = math.atan2(
+        math.sqrt(max(radius**2 - centre_offset**2, 0.0)), centre_offset
+    )
+    for i in range(steps, -1, -1):
+        ang = start + (crown_angle - start) * i / steps
+        points.append(
+            (x_c, y_c - centre_offset + radius * math.cos(ang), z_springing + radius * math.sin(ang))
+        )
+    points.append((x_c, y_c + half_width, z_springing))
+    points.append((x_c, y_c + half_width, z_base))
+    return points
+
+
+# ------------------------------------------------------------------------ export
+
+
+def export(sk: Skeleton, derived: dict[str, Any], model: ControlModel) -> dict[str, Any]:
+    counts_provenance: dict[str, int] = {
+        "MEASURED": 0,
+        "DOCUMENTED": 0,
+        "INFERRED": 0,
+        "ASSUMED": 0,
+    }
+    counts_confidence: dict[str, int] = {"A": 0, "B": 0, "C": 0, "D": 0}
+    for part in sk.parts:
+        counts_provenance[part.provenance] += 1
+        counts_confidence[part.confidence] += 1
+
+    for scale, stem in ((1.0, "control_skeleton"), (1.0 / HO_SCALE_DENOMINATOR, "control_skeleton_ho")):
+        builder = GltfBuilder(
+            generator=BUILDER_VERSION,
+            scale=scale,
+            copyright_text=(
+                "Brooklyn Bridge Digital Twin, Ethical Tech CoLab. CC BY 4.0. "
+                "Built from GEOMETRY-CONTROL.md sha256="
+                f"{model.document_sha256[:16]}"
+            ),
+        )
+        builder.set_root_name("brooklyn_bridge")
+        builder.set_root_extras(
+            {
+                "control_document_sha256": model.document_sha256,
+                "scale": "prototype" if scale == 1.0 else "HO 1:87.1",
+                "vertical_datum": "mean high water (MHW)",
+                "units": "meters",
+            }
+        )
+        systems: dict[str, int] = {}
+        for part in sk.parts:
+            if part.system not in systems:
+                node = builder.add_node(part.system)
+                builder.add_to_root(node)
+                systems[part.system] = node
+            material_index = builder.add_material(
+                f"{part.material}_{part.provenance.lower()}",
+                _material_color(part.material, part.provenance),
+                unlit=any(p["kind"] == "line" for p in part.primitives),
+            )
+            primitives = []
+            for prim in part.primitives:
+                if prim["kind"] == "line":
+                    primitives.append(
+                        {
+                            "mode": 1,
+                            "positions": prim["positions"],
+                            "normals": None,
+                            "indices": prim["indices"],
+                            "material": material_index,
+                        }
+                    )
+                else:
+                    primitives.append(
+                        {
+                            "mode": 4,
+                            "positions": prim["positions"],
+                            "normals": prim["normals"],
+                            "indices": prim["indices"],
+                            "material": material_index,
+                        }
+                    )
+            mesh = builder.add_mesh(f"{part.part_id}_mesh", primitives)
+            node = builder.add_node(part.part_id, mesh=mesh, extras=part.to_metadata())
+            builder.add_child(systems[part.system], node)
+
+        builder.save_glb(REPO / "mesh" / "glb" / f"{stem}.glb")
+        builder.save_glb(REPO / "viewer" / "public" / f"{stem}.glb")
+        if scale == 1.0:
+            builder.save_gltf(REPO / "mesh" / "glb" / f"{stem}.gltf")
+
+    parts_payload = {
+        "control_document_sha256": model.document_sha256,
+        "generator": BUILDER_VERSION,
+        "vertical_datum": "mean high water (MHW)",
+        "units": "meters",
+        "ho_scale_denominator": HO_SCALE_DENOMINATOR,
+        "parts": [p.to_metadata() for p in sk.parts],
+    }
+    _write_json(REPO / "viewer" / "metadata" / "parts.json", parts_payload)
+    _write_json(REPO / "viewer" / "public" / "parts.json", parts_payload)
+
+    # The viewer's "locus on selection" needs the control rows themselves, so that clicking a part
+    # can show the passage its geometry rests on — or state plainly that there is none.
+    controls_payload = {
+        "control_document_sha256": model.document_sha256,
+        "controls": [
+            {
+                "control_id": c.control_id,
+                "key": c.key,
+                "value": c.value,
+                "unit": c.unit,
+                "value_m": round(c.value_m, 6),
+                "source_ids": list(c.source_ids),
+                "confidence": c.confidence,
+                "is_placeholder": c.is_placeholder,
+                "notes": c.notes,
+            }
+            for c in model.controls.values()
+        ],
+        "materials": [
+            {
+                "material_id": r.material_id,
+                "pattern": r.pattern,
+                "material": r.material,
+                "source_ids": list(r.source_ids),
+                "confidence": r.confidence,
+                "notes": r.notes,
+            }
+            for r in model.materials
+        ],
+    }
+    _write_json(REPO / "viewer" / "public" / "controls.json", controls_payload)
+    _write_json(REPO / "viewer" / "metadata" / "controls.json", controls_payload)
+
+    scale_rows = []
+    for control in model.controls.values():
+        if not is_linear(control.unit):
+            continue
+        row = ho_report(control.value_m)
+        row.update(
+            {
+                "control_id": control.control_id,
+                "key": control.key,
+                "unit": control.unit,
+                "confidence": control.confidence,
+                "is_placeholder": control.is_placeholder,
+            }
+        )
+        scale_rows.append(row)
+    _write_json(
+        REPO / "viewer" / "metadata" / "scale_ho.json",
+        {
+            "ho_scale_denominator": HO_SCALE_DENOMINATOR,
+            "control_document_sha256": model.document_sha256,
+            "controls": scale_rows,
+        },
+    )
+
+    report = {
+        "generator": BUILDER_VERSION,
+        "control_document": CONTROL_DOC.name,
+        "control_document_sha256": model.document_sha256,
+        "controls_total": len(model.controls),
+        "controls_sourced": len(model.controls) - len(model.placeholders),
+        "controls_placeholder": len(model.placeholders),
+        "material_rules": len(model.materials),
+        "parts_total": len(sk.parts),
+        "provenance": counts_provenance,
+        "confidence": counts_confidence,
+        "systems": sorted({p.system for p in sk.parts}),
+        "derived": derived,
+    }
+    _write_json(REPO / "viewer" / "metadata" / "build_report.json", report)
+    _write_json(REPO / "viewer" / "public" / "build_report.json", report)
+
+    _write_json(
+        REPO / "cad" / "procedural" / "control_skeleton_geometry.json",
+        {
+            "control_document_sha256": model.document_sha256,
+            "units": "meters",
+            "parts": [
+                {
+                    "part_id": p.part_id,
+                    "primitives": [
+                        {
+                            "kind": prim["kind"],
+                            "positions": [[round(c, 6) for c in pt] for pt in prim["positions"]],
+                            "indices": prim["indices"],
+                        }
+                        for prim in p.primitives
+                    ],
+                }
+                for p in sk.parts
+            ],
+        },
+    )
+    return report
+
+
+def _material_color(material: str, provenance: str) -> tuple[float, float, float, float]:
+    base = MATERIAL_COLORS[material]
+    alpha = {"MEASURED": 1.0, "DOCUMENTED": 1.0, "INFERRED": 0.55, "ASSUMED": 0.28}[provenance]
+    return (base[0], base[1], base[2], alpha)
+
+
+def _write_json(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
+def main() -> int:
+    try:
+        model = load_control_model(CONTROL_DOC)
+    except ControlDocumentError as exc:
+        print(f"control document error: {exc}", file=sys.stderr)
+        return 2
+
+    sk, derived = build(model)
+    report = export(sk, derived, model)
+
+    failed = [c for c in derived["checks"] if not c["passed"]]
+    print(f"{CONTROL_DOC.name}  sha256={model.document_sha256[:12]}")
+    print(f"  controls  : {report['controls_total']} "
+          f"({report['controls_sourced']} sourced, {report['controls_placeholder']} placeholder)")
+    print(f"  parts     : {report['parts_total']}")
+    print(f"  provenance: {report['provenance']}")
+    print(f"  confidence: {report['confidence']}")
+    print(f"  cable sag : {derived['cable_sag_ft']} ft "
+          f"(1:{derived['cable_sag_ratio']}, grade {derived['cable_sag_confidence']})")
+    for c in derived["checks"]:
+        flag = "ok  " if c["passed"] else "FAIL"
+        print(f"  {flag} {c['id']}  residual {c['residual_ft']:+.3f} ft  {c['description']}")
+    if failed:
+        print(f"{len(failed)} consistency check(s) failed", file=sys.stderr)
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

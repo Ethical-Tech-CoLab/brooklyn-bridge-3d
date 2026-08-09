@@ -1,0 +1,1147 @@
+{
+  "control_document_sha256": "c3bc867a179bf499cb94ddbd73a148c2f04f271815c9f261e6ee65ff093ca6df",
+  "controls": [
+    {
+      "control_id": "CTL-001",
+      "key": "main_span",
+      "value": 1595.5,
+      "unit": "ft",
+      "value_m": 486.3084,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002",
+        "SRC-003"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "Tower centerline to tower centerline. SRC-002 dimensions it `1595'-6\" MAIN SPAN`; SRC-001 gives 1,595.5 ft; SRC-003 \"the bridge's 1,595.5-foot span broke all world records for span length\"."
+    },
+    {
+      "control_id": "CTL-002",
+      "key": "side_span_each",
+      "value": 930.0,
+      "unit": "ft",
+      "value_m": 283.464,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002",
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-002 labels both `930' LAND SPAN`. Independently in SRC-004's 1876 wire specification: \"two side spans of 930 ft. each\"."
+    },
+    {
+      "control_id": "CTL-003",
+      "key": "bridge_proper_length",
+      "value": 3455.5,
+      "unit": "ft",
+      "value_m": 1053.2364,
+      "source_ids": [
+        "SRC-001"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Length of bridge proper\". Identity holds exactly: CTL-001 + 2 \u00d7 CTL-002 = 3455.5. Checked at build time."
+    },
+    {
+      "control_id": "CTL-004",
+      "key": "total_length_including_approaches",
+      "value": 5989.0,
+      "unit": "ft",
+      "value_m": 1825.4472,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-002: \"OVERALL LENGTH OF BROOKLYN BRIDGE FROM PARK ROW, MANHATTAN, TO ADAMS ST., BROOKLYN, 5989 FT. (1996.3 YD)\"."
+    },
+    {
+      "control_id": "CTL-005",
+      "key": "manhattan_approach_length",
+      "value": 1562.5,
+      "unit": "ft",
+      "value_m": 476.25,
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "`1562'-6\" MANHATTAN APPROACH`. **The approaches are asymmetric and both are dimensioned**, so no 50/50 split is guessed anywhere in this model."
+    },
+    {
+      "control_id": "CTL-006",
+      "key": "brooklyn_approach_length",
+      "value": 971.0,
+      "unit": "ft",
+      "value_m": 295.9608,
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "`971' BROOKLYN APPROACH`. Identity holds exactly: CTL-005 + CTL-002 + CTL-001 + CTL-002 + CTL-006 = 5989 = CTL-004. Checked at build time; this is the strongest single internal check in the document."
+    },
+    {
+      "control_id": "CTL-010",
+      "key": "center_clearance_above_mhw",
+      "value": 135.0,
+      "unit": "ft",
+      "value_m": 41.148,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-002 dimensions `135' MID SPAN CLEARANCE` directly off its `MEAN HIGH WATER` baseline. SRC-001: \"Clear hgt. at mid-span above high water (90F) 135.0 ft.\" \u2014 the 90 \u00b0F qualifier is the thermal state at which the design clearance holds."
+    },
+    {
+      "control_id": "CTL-011",
+      "key": "roadway_clearance_at_tower_above_mhw",
+      "value": 110.0,
+      "unit": "ft",
+      "value_m": 33.528,
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "`110' CLEARANCE TO WATERLINE`, dimensioned from the `MEAN HIGH WATER` baseline up to the `ROADWAY` line at the Manhattan tower. It is **lower** than the 135 ft midspan clearance because the Brooklyn Bridge deck crests at the centre of the main span rather than sagging toward it \u2014 SRC-002's elevation draws that camber plainly. Used as the datum for the tower arch, see \u00a74.2."
+    },
+    {
+      "control_id": "CTL-012",
+      "key": "manhattan_terminus_above_mhw",
+      "value": 36.0,
+      "unit": "ft",
+      "value_m": 10.9728,
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "Park Row curb line, the Manhattan end of the approach."
+    },
+    {
+      "control_id": "CTL-013",
+      "key": "brooklyn_terminus_above_mhw",
+      "value": 68.0,
+      "unit": "ft",
+      "value_m": 20.7264,
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "Adams Street curb line, the Brooklyn end of the approach."
+    },
+    {
+      "control_id": "CTL-014",
+      "key": "manhattan_approach_gradient",
+      "value": 0.0325,
+      "unit": "ratio",
+      "value_m": 0.0325,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-002: \"3'-3\" per hundred feet\". SRC-001: \"Grade of roadway 3.25%\". Two sources, same number, expressed differently."
+    },
+    {
+      "control_id": "CTL-015",
+      "key": "brooklyn_approach_gradient",
+      "value": 0.0175,
+      "unit": "ratio",
+      "value_m": 0.0175,
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"THE BROOKLYN APPROACH REQUIRES A GRADIENT OF ONLY 1'-9\" PER HUNDRED FEET.\""
+    },
+    {
+      "control_id": "CTL-016",
+      "key": "mid_channel_depth",
+      "value": 60.0,
+      "unit": "ft",
+      "value_m": 18.288,
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "`60' MID CHANNEL DEPTH`. Context for the river bed, not bridge structure."
+    },
+    {
+      "control_id": "CTL-017",
+      "key": "east_river_channel_width",
+      "value": 1950.0,
+      "unit": "ft",
+      "value_m": 594.36,
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"1950' OVERALL WIDTH EAST RIVER CHANNEL\". Context only."
+    },
+    {
+      "control_id": "CTL-020",
+      "key": "tower_height_above_mhw",
+      "value": 276.5,
+      "unit": "ft",
+      "value_m": 84.2772,
+      "source_ids": [
+        "SRC-002",
+        "SRC-003"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "**ACTIVE tower height control.** SRC-002: `276'-6\" OVERALL TO WATERLINE`. SRC-003: \"the 276.5-foot towers\". See CONF-001."
+    },
+    {
+      "control_id": "CTL-021",
+      "key": "tower_height_haer",
+      "value": 276.6,
+      "unit": "ft",
+      "value_m": 84.30768,
+      "source_ids": [
+        "SRC-001"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-001's figure. Recorded for traceability, **not used for geometry**; see CONF-001, where it is shown to be a decimalisation error for 276'-6\"."
+    },
+    {
+      "control_id": "CTL-022",
+      "key": "tower_extent_x_at_mhw",
+      "value": 59.0,
+      "unit": "ft",
+      "value_m": 17.9832,
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "Tower masonry along the bridge axis at the mean high water line, dimensioned on the `ELEVATION TO EAST RIVER` view."
+    },
+    {
+      "control_id": "CTL-023",
+      "key": "tower_extent_y_at_mhw",
+      "value": 140.0,
+      "unit": "ft",
+      "value_m": 42.672,
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "Tower masonry transverse to the bridge at the mean high water line, dimensioned on the `ELEVATION TO MANHATTAN` view. Wider than the 85 ft deck, as expected."
+    },
+    {
+      "control_id": "CTL-024",
+      "key": "tower_count",
+      "value": 2.0,
+      "unit": "count",
+      "value_m": 2.0,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "Manhattan and Brooklyn."
+    },
+    {
+      "control_id": "CTL-025",
+      "key": "tower_arch_count_per_tower",
+      "value": 2.0,
+      "unit": "count",
+      "value_m": 2.0,
+      "source_ids": [
+        "SRC-002",
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-004: \"The three vertical shafts are connected by two pointed arches\"."
+    },
+    {
+      "control_id": "CTL-026",
+      "key": "tower_arch_width",
+      "value": 33.75,
+      "unit": "ft",
+      "value_m": 10.287,
+      "source_ids": [
+        "SRC-002",
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-002: `33'-9\" ARCH WIDTH`. SRC-004: \"a span of 33 feet 9 inches\". SRC-001 gives 33.8 ft, the same figure decimalised. Three sources."
+    },
+    {
+      "control_id": "CTL-027",
+      "key": "tower_arch_depth_longitudinal",
+      "value": 21.0,
+      "unit": "ft",
+      "value_m": 6.4008,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"\u2026and a width of 21 feet\", i.e. the through-thickness of the arch along the bridge axis."
+    },
+    {
+      "control_id": "CTL-028",
+      "key": "tower_arch_radius",
+      "value": 46.0,
+      "unit": "ft",
+      "value_m": 14.0208,
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "`46' RADIUS`, annotated on the pointed arch of the Manhattan tower."
+    },
+    {
+      "control_id": "CTL-029",
+      "key": "tower_vault_height_above_roadway",
+      "value": 117.0,
+      "unit": "ft",
+      "value_m": 35.6616,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-002: `117' VAULT`, from the roadway line to the crown. SRC-001: \"Height of arches above roadway 117.0 ft.\""
+    },
+    {
+      "control_id": "CTL-030",
+      "key": "tower_arch_height_above_springing",
+      "value": 36.0,
+      "unit": "ft",
+      "value_m": 10.9728,
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "`36' ARCH HEIGHT`, measured from the springing course. **ACTIVE** for the arch derivation. See CONF-004."
+    },
+    {
+      "control_id": "CTL-031",
+      "key": "tower_arch_rise_1877",
+      "value": 35.5,
+      "unit": "ft",
+      "value_m": 10.8204,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"two pointed arches which have a rise of 35 feet 6 inches\". Recorded, **not used for geometry**. See CONF-004."
+    },
+    {
+      "control_id": "CTL-032",
+      "key": "tower_summit_above_foundation",
+      "value": 345.0,
+      "unit": "ft",
+      "value_m": 105.156,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"the summit of the New York tower is 345 feet above the foundation\". Recorded, **not used for geometry** \u2014 SRC-004 does not say which surface it calls the foundation, and the arithmetic against CTL-020 and CTL-034 does not close. See OQ-004."
+    },
+    {
+      "control_id": "CTL-033",
+      "key": "caisson_depth_below_mhw_brooklyn",
+      "value": 44.5,
+      "unit": "ft",
+      "value_m": 13.5636,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-002: \"THE BROOKLYN CAISSON RESTS AT 44'-6\"\". SRC-001: 44.5 ft."
+    },
+    {
+      "control_id": "CTL-034",
+      "key": "caisson_depth_below_mhw_manhattan",
+      "value": 78.5,
+      "unit": "ft",
+      "value_m": 23.9268,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-002: \"THE CAISSON BELOW THE MANHATTAN TOWER COMES TO REST AT 78'-6\"\". SRC-001: 78.5 ft. **The two towers' foundations are at different depths and the model reflects that**; it does not average them."
+    },
+    {
+      "control_id": "CTL-035",
+      "key": "caisson_long_dimension_brooklyn",
+      "value": 168.0,
+      "unit": "ft",
+      "value_m": 51.2064,
+      "source_ids": [
+        "SRC-005"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"The dimensions of the caisson are rectangular, length one hundred and sixty-eight feet, width one hundred and two feet\"."
+    },
+    {
+      "control_id": "CTL-036",
+      "key": "caisson_short_dimension",
+      "value": 102.0,
+      "unit": "ft",
+      "value_m": 31.0896,
+      "source_ids": [
+        "SRC-005"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "Same passage; SRC-005 gives 102 ft for both caissons."
+    },
+    {
+      "control_id": "CTL-037",
+      "key": "caisson_long_dimension_manhattan",
+      "value": 172.0,
+      "unit": "ft",
+      "value_m": 52.4256,
+      "source_ids": [
+        "SRC-005"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"The dimensions of the base are one hundred and seventy-two feet by one hundred and two feet, covering an area of seventeen thousand five hundred and forty-four square feet. Its length is four feet greater than the Brooklyn caisson.\" 172 \u00d7 102 = 17,544 exactly \u2014 the source checks against itself."
+    },
+    {
+      "control_id": "CTL-038",
+      "key": "caisson_air_chamber_height",
+      "value": 9.5,
+      "unit": "ft",
+      "value_m": 2.8956,
+      "source_ids": [
+        "SRC-005"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"height of air chamber nine feet six inches\"."
+    },
+    {
+      "control_id": "CTL-039",
+      "key": "caisson_roof_thickness",
+      "value": 15.0,
+      "unit": "ft",
+      "value_m": 4.572,
+      "source_ids": [
+        "SRC-005"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"making the roof of the caisson a solid mass of timber, of fifteen feet in thickness\"."
+    },
+    {
+      "control_id": "CTL-040",
+      "key": "main_cable_count",
+      "value": 4.0,
+      "unit": "count",
+      "value_m": 4.0,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002",
+        "SRC-003"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-002: \"FOUR MAIN CABLES CARRY THE DEAD AND LIVE LOADS OF THE SUPERSTRUCTURE.\""
+    },
+    {
+      "control_id": "CTL-041",
+      "key": "main_cable_diameter",
+      "value": 15.75,
+      "unit": "in",
+      "value_m": 0.40005,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-002: \"the main cables reached their bound diameters of 15-3/4 inches\". SRC-001: \"Diameter over wrapping 15.75 in.\" See CONF-003."
+    },
+    {
+      "control_id": "CTL-042",
+      "key": "main_cable_length",
+      "value": 3578.5,
+      "unit": "ft",
+      "value_m": 1090.7268,
+      "source_ids": [
+        "SRC-001"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Length of each cable\". Includes the anchorage-embedded run; see the arc-length cross-check in \u00a74.4."
+    },
+    {
+      "control_id": "CTL-043",
+      "key": "cable_wire_count",
+      "value": 5434.0,
+      "unit": "count",
+      "value_m": 5434.0,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-002: \"THE FOUR MAIN BRIDGE CABLES WERE EACH COMPOSED OF 5,434 CONTINUOUS STEEL WIRES.\" See CONF-002."
+    },
+    {
+      "control_id": "CTL-044",
+      "key": "suspender_count",
+      "value": 1520.0,
+      "unit": "count",
+      "value_m": 1520.0,
+      "source_ids": [
+        "SRC-001"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Total number of vertical suspenders 1,520\"."
+    },
+    {
+      "control_id": "CTL-045",
+      "key": "diagonal_stay_count",
+      "value": 400.0,
+      "unit": "count",
+      "value_m": 400.0,
+      "source_ids": [
+        "SRC-001"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Total number of diagonal stays 400\". The stays are the Roebling system's defining second load path; SRC-002 annotates them: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\""
+    },
+    {
+      "control_id": "CTL-046",
+      "key": "saddle_count",
+      "value": 8.0,
+      "unit": "count",
+      "value_m": 8.0,
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"THE MAIN CABLES WERE CARRIED THROUGH THE TOWERS ON EIGHT CAST IRON SADDLE BEARINGS OF 13 TONS EACH.\" Four cables \u00d7 two towers."
+    },
+    {
+      "control_id": "CTL-047",
+      "key": "cable_wire_count_1876_spec",
+      "value": 6300.0,
+      "unit": "count",
+      "value_m": 6300.0,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "Design-stage specification. Recorded, **not used**. See CONF-002."
+    },
+    {
+      "control_id": "CTL-048",
+      "key": "main_cable_diameter_1876_spec",
+      "value": 15.0,
+      "unit": "in",
+      "value_m": 0.381,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "Design-stage specification. Recorded, **not used**. See CONF-003."
+    },
+    {
+      "control_id": "CTL-050",
+      "key": "anchorage_extent_x",
+      "value": 129.0,
+      "unit": "ft",
+      "value_m": 39.3192,
+      "source_ids": [
+        "SRC-002",
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-004: \"The length over all the base of masonry is 129 feet.\" SRC-002 labels both anchorages `129'` in elevation. Two independent sources, one of them a measured drawing."
+    },
+    {
+      "control_id": "CTL-051",
+      "key": "anchorage_base_width_front",
+      "value": 106.333,
+      "unit": "ft",
+      "value_m": 32.410298,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"The width at the front is 106 feet 4 inches\"."
+    },
+    {
+      "control_id": "CTL-052",
+      "key": "anchorage_base_width_rear",
+      "value": 116.333,
+      "unit": "ft",
+      "value_m": 35.458298,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"\u2026and at the rear 116 feet 4 inches.\" Consistent with the same passage's \"widened at the rear by an offset of five feet on each side\": 106'4\" + 10' = 116'4\"."
+    },
+    {
+      "control_id": "CTL-053",
+      "key": "anchorage_rear_offset_station",
+      "value": 85.5,
+      "unit": "ft",
+      "value_m": 26.0604,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"made at 85\u00bd feet from the front\" \u2014 where the plan steps out."
+    },
+    {
+      "control_id": "CTL-054",
+      "key": "anchorage_top_length",
+      "value": 117.0,
+      "unit": "ft",
+      "value_m": 35.6616,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"The top surface \u2026 will have a length of 117 feet\"."
+    },
+    {
+      "control_id": "CTL-055",
+      "key": "anchorage_top_width_rear",
+      "value": 104.333,
+      "unit": "ft",
+      "value_m": 31.800698,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"\u2026and a width of 104 feet 4 inches, and 94 feet 4 inches at rear and front respectively.\""
+    },
+    {
+      "control_id": "CTL-056",
+      "key": "anchorage_top_width_front",
+      "value": 94.333,
+      "unit": "ft",
+      "value_m": 28.752698,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "Same sentence."
+    },
+    {
+      "control_id": "CTL-057",
+      "key": "anchorage_roadway_front_above_mhw",
+      "value": 89.04,
+      "unit": "ft",
+      "value_m": 27.139392,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"The height of the roadway at front will be 89.04 feet\". **The top of the anchorage is roadway** \u2014 SRC-004: \"The top surface is to be sloped to the grade of the roadway, of which it will form part.\""
+    },
+    {
+      "control_id": "CTL-058",
+      "key": "anchorage_roadway_rear_above_mhw",
+      "value": 85.24,
+      "unit": "ft",
+      "value_m": 25.981152,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "Same sentence."
+    },
+    {
+      "control_id": "CTL-059",
+      "key": "anchorage_cornice_height",
+      "value": 12.583,
+      "unit": "ft",
+      "value_m": 3.835298,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"There will be a cornice at top similar in design to those on the towers, of a full height of 12 feet 7 inches.\""
+    },
+    {
+      "control_id": "CTL-060",
+      "key": "anchorage_masonry_top_1875",
+      "value": 78.5,
+      "unit": "ft",
+      "value_m": 23.9268,
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "Brooklyn anchorage, \"brought up to 78 feet 6 inches above high water\". A **state of works**, not a finished height. Recorded, not used. See CONF-005."
+    },
+    {
+      "control_id": "CTL-061",
+      "key": "anchorage_count",
+      "value": 2.0,
+      "unit": "count",
+      "value_m": 2.0,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": ""
+    },
+    {
+      "control_id": "CTL-062",
+      "key": "anchorage_eyebar_count",
+      "value": 1520.0,
+      "unit": "count",
+      "value_m": 1520.0,
+      "source_ids": [
+        "SRC-001"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Number of anchorage-chain eyebars 1,520\". Identical to CTL-044; SRC-001 lists both as 1,520. Possibly correct, possibly a transcription collision in the source table. See OQ-011."
+    },
+    {
+      "control_id": "CTL-063",
+      "key": "anchorage_eyebar_length",
+      "value": 12.0,
+      "unit": "ft",
+      "value_m": 3.6576,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-001: \"Average size of eyebars 12ft. x 3 in. x 8 in.\" SRC-002: \"EIGHT LONG CHAINS OF 12-FOOT EYEBARS\"."
+    },
+    {
+      "control_id": "CTL-070",
+      "key": "deck_width",
+      "value": 85.0,
+      "unit": "ft",
+      "value_m": 25.908,
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-001: \"Clear width of bridge 85.0 ft.\" SRC-002 labels the deck `85' BRIDGE FLOOR` on the plan."
+    },
+    {
+      "control_id": "CTL-071",
+      "key": "floor_beam_length",
+      "value": 86.0,
+      "unit": "ft",
+      "value_m": 26.2128,
+      "source_ids": [
+        "SRC-001"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "One foot wider than the clear deck width, as expected for a beam carrying it."
+    },
+    {
+      "control_id": "CTL-072",
+      "key": "floor_beam_depth",
+      "value": 32.0,
+      "unit": "in",
+      "value_m": 0.8128,
+      "source_ids": [
+        "SRC-001"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": ""
+    },
+    {
+      "control_id": "CTL-073",
+      "key": "stiffening_truss_count_original",
+      "value": 6.0,
+      "unit": "count",
+      "value_m": 6.0,
+      "source_ids": [
+        "SRC-001",
+        "SRC-003"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-003 quotes John Roebling's 1854 proposal directly: \"\u2026I have provided six lines of trusses.\""
+    },
+    {
+      "control_id": "CTL-074",
+      "key": "stiffening_truss_depth_inner_original",
+      "value": 17.0,
+      "unit": "ft",
+      "value_m": 5.1816,
+      "source_ids": [
+        "SRC-001"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Height of inner and intermediate trusses 17.0 ft.\""
+    },
+    {
+      "control_id": "CTL-075",
+      "key": "stiffening_truss_depth_outer_original",
+      "value": 8.7,
+      "unit": "ft",
+      "value_m": 2.65176,
+      "source_ids": [
+        "SRC-001"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Height of outer trusses 8.7 ft.\" The original outer trusses were half the depth of the inner ones."
+    },
+    {
+      "control_id": "CTL-076",
+      "key": "stiffening_truss_depth_present",
+      "value": 17.0,
+      "unit": "ft",
+      "value_m": 5.1816,
+      "source_ids": [
+        "SRC-001"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "SRC-001 note 2: \"In the 1953 reconstruction of the suspended superstructure, the intermediate trusses were removed and the outer trusses were raised to the height of the inner trusses.\" All surviving trusses are therefore 17 ft deep."
+    },
+    {
+      "control_id": "CTL-077",
+      "key": "stiffening_truss_count_present",
+      "value": 4.0,
+      "unit": "count",
+      "value_m": 4.0,
+      "source_ids": [
+        "SRC-001"
+      ],
+      "confidence": "B",
+      "is_placeholder": false,
+      "notes": "**Reasoned, not stated.** Six trusses comprise two outer, two intermediate and two inner; SRC-001 note 2 says the intermediates were removed, leaving four. No read source states the number `4`. Graded `B` and flagged: see OQ-010."
+    },
+    {
+      "control_id": "CTL-078",
+      "key": "promenade_width_original",
+      "value": 15.0,
+      "unit": "ft",
+      "value_m": 4.572,
+      "source_ids": [
+        "SRC-003"
+      ],
+      "confidence": "B",
+      "is_placeholder": false,
+      "notes": "\"a 15-foot-wide walkway\", describing the original deck division. Whether the present Promenade matches is not registered. See OQ-013."
+    },
+    {
+      "control_id": "CTL-101",
+      "key": "min_suspender_length_at_midspan",
+      "value": 3.0,
+      "unit": "ft",
+      "value_m": 0.9144,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER. The vertical gap between the truss top chord and the main cable at midspan, which is what sets the sag. Bounded above by the cable having to clear the chord and below by zero, so the derived sag is wrong by at most a few feet \u2014 but it is still not a fact. **Retired by**: John Roebling's 1867 design report, or NYCDOT record drawings. See OQ-001."
+    },
+    {
+      "control_id": "CTL-102",
+      "key": "cable_saddle_drop_below_tower_top",
+      "value": 0.0,
+      "unit": "ft",
+      "value_m": 0.0,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER. Drop from the tower summit (CTL-020) to the cable centerline at the saddle. Currently zero, so the model treats the tower top as the cable line. SRC-002 draws the saddle housing below the cornice, so this is certainly non-zero; no read source dimensions it. See OQ-001."
+    },
+    {
+      "control_id": "CTL-103",
+      "key": "deck_structure_depth",
+      "value": 3.0,
+      "unit": "ft",
+      "value_m": 0.9144,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER. Structural depth of the roadway deck above the truss bottom chord. See OQ-013."
+    },
+    {
+      "control_id": "CTL-104",
+      "key": "truss_offset_outer",
+      "value": 38.0,
+      "unit": "ft",
+      "value_m": 11.5824,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER. Transverse offset of the two outer stiffening trusses from the centerline. **Bounded**: the deck is 85 ft wide (CTL-070) so this cannot exceed 42.5 ft. See OQ-002."
+    },
+    {
+      "control_id": "CTL-105",
+      "key": "truss_offset_inner",
+      "value": 15.0,
+      "unit": "ft",
+      "value_m": 4.572,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER. Transverse offset of the two inner stiffening trusses. Bounded above by CTL-104. See OQ-002."
+    },
+    {
+      "control_id": "CTL-106",
+      "key": "promenade_elevation_above_roadway",
+      "value": 12.0,
+      "unit": "ft",
+      "value_m": 3.6576,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER. The Promenade runs above the roadway on the Brooklyn Bridge \u2014 SRC-006 confirms it exists and photographs it, and SRC-002 draws it, but no read source dimensions its height. **The existence is documented; only the value is a guess**, so parts depending on it are `INFERRED`, not `ASSUMED`. See OQ-013."
+    },
+    {
+      "control_id": "CTL-107",
+      "key": "promenade_width_present",
+      "value": 15.0,
+      "unit": "ft",
+      "value_m": 4.572,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER. Present-day Promenade width. CTL-078 gives 15 ft for the *original* walkway; carrying that forward to today would be an unsourced claim about a deck that has been rebuilt at least twice. See OQ-013."
+    },
+    {
+      "control_id": "CTL-108",
+      "key": "tower_extent_x_at_top",
+      "value": 42.0,
+      "unit": "ft",
+      "value_m": 12.8016,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER. The towers taper. SRC-002 draws the taper but dimensions the plan only at mean high water (CTL-022, CTL-023). See OQ-004."
+    },
+    {
+      "control_id": "CTL-109",
+      "key": "tower_extent_y_at_top",
+      "value": 116.0,
+      "unit": "ft",
+      "value_m": 35.3568,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER. As above, transverse. See OQ-004."
+    },
+    {
+      "control_id": "CTL-110",
+      "key": "approach_bent_spacing",
+      "value": 100.0,
+      "unit": "ft",
+      "value_m": 30.48,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER. Longitudinal spacing of approach supports, chosen only so the approaches read as supported viaducts rather than floating slabs. The **extent** they are applied over is grade `A` (CTL-005, CTL-006); the **rhythm** is not. SRC-004 describes the Brooklyn approach as brick piers and arches over blocks of roughly 250 ft, which suggests this is the right order of magnitude and nothing more. See OQ-007."
+    },
+    {
+      "control_id": "CTL-111",
+      "key": "approach_bent_width_x",
+      "value": 8.0,
+      "unit": "ft",
+      "value_m": 2.4384,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER. See OQ-007."
+    },
+    {
+      "control_id": "CTL-112",
+      "key": "approach_girder_depth",
+      "value": 10.0,
+      "unit": "ft",
+      "value_m": 3.048,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER. See OQ-007."
+    }
+  ],
+  "materials": [
+    {
+      "material_id": "MAT-001",
+      "pattern": "tower_*_caisson*",
+      "material": "concrete",
+      "source_ids": [
+        "SRC-005"
+      ],
+      "confidence": "A",
+      "notes": "Timber caisson filled with concrete after landing; SRC-005 describes the filling of the air chamber. Rendered as concrete."
+    },
+    {
+      "material_id": "MAT-002",
+      "pattern": "tower_*",
+      "material": "masonry",
+      "source_ids": [
+        "SRC-002",
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "notes": "SRC-002 annotates the coursing directly: \"TOWER STONES IN THE VERTICAL COURSES ARE QUARRY FACED, WITH THE CORNERS DRAFT-CHISELED TO SQUARE.\" SRC-004 specifies granite and limestone by course."
+    },
+    {
+      "material_id": "MAT-003",
+      "pattern": "anchorage_*",
+      "material": "masonry",
+      "source_ids": [
+        "SRC-002",
+        "SRC-004"
+      ],
+      "confidence": "A",
+      "notes": "SRC-004: granite corners, cornice and curtain arches, over limestone backing."
+    },
+    {
+      "material_id": "MAT-004",
+      "pattern": "cable_main_*",
+      "material": "steel_wire",
+      "source_ids": [
+        "SRC-002",
+        "SRC-003"
+      ],
+      "confidence": "A",
+      "notes": "SRC-003: \"the first time that galvanized steel wire was used in cable construction\"."
+    },
+    {
+      "material_id": "MAT-005",
+      "pattern": "suspender_*",
+      "material": "steel_wire",
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "notes": ""
+    },
+    {
+      "material_id": "MAT-006",
+      "pattern": "stay_*",
+      "material": "steel_wire",
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "notes": "Diagonal stays."
+    },
+    {
+      "material_id": "MAT-007",
+      "pattern": "truss_*",
+      "material": "steel_structural",
+      "source_ids": [
+        "SRC-003"
+      ],
+      "confidence": "A",
+      "notes": "SRC-003: \"the suspension system was initially designed in iron, but was changed to steel\"."
+    },
+    {
+      "material_id": "MAT-008",
+      "pattern": "floor_beam_*",
+      "material": "steel_structural",
+      "source_ids": [
+        "SRC-001"
+      ],
+      "confidence": "A",
+      "notes": ""
+    },
+    {
+      "material_id": "MAT-009",
+      "pattern": "deck_*",
+      "material": "roadway_surface",
+      "source_ids": [],
+      "confidence": "D",
+      "notes": "No read source states the present wearing surface. Graded `D` deliberately; **this does not lower the geometry grade of any deck part**."
+    },
+    {
+      "material_id": "MAT-010",
+      "pattern": "promenade_*",
+      "material": "roadway_surface",
+      "source_ids": [],
+      "confidence": "D",
+      "notes": "The Promenade decking is famously timber, but no *registered* source says so, and a photograph is not in the register."
+    },
+    {
+      "material_id": "MAT-011",
+      "pattern": "approach_*",
+      "material": "masonry",
+      "source_ids": [
+        "SRC-004"
+      ],
+      "confidence": "B",
+      "notes": "SRC-004 describes the Brooklyn approach as brick piers and arches; the Manhattan approach is not described in the passages read."
+    },
+    {
+      "material_id": "MAT-012",
+      "pattern": "station_*",
+      "material": "reference",
+      "source_ids": [],
+      "confidence": "D",
+      "notes": "Non-physical reference markers."
+    },
+    {
+      "material_id": "MAT-013",
+      "pattern": "*",
+      "material": "reference",
+      "source_ids": [],
+      "confidence": "D",
+      "notes": "**Catch-all for reference geometry only.** Placed last, and deliberately mapped to `reference` so that a real structural part accidentally falling through reads as an obviously wrong ghost in the viewer rather than as plausible grey stone."
+    }
+  ]
+}

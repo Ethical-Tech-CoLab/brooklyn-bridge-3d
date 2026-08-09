@@ -1,0 +1,192 @@
+{
+  "schema_version": "1.0",
+  "suite": "geometry_regression",
+  "model": "control_skeleton",
+  "milestone": 1,
+  "description": "Geometry regression tests. The model must be rebuilt from the current control document, must close its own arithmetic identities, and must not develop a hole in the deck. Run with: python scripts/validate_dimensions.py",
+  "runner": "scripts/validate_dimensions.py",
+  "inputs": {
+    "control_document": "GEOMETRY-CONTROL.md",
+    "parts": "viewer/metadata/parts.json",
+    "build_report": "viewer/metadata/build_report.json",
+    "geometry": "cad/procedural/control_skeleton_geometry.json"
+  },
+  "tests": [
+    {
+      "id": "GRT-001",
+      "title": "The parts manifest was built from the current control document",
+      "rule": "control_document_hash_matches",
+      "mode": "assert",
+      "rationale": "You will edit GEOMETRY-CONTROL.md and forget to rebuild. This catches it every time."
+    },
+    {
+      "id": "GRT-002",
+      "title": "The generated geometry was built from the current control document",
+      "rule": "geometry_hash_matches",
+      "mode": "assert"
+    },
+    {
+      "id": "GRT-010",
+      "title": "main_span + 2 x side_span_each equals bridge_proper_length",
+      "rule": "build_check",
+      "check_id": "CHK-001",
+      "mode": "assert"
+    },
+    {
+      "id": "GRT-011",
+      "title": "bridge_proper_length plus both approaches equals the stated total length",
+      "rule": "build_check",
+      "check_id": "CHK-002",
+      "mode": "assert",
+      "rationale": "Five independently lettered dimensions from SRC-002 sum to that drawing's own stated 5989 ft with zero residual. The strongest single check in the repository."
+    },
+    {
+      "id": "GRT-012",
+      "title": "The Manhattan approach gradient chain reaches the sourced anchorage elevation",
+      "rule": "build_check",
+      "check_id": "CHK-003",
+      "mode": "assert",
+      "rationale": "Terminus elevation and gradient come from SRC-002; the anchorage roadway elevation comes from SRC-004, a different document by a different author 80 years apart. Both sides land about 2.5 ft low with the same sign, which reads as a systematic curb-line versus grade-line offset rather than an error in the chain."
+    },
+    {
+      "id": "GRT-013",
+      "title": "The Brooklyn approach gradient chain reaches the sourced anchorage elevation",
+      "rule": "build_check",
+      "check_id": "CHK-004",
+      "mode": "assert",
+      "rationale": "Same cross-check on the other side, and it also confirms where the 129 ft anchorage block sits in the dimension chain."
+    },
+    {
+      "id": "GRT-014",
+      "title": "The tower arch closes on its own sourced radius, width and height",
+      "rule": "build_check",
+      "check_id": "CHK-005",
+      "mode": "assert",
+      "rationale": "A two-centred arch of radius 46 ft spanning 33.75 ft rises 35.6 ft; SRC-002 annotates 36 ft. Three independently drawn numbers that did not have to agree."
+    },
+    {
+      "id": "GRT-020",
+      "title": "Count of parts whose provenance is MEASURED",
+      "rule": "provenance_census",
+      "state": "MEASURED",
+      "expected": 0,
+      "mode": "report_only",
+      "rationale": "Expected to be zero until a survey or photogrammetry set is ingested. Computed, not hardcoded, so it changes honestly on the day one lands."
+    },
+    {
+      "id": "GRT-021",
+      "title": "Census of parts by provenance",
+      "rule": "provenance_census_all",
+      "mode": "report_only"
+    },
+    {
+      "id": "GRT-022",
+      "title": "No control's HO dimension rounds away to zero",
+      "rule": "ho_nonzero",
+      "mode": "report_only",
+      "rationale": "Below roughly 0.05 mm at 1:87.1 a dimension is a rendering detail rather than a scale component."
+    },
+    {
+      "id": "GRT-030",
+      "title": "No longitudinal gap anywhere in the deck chain",
+      "rule": "deck_chain_continuous",
+      "tolerance_m": 0.01,
+      "mode": "assert",
+      "rationale": "The most expensive bug recorded in HOW-TO-DESIGN.md section 11: deck geometry stopping at the anchorage face, where the SUSPENDED structure ends, leaving the roadway terminating in mid-air. SRC-004 states the anchorage top surface IS roadway. This test was written before the deck was."
+    },
+    {
+      "id": "GRT-031",
+      "title": "The deck chain spans the full sourced total length of the bridge",
+      "rule": "deck_chain_extent",
+      "control_key": "total_length_including_approaches",
+      "tolerance_m": 0.01,
+      "mode": "assert"
+    },
+    {
+      "id": "GRT-032",
+      "title": "Every deck segment has positive length",
+      "rule": "deck_segments_nondegenerate",
+      "mode": "assert"
+    },
+    {
+      "id": "GRT-040",
+      "title": "Every part matches a material rule",
+      "rule": "parts_have_material",
+      "mode": "assert",
+      "rationale": "The material table has no default. An unmatched part is a build failure, not a silent grey."
+    },
+    {
+      "id": "GRT-041",
+      "title": "No structural part falls through to the catch-all material rule",
+      "rule": "no_catchall_material",
+      "catchall_material_id": "MAT-013",
+      "allowed_systems": ["reference"],
+      "mode": "assert"
+    },
+    {
+      "id": "GRT-050",
+      "title": "Placeholder count has not regressed",
+      "rule": "ratchet_max",
+      "metric": "controls_placeholder",
+      "limit": 12,
+      "mode": "assert",
+      "rationale": "Milestone 1 baseline. Raising this limit requires editing the number AND writing the argument for it here."
+    },
+    {
+      "id": "GRT-051",
+      "title": "Sourced control count has not regressed",
+      "rule": "ratchet_min",
+      "metric": "controls_sourced",
+      "limit": 66,
+      "mode": "assert"
+    },
+    {
+      "id": "GRT-052",
+      "title": "Part count has not regressed",
+      "rule": "ratchet_min",
+      "metric": "parts_total",
+      "limit": 93,
+      "mode": "assert"
+    },
+    {
+      "id": "GRT-060",
+      "title": "Every tower stands on its own sourced foundation depth",
+      "rule": "part_bbox_floor",
+      "cases": [
+        { "part_id": "tower_manhattan_caisson", "control_key": "caisson_depth_below_mhw_manhattan" },
+        { "part_id": "tower_brooklyn_caisson", "control_key": "caisson_depth_below_mhw_brooklyn" }
+      ],
+      "tolerance_m": 0.01,
+      "mode": "assert",
+      "rationale": "The two caissons are 34 ft apart in depth. Averaging them would be invisible in a render and wrong in the record."
+    },
+    {
+      "id": "GRT-061",
+      "title": "Tower tops sit at the active tower height control, not the recorded HAER figure",
+      "rule": "part_bbox_ceiling",
+      "cases": [
+        { "part_id": "tower_manhattan_shaft", "control_key": "tower_height_above_mhw" },
+        { "part_id": "tower_brooklyn_shaft", "control_key": "tower_height_above_mhw" }
+      ],
+      "tolerance_m": 0.01,
+      "mode": "assert",
+      "rationale": "CONF-001. CTL-021 (276.6 ft) is recorded but must not reach the geometry."
+    },
+    {
+      "id": "GRT-080",
+      "title": "The canonical scene frame is a byte-for-byte copy of the shared contract",
+      "rule": "file_sha256",
+      "path": "viewer/public/frames/nyc-harbor-enu.json",
+      "expected_sha256": "d23ed470107c8583f7b9003803083a692397c8a191b07dc54bc99b9c59889d66",
+      "mode": "assert",
+      "rationale": "HOW-TO-DESIGN.md section 12: copy the canonical frame byte-for-byte and verify by hash. Do not re-serialise it, and do not edit the anchor. The same bytes are carried by digital-3d-shared-contracts, manhattan-bridge-3d and dumbo-district-3d; a re-serialised copy would drift silently and only surface as a placement disagreement much later."
+    },
+    {
+      "id": "GRT-070",
+      "title": "No dimension callout is attached to a part whose provenance is ASSUMED",
+      "rule": "no_callout_on_assumed",
+      "mode": "assert",
+      "rationale": "If we do not know where it is, we do not get to say how big it is."
+    }
+  ]
+}

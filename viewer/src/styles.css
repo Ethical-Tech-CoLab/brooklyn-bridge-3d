@@ -1,0 +1,207 @@
+:root {
+  --bg: #0e1116;
+  --panel: #161b22;
+  --panel-2: #1c232c;
+  --line: #2a3442;
+  --text: #dfe7f2;
+  --muted: #8b98a9;
+  --warn: #e8b339;
+  --good: #4ec98f;
+  --bad: #ef6f6f;
+  --accent: #ff5c8a;
+  --rail: 340px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; margin: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.5 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.app { display: flex; flex-direction: column; height: 100%; }
+
+.fatal { padding: 3rem; color: var(--text); }
+.fatal h1 { color: var(--bad); }
+
+/* ---------------------------------------------------------------- toolbar */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.65rem 1rem;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.brand h1 { font-size: 1.05rem; margin: 0; letter-spacing: 0.01em; }
+.brand span { color: var(--muted); font-size: 0.8rem; }
+
+.toolbar-facts {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.toolbar-facts b { color: var(--text); font-weight: 600; }
+.toolbar-facts .good { color: var(--good); }
+.toolbar-facts .bad { color: var(--bad); }
+
+button.ho {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+button.ho.on { border-color: var(--accent); color: var(--accent); }
+
+/* ------------------------------------------------------------------ layout */
+
+main { display: flex; flex: 1; min-height: 0; }
+
+.rail {
+  width: var(--rail);
+  flex: 0 0 var(--rail);
+  overflow-y: auto;
+  background: var(--panel);
+  padding: 0.75rem;
+}
+.rail.left { border-right: 1px solid var(--line); }
+.rail.right { border-left: 1px solid var(--line); }
+
+.viewport { flex: 1; min-width: 0; position: relative; }
+.viewport canvas { display: block; width: 100%; height: 100%; }
+
+/* ------------------------------------------------------------------ panels */
+
+.panel {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.panel h2 { font-size: 0.9rem; margin: 0 0 0.4rem; }
+.panel h3 { font-size: 0.78rem; margin: 0.9rem 0 0.35rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+.hint { color: var(--muted); font-size: 0.78rem; margin: 0.25rem 0; }
+.hint.inline { display: inline; }
+.hint.warn { color: var(--warn); }
+
+/* The standing tally is sticky: a buried count is the thing the framework warns against. */
+.panel.tally { position: sticky; top: 0; z-index: 2; }
+
+.tally-list { list-style: none; margin: 0.5rem 0; padding: 0; }
+.tally-list li { padding: 0.2rem 0; }
+.tally-list li.off { opacity: 0.45; }
+.tally-list label { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; }
+.tally-name { flex: 1; font-size: 0.8rem; letter-spacing: 0.04em; }
+.tally-count { font-variant-numeric: tabular-nums; font-weight: 600; }
+.tally-meaning { display: block; padding-left: 3.1rem; color: var(--muted); font-size: 0.72rem; }
+.tally-total { color: var(--muted); font-size: 0.78rem; border-top: 1px solid var(--line); padding-top: 0.5rem; }
+
+.swatch { width: 22px; height: 10px; border-radius: 2px; background: rgba(223, 231, 242, 0.12); }
+.swatch.outline-solid { border: 1px solid var(--text); }
+.swatch.outline-dashed { border: 1px dashed var(--text); }
+.swatch.outline-dotted { border: 1px dotted var(--text); }
+
+/* ------------------------------------------------------------------- grades */
+
+.grade {
+  display: inline-block;
+  min-width: 1.15rem;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0 0.15rem;
+  margin-right: 0.35rem;
+}
+.grade-A { background: #1f4d38; color: #7fe3b0; }
+.grade-B { background: #1f3f52; color: #86c9ef; }
+.grade-C { background: #4a3d1c; color: #e8c86a; }
+.grade-D { background: #4a2226; color: #f0a0a5; }
+
+.prov-tag { border-radius: 3px; font-size: 0.68rem; font-weight: 700; padding: 0.1rem 0.35rem; }
+.prov-measured, .prov-documented { background: #1f4d38; color: #7fe3b0; }
+.prov-inferred { background: #3b3320; color: #e8c86a; }
+.prov-assumed { background: #4a2226; color: #f0a0a5; }
+
+.legend { list-style: none; margin: 0; padding: 0; }
+.legend li { padding: 0.2rem 0; font-size: 0.78rem; }
+.legend-count { color: var(--text); margin-right: 0.4rem; }
+.legend-meaning { color: var(--muted); }
+
+/* --------------------------------------------------------------- part tree */
+
+.tree-system { margin-bottom: 0.3rem; }
+.tree-system.off { opacity: 0.45; }
+.tree-system-head { display: flex; align-items: center; gap: 0.4rem; }
+.tree-toggle {
+  flex: 1;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.82rem;
+  padding: 0.15rem 0;
+}
+.tree-count { color: var(--muted); font-size: 0.72rem; margin-left: 0.4rem; }
+.tree-system ul { list-style: none; margin: 0.15rem 0 0.4rem; padding-left: 1.4rem; }
+.tree-part {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.74rem;
+  padding: 0.1rem 0;
+  text-align: left;
+  width: 100%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.tree-part:hover { color: var(--text); }
+.tree-part.selected { color: var(--accent); }
+.tree-part.prov-assumed { font-style: italic; }
+
+/* ---------------------------------------------------------------- metadata */
+
+.meta { display: grid; grid-template-columns: 5.5rem 1fr; gap: 0.2rem 0.5rem; margin: 0.4rem 0; font-size: 0.78rem; }
+.meta dt { color: var(--muted); }
+.meta dd { margin: 0; }
+
+.dims { list-style: none; margin: 0.3rem 0; padding: 0; font-size: 0.8rem; color: var(--muted); }
+.dims b { color: var(--text); font-variant-numeric: tabular-nums; }
+
+.controls { list-style: none; margin: 0.3rem 0; padding: 0; }
+.controls li { border-left: 2px solid var(--line); padding: 0.25rem 0 0.25rem 0.5rem; margin-bottom: 0.3rem; font-size: 0.76rem; }
+.controls.placeholders li { border-left-color: #6d3238; }
+.controls code { color: var(--muted); }
+.controls .src { color: var(--muted); margin-left: 0.4rem; font-size: 0.7rem; }
+.note { color: var(--muted); font-size: 0.72rem; margin: 0.2rem 0 0; }
+.part-note { border-top: 1px solid var(--line); padding-top: 0.4rem; margin-top: 0.6rem; }
+.oq { color: var(--warn); font-size: 0.74rem; }
+
+.checks { list-style: none; margin: 0.3rem 0; padding: 0; font-size: 0.72rem; }
+.checks li { padding: 0.12rem 0; color: var(--muted); }
+.checks li.good code { color: var(--good); }
+.checks li.bad { color: var(--bad); }
+
+a { color: #86c9ef; }
+
+/* Below 1100px the rails collapse under the viewport rather than crushing it. */
+@media (max-width: 1100px) {
+  main { flex-direction: column; }
+  .rail { width: 100%; flex: 0 0 auto; max-height: 40vh; }
+  .viewport { min-height: 55vh; }
+}

@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "suite": "source_traceability",
+  "model": "control_skeleton",
+  "milestone": 1,
+  "description": "Traceability tests. Every number in the model must be reachable from GEOMETRY-CONTROL.md, every source cited there must exist in SOURCE-REGISTER.md, and no dimension from a neighbouring East River bridge may appear anywhere. Run with: python scripts/validate_dimensions.py",
+  "runner": "scripts/validate_dimensions.py",
+  "inputs": {
+    "control_document": "GEOMETRY-CONTROL.md",
+    "source_register": "SOURCE-REGISTER.md",
+    "brief": "AGENT-INSTRUCTIONS.md",
+    "parts": "viewer/metadata/parts.json",
+    "build_report": "viewer/metadata/build_report.json"
+  },
+  "tests": [
+    {
+      "id": "STT-001",
+      "title": "Every source cited by a control exists in the source register",
+      "rule": "cited_sources_registered",
+      "mode": "assert"
+    },
+    {
+      "id": "STT-002",
+      "title": "Every control graded A, B or C cites at least one source",
+      "rule": "graded_controls_have_sources",
+      "mode": "assert",
+      "rationale": "Only grade D may be sourceless. Enforced in the parser as well; asserted here so a parser regression is visible."
+    },
+    {
+      "id": "STT-003",
+      "title": "Every placeholder control cites no source",
+      "rule": "placeholders_have_no_sources",
+      "mode": "assert",
+      "rationale": "A placeholder must not appear to rest on evidence."
+    },
+    {
+      "id": "STT-004",
+      "title": "Every control reference on a part resolves to a control ID",
+      "rule": "part_control_refs_resolve",
+      "mode": "assert"
+    },
+    {
+      "id": "STT-005",
+      "title": "No Manhattan Bridge dimension appears as a control value",
+      "rule": "negative_control_values",
+      "mode": "assert",
+      "source": "SRC-900",
+      "forbidden_values_ft": [1470, 725, 2920, 6855, 5790, 6090, 120, 3224, 628, 1256],
+      "forbidden_values_in": [20.75, 21.25, 21.2],
+      "rationale": "This repository's brief was adapted from the Manhattan Bridge, so cross-contamination is a structural risk rather than a hypothetical one. Checked as values in the declared unit, because the failure mode is a plausible number arriving without a label."
+    },
+    {
+      "id": "STT-006",
+      "title": "No Williamsburg Bridge dimension appears as a control value",
+      "rule": "negative_control_values",
+      "mode": "assert",
+      "source": "SRC-901",
+      "forbidden_values_ft": [67, 40],
+      "forbidden_values_in": [],
+      "rationale": "Haight and Patel give the Williamsburg stiffening truss as 67 ft wide and about 40 ft deep. On its first run this test failed on a 40 ft placeholder truss offset of this repository's own; the placeholder was moved rather than exempted, because an arbitrary value that happens to look like a forbidden one blunts the guard."
+    },
+    {
+      "id": "STT-007",
+      "title": "The brief carries no control rows of its own",
+      "rule": "single_control_authority",
+      "mode": "assert",
+      "document": "AGENT-INSTRUCTIONS.md",
+      "rationale": "GEOMETRY-CONTROL.md is the only authority for a dimension. Two documents carrying CTL- rows is how a model drifts."
+    },
+    {
+      "id": "STT-008",
+      "title": "No part models a rail line of any kind",
+      "rule": "forbidden_part_substrings",
+      "mode": "assert",
+      "forbidden": ["subway", "rail", "trolley", "elevated", "track_1", "track_2", "track_3", "track_4"],
+      "source": "SRC-902",
+      "rationale": "The adapted brief asks for four subway tracks. The Brooklyn Bridge carries no rail lines: not the Manhattan Bridge's subway, and not its own elevated and trolley tracks, which were removed in the mid-twentieth century. See OQ-012."
+    },
+    {
+      "id": "STT-009",
+      "title": "Every open question cited by a part exists in GEOMETRY-CONTROL.md section 5",
+      "rule": "open_questions_registered",
+      "mode": "assert"
+    },
+    {
+      "id": "STT-010",
+      "title": "Every part declares a non-empty source_basis",
+      "rule": "parts_have_source_basis",
+      "mode": "assert"
+    },
+    {
+      "id": "STT-011",
+      "title": "No part claims a photogrammetry or survey basis in Milestone 1",
+      "rule": "forbidden_source_basis",
+      "forbidden": ["photogrammetry", "survey", "mesh_reference"],
+      "mode": "assert",
+      "rationale": "No such source has been ingested. Any such basis would silently promote a part to MEASURED."
+    },
+    {
+      "id": "STT-012",
+      "title": "Every part carries the full required metadata block",
+      "rule": "parts_have_required_fields",
+      "required": [
+        "part_id",
+        "system",
+        "subsystem",
+        "source_basis",
+        "control_refs",
+        "confidence",
+        "provenance",
+        "material",
+        "prototype_units",
+        "ho_scale_units",
+        "review_status",
+        "last_modified_by_agent"
+      ],
+      "mode": "assert"
+    },
+    {
+      "id": "STT-013",
+      "title": "Sources cited by controls have been read, not merely registered",
+      "rule": "cited_sources_are_read",
+      "mode": "assert",
+      "rationale": "A source in the verification queue may be named in prose but may not carry a control. This is what stops a citation from being aspirational."
+    },
+    {
+      "id": "STT-014",
+      "title": "Census of controls by grade",
+      "rule": "grade_census",
+      "mode": "report_only"
+    }
+  ]
+}

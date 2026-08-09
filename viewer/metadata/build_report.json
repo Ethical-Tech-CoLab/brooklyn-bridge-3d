@@ -1,0 +1,132 @@
+{
+  "generator": "build_control_skeleton.py@1.0.0",
+  "control_document": "GEOMETRY-CONTROL.md",
+  "control_document_sha256": "c3bc867a179bf499cb94ddbd73a148c2f04f271815c9f261e6ee65ff093ca6df",
+  "controls_total": 78,
+  "controls_sourced": 66,
+  "controls_placeholder": 12,
+  "material_rules": 13,
+  "parts_total": 93,
+  "provenance": {
+    "MEASURED": 0,
+    "DOCUMENTED": 11,
+    "INFERRED": 80,
+    "ASSUMED": 2
+  },
+  "confidence": {
+    "A": 40,
+    "B": 0,
+    "C": 0,
+    "D": 53
+  },
+  "systems": [
+    "anchorages",
+    "approaches",
+    "cables",
+    "deck_system",
+    "reference",
+    "stays",
+    "suspenders",
+    "towers"
+  ],
+  "derived": {
+    "stations_m": {
+      "STA-APPR-END-M": -1002.8682,
+      "STA-ANC-M-REAR": -565.9374,
+      "STA-ANC-M": -526.6182,
+      "STA-TWR-M": -243.1542,
+      "STA-MID": 0.0,
+      "STA-TWR-B": 243.1542,
+      "STA-ANC-B": 526.6182,
+      "STA-ANC-B-REAR": 565.9374,
+      "STA-APPR-END-B": 822.579
+    },
+    "elevations_m": {
+      "ELV-FOUNDATION-M": -23.9268,
+      "ELV-FOUNDATION-B": -13.5636,
+      "ELV-DATUM": 0.0,
+      "ELV-TOWER-ROADWAY": 33.528,
+      "ELV-CLEARANCE": 41.148,
+      "ELV-TRUSS-TOP": 46.3296,
+      "ELV-DECK-MID": 42.0624,
+      "ELV-PROMENADE-MID": 45.72,
+      "ELV-ARCH-SPRINGING": 58.2168,
+      "ELV-ARCH-CROWN": 69.1896,
+      "ELV-CABLE-MID": 47.244,
+      "ELV-SADDLE": 84.2772,
+      "ELV-TOWER-TOP": 84.2772,
+      "ELV-ANCHOR-POINT": 27.1394
+    },
+    "cable_sag_m": 37.0332,
+    "cable_sag_ft": 121.5,
+    "cable_sag_ratio": 13.132,
+    "cable_sag_confidence": "D",
+    "suspender_pitch_m": 2.7717,
+    "suspender_pitch_ft": 9.093,
+    "suspenders_per_cable": 380,
+    "stays_per_group": 25,
+    "stay_reach_ft": 227.34,
+    "deck_chain_ids": [
+      "deck_manhattan_approach",
+      "deck_manhattan_anchorage_top",
+      "deck_manhattan_side_span",
+      "deck_main_span_manhattan_half",
+      "deck_main_span_brooklyn_half",
+      "deck_brooklyn_side_span",
+      "deck_brooklyn_anchorage_top",
+      "deck_brooklyn_approach"
+    ],
+    "checks": [
+      {
+        "id": "CHK-001",
+        "description": "main_span + 2 x side_span_each == bridge_proper_length",
+        "value_m": 1053.2364,
+        "expected_m": 1053.2364,
+        "residual_m": 0.0,
+        "residual_ft": 0.0,
+        "tolerance_m": 1e-06,
+        "passed": true
+      },
+      {
+        "id": "CHK-002",
+        "description": "bridge_proper_length + both approaches == total_length_including_approaches",
+        "value_m": 1825.4472,
+        "expected_m": 1825.4472,
+        "residual_m": 0.0,
+        "residual_ft": 0.0,
+        "tolerance_m": 1e-06,
+        "passed": true
+      },
+      {
+        "id": "CHK-003",
+        "description": "Manhattan terminus + gradient x approach roadway length == anchorage rear roadway level",
+        "value_m": 25.173051,
+        "expected_m": 25.981152,
+        "residual_m": -0.808101,
+        "residual_ft": -2.6512,
+        "tolerance_m": 1.0,
+        "passed": true
+      },
+      {
+        "id": "CHK-004",
+        "description": "Brooklyn terminus + gradient x approach roadway length == anchorage rear roadway level",
+        "value_m": 25.217628,
+        "expected_m": 25.981152,
+        "residual_m": -0.763524,
+        "residual_ft": -2.505,
+        "tolerance_m": 1.0,
+        "passed": true
+      },
+      {
+        "id": "CHK-005",
+        "description": "two-centred arch of sourced radius and width reaches the sourced arch height",
+        "value_m": 10.852483,
+        "expected_m": 10.9728,
+        "residual_m": -0.120317,
+        "residual_ft": -0.3947,
+        "tolerance_m": 0.2,
+        "passed": true
+      }
+    ]
+  }
+}

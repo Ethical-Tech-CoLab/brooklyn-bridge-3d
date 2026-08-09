@@ -1,0 +1,377 @@
+{
+  "control_document_sha256": "c3bc867a179bf499cb94ddbd73a148c2f04f271815c9f261e6ee65ff093ca6df",
+  "tests_total": 36,
+  "asserting": 32,
+  "report_only": 4,
+  "failures": 0,
+  "results": [
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-001",
+      "title": "The parts manifest was built from the current control document",
+      "rule": "control_document_hash_matches",
+      "mode": "assert",
+      "passed": true,
+      "detail": "sha256 c3bc867a179b",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-002",
+      "title": "The generated geometry was built from the current control document",
+      "rule": "geometry_hash_matches",
+      "mode": "assert",
+      "passed": true,
+      "detail": "",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-010",
+      "title": "main_span + 2 x side_span_each equals bridge_proper_length",
+      "rule": "build_check",
+      "mode": "assert",
+      "passed": true,
+      "detail": "residual +0.0000 ft (tolerance 1e-06 m)",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-011",
+      "title": "bridge_proper_length plus both approaches equals the stated total length",
+      "rule": "build_check",
+      "mode": "assert",
+      "passed": true,
+      "detail": "residual +0.0000 ft (tolerance 1e-06 m)",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-012",
+      "title": "The Manhattan approach gradient chain reaches the sourced anchorage elevation",
+      "rule": "build_check",
+      "mode": "assert",
+      "passed": true,
+      "detail": "residual -2.6512 ft (tolerance 1.0 m)",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-013",
+      "title": "The Brooklyn approach gradient chain reaches the sourced anchorage elevation",
+      "rule": "build_check",
+      "mode": "assert",
+      "passed": true,
+      "detail": "residual -2.5050 ft (tolerance 1.0 m)",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-014",
+      "title": "The tower arch closes on its own sourced radius, width and height",
+      "rule": "build_check",
+      "mode": "assert",
+      "passed": true,
+      "detail": "residual -0.3947 ft (tolerance 0.2 m)",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-020",
+      "title": "Count of parts whose provenance is MEASURED",
+      "rule": "provenance_census",
+      "mode": "report_only",
+      "passed": true,
+      "detail": "MEASURED = 0",
+      "value": 0
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-021",
+      "title": "Census of parts by provenance",
+      "rule": "provenance_census_all",
+      "mode": "report_only",
+      "passed": true,
+      "detail": "ASSUMED=2, DOCUMENTED=11, INFERRED=80",
+      "value": {
+        "DOCUMENTED": 11,
+        "INFERRED": 80,
+        "ASSUMED": 2
+      }
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-022",
+      "title": "No control's HO dimension rounds away to zero",
+      "rule": "ho_nonzero",
+      "mode": "report_only",
+      "passed": true,
+      "detail": "0 control(s) below 0.05 mm at HO",
+      "value": []
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-030",
+      "title": "No longitudinal gap anywhere in the deck chain",
+      "rule": "deck_chain_continuous",
+      "mode": "assert",
+      "passed": true,
+      "detail": "8 segments, largest joint 0.000000 m",
+      "value": 0.0
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-031",
+      "title": "The deck chain spans the full sourced total length of the bridge",
+      "rule": "deck_chain_extent",
+      "mode": "assert",
+      "passed": true,
+      "detail": "deck runs 1825.447 m against a sourced 1825.447 m (residual +0.0000 m)",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-032",
+      "title": "Every deck segment has positive length",
+      "rule": "deck_segments_nondegenerate",
+      "mode": "assert",
+      "passed": true,
+      "detail": "8 segments, all positive length",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-040",
+      "title": "Every part matches a material rule",
+      "rule": "parts_have_material",
+      "mode": "assert",
+      "passed": true,
+      "detail": "93 parts",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-041",
+      "title": "No structural part falls through to the catch-all material rule",
+      "rule": "no_catchall_material",
+      "mode": "assert",
+      "passed": true,
+      "detail": "",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-050",
+      "title": "Placeholder count has not regressed",
+      "rule": "ratchet_max",
+      "mode": "assert",
+      "passed": true,
+      "detail": "controls_placeholder = 12, limit 12",
+      "value": 12
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-051",
+      "title": "Sourced control count has not regressed",
+      "rule": "ratchet_min",
+      "mode": "assert",
+      "passed": true,
+      "detail": "controls_sourced = 66, floor 66",
+      "value": 66
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-052",
+      "title": "Part count has not regressed",
+      "rule": "ratchet_min",
+      "mode": "assert",
+      "passed": true,
+      "detail": "parts_total = 93, floor 93",
+      "value": 93
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-060",
+      "title": "Every tower stands on its own sourced foundation depth",
+      "rule": "part_bbox_floor",
+      "mode": "assert",
+      "passed": true,
+      "detail": "2 case(s)",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-061",
+      "title": "Tower tops sit at the active tower height control, not the recorded HAER figure",
+      "rule": "part_bbox_ceiling",
+      "mode": "assert",
+      "passed": true,
+      "detail": "2 case(s)",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-080",
+      "title": "The canonical scene frame is a byte-for-byte copy of the shared contract",
+      "rule": "file_sha256",
+      "mode": "assert",
+      "passed": true,
+      "detail": "viewer/public/frames/nyc-harbor-enu.json matches the canonical frame (d23ed470107c8583)",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-070",
+      "title": "No dimension callout is attached to a part whose provenance is ASSUMED",
+      "rule": "no_callout_on_assumed",
+      "mode": "assert",
+      "passed": true,
+      "detail": "2 ASSUMED part(s), none carrying a callout",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-001",
+      "title": "Every source cited by a control exists in the source register",
+      "rule": "cited_sources_registered",
+      "mode": "assert",
+      "passed": true,
+      "detail": "12 source IDs registered",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-002",
+      "title": "Every control graded A, B or C cites at least one source",
+      "rule": "graded_controls_have_sources",
+      "mode": "assert",
+      "passed": true,
+      "detail": "",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-003",
+      "title": "Every placeholder control cites no source",
+      "rule": "placeholders_have_no_sources",
+      "mode": "assert",
+      "passed": true,
+      "detail": "12 placeholders, none sourced",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-004",
+      "title": "Every control reference on a part resolves to a control ID",
+      "rule": "part_control_refs_resolve",
+      "mode": "assert",
+      "passed": true,
+      "detail": "",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-005",
+      "title": "No Manhattan Bridge dimension appears as a control value",
+      "rule": "negative_control_values",
+      "mode": "assert",
+      "passed": true,
+      "detail": "13 forbidden value(s) checked against 78 controls",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-006",
+      "title": "No Williamsburg Bridge dimension appears as a control value",
+      "rule": "negative_control_values",
+      "mode": "assert",
+      "passed": true,
+      "detail": "2 forbidden value(s) checked against 78 controls",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-007",
+      "title": "The brief carries no control rows of its own",
+      "rule": "single_control_authority",
+      "mode": "assert",
+      "passed": true,
+      "detail": "AGENT-INSTRUCTIONS.md carries no control rows",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-008",
+      "title": "No part models a rail line of any kind",
+      "rule": "forbidden_part_substrings",
+      "mode": "assert",
+      "passed": true,
+      "detail": "none of 8 forbidden substrings appears in 93 part IDs",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-009",
+      "title": "Every open question cited by a part exists in GEOMETRY-CONTROL.md section 5",
+      "rule": "open_questions_registered",
+      "mode": "assert",
+      "passed": true,
+      "detail": "13 open questions registered",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-010",
+      "title": "Every part declares a non-empty source_basis",
+      "rule": "parts_have_source_basis",
+      "mode": "assert",
+      "passed": true,
+      "detail": "",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-011",
+      "title": "No part claims a photogrammetry or survey basis in Milestone 1",
+      "rule": "forbidden_source_basis",
+      "mode": "assert",
+      "passed": true,
+      "detail": "",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-012",
+      "title": "Every part carries the full required metadata block",
+      "rule": "parts_have_required_fields",
+      "mode": "assert",
+      "passed": true,
+      "detail": "93 parts complete",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-013",
+      "title": "Sources cited by controls have been read, not merely registered",
+      "rule": "cited_sources_are_read",
+      "mode": "assert",
+      "passed": true,
+      "detail": "8 read sources: SRC-001, SRC-002, SRC-003, SRC-004, SRC-005, SRC-006, SRC-008, SRC-010",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-014",
+      "title": "Census of controls by grade",
+      "rule": "grade_census",
+      "mode": "report_only",
+      "passed": true,
+      "detail": "A=64, B=2, D=12",
+      "value": {
+        "A": 64,
+        "B": 2,
+        "D": 12
+      }
+    }
+  ]
+}

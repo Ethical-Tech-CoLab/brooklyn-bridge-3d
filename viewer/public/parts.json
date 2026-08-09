@@ -1,0 +1,3744 @@
+{
+  "control_document_sha256": "c3bc867a179bf499cb94ddbd73a148c2f04f271815c9f261e6ee65ff093ca6df",
+  "generator": "build_control_skeleton.py@1.0.0",
+  "vertical_datum": "mean high water (MHW)",
+  "units": "meters",
+  "ho_scale_denominator": 87.1,
+  "parts": [
+    {
+      "part_id": "station_manhattan_approach_end",
+      "system": "reference",
+      "subsystem": "station",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-005",
+        "CTL-004"
+      ],
+      "confidence": "A",
+      "provenance": "DOCUMENTED",
+      "material": "reference",
+      "material_id": "MAT-012",
+      "material_confidence": "D",
+      "open_questions": [],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -1002.8682,
+        0.0,
+        -12.954
+      ],
+      "bbox_max_m": [
+        -1002.8682,
+        0.0,
+        88.49106
+      ],
+      "notes": "Park Row",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "station_manhattan_anchorage",
+      "system": "reference",
+      "subsystem": "station",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-002",
+        "CTL-001"
+      ],
+      "confidence": "A",
+      "provenance": "DOCUMENTED",
+      "material": "reference",
+      "material_id": "MAT-012",
+      "material_confidence": "D",
+      "open_questions": [],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -526.6182,
+        0.0,
+        -12.954
+      ],
+      "bbox_max_m": [
+        -526.6182,
+        0.0,
+        88.49106
+      ],
+      "notes": "Manhattan anchorage, river face",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "station_manhattan_tower",
+      "system": "reference",
+      "subsystem": "station",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-001"
+      ],
+      "confidence": "A",
+      "provenance": "DOCUMENTED",
+      "material": "reference",
+      "material_id": "MAT-012",
+      "material_confidence": "D",
+      "open_questions": [],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.1542,
+        0.0,
+        -12.954
+      ],
+      "bbox_max_m": [
+        -243.1542,
+        0.0,
+        88.49106
+      ],
+      "notes": "Manhattan tower centerline",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "station_midspan",
+      "system": "reference",
+      "subsystem": "station",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-001"
+      ],
+      "confidence": "A",
+      "provenance": "DOCUMENTED",
+      "material": "reference",
+      "material_id": "MAT-012",
+      "material_confidence": "D",
+      "open_questions": [],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        0.0,
+        0.0,
+        -12.954
+      ],
+      "bbox_max_m": [
+        0.0,
+        0.0,
+        88.49106
+      ],
+      "notes": "Main span midpoint \u2014 model origin",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "station_brooklyn_tower",
+      "system": "reference",
+      "subsystem": "station",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-001"
+      ],
+      "confidence": "A",
+      "provenance": "DOCUMENTED",
+      "material": "reference",
+      "material_id": "MAT-012",
+      "material_confidence": "D",
+      "open_questions": [],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.1542,
+        0.0,
+        -12.954
+      ],
+      "bbox_max_m": [
+        243.1542,
+        0.0,
+        88.49106
+      ],
+      "notes": "Brooklyn tower centerline",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "station_brooklyn_anchorage",
+      "system": "reference",
+      "subsystem": "station",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-002",
+        "CTL-001"
+      ],
+      "confidence": "A",
+      "provenance": "DOCUMENTED",
+      "material": "reference",
+      "material_id": "MAT-012",
+      "material_confidence": "D",
+      "open_questions": [],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        526.6182,
+        0.0,
+        -12.954
+      ],
+      "bbox_max_m": [
+        526.6182,
+        0.0,
+        88.49106
+      ],
+      "notes": "Brooklyn anchorage, river face",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "station_brooklyn_approach_end",
+      "system": "reference",
+      "subsystem": "station",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-006",
+        "CTL-004"
+      ],
+      "confidence": "A",
+      "provenance": "DOCUMENTED",
+      "material": "reference",
+      "material_id": "MAT-012",
+      "material_confidence": "D",
+      "open_questions": [],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        822.579,
+        0.0,
+        -12.954
+      ],
+      "bbox_max_m": [
+        822.579,
+        0.0,
+        88.49106
+      ],
+      "notes": "Adams Street",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "tower_manhattan_caisson",
+      "system": "towers",
+      "subsystem": "foundation",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-034",
+        "CTL-037",
+        "CTL-036",
+        "CTL-038",
+        "CTL-039"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "concrete",
+      "material_id": "MAT-001",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-005"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -258.699,
+        -26.2128,
+        -23.9268
+      ],
+      "bbox_max_m": [
+        -227.6094,
+        26.2128,
+        -16.4592
+      ],
+      "notes": "Caisson footprint is sourced; the assignment of the 168/172 ft dimension to the transverse axis is reasoned from the tower being 140 ft wide and having to stand on it. See OQ-005.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "tower_manhattan_foundation_block",
+      "system": "towers",
+      "subsystem": "foundation",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-034",
+        "CTL-037",
+        "CTL-036",
+        "CTL-022",
+        "CTL-023"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "masonry",
+      "material_id": "MAT-002",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-004"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -258.699,
+        -26.2128,
+        -16.4592
+      ],
+      "bbox_max_m": [
+        -227.6094,
+        26.2128,
+        0.0
+      ],
+      "notes": "Both ends are sourced; the taper between them is reasoned.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "tower_manhattan_shaft",
+      "system": "towers",
+      "subsystem": "masonry",
+      "source_basis": [
+        "control_dimension",
+        "drawing"
+      ],
+      "control_refs": [
+        "CTL-022",
+        "CTL-023",
+        "CTL-108",
+        "CTL-109",
+        "CTL-020"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "masonry",
+      "material_id": "MAT-002",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-004"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -252.1458,
+        -21.336,
+        0.0
+      ],
+      "bbox_max_m": [
+        -234.1626,
+        21.336,
+        84.2772
+      ],
+      "notes": "Height and plan at mean high water are grade A from SRC-002. The plan at the top is a placeholder, so the taper is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "tower_manhattan_arch_1",
+      "system": "towers",
+      "subsystem": "arch",
+      "source_basis": [
+        "control_dimension",
+        "drawing",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-026",
+        "CTL-028",
+        "CTL-030",
+        "CTL-029",
+        "CTL-011"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "masonry",
+      "material_id": "MAT-002",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-004"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.1542,
+        -13.97,
+        33.528
+      ],
+      "bbox_max_m": [
+        -243.1542,
+        -3.683,
+        69.069283
+      ],
+      "notes": "Arch width, radius and height are grade A and mutually consistent (CHK-005). The transverse position assumes three equal shafts across the sourced 140 ft tower width; that division is reasoned.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "tower_manhattan_arch_2",
+      "system": "towers",
+      "subsystem": "arch",
+      "source_basis": [
+        "control_dimension",
+        "drawing",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-026",
+        "CTL-028",
+        "CTL-030",
+        "CTL-029",
+        "CTL-011"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "masonry",
+      "material_id": "MAT-002",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-004"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.1542,
+        3.683,
+        33.528
+      ],
+      "bbox_max_m": [
+        -243.1542,
+        13.97,
+        69.069283
+      ],
+      "notes": "Arch width, radius and height are grade A and mutually consistent (CHK-005). The transverse position assumes three equal shafts across the sourced 140 ft tower width; that division is reasoned.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "tower_brooklyn_caisson",
+      "system": "towers",
+      "subsystem": "foundation",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-033",
+        "CTL-035",
+        "CTL-036",
+        "CTL-038",
+        "CTL-039"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "concrete",
+      "material_id": "MAT-001",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-005"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        227.6094,
+        -25.6032,
+        -13.5636
+      ],
+      "bbox_max_m": [
+        258.699,
+        25.6032,
+        -6.096
+      ],
+      "notes": "Caisson footprint is sourced; the assignment of the 168/172 ft dimension to the transverse axis is reasoned from the tower being 140 ft wide and having to stand on it. See OQ-005.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "tower_brooklyn_foundation_block",
+      "system": "towers",
+      "subsystem": "foundation",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-033",
+        "CTL-035",
+        "CTL-036",
+        "CTL-022",
+        "CTL-023"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "masonry",
+      "material_id": "MAT-002",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-004"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        227.6094,
+        -25.6032,
+        -6.096
+      ],
+      "bbox_max_m": [
+        258.699,
+        25.6032,
+        0.0
+      ],
+      "notes": "Both ends are sourced; the taper between them is reasoned.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "tower_brooklyn_shaft",
+      "system": "towers",
+      "subsystem": "masonry",
+      "source_basis": [
+        "control_dimension",
+        "drawing"
+      ],
+      "control_refs": [
+        "CTL-022",
+        "CTL-023",
+        "CTL-108",
+        "CTL-109",
+        "CTL-020"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "masonry",
+      "material_id": "MAT-002",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-004"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        234.1626,
+        -21.336,
+        0.0
+      ],
+      "bbox_max_m": [
+        252.1458,
+        21.336,
+        84.2772
+      ],
+      "notes": "Height and plan at mean high water are grade A from SRC-002. The plan at the top is a placeholder, so the taper is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "tower_brooklyn_arch_1",
+      "system": "towers",
+      "subsystem": "arch",
+      "source_basis": [
+        "control_dimension",
+        "drawing",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-026",
+        "CTL-028",
+        "CTL-030",
+        "CTL-029",
+        "CTL-011"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "masonry",
+      "material_id": "MAT-002",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-004"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.1542,
+        -13.97,
+        33.528
+      ],
+      "bbox_max_m": [
+        243.1542,
+        -3.683,
+        69.069283
+      ],
+      "notes": "Arch width, radius and height are grade A and mutually consistent (CHK-005). The transverse position assumes three equal shafts across the sourced 140 ft tower width; that division is reasoned.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "tower_brooklyn_arch_2",
+      "system": "towers",
+      "subsystem": "arch",
+      "source_basis": [
+        "control_dimension",
+        "drawing",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-026",
+        "CTL-028",
+        "CTL-030",
+        "CTL-029",
+        "CTL-011"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "masonry",
+      "material_id": "MAT-002",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-004"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.1542,
+        3.683,
+        33.528
+      ],
+      "bbox_max_m": [
+        243.1542,
+        13.97,
+        69.069283
+      ],
+      "notes": "Arch width, radius and height are grade A and mutually consistent (CHK-005). The transverse position assumes three equal shafts across the sourced 140 ft tower width; that division is reasoned.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "anchorage_manhattan_front_block",
+      "system": "anchorages",
+      "subsystem": "masonry",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-050",
+        "CTL-053",
+        "CTL-051",
+        "CTL-056",
+        "CTL-057"
+      ],
+      "confidence": "A",
+      "provenance": "DOCUMENTED",
+      "material": "masonry",
+      "material_id": "MAT-003",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-006"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -552.6786,
+        -16.205149,
+        0.0
+      ],
+      "bbox_max_m": [
+        -526.6182,
+        16.205149,
+        27.139392
+      ],
+      "notes": "SRC-004 dimensions the New York anchorage; symmetry with Brooklyn is OQ-006.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "anchorage_manhattan_rear_block",
+      "system": "anchorages",
+      "subsystem": "masonry",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-050",
+        "CTL-053",
+        "CTL-052",
+        "CTL-055",
+        "CTL-058"
+      ],
+      "confidence": "A",
+      "provenance": "DOCUMENTED",
+      "material": "masonry",
+      "material_id": "MAT-003",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-006"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -565.9374,
+        -17.729149,
+        0.0
+      ],
+      "bbox_max_m": [
+        -552.6786,
+        17.729149,
+        25.981152
+      ],
+      "notes": "",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "anchorage_manhattan_cornice",
+      "system": "anchorages",
+      "subsystem": "masonry",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-059",
+        "CTL-054",
+        "CTL-055",
+        "CTL-057"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "masonry",
+      "material_id": "MAT-003",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-006"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -565.9374,
+        -15.900349,
+        23.304094
+      ],
+      "bbox_max_m": [
+        -526.6182,
+        15.900349,
+        27.139392
+      ],
+      "notes": "Cornice height is sourced; wrapping it around the full top plan is reasoned.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "anchorage_brooklyn_front_block",
+      "system": "anchorages",
+      "subsystem": "masonry",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-050",
+        "CTL-053",
+        "CTL-051",
+        "CTL-056",
+        "CTL-057"
+      ],
+      "confidence": "A",
+      "provenance": "DOCUMENTED",
+      "material": "masonry",
+      "material_id": "MAT-003",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-006"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        526.6182,
+        -16.205149,
+        0.0
+      ],
+      "bbox_max_m": [
+        552.6786,
+        16.205149,
+        27.139392
+      ],
+      "notes": "SRC-004 dimensions the New York anchorage; symmetry with Brooklyn is OQ-006.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "anchorage_brooklyn_rear_block",
+      "system": "anchorages",
+      "subsystem": "masonry",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-050",
+        "CTL-053",
+        "CTL-052",
+        "CTL-055",
+        "CTL-058"
+      ],
+      "confidence": "A",
+      "provenance": "DOCUMENTED",
+      "material": "masonry",
+      "material_id": "MAT-003",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-006"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        552.6786,
+        -17.729149,
+        0.0
+      ],
+      "bbox_max_m": [
+        565.9374,
+        17.729149,
+        25.981152
+      ],
+      "notes": "",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "anchorage_brooklyn_cornice",
+      "system": "anchorages",
+      "subsystem": "masonry",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-059",
+        "CTL-054",
+        "CTL-055",
+        "CTL-057"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "masonry",
+      "material_id": "MAT-003",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-006"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        526.6182,
+        -15.900349,
+        23.304094
+      ],
+      "bbox_max_m": [
+        565.9374,
+        15.900349,
+        27.139392
+      ],
+      "notes": "Cornice height is sourced; wrapping it around the full top plan is reasoned.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "deck_manhattan_approach",
+      "system": "deck_system",
+      "subsystem": "roadway",
+      "source_basis": [
+        "control_dimension",
+        "drawing"
+      ],
+      "control_refs": [
+        "CTL-005",
+        "CTL-012",
+        "CTL-058",
+        "CTL-070",
+        "CTL-103"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-009",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-003",
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -1002.8682,
+        -12.954,
+        10.0584
+      ],
+      "bbox_max_m": [
+        -565.9374,
+        12.954,
+        25.981152
+      ],
+      "notes": "Park Row to the landward face of the Manhattan anchorage.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "deck_manhattan_anchorage_top",
+      "system": "deck_system",
+      "subsystem": "roadway",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-050",
+        "CTL-058",
+        "CTL-057",
+        "CTL-070",
+        "CTL-103"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-009",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-003",
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -565.9374,
+        -12.954,
+        25.066752
+      ],
+      "bbox_max_m": [
+        -526.6182,
+        12.954,
+        27.139392
+      ],
+      "notes": "SRC-004: \"The top surface is to be sloped to the grade of the roadway, of which it will form part.\"",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "deck_manhattan_side_span",
+      "system": "deck_system",
+      "subsystem": "roadway",
+      "source_basis": [
+        "control_dimension",
+        "drawing"
+      ],
+      "control_refs": [
+        "CTL-002",
+        "CTL-057",
+        "CTL-011",
+        "CTL-070",
+        "CTL-103"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-009",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-003",
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -526.6182,
+        -12.954,
+        26.224992
+      ],
+      "bbox_max_m": [
+        -243.1542,
+        12.954,
+        33.528
+      ],
+      "notes": "",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "deck_main_span_manhattan_half",
+      "system": "deck_system",
+      "subsystem": "roadway",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-001",
+        "CTL-011",
+        "CTL-010",
+        "CTL-070",
+        "CTL-103"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-009",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-003",
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.1542,
+        -12.954,
+        32.6136
+      ],
+      "bbox_max_m": [
+        0.0,
+        12.954,
+        42.0624
+      ],
+      "notes": "The deck crests at midspan; SRC-002 draws that camber.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "deck_main_span_brooklyn_half",
+      "system": "deck_system",
+      "subsystem": "roadway",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-001",
+        "CTL-011",
+        "CTL-010",
+        "CTL-070",
+        "CTL-103"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-009",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-003",
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        0.0,
+        -12.954,
+        32.6136
+      ],
+      "bbox_max_m": [
+        243.1542,
+        12.954,
+        42.0624
+      ],
+      "notes": "",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "deck_brooklyn_side_span",
+      "system": "deck_system",
+      "subsystem": "roadway",
+      "source_basis": [
+        "control_dimension",
+        "drawing"
+      ],
+      "control_refs": [
+        "CTL-002",
+        "CTL-057",
+        "CTL-011",
+        "CTL-070",
+        "CTL-103"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-009",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-003",
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.1542,
+        -12.954,
+        26.224992
+      ],
+      "bbox_max_m": [
+        526.6182,
+        12.954,
+        33.528
+      ],
+      "notes": "",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "deck_brooklyn_anchorage_top",
+      "system": "deck_system",
+      "subsystem": "roadway",
+      "source_basis": [
+        "control_dimension"
+      ],
+      "control_refs": [
+        "CTL-050",
+        "CTL-058",
+        "CTL-057",
+        "CTL-070",
+        "CTL-103"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-009",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-003",
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        526.6182,
+        -12.954,
+        25.066752
+      ],
+      "bbox_max_m": [
+        565.9374,
+        12.954,
+        27.139392
+      ],
+      "notes": "",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "deck_brooklyn_approach",
+      "system": "deck_system",
+      "subsystem": "roadway",
+      "source_basis": [
+        "control_dimension",
+        "drawing"
+      ],
+      "control_refs": [
+        "CTL-006",
+        "CTL-013",
+        "CTL-058",
+        "CTL-070",
+        "CTL-103"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-009",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-003",
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        565.9374,
+        -12.954,
+        19.812
+      ],
+      "bbox_max_m": [
+        822.579,
+        12.954,
+        25.981152
+      ],
+      "notes": "Landward face of the Brooklyn anchorage to Adams Street.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "promenade_manhattan_approach",
+      "system": "deck_system",
+      "subsystem": "promenade",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-107",
+        "CTL-106",
+        "CTL-005",
+        "CTL-057"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-010",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -1002.8682,
+        -2.286,
+        14.1732
+      ],
+      "bbox_max_m": [
+        -526.6182,
+        2.286,
+        30.796992
+      ],
+      "notes": "",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "promenade_suspended",
+      "system": "deck_system",
+      "subsystem": "promenade",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-107",
+        "CTL-106",
+        "CTL-003",
+        "CTL-057",
+        "CTL-010"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-010",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -526.6182,
+        -2.286,
+        30.339792
+      ],
+      "bbox_max_m": [
+        526.6182,
+        2.286,
+        45.72
+      ],
+      "notes": "The Promenade is documented to exist (SRC-006 photographs it as its own group of plates, SRC-002 draws it) but no read source dimensions it, so it is INFERRED, not ASSUMED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "promenade_brooklyn_approach",
+      "system": "deck_system",
+      "subsystem": "promenade",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-107",
+        "CTL-106",
+        "CTL-006",
+        "CTL-057"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-010",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        526.6182,
+        -2.286,
+        23.9268
+      ],
+      "bbox_max_m": [
+        822.579,
+        2.286,
+        30.796992
+      ],
+      "notes": "",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "cable_main_south_outer_main_span",
+      "system": "cables",
+      "subsystem": "main_cable",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-001",
+        "CTL-020",
+        "CTL-102",
+        "CTL-101",
+        "CTL-041",
+        "CTL-040",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-004",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.21204,
+        -11.782425,
+        47.043975
+      ],
+      "bbox_max_m": [
+        243.21204,
+        -11.382375,
+        84.46868
+      ],
+      "notes": "Parabolic approximation. The sag rests on two placeholders (CTL-101, CTL-102) so the whole curve is grade D \u2014 see OQ-001 and the sag discussion in GEOMETRY-CONTROL.md section 4.2.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "cable_main_south_outer_side_span_manhattan",
+      "system": "cables",
+      "subsystem": "main_cable",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-001",
+        "CTL-020",
+        "CTL-102",
+        "CTL-101",
+        "CTL-041",
+        "CTL-040",
+        "CTL-104",
+        "CTL-105",
+        "CTL-002",
+        "CTL-057"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-004",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -526.657724,
+        -11.782425,
+        26.943311
+      ],
+      "bbox_max_m": [
+        -243.114676,
+        -11.382375,
+        84.473281
+      ],
+      "notes": "Straight chord; the true side-span curve is not registered.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "cable_main_south_outer_side_span_brooklyn",
+      "system": "cables",
+      "subsystem": "main_cable",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-001",
+        "CTL-020",
+        "CTL-102",
+        "CTL-101",
+        "CTL-041",
+        "CTL-040",
+        "CTL-104",
+        "CTL-105",
+        "CTL-002",
+        "CTL-057"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-004",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.114676,
+        -11.782425,
+        26.943311
+      ],
+      "bbox_max_m": [
+        526.657724,
+        -11.382375,
+        84.473281
+      ],
+      "notes": "Straight chord; the true side-span curve is not registered.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "cable_main_south_inner_main_span",
+      "system": "cables",
+      "subsystem": "main_cable",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-001",
+        "CTL-020",
+        "CTL-102",
+        "CTL-101",
+        "CTL-041",
+        "CTL-040",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-004",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.21204,
+        -4.772025,
+        47.043975
+      ],
+      "bbox_max_m": [
+        243.21204,
+        -4.371975,
+        84.46868
+      ],
+      "notes": "Parabolic approximation. The sag rests on two placeholders (CTL-101, CTL-102) so the whole curve is grade D \u2014 see OQ-001 and the sag discussion in GEOMETRY-CONTROL.md section 4.2.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "cable_main_south_inner_side_span_manhattan",
+      "system": "cables",
+      "subsystem": "main_cable",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-001",
+        "CTL-020",
+        "CTL-102",
+        "CTL-101",
+        "CTL-041",
+        "CTL-040",
+        "CTL-104",
+        "CTL-105",
+        "CTL-002",
+        "CTL-057"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-004",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -526.657724,
+        -4.772025,
+        26.943311
+      ],
+      "bbox_max_m": [
+        -243.114676,
+        -4.371975,
+        84.473281
+      ],
+      "notes": "Straight chord; the true side-span curve is not registered.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "cable_main_south_inner_side_span_brooklyn",
+      "system": "cables",
+      "subsystem": "main_cable",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-001",
+        "CTL-020",
+        "CTL-102",
+        "CTL-101",
+        "CTL-041",
+        "CTL-040",
+        "CTL-104",
+        "CTL-105",
+        "CTL-002",
+        "CTL-057"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-004",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.114676,
+        -4.772025,
+        26.943311
+      ],
+      "bbox_max_m": [
+        526.657724,
+        -4.371975,
+        84.473281
+      ],
+      "notes": "Straight chord; the true side-span curve is not registered.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "cable_main_north_inner_main_span",
+      "system": "cables",
+      "subsystem": "main_cable",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-001",
+        "CTL-020",
+        "CTL-102",
+        "CTL-101",
+        "CTL-041",
+        "CTL-040",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-004",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.21204,
+        4.371975,
+        47.043975
+      ],
+      "bbox_max_m": [
+        243.21204,
+        4.772025,
+        84.46868
+      ],
+      "notes": "Parabolic approximation. The sag rests on two placeholders (CTL-101, CTL-102) so the whole curve is grade D \u2014 see OQ-001 and the sag discussion in GEOMETRY-CONTROL.md section 4.2.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "cable_main_north_inner_side_span_manhattan",
+      "system": "cables",
+      "subsystem": "main_cable",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-001",
+        "CTL-020",
+        "CTL-102",
+        "CTL-101",
+        "CTL-041",
+        "CTL-040",
+        "CTL-104",
+        "CTL-105",
+        "CTL-002",
+        "CTL-057"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-004",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -526.657724,
+        4.371975,
+        26.943311
+      ],
+      "bbox_max_m": [
+        -243.114676,
+        4.772025,
+        84.473281
+      ],
+      "notes": "Straight chord; the true side-span curve is not registered.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "cable_main_north_inner_side_span_brooklyn",
+      "system": "cables",
+      "subsystem": "main_cable",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-001",
+        "CTL-020",
+        "CTL-102",
+        "CTL-101",
+        "CTL-041",
+        "CTL-040",
+        "CTL-104",
+        "CTL-105",
+        "CTL-002",
+        "CTL-057"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-004",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.114676,
+        4.371975,
+        26.943311
+      ],
+      "bbox_max_m": [
+        526.657724,
+        4.772025,
+        84.473281
+      ],
+      "notes": "Straight chord; the true side-span curve is not registered.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "cable_main_north_outer_main_span",
+      "system": "cables",
+      "subsystem": "main_cable",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-001",
+        "CTL-020",
+        "CTL-102",
+        "CTL-101",
+        "CTL-041",
+        "CTL-040",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-004",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.21204,
+        11.382375,
+        47.043975
+      ],
+      "bbox_max_m": [
+        243.21204,
+        11.782425,
+        84.46868
+      ],
+      "notes": "Parabolic approximation. The sag rests on two placeholders (CTL-101, CTL-102) so the whole curve is grade D \u2014 see OQ-001 and the sag discussion in GEOMETRY-CONTROL.md section 4.2.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "cable_main_north_outer_side_span_manhattan",
+      "system": "cables",
+      "subsystem": "main_cable",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-001",
+        "CTL-020",
+        "CTL-102",
+        "CTL-101",
+        "CTL-041",
+        "CTL-040",
+        "CTL-104",
+        "CTL-105",
+        "CTL-002",
+        "CTL-057"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-004",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -526.657724,
+        11.382375,
+        26.943311
+      ],
+      "bbox_max_m": [
+        -243.114676,
+        11.782425,
+        84.473281
+      ],
+      "notes": "Straight chord; the true side-span curve is not registered.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "cable_main_north_outer_side_span_brooklyn",
+      "system": "cables",
+      "subsystem": "main_cable",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-001",
+        "CTL-020",
+        "CTL-102",
+        "CTL-101",
+        "CTL-041",
+        "CTL-040",
+        "CTL-104",
+        "CTL-105",
+        "CTL-002",
+        "CTL-057"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-004",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.114676,
+        11.382375,
+        26.943311
+      ],
+      "bbox_max_m": [
+        526.657724,
+        11.782425,
+        84.473281
+      ],
+      "notes": "Straight chord; the true side-span curve is not registered.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "suspender_group_south_outer_manhattan_side_span",
+      "system": "suspenders",
+      "subsystem": "vertical_suspender",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-104",
+        "CTL-105",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-005",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -523.839141,
+        -11.5824,
+        27.699567
+      ],
+      "bbox_max_m": [
+        -245.933259,
+        -11.5824,
+        83.717025
+      ],
+      "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "suspender_group_south_outer_main_span",
+      "system": "suspenders",
+      "subsystem": "vertical_suspender",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-104",
+        "CTL-105",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-005",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -240.375295,
+        -11.5824,
+        46.3296
+      ],
+      "bbox_max_m": [
+        240.375295,
+        -11.5824,
+        83.435564
+      ],
+      "notes": "174 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "suspender_group_south_outer_brooklyn_side_span",
+      "system": "suspenders",
+      "subsystem": "vertical_suspender",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-104",
+        "CTL-105",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-005",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        245.933259,
+        -11.5824,
+        27.699567
+      ],
+      "bbox_max_m": [
+        523.839141,
+        -11.5824,
+        83.717025
+      ],
+      "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "suspender_group_south_inner_manhattan_side_span",
+      "system": "suspenders",
+      "subsystem": "vertical_suspender",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-104",
+        "CTL-105",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-005",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -523.839141,
+        -4.572,
+        27.699567
+      ],
+      "bbox_max_m": [
+        -245.933259,
+        -4.572,
+        83.717025
+      ],
+      "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "suspender_group_south_inner_main_span",
+      "system": "suspenders",
+      "subsystem": "vertical_suspender",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-104",
+        "CTL-105",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-005",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -240.375295,
+        -4.572,
+        46.3296
+      ],
+      "bbox_max_m": [
+        240.375295,
+        -4.572,
+        83.435564
+      ],
+      "notes": "174 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "suspender_group_south_inner_brooklyn_side_span",
+      "system": "suspenders",
+      "subsystem": "vertical_suspender",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-104",
+        "CTL-105",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-005",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        245.933259,
+        -4.572,
+        27.699567
+      ],
+      "bbox_max_m": [
+        523.839141,
+        -4.572,
+        83.717025
+      ],
+      "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "suspender_group_north_inner_manhattan_side_span",
+      "system": "suspenders",
+      "subsystem": "vertical_suspender",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-104",
+        "CTL-105",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-005",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -523.839141,
+        4.572,
+        27.699567
+      ],
+      "bbox_max_m": [
+        -245.933259,
+        4.572,
+        83.717025
+      ],
+      "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "suspender_group_north_inner_main_span",
+      "system": "suspenders",
+      "subsystem": "vertical_suspender",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-104",
+        "CTL-105",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-005",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -240.375295,
+        4.572,
+        46.3296
+      ],
+      "bbox_max_m": [
+        240.375295,
+        4.572,
+        83.435564
+      ],
+      "notes": "174 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "suspender_group_north_inner_brooklyn_side_span",
+      "system": "suspenders",
+      "subsystem": "vertical_suspender",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-104",
+        "CTL-105",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-005",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        245.933259,
+        4.572,
+        27.699567
+      ],
+      "bbox_max_m": [
+        523.839141,
+        4.572,
+        83.717025
+      ],
+      "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "suspender_group_north_outer_manhattan_side_span",
+      "system": "suspenders",
+      "subsystem": "vertical_suspender",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-104",
+        "CTL-105",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-005",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -523.839141,
+        11.5824,
+        27.699567
+      ],
+      "bbox_max_m": [
+        -245.933259,
+        11.5824,
+        83.717025
+      ],
+      "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "suspender_group_north_outer_main_span",
+      "system": "suspenders",
+      "subsystem": "vertical_suspender",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-104",
+        "CTL-105",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-005",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -240.375295,
+        11.5824,
+        46.3296
+      ],
+      "bbox_max_m": [
+        240.375295,
+        11.5824,
+        83.435564
+      ],
+      "notes": "174 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "suspender_group_north_outer_brooklyn_side_span",
+      "system": "suspenders",
+      "subsystem": "vertical_suspender",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-104",
+        "CTL-105",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-005",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001",
+        "OQ-002"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        245.933259,
+        11.5824,
+        27.699567
+      ],
+      "bbox_max_m": [
+        523.839141,
+        11.5824,
+        83.717025
+      ],
+      "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_south_outer_manhattan_inboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.1542,
+        -11.5824,
+        46.3296
+      ],
+      "bbox_max_m": [
+        -173.862332,
+        -11.5824,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_south_outer_manhattan_outboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -312.446068,
+        -11.5824,
+        46.3296
+      ],
+      "bbox_max_m": [
+        -243.1542,
+        -11.5824,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_south_outer_brooklyn_inboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        173.862332,
+        -11.5824,
+        46.3296
+      ],
+      "bbox_max_m": [
+        243.1542,
+        -11.5824,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_south_outer_brooklyn_outboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.1542,
+        -11.5824,
+        46.3296
+      ],
+      "bbox_max_m": [
+        312.446068,
+        -11.5824,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_south_inner_manhattan_inboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.1542,
+        -4.572,
+        46.3296
+      ],
+      "bbox_max_m": [
+        -173.862332,
+        -4.572,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_south_inner_manhattan_outboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -312.446068,
+        -4.572,
+        46.3296
+      ],
+      "bbox_max_m": [
+        -243.1542,
+        -4.572,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_south_inner_brooklyn_inboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        173.862332,
+        -4.572,
+        46.3296
+      ],
+      "bbox_max_m": [
+        243.1542,
+        -4.572,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_south_inner_brooklyn_outboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.1542,
+        -4.572,
+        46.3296
+      ],
+      "bbox_max_m": [
+        312.446068,
+        -4.572,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_north_inner_manhattan_inboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.1542,
+        4.572,
+        46.3296
+      ],
+      "bbox_max_m": [
+        -173.862332,
+        4.572,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_north_inner_manhattan_outboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -312.446068,
+        4.572,
+        46.3296
+      ],
+      "bbox_max_m": [
+        -243.1542,
+        4.572,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_north_inner_brooklyn_inboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        173.862332,
+        4.572,
+        46.3296
+      ],
+      "bbox_max_m": [
+        243.1542,
+        4.572,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_north_inner_brooklyn_outboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.1542,
+        4.572,
+        46.3296
+      ],
+      "bbox_max_m": [
+        312.446068,
+        4.572,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_north_outer_manhattan_inboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.1542,
+        11.5824,
+        46.3296
+      ],
+      "bbox_max_m": [
+        -173.862332,
+        11.5824,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_north_outer_manhattan_outboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -312.446068,
+        11.5824,
+        46.3296
+      ],
+      "bbox_max_m": [
+        -243.1542,
+        11.5824,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_north_outer_brooklyn_inboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        173.862332,
+        11.5824,
+        46.3296
+      ],
+      "bbox_max_m": [
+        243.1542,
+        11.5824,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stay_north_outer_brooklyn_outboard",
+      "system": "stays",
+      "subsystem": "diagonal_stay",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-045",
+        "CTL-040",
+        "CTL-024",
+        "CTL-020",
+        "CTL-044",
+        "CTL-003",
+        "CTL-076",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_wire",
+      "material_id": "MAT-006",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-001"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.1542,
+        11.5824,
+        46.3296
+      ],
+      "bbox_max_m": [
+        312.446068,
+        11.5824,
+        84.2772
+      ],
+      "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "truss_outer_south_manhattan_side_span",
+      "system": "deck_system",
+      "subsystem": "stiffening_truss",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-077",
+        "CTL-076",
+        "CTL-010",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-007",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-002",
+        "OQ-010"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -526.6182,
+        -12.0824,
+        41.148
+      ],
+      "bbox_max_m": [
+        -243.1542,
+        -11.0824,
+        46.3296
+      ],
+      "notes": "Depth is grade A (CTL-076). The count is reasoned from SRC-001 note 2 (CTL-077, grade B) and the transverse position is a placeholder, so the envelope is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "truss_outer_south_main_span",
+      "system": "deck_system",
+      "subsystem": "stiffening_truss",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-077",
+        "CTL-076",
+        "CTL-010",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-007",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-002",
+        "OQ-010"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.1542,
+        -12.0824,
+        41.148
+      ],
+      "bbox_max_m": [
+        243.1542,
+        -11.0824,
+        46.3296
+      ],
+      "notes": "Depth is grade A (CTL-076). The count is reasoned from SRC-001 note 2 (CTL-077, grade B) and the transverse position is a placeholder, so the envelope is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "truss_outer_south_brooklyn_side_span",
+      "system": "deck_system",
+      "subsystem": "stiffening_truss",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-077",
+        "CTL-076",
+        "CTL-010",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-007",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-002",
+        "OQ-010"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.1542,
+        -12.0824,
+        41.148
+      ],
+      "bbox_max_m": [
+        526.6182,
+        -11.0824,
+        46.3296
+      ],
+      "notes": "Depth is grade A (CTL-076). The count is reasoned from SRC-001 note 2 (CTL-077, grade B) and the transverse position is a placeholder, so the envelope is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "truss_inner_south_manhattan_side_span",
+      "system": "deck_system",
+      "subsystem": "stiffening_truss",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-077",
+        "CTL-076",
+        "CTL-010",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-007",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-002",
+        "OQ-010"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -526.6182,
+        -5.072,
+        41.148
+      ],
+      "bbox_max_m": [
+        -243.1542,
+        -4.072,
+        46.3296
+      ],
+      "notes": "Depth is grade A (CTL-076). The count is reasoned from SRC-001 note 2 (CTL-077, grade B) and the transverse position is a placeholder, so the envelope is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "truss_inner_south_main_span",
+      "system": "deck_system",
+      "subsystem": "stiffening_truss",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-077",
+        "CTL-076",
+        "CTL-010",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-007",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-002",
+        "OQ-010"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.1542,
+        -5.072,
+        41.148
+      ],
+      "bbox_max_m": [
+        243.1542,
+        -4.072,
+        46.3296
+      ],
+      "notes": "Depth is grade A (CTL-076). The count is reasoned from SRC-001 note 2 (CTL-077, grade B) and the transverse position is a placeholder, so the envelope is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "truss_inner_south_brooklyn_side_span",
+      "system": "deck_system",
+      "subsystem": "stiffening_truss",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-077",
+        "CTL-076",
+        "CTL-010",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-007",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-002",
+        "OQ-010"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.1542,
+        -5.072,
+        41.148
+      ],
+      "bbox_max_m": [
+        526.6182,
+        -4.072,
+        46.3296
+      ],
+      "notes": "Depth is grade A (CTL-076). The count is reasoned from SRC-001 note 2 (CTL-077, grade B) and the transverse position is a placeholder, so the envelope is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "truss_inner_north_manhattan_side_span",
+      "system": "deck_system",
+      "subsystem": "stiffening_truss",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-077",
+        "CTL-076",
+        "CTL-010",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-007",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-002",
+        "OQ-010"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -526.6182,
+        4.072,
+        41.148
+      ],
+      "bbox_max_m": [
+        -243.1542,
+        5.072,
+        46.3296
+      ],
+      "notes": "Depth is grade A (CTL-076). The count is reasoned from SRC-001 note 2 (CTL-077, grade B) and the transverse position is a placeholder, so the envelope is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "truss_inner_north_main_span",
+      "system": "deck_system",
+      "subsystem": "stiffening_truss",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-077",
+        "CTL-076",
+        "CTL-010",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-007",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-002",
+        "OQ-010"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.1542,
+        4.072,
+        41.148
+      ],
+      "bbox_max_m": [
+        243.1542,
+        5.072,
+        46.3296
+      ],
+      "notes": "Depth is grade A (CTL-076). The count is reasoned from SRC-001 note 2 (CTL-077, grade B) and the transverse position is a placeholder, so the envelope is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "truss_inner_north_brooklyn_side_span",
+      "system": "deck_system",
+      "subsystem": "stiffening_truss",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-077",
+        "CTL-076",
+        "CTL-010",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-007",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-002",
+        "OQ-010"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.1542,
+        4.072,
+        41.148
+      ],
+      "bbox_max_m": [
+        526.6182,
+        5.072,
+        46.3296
+      ],
+      "notes": "Depth is grade A (CTL-076). The count is reasoned from SRC-001 note 2 (CTL-077, grade B) and the transverse position is a placeholder, so the envelope is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "truss_outer_north_manhattan_side_span",
+      "system": "deck_system",
+      "subsystem": "stiffening_truss",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-077",
+        "CTL-076",
+        "CTL-010",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-007",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-002",
+        "OQ-010"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -526.6182,
+        11.0824,
+        41.148
+      ],
+      "bbox_max_m": [
+        -243.1542,
+        12.0824,
+        46.3296
+      ],
+      "notes": "Depth is grade A (CTL-076). The count is reasoned from SRC-001 note 2 (CTL-077, grade B) and the transverse position is a placeholder, so the envelope is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "truss_outer_north_main_span",
+      "system": "deck_system",
+      "subsystem": "stiffening_truss",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-077",
+        "CTL-076",
+        "CTL-010",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-007",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-002",
+        "OQ-010"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -243.1542,
+        11.0824,
+        41.148
+      ],
+      "bbox_max_m": [
+        243.1542,
+        12.0824,
+        46.3296
+      ],
+      "notes": "Depth is grade A (CTL-076). The count is reasoned from SRC-001 note 2 (CTL-077, grade B) and the transverse position is a placeholder, so the envelope is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "truss_outer_north_brooklyn_side_span",
+      "system": "deck_system",
+      "subsystem": "stiffening_truss",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-077",
+        "CTL-076",
+        "CTL-010",
+        "CTL-104",
+        "CTL-105"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-007",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-002",
+        "OQ-010"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        243.1542,
+        11.0824,
+        41.148
+      ],
+      "bbox_max_m": [
+        526.6182,
+        12.0824,
+        46.3296
+      ],
+      "notes": "Depth is grade A (CTL-076). The count is reasoned from SRC-001 note 2 (CTL-077, grade B) and the transverse position is a placeholder, so the envelope is INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "floor_beam_group_manhattan_side_span",
+      "system": "deck_system",
+      "subsystem": "floor_beam",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-071",
+        "CTL-072",
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-008",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -523.839141,
+        -13.1064,
+        41.148
+      ],
+      "bbox_max_m": [
+        -245.933259,
+        13.1064,
+        41.148
+      ],
+      "notes": "86 ft long (CTL-071, grade A) at the derived suspender pitch.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "floor_beam_group_main_span",
+      "system": "deck_system",
+      "subsystem": "floor_beam",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-071",
+        "CTL-072",
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-008",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -240.375295,
+        -13.1064,
+        41.148
+      ],
+      "bbox_max_m": [
+        240.375295,
+        13.1064,
+        41.148
+      ],
+      "notes": "86 ft long (CTL-071, grade A) at the derived suspender pitch.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "floor_beam_group_brooklyn_side_span",
+      "system": "deck_system",
+      "subsystem": "floor_beam",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-071",
+        "CTL-072",
+        "CTL-044",
+        "CTL-040",
+        "CTL-003",
+        "CTL-010"
+      ],
+      "confidence": "A",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-008",
+      "material_confidence": "A",
+      "open_questions": [
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        245.933259,
+        -13.1064,
+        41.148
+      ],
+      "bbox_max_m": [
+        523.839141,
+        13.1064,
+        41.148
+      ],
+      "notes": "86 ft long (CTL-071, grade A) at the derived suspender pitch.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "approach_girder_manhattan",
+      "system": "approaches",
+      "subsystem": "viaduct",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-005",
+        "CTL-112",
+        "CTL-070"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "masonry",
+      "material_id": "MAT-011",
+      "material_confidence": "B",
+      "open_questions": [
+        "OQ-007"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -1002.8682,
+        -11.6586,
+        7.0104
+      ],
+      "bbox_max_m": [
+        -565.9374,
+        11.6586,
+        25.066752
+      ],
+      "notes": "Extent is grade A; the structural depth is a placeholder.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "approach_bent_group_manhattan",
+      "system": "approaches",
+      "subsystem": "viaduct",
+      "source_basis": [
+        "placeholder"
+      ],
+      "control_refs": [
+        "CTL-110",
+        "CTL-111",
+        "CTL-005"
+      ],
+      "confidence": "D",
+      "provenance": "ASSUMED",
+      "material": "masonry",
+      "material_id": "MAT-011",
+      "material_confidence": "B",
+      "open_questions": [
+        "OQ-007"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -971.658857,
+        -7.7724,
+        0.0
+      ],
+      "bbox_max_m": [
+        -597.146743,
+        7.7724,
+        20.946727
+      ],
+      "notes": "ASSUMED. Nothing in the register locates a single approach support. The rhythm exists only so the approaches read as supported viaducts; it is excluded from every dimension callout.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "approach_girder_brooklyn",
+      "system": "approaches",
+      "subsystem": "viaduct",
+      "source_basis": [
+        "control_dimension",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-006",
+        "CTL-112",
+        "CTL-070"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "masonry",
+      "material_id": "MAT-011",
+      "material_confidence": "B",
+      "open_questions": [
+        "OQ-007"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        565.9374,
+        -11.6586,
+        16.764
+      ],
+      "bbox_max_m": [
+        822.579,
+        11.6586,
+        25.066752
+      ],
+      "notes": "Extent is grade A; the structural depth is a placeholder.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "approach_bent_group_brooklyn",
+      "system": "approaches",
+      "subsystem": "viaduct",
+      "source_basis": [
+        "placeholder"
+      ],
+      "control_refs": [
+        "CTL-110",
+        "CTL-111",
+        "CTL-006"
+      ],
+      "confidence": "D",
+      "provenance": "ASSUMED",
+      "material": "masonry",
+      "material_id": "MAT-011",
+      "material_confidence": "B",
+      "open_questions": [
+        "OQ-007"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        598.0176,
+        -7.7724,
+        0.0
+      ],
+      "bbox_max_m": [
+        790.4988,
+        7.7724,
+        21.361908
+      ],
+      "notes": "ASSUMED. Nothing in the register locates a single approach support. The rhythm exists only so the approaches read as supported viaducts; it is excluded from every dimension callout.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Brooklyn Bridge",
+  "subtitle": "Control skeleton — Milestone 1",
+  "assets": {
+    "prototype": "control_skeleton.glb",
+    "ho": "control_skeleton_ho.glb"
+  },
+  "parts": "parts.json",
+  "build_report": "build_report.json",
+  "vertical_datum": "mean high water (MHW)",
+  "repository": "https://github.com/Ethical-Tech-CoLab/brooklyn-bridge-3d"
+}
