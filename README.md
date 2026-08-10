@@ -1,5 +1,7 @@
 # Brooklyn Bridge Digital Twin
 
+**▶ [View the model in your browser](https://ethical-tech-colab.github.io/brooklyn-bridge-3d/)**
+
 A source-governed, part-addressable control skeleton of the Brooklyn Bridge, built for browser
 rendering and HO-scale study.
 
@@ -37,6 +39,13 @@ published rather than hidden.
 ---
 
 ## How to review this model
+
+**The published viewer is at
+[ethical-tech-colab.github.io/brooklyn-bridge-3d](https://ethical-tech-colab.github.io/brooklyn-bridge-3d/)**
+— nothing to install. It is rebuilt and revalidated on every push to `main`, and the workflow fails
+rather than deploying if the committed artifacts do not match a fresh build.
+
+To run it locally instead:
 
 ```powershell
 cd viewer; npm install; npm run dev      # http://localhost:5174
