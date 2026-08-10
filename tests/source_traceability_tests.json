@@ -124,6 +124,21 @@
       "rationale": "A source in the verification queue may be named in prose but may not carry a control. This is what stops a citation from being aspirational."
     },
     {
+      "id": "STT-015",
+      "title": "Structural elements the sources count must actually be modelled",
+      "rule": "controls_must_have_geometry",
+      "mode": "assert",
+      "control_ids": ["CTL-024", "CTL-040", "CTL-044", "CTL-045", "CTL-046", "CTL-061", "CTL-077"],
+      "rationale": "A reviewer noticed the cables appearing to attach below the tower tops. The elevation was right; the cause was that CTL-046 -- eight cast iron saddle bearings, grade A -- was registered and never built, so nothing showed where the cable went. A sourced count with no geometry is a silent hole in the model, and this test closes that class."
+    },
+    {
+      "id": "STT-016",
+      "title": "Census of sourced controls that carry no geometry",
+      "rule": "sourced_controls_unused_census",
+      "mode": "report_only",
+      "rationale": "Report-only: many controls are recorded purely for traceability and must NOT reach geometry, such as the superseded tower height CTL-021. But this census is how the missing saddles were found, so it stays visible."
+    },
+    {
       "id": "STT-014",
       "title": "Census of controls by grade",
       "rule": "grade_census",

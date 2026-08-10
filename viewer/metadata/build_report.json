@@ -1,23 +1,23 @@
 {
   "generator": "build_control_skeleton.py@1.0.0",
   "control_document": "GEOMETRY-CONTROL.md",
-  "control_document_sha256": "2039df63a419984d213175dfcd300f8153a4d3ff4644b34eb9e712a36464cbf9",
+  "control_document_sha256": "276849e29f797fa5b82f2353055e64e2d6054ae66f0cbedbc69b2850c8e3e16d",
   "controls_total": 99,
   "controls_sourced": 87,
   "controls_placeholder": 12,
-  "material_rules": 14,
-  "parts_total": 102,
+  "material_rules": 15,
+  "parts_total": 106,
   "provenance": {
     "MEASURED": 0,
     "DOCUMENTED": 11,
-    "INFERRED": 89,
+    "INFERRED": 93,
     "ASSUMED": 2
   },
   "confidence": {
     "A": 40,
     "B": 10,
     "C": 0,
-    "D": 52
+    "D": 56
   },
   "systems": [
     "anchorages",
@@ -53,13 +53,13 @@
       "ELV-ARCH-SPRINGING": 58.2168,
       "ELV-ARCH-CROWN": 69.1896,
       "ELV-CABLE-MID": 47.244,
-      "ELV-SADDLE": 79.248,
+      "ELV-SADDLE": 79.8576,
       "ELV-TOWER-TOP": 84.2772,
       "ELV-ANCHOR-POINT": 27.1394
     },
-    "cable_sag_m": 32.004,
-    "cable_sag_ft": 105.0,
-    "cable_sag_ratio": 15.195,
+    "cable_sag_m": 32.6136,
+    "cable_sag_ft": 107.0,
+    "cable_sag_ratio": 14.911,
     "cable_sag_confidence": "D",
     "suspender_pitch_m": 2.7717,
     "suspender_pitch_ft": 9.093,
@@ -159,6 +159,16 @@
         "residual_m": -1.3716,
         "residual_ft": -4.5,
         "tolerance_m": 2.0,
+        "passed": true
+      },
+      {
+        "id": "CHK-008",
+        "description": "the main cable's high point is exactly the saddle elevation",
+        "value_m": 79.8576,
+        "expected_m": 79.8576,
+        "residual_m": 0.0,
+        "residual_ft": 0.0,
+        "tolerance_m": 1e-09,
         "passed": true
       }
     ]

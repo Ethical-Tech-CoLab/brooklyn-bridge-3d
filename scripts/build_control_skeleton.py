@@ -387,6 +387,13 @@ def build(model: ControlModel) -> tuple[Skeleton, dict[str, Any]]:
         m("tower_extent_x_at_mhw"),
         2.0,
     )
+    check(
+        "CHK-008",
+        "the main cable's high point is exactly the saddle elevation",
+        _parabola(x_twr_b, x_twr_b, z_saddle, z_cable_mid),
+        z_saddle,
+        1e-9,
+    )
 
     # ---- transverse layout (section 4.3)
     half_deck = m("deck_width") / 2.0
@@ -504,6 +511,16 @@ def build(model: ControlModel) -> tuple[Skeleton, dict[str, Any]]:
             open_questions=["OQ-004"],
             notes="Both ends are sourced; the taper between them is reasoned.",
         )
+        # The shaft rises only to the saddle. Above that the masonry cannot be solid across the
+        # cable lines: SRC-002 states the cables "WERE CARRIED THROUGH THE TOWERS ON EIGHT CAST IRON
+        # SADDLE BEARINGS", so the top band is modelled as two masses outboard of the outer cables
+        # with the cable corridor open between them. That is INFERRED from a grade-A statement, not
+        # invented -- and it is what lets a viewer see the cable reach its true height instead of
+        # vanishing into a solid block several tens of feet below the top.
+        t_saddle = z_saddle / z_tower_top
+        half_x_saddle = half_tower_x + (half_tower_x_top - half_tower_x) * t_saddle
+        half_y_saddle = half_tower_y + (half_tower_y_top - half_tower_y) * t_saddle
+
         sk.add(
             f"tower_{end}_shaft",
             "towers",
@@ -514,20 +531,93 @@ def build(model: ControlModel) -> tuple[Skeleton, dict[str, Any]]:
                 "tower_extent_x_at_top",
                 "tower_extent_y_at_top",
                 "tower_height_above_mhw",
+                "cable_saddle_drop_below_tower_top",
             ),
             ["control_dimension", "drawing"],
             [
                 _prism(
                     _plan_ring(x_c - half_tower_x, x_c + half_tower_x, half_tower_y, 0.0),
-                    _plan_ring(
-                        x_c - half_tower_x_top, x_c + half_tower_x_top, half_tower_y_top, z_tower_top
-                    ),
+                    _plan_ring(x_c - half_x_saddle, x_c + half_x_saddle, half_y_saddle, z_saddle),
                 )
             ],
             open_questions=["OQ-004"],
             notes=(
                 "Height and plan at mean high water are grade A from SRC-002. The plan at the top "
-                "is a placeholder, so the taper is INFERRED."
+                "is a placeholder, so the taper is INFERRED. The shaft stops at the saddle; the "
+                "masonry above it is tower_%s_cornice." % end
+            ),
+        )
+
+        # Cornice: the top band, open across the cable corridor.
+        cable_margin = m("main_cable_diameter") * 2.0
+        corridor = y_outer + cable_margin
+        cornice_prims = []
+        for sign in (-1.0, 1.0):
+            y_in = sign * corridor
+            y_out = sign * half_tower_y_top
+            lo_y, hi_y = min(y_in, y_out), max(y_in, y_out)
+            cornice_prims.append(
+                _box(
+                    (x_c - half_tower_x_top, lo_y, z_saddle),
+                    (x_c + half_tower_x_top, hi_y, z_tower_top),
+                )
+            )
+        sk.add(
+            f"tower_{end}_cornice",
+            "towers",
+            "masonry",
+            model.ids_of(
+                "tower_height_above_mhw",
+                "cable_saddle_drop_below_tower_top",
+                "tower_extent_x_at_top",
+                "tower_extent_y_at_top",
+                "truss_offset_outer",
+                "main_cable_diameter",
+            ),
+            ["control_dimension", "drawing", "inferred"],
+            cornice_prims,
+            open_questions=["OQ-004", "OQ-016"],
+            notes=(
+                "The masonry above the saddle. Modelled as two masses outboard of the outer cables "
+                "because SRC-002 states the cables are carried THROUGH the towers, so the top band "
+                "cannot be solid across them. The height is grade A (CTL-020) and the saddle level "
+                "is grade B (CTL-064); the width of the opening is reasoned. See OQ-016."
+            ),
+        )
+
+        # The saddles themselves. CTL-046 is grade A and was previously unused by any geometry.
+        saddle_len = m("main_cable_diameter") * 6.0
+        saddle_wid = m("main_cable_diameter") * 3.0
+        saddle_ht = m("main_cable_diameter") * 2.0
+        saddle_prims = [
+            _box(
+                (x_c - saddle_len / 2.0, y - saddle_wid / 2.0, z_saddle - saddle_ht),
+                (x_c + saddle_len / 2.0, y + saddle_wid / 2.0, z_saddle),
+            )
+            for _name, y in cable_lines
+        ]
+        sk.add(
+            f"saddle_group_{end}",
+            "towers",
+            "saddle",
+            model.ids_of(
+                "saddle_count",
+                "main_cable_count",
+                "cable_saddle_drop_below_tower_top",
+                "tower_height_above_mhw",
+                "main_cable_diameter",
+                "truss_offset_outer",
+                "truss_offset_inner",
+            ),
+            ["control_dimension", "drawing", "inferred"],
+            saddle_prims,
+            open_questions=["OQ-001"],
+            notes=(
+                "%d of the eight cast-iron saddle bearings of CTL-046 — SRC-002: \"THE MAIN CABLES "
+                "WERE CARRIED THROUGH THE TOWERS ON EIGHT CAST IRON SADDLE BEARINGS OF 13 TONS "
+                "EACH.\" The count and the elevation are sourced; the block size is reasoned from "
+                "the sourced cable diameter, so no new placeholder was needed."
+                % len(saddle_prims)
             ),
         )
 
@@ -588,6 +678,7 @@ def build(model: ControlModel) -> tuple[Skeleton, dict[str, Any]]:
                 "anchorage_base_width_front",
                 "anchorage_top_width_front",
                 "anchorage_roadway_front_above_mhw",
+                "anchorage_count",
             ),
             ["control_dimension"],
             [

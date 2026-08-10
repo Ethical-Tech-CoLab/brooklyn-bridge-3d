@@ -1,5 +1,5 @@
 {
-  "control_document_sha256": "2039df63a419984d213175dfcd300f8153a4d3ff4644b34eb9e712a36464cbf9",
+  "control_document_sha256": "276849e29f797fa5b82f2353055e64e2d6054ae66f0cbedbc69b2850c8e3e16d",
   "controls": [
     {
       "control_id": "CTL-001",
@@ -341,15 +341,15 @@
     {
       "control_id": "CTL-064",
       "key": "cable_saddle_drop_below_tower_top",
-      "value": 16.5,
+      "value": 14.5,
       "unit": "ft",
-      "value_m": 5.0292,
+      "value_m": 4.4196,
       "source_ids": [
         "SRC-002"
       ],
       "confidence": "B",
       "is_placeholder": false,
-      "notes": "**Scaled off the drawing, not stated on it.** SRC-002 is an orthographic elevation with a dimensioned 1595.5 ft main span, which fixes 0.4824 ft per pixel on the 14484 px master. Measuring the tower cornice at y=3038 px and the cable crossing the tower at y\u22483072 px gives 34 px, or 16.4 ft. Graded `B`: the drawing is grade-`A` material but the scaling is this repository's derivation, and a line on that sheet is about 10 px \u2014 5 ft \u2014 thick, so the figure is good to roughly \u00b15 ft. **Replaces a 0 ft placeholder.**"
+      "notes": "**Scaled off the drawing, not stated on it.** Measured as a *ratio* on the orthographic elevation, so it is independent of any scale error: `(cable_y \u2212 towertop_y) / (MHW_y \u2212 towertop_y) \u00d7 276.5`. Both towers agree \u2014 Brooklyn 32 px below a 605 px tower, Manhattan 30 px below 580 px \u2014 giving 14.5 ft. The measurement chain is validated by a figure that played no part in setting it: the same scale puts the midspan deck underside at 133.9 ft against the drawing's own stated 135 ft. Graded `B`: grade-`A` material, but the scaling is this repository's derivation and a line on that sheet is about 5 ft thick. **Replaces a 0 ft placeholder, and supersedes a first attempt at 16.5 ft that mistook the flagstaff for the masonry cap.**"
     },
     {
       "control_id": "CTL-031",
@@ -1332,6 +1332,16 @@
       ],
       "confidence": "A",
       "notes": "SRC-003: \"the first time that galvanized steel wire was used in cable construction\"."
+    },
+    {
+      "material_id": "MAT-015",
+      "pattern": "saddle_*",
+      "material": "steel_structural",
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "A",
+      "notes": "SRC-002: \"EIGHT **CAST IRON** SADDLE BEARINGS OF 13 TONS EACH\". Cast iron is not in the closed material vocabulary; `steel_structural` is its nearest member and the distinction is recorded here rather than lost."
     },
     {
       "material_id": "MAT-005",

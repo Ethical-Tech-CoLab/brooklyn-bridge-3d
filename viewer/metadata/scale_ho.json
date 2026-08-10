@@ -1,6 +1,6 @@
 {
   "ho_scale_denominator": 87.1,
-  "control_document_sha256": "2039df63a419984d213175dfcd300f8153a4d3ff4644b34eb9e712a36464cbf9",
+  "control_document_sha256": "276849e29f797fa5b82f2353055e64e2d6054ae66f0cbedbc69b2850c8e3e16d",
   "controls": [
     {
       "prototype_m": 486.3084,
@@ -276,12 +276,12 @@
       "is_placeholder": false
     },
     {
-      "prototype_m": 5.0292,
-      "prototype_ft": 16.5,
-      "prototype_in": 198.0,
-      "ho_mm": 57.7,
-      "ho_in": 2.27,
-      "ho_ft": 0.19,
+      "prototype_m": 4.4196,
+      "prototype_ft": 14.5,
+      "prototype_in": 174.0,
+      "ho_mm": 50.7,
+      "ho_in": 2.0,
+      "ho_ft": 0.17,
       "control_id": "CTL-064",
       "key": "cable_saddle_drop_below_tower_top",
       "unit": "ft",

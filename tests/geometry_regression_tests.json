@@ -196,7 +196,7 @@
       "title": "Part count has not regressed",
       "rule": "ratchet_min",
       "metric": "parts_total",
-      "limit": 102,
+      "limit": 106,
       "mode": "assert"
     },
     {
@@ -213,15 +213,23 @@
     },
     {
       "id": "GRT-061",
-      "title": "Tower tops sit at the active tower height control, not the recorded HAER figure",
+      "title": "Tower masonry reaches the active tower height control, not the recorded HAER figure",
       "rule": "part_bbox_ceiling",
       "cases": [
-        { "part_id": "tower_manhattan_shaft", "control_key": "tower_height_above_mhw" },
-        { "part_id": "tower_brooklyn_shaft", "control_key": "tower_height_above_mhw" }
+        { "part_id": "tower_manhattan_cornice", "control_key": "tower_height_above_mhw" },
+        { "part_id": "tower_brooklyn_cornice", "control_key": "tower_height_above_mhw" }
       ],
       "tolerance_m": 0.01,
       "mode": "assert",
-      "rationale": "CONF-001. CTL-021 (276.6 ft) is recorded but must not reach the geometry."
+      "rationale": "CONF-001. CTL-021 (276.6 ft) is recorded but must not reach the geometry. Checked on the cornice rather than the shaft: the shaft now stops at the saddle, and the masonry above it is a separate part so the cables can pass through as SRC-002 says they do."
+    },
+    {
+      "id": "GRT-062",
+      "title": "The main cables reach the saddle elevation at the towers",
+      "rule": "build_check",
+      "check_id": "CHK-008",
+      "mode": "assert",
+      "rationale": "The cable's high point must equal the saddle elevation exactly -- they are the same physical contact. Written after a reviewer observed the cables appearing to attach well below the tower top: the elevation was right, but the cable vanished into a solid block, so nothing showed where it went. This asserts the number; the saddle geometry shows it."
     },
     {
       "id": "GRT-080",

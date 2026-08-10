@@ -118,6 +118,16 @@ def defect_promenade_overlap(ctx: vd.Ctx) -> None:
     by_id["promenade_brooklyn_side_span"]["bbox_min_m"][0] -= 16.6  # back to the tower centerline
 
 
+def defect_saddles_never_built(ctx: vd.Ctx) -> None:
+    """Register the eight saddle bearings and then never model them.
+
+    This is the defect a reviewer caught by eye: with no saddle geometry the cable vanished into a
+    solid tower block and appeared to attach tens of feet below the top, even though its elevation
+    was right.
+    """
+    ctx.parts[:] = [p for p in ctx.parts if not p["part_id"].startswith("saddle_")]
+
+
 def defect_callout_on_assumed(ctx: vd.Ctx) -> None:
     """Annotate a dimension on a part nothing locates."""
     for part in ctx.parts:
@@ -139,6 +149,7 @@ CASES: list[tuple[str, Path, str, Callable[[vd.Ctx], None]]] = [
     ("Williamsburg truss depth enters as a placeholder", STT, "STT-006", defect_williamsburg_value),
     ("a control cites a source that was never read", STT, "STT-013", defect_unread_source),
     ("the brief's four subway tracks get modelled", STT, "STT-008", defect_subway_track),
+    ("the eight sourced saddles are registered but never built", STT, "STT-015", defect_saddles_never_built),
 ]
 
 

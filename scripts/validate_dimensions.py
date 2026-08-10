@@ -485,6 +485,38 @@ def _forbidden_parts(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
     return ok(f"none of {len(t['forbidden'])} forbidden substrings appears in {len(ctx.parts)} part IDs")
 
 
+@measure("sourced_controls_unused_census")
+def _unused_census(ctx: Ctx, _t: dict[str, Any]) -> dict[str, Any]:
+    """Which sourced controls no part references.
+
+    Not a failure: plenty of controls are recorded for traceability and deliberately not used
+    (CTL-021, the superseded tower height, must never reach geometry). But this census is how the
+    missing saddles were found -- CTL-046 was grade A, and nothing in the model used it.
+    """
+    used: set[str] = set()
+    for p in ctx.parts:
+        used.update(p["control_refs"])
+    unused = sorted(
+        c.control_id for c in ctx.model.controls.values() if not c.is_placeholder and c.control_id not in used
+    )
+    return ok(f"{len(unused)} sourced controls carry no geometry", value=unused)
+
+
+@measure("controls_must_have_geometry")
+def _must_have_geometry(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
+    """Named controls that describe a physical element must actually be built."""
+    used: set[str] = set()
+    for p in ctx.parts:
+        used.update(p["control_refs"])
+    missing = [c for c in t["control_ids"] if c not in used]
+    if missing:
+        return bad(
+            "sourced element(s) registered but never modelled: "
+            + ", ".join(f"{c} ({ctx.model.by_id[c].key})" for c in missing if c in ctx.model.by_id)
+        )
+    return ok(f"{len(t['control_ids'])} structural counts all carry geometry")
+
+
 @measure("grade_census")
 def _grade_census(ctx: Ctx, _t: dict[str, Any]) -> dict[str, Any]:
     counts: dict[str, int] = {}

@@ -23,14 +23,14 @@ cd viewer; npm install; npm run dev          # http://localhost:5174
 | | |
 |---|---|
 | Controls | **99** — 87 sourced (83 grade `A`, 4 grade `B`), 12 placeholders |
-| Sources read | **13 registered and read**, plus 4 registered as linked-only or negative controls — including two period primaries, the only measured drawing of any East River suspension bridge in the national record, and the bridge owner's own dimensioned promenade study |
-| Parts | **102** across 8 systems |
-| Provenance | 0 measured · 11 documented · 89 inferred · 2 assumed |
-| Tests | **42** — 38 asserting, 4 report-only, **0 failing** |
-| Guards proven | 12 injected defects, each confirmed to fail its guard |
-| Cross-source checks | 7, all closing |
-| Registered conflicts | 7 — five settled with reasoning, two left open |
-| Open questions | 15 — one closed, one answered, two half-answered |
+| Sources read | **13 registered and read**, plus 4 registered as linked-only or negative controls |
+| Parts | **106** across 8 systems |
+| Provenance | 0 measured · 11 documented · 93 inferred · 2 assumed |
+| Tests | **45** — 40 asserting, 5 report-only, **0 failing** |
+| Guards proven | 13 injected defects, each confirmed to fail its guard |
+| Cross-source checks | 8, all closing |
+| Registered conflicts | 8 — five settled with reasoning, three left open |
+| Open questions | 17 — one closed, one answered, two half-answered |
 
 Turning `INFERRED` and `ASSUMED` off in the viewer leaves the two anchorages and the seven station
 markers. **That emptiness is the honest picture of what these sources actually locate**, and it is
@@ -80,6 +80,8 @@ appear under **"Linked, not copied"**. They informed the model; they are not ser
 | **Caisson orientation** | 168/172 × 102 ft is solidly sourced, but *which axis is which* is reasoning. Rotated 90° the foundations are wrong, and no current test would catch it. OQ-005. |
 | **The Brooklyn Curve is drawn straight** | Its 910 ft length and 11 ft width are grade `A`, but NYCDOT calls it a *curve* and the model has no radius for it. A registered omission — OQ-014. |
 | **The deck is one envelope** | Five vehicle lanes and a protected bike lane are sourced as *facts*, but nothing registered gives their transverse positions. OQ-003. |
+| **The deck may be over-cambered** | CTL-011's annotated 110 ft at the towers is used, but scaling the same drawing gives 117 ft at Manhattan and 124 ft at Brooklyn — so the model's rise to midspan may be about twice the real one, and the two towers are not actually alike. Registered as CONF-008 / OQ-017 rather than quietly adjusted. |
+| **The tower cornice opening is reasoned** | That the masonry above the saddle cannot be solid across the cable lines follows from a grade-`A` statement; *how wide* the opening is does not. OQ-016. |
 
 **Other ways in.** Drag `mesh/glb/control_skeleton.glb` onto any glTF viewer for pure shape critique
 without the metadata. Read [SOURCE-REGISTER.md](SOURCE-REGISTER.md) for the six conflicts — four are
@@ -153,12 +155,26 @@ bridge, and this one is not — its diagonal stays are a second load path, which
 feature of the Roebling system and which lets the cable run shallower.
 
 Scaling the measured drawing settled it. SRC-002 is orthographic with a dimensioned 1595.5 ft main
-span, which fixes 0.4824 ft per pixel on the 14484 px master, and the tower cornice then falls at
-exactly the sourced 276.5 ft — so the scale checks against a number that was not used to set it.
-Measured on that basis the saddle sits **16.5 ft below the tower top**, which had been a 0 ft
-placeholder, and the sag is about 110 ft against the model's 105 ft. CTL-064 now carries that figure
-at grade `B`: the drawing is grade-`A` material, but the *scaling* is this repository's own
-derivation and a line on that sheet is 5 ft thick.
+span, and the same scale independently reproduces the drawing's own stated 135 ft midspan clearance
+to within 1.1 ft — a figure that played no part in setting it. Measured that way the saddle sits
+**14.5 ft below the tower top**, which had been a 0 ft placeholder, and the sag is about 110 ft
+against the model's 107 ft. CTL-064 now carries that at grade `B`: the drawing is grade-`A` material,
+but the *scaling* is this repository's own derivation and a line on that sheet is 5 ft thick.
+
+**A second correction, from a reader looking at the render.** The cables appeared to attach well
+below the tower tops — "meters lower", which is what a viewer saw and the arithmetic denied. Both
+were right. The saddle elevation was sound, but **CTL-046 — eight cast iron saddle bearings, grade
+`A` — was registered and never modelled**, so the cable simply ran into a solid masonry block and
+disappeared some 25 ft below the top, well before reaching its true high point.
+
+The fix was geometry, not a number. The tower is now a shaft up to the saddle plus a cornice above
+it, and the cornice is modelled as two masses outboard of the outer cables rather than a solid slab —
+because SRC-002 states the cables were "CARRIED **THROUGH** THE TOWERS ON EIGHT CAST IRON SADDLE
+BEARINGS", so the masonry at that level cannot be continuous across them. The saddles themselves are
+now built, sized from the sourced cable diameter so no new placeholder was needed.
+
+`STT-015` now fails the build if any counted structural element is registered and never modelled. It
+found a second instance immediately: the anchorages were not citing their own count control.
 
 ---
 

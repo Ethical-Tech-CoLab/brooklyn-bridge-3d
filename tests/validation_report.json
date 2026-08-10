@@ -1,8 +1,8 @@
 {
-  "control_document_sha256": "2039df63a419984d213175dfcd300f8153a4d3ff4644b34eb9e712a36464cbf9",
-  "tests_total": 42,
-  "asserting": 38,
-  "report_only": 4,
+  "control_document_sha256": "276849e29f797fa5b82f2353055e64e2d6054ae66f0cbedbc69b2850c8e3e16d",
+  "tests_total": 45,
+  "asserting": 40,
+  "report_only": 5,
   "failures": 0,
   "results": [
     {
@@ -12,7 +12,7 @@
       "rule": "control_document_hash_matches",
       "mode": "assert",
       "passed": true,
-      "detail": "sha256 2039df63a419",
+      "detail": "sha256 276849e29f79",
       "value": null
     },
     {
@@ -112,10 +112,10 @@
       "rule": "provenance_census_all",
       "mode": "report_only",
       "passed": true,
-      "detail": "ASSUMED=2, DOCUMENTED=11, INFERRED=89",
+      "detail": "ASSUMED=2, DOCUMENTED=11, INFERRED=93",
       "value": {
         "DOCUMENTED": 11,
-        "INFERRED": 89,
+        "INFERRED": 93,
         "ASSUMED": 2
       }
     },
@@ -206,7 +206,7 @@
       "rule": "parts_have_material",
       "mode": "assert",
       "passed": true,
-      "detail": "102 parts",
+      "detail": "106 parts",
       "value": null
     },
     {
@@ -246,8 +246,8 @@
       "rule": "ratchet_min",
       "mode": "assert",
       "passed": true,
-      "detail": "parts_total = 102, floor 102",
-      "value": 102
+      "detail": "parts_total = 106, floor 106",
+      "value": 106
     },
     {
       "suite": "geometry_regression",
@@ -262,11 +262,21 @@
     {
       "suite": "geometry_regression",
       "id": "GRT-061",
-      "title": "Tower tops sit at the active tower height control, not the recorded HAER figure",
+      "title": "Tower masonry reaches the active tower height control, not the recorded HAER figure",
       "rule": "part_bbox_ceiling",
       "mode": "assert",
       "passed": true,
       "detail": "2 case(s)",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-062",
+      "title": "The main cables reach the saddle elevation at the towers",
+      "rule": "build_check",
+      "mode": "assert",
+      "passed": true,
+      "detail": "residual +0.0000 ft (tolerance 1e-09 m)",
       "value": null
     },
     {
@@ -366,7 +376,7 @@
       "rule": "forbidden_part_substrings",
       "mode": "assert",
       "passed": true,
-      "detail": "none of 8 forbidden substrings appears in 102 part IDs",
+      "detail": "none of 8 forbidden substrings appears in 106 part IDs",
       "value": null
     },
     {
@@ -376,7 +386,7 @@
       "rule": "open_questions_registered",
       "mode": "assert",
       "passed": true,
-      "detail": "15 open questions registered",
+      "detail": "17 open questions registered",
       "value": null
     },
     {
@@ -406,7 +416,7 @@
       "rule": "parts_have_required_fields",
       "mode": "assert",
       "passed": true,
-      "detail": "102 parts complete",
+      "detail": "106 parts complete",
       "value": null
     },
     {
@@ -418,6 +428,56 @@
       "passed": true,
       "detail": "15 read sources: SRC-001, SRC-002, SRC-003, SRC-004, SRC-005, SRC-006, SRC-008, SRC-010, SRC-011, SRC-012, SRC-013, SRC-014, SRC-015, SRC-016, SRC-017",
       "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-015",
+      "title": "Structural elements the sources count must actually be modelled",
+      "rule": "controls_must_have_geometry",
+      "mode": "assert",
+      "passed": true,
+      "detail": "7 structural counts all carry geometry",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-016",
+      "title": "Census of sourced controls that carry no geometry",
+      "rule": "sourced_controls_unused_census",
+      "mode": "report_only",
+      "passed": true,
+      "detail": "29 sourced controls carry no geometry",
+      "value": [
+        "CTL-014",
+        "CTL-015",
+        "CTL-016",
+        "CTL-017",
+        "CTL-021",
+        "CTL-025",
+        "CTL-027",
+        "CTL-031",
+        "CTL-032",
+        "CTL-042",
+        "CTL-043",
+        "CTL-047",
+        "CTL-048",
+        "CTL-060",
+        "CTL-062",
+        "CTL-063",
+        "CTL-073",
+        "CTL-074",
+        "CTL-075",
+        "CTL-078",
+        "CTL-081",
+        "CTL-083",
+        "CTL-086",
+        "CTL-089",
+        "CTL-091",
+        "CTL-094",
+        "CTL-096",
+        "CTL-098",
+        "CTL-099"
+      ]
     },
     {
       "suite": "source_traceability",
