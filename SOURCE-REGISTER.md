@@ -28,6 +28,8 @@ only in the [verification queue](#verification-queue).
 | SRC-013 | NYC Tourism + Conventions — guide to the Brooklyn Bridge | [nyctourism.com/articles/guide-to-the-brooklyn-bridge](https://www.nyctourism.com/articles/guide-to-the-brooklyn-bridge) | Official destination marketing organisation | © NYC Tourism; quoted | **read** | B | "The pedestrian stairs on the Brooklyn side are located at Washington Street and Prospect Street, right at the northeast corner of Cadman Plaza. You can also just walk straight onto the bridge from Adams Street." Independently corroborates SRC-012 on the stair location, and distinguishes the stair entrance from the Adams Street one. |
 | SRC-014 | **Field observation, repository owner, 2026** | Direct observation on the bridge and in DUMBO; photographs taken outside Westville DUMBO | **Eyewitness testimony** | — | **read** | B for arrangement, D for any dimension | "Road moves to the right and walkway comes to middle going into Brooklyn. Leaving Brooklyn, cars are on right, walkway emerges from the middle. This middle area is where there are steps that tourists use to walk across the bridge to/from DUMBO. The stairs exit to Washington Street about 1.5 blocks from where I took pictures outside Westville DUMBO." **Registered because it is testimony about arrangement, and it is what prompted SRC-011 to be sought.** It may establish that an element exists and how it is arranged; it may **not** grade any dimension. |
 | SRC-015 | Wikipedia — Brooklyn Bridge | [en.wikipedia.org/wiki/Brooklyn_Bridge](https://en.wikipedia.org/wiki/Brooklyn_Bridge) | Tertiary encyclopaedia | CC BY-SA | **read** | B/C | Used for exactly one control: the promenade sits 18 ft above the automobile lanes (CTL-097). Its "4 ft below the girders" statement is independently confirmed grade `A` by SRC-011, which is some evidence its 18 ft is also sound — but no primary or owner document read here states it, so it stays grade `B`. Everything else it says is already covered by a better source. |
+| SRC-016 | HistoricBridges.org — Brooklyn Bridge photo galleries 3 and 4 | [gallery 3](https://historicbridges.org/bridges/browser/photosviewer.php?bridgebrowser=newyork/brooklyn/&gallerynum=3&gallerysize=2) · [gallery 4](https://historicbridges.org/bridges/browser/photosviewer.php?bridgebrowser=newyork/brooklyn/&gallerynum=4&gallerysize=2) | Modern detail photography | **© HistoricBridges.org. NOT redistributable.** | **read** — 12 full-size plates examined | B for arrangement, **never for a dimension** | The Tier B detail source the brief anticipated. **Its images are not copied into this repository and are not served from the published site**; the viewer links out to the galleries instead. What was learned from them is recorded below and in OQ-007. |
+| SRC-017 | Historic-Structures.com — The Brooklyn Bridge, New York | [historic-structures.com/ny/new_york/brooklyn-bridge](https://www.historic-structures.com/ny/new_york/brooklyn-bridge/) | Secondary narrative | © Historic-Structures.com | **read** | — | Narrative construction history. **Its illustrations carry Library of Congress digital IDs** (`570574c`, `120491p` and others), which is how the HAER plates now in `sources/photos/` were identified — and then fetched from the LOC CDN at full resolution rather than copied from here. Cites no dimension this repository does not already hold from a better source. |
 
 ---
 
@@ -56,12 +58,28 @@ Material that was looked at and that **grades nothing**. It is listed so that th
 
 | Material | Why it is not registered |
 |---|---|
-| Two photographs supplied by the repository owner, from a tour site: a view along the promenade toward a tower, and a view of the bridge from DUMBO. | **No licence.** They are not committed to this repository and no control cites them. They were reviewed for orientation only. They are consistent with the model — the walkway is elevated above the roadway, the diagonal stays radiate from the tower tops as SRC-002 describes, the towers show two pointed arches — and the DUMBO view makes the shallow cable sag of OQ-001 look as wrong as the arithmetic says it is. **None of that is evidence in the register's sense**, and per the rule in `HOW-TO-DESIGN.md`, a photograph cannot grade a control. |
+| Two photographs supplied by the repository owner, from a tour site: a view along the promenade toward a tower, and a view of the bridge from DUMBO. | **No licence.** They are not committed to this repository and no control cites them. They were reviewed for orientation only. They are consistent with the model — the walkway is elevated above the roadway, the diagonal stays radiate from the tower tops as SRC-002 describes, the towers show two pointed arches. **None of that is evidence in the register's sense**, and per the rule in `HOW-TO-DESIGN.md`, a photograph cannot grade a control. |
 | SRC-007, the HAER photographs | Registered but **not yet read** — the catalogue has been examined, the individual plates have not. Grade `B` when they are. |
 
 The distinction matters most where it is most tempting to ignore. Every photograph shows the
 promenade decked in timber; the material table still grades `promenade_*` as `D`, because no source
 in the register says what the planks are.
+
+### What SRC-016's photographs actually changed
+
+Examined, not copied. Three findings, none of them a dimension:
+
+1. **The approach supports are the wrong kind of object.** The model draws slender bents at a
+   placeholder 100 ft pitch. The photographs show a **masonry arcade** carrying the Brooklyn
+   approach, which is also what SRC-004 describes in words. This is recorded in OQ-007 and is a more
+   serious defect than the spacing being unsourced, because the geometry is the wrong shape rather
+   than the wrong size.
+2. **The promenade sits above and between the roadways, and widens at the towers.** Independently
+   corroborates SRC-011's typology and SRC-014's account, and confirms the model's arrangement.
+3. **The stays land on the deck at regular intervals across the whole main span**, consistent with
+   the fan the model derives from the sourced count. Nothing here dimensions them.
+
+The measured drawing, not the photographs, is what moved a number: see CTL-064 and §4.2.
 
 ---
 

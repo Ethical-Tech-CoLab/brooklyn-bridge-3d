@@ -1,5 +1,5 @@
 {
-  "control_document_sha256": "95c504ae51f6f06f501469a4f5cbab9731206abdaecdd7efcf5d056bcfbb78c4",
+  "control_document_sha256": "2039df63a419984d213175dfcd300f8153a4d3ff4644b34eb9e712a36464cbf9",
   "generator": "build_control_skeleton.py@1.0.0",
   "vertical_datum": "mean high water (MHW)",
   "units": "meters",
@@ -1632,7 +1632,7 @@
       "control_refs": [
         "CTL-001",
         "CTL-020",
-        "CTL-102",
+        "CTL-064",
         "CTL-101",
         "CTL-041",
         "CTL-040",
@@ -1651,14 +1651,14 @@
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
-        -243.21204,
+        -243.204723,
         -11.782425,
         47.043975
       ],
       "bbox_max_m": [
-        243.21204,
+        243.204723,
         -11.382375,
-        84.46868
+        79.441539
       ],
       "notes": "Parabolic approximation. The sag rests on two placeholders (CTL-101, CTL-102) so the whole curve is grade D \u2014 see OQ-001 and the sag discussion in GEOMETRY-CONTROL.md section 4.2.",
       "review_status": "milestone-1-unreviewed",
@@ -1675,7 +1675,7 @@
       "control_refs": [
         "CTL-001",
         "CTL-020",
-        "CTL-102",
+        "CTL-064",
         "CTL-101",
         "CTL-041",
         "CTL-040",
@@ -1696,14 +1696,14 @@
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
-        -526.657724,
+        -526.654364,
         -11.782425,
-        26.943311
+        26.942663
       ],
       "bbox_max_m": [
-        -243.114676,
+        -243.118036,
         -11.382375,
-        84.473281
+        79.444729
       ],
       "notes": "Straight chord; the true side-span curve is not registered.",
       "review_status": "milestone-1-unreviewed",
@@ -1720,7 +1720,7 @@
       "control_refs": [
         "CTL-001",
         "CTL-020",
-        "CTL-102",
+        "CTL-064",
         "CTL-101",
         "CTL-041",
         "CTL-040",
@@ -1741,14 +1741,14 @@
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
-        243.114676,
+        243.118036,
         -11.782425,
-        26.943311
+        26.942663
       ],
       "bbox_max_m": [
-        526.657724,
+        526.654364,
         -11.382375,
-        84.473281
+        79.444729
       ],
       "notes": "Straight chord; the true side-span curve is not registered.",
       "review_status": "milestone-1-unreviewed",
@@ -1765,7 +1765,7 @@
       "control_refs": [
         "CTL-001",
         "CTL-020",
-        "CTL-102",
+        "CTL-064",
         "CTL-101",
         "CTL-041",
         "CTL-040",
@@ -1784,14 +1784,14 @@
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
-        -243.21204,
+        -243.204723,
         -4.772025,
         47.043975
       ],
       "bbox_max_m": [
-        243.21204,
+        243.204723,
         -4.371975,
-        84.46868
+        79.441539
       ],
       "notes": "Parabolic approximation. The sag rests on two placeholders (CTL-101, CTL-102) so the whole curve is grade D \u2014 see OQ-001 and the sag discussion in GEOMETRY-CONTROL.md section 4.2.",
       "review_status": "milestone-1-unreviewed",
@@ -1808,7 +1808,7 @@
       "control_refs": [
         "CTL-001",
         "CTL-020",
-        "CTL-102",
+        "CTL-064",
         "CTL-101",
         "CTL-041",
         "CTL-040",
@@ -1829,14 +1829,14 @@
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
-        -526.657724,
+        -526.654364,
         -4.772025,
-        26.943311
+        26.942663
       ],
       "bbox_max_m": [
-        -243.114676,
+        -243.118036,
         -4.371975,
-        84.473281
+        79.444729
       ],
       "notes": "Straight chord; the true side-span curve is not registered.",
       "review_status": "milestone-1-unreviewed",
@@ -1853,7 +1853,7 @@
       "control_refs": [
         "CTL-001",
         "CTL-020",
-        "CTL-102",
+        "CTL-064",
         "CTL-101",
         "CTL-041",
         "CTL-040",
@@ -1874,14 +1874,14 @@
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
-        243.114676,
+        243.118036,
         -4.772025,
-        26.943311
+        26.942663
       ],
       "bbox_max_m": [
-        526.657724,
+        526.654364,
         -4.371975,
-        84.473281
+        79.444729
       ],
       "notes": "Straight chord; the true side-span curve is not registered.",
       "review_status": "milestone-1-unreviewed",
@@ -1898,7 +1898,7 @@
       "control_refs": [
         "CTL-001",
         "CTL-020",
-        "CTL-102",
+        "CTL-064",
         "CTL-101",
         "CTL-041",
         "CTL-040",
@@ -1917,14 +1917,14 @@
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
-        -243.21204,
+        -243.204723,
         4.371975,
         47.043975
       ],
       "bbox_max_m": [
-        243.21204,
+        243.204723,
         4.772025,
-        84.46868
+        79.441539
       ],
       "notes": "Parabolic approximation. The sag rests on two placeholders (CTL-101, CTL-102) so the whole curve is grade D \u2014 see OQ-001 and the sag discussion in GEOMETRY-CONTROL.md section 4.2.",
       "review_status": "milestone-1-unreviewed",
@@ -1941,7 +1941,7 @@
       "control_refs": [
         "CTL-001",
         "CTL-020",
-        "CTL-102",
+        "CTL-064",
         "CTL-101",
         "CTL-041",
         "CTL-040",
@@ -1962,14 +1962,14 @@
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
-        -526.657724,
+        -526.654364,
         4.371975,
-        26.943311
+        26.942663
       ],
       "bbox_max_m": [
-        -243.114676,
+        -243.118036,
         4.772025,
-        84.473281
+        79.444729
       ],
       "notes": "Straight chord; the true side-span curve is not registered.",
       "review_status": "milestone-1-unreviewed",
@@ -1986,7 +1986,7 @@
       "control_refs": [
         "CTL-001",
         "CTL-020",
-        "CTL-102",
+        "CTL-064",
         "CTL-101",
         "CTL-041",
         "CTL-040",
@@ -2007,14 +2007,14 @@
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
-        243.114676,
+        243.118036,
         4.371975,
-        26.943311
+        26.942663
       ],
       "bbox_max_m": [
-        526.657724,
+        526.654364,
         4.772025,
-        84.473281
+        79.444729
       ],
       "notes": "Straight chord; the true side-span curve is not registered.",
       "review_status": "milestone-1-unreviewed",
@@ -2031,7 +2031,7 @@
       "control_refs": [
         "CTL-001",
         "CTL-020",
-        "CTL-102",
+        "CTL-064",
         "CTL-101",
         "CTL-041",
         "CTL-040",
@@ -2050,14 +2050,14 @@
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
-        -243.21204,
+        -243.204723,
         11.382375,
         47.043975
       ],
       "bbox_max_m": [
-        243.21204,
+        243.204723,
         11.782425,
-        84.46868
+        79.441539
       ],
       "notes": "Parabolic approximation. The sag rests on two placeholders (CTL-101, CTL-102) so the whole curve is grade D \u2014 see OQ-001 and the sag discussion in GEOMETRY-CONTROL.md section 4.2.",
       "review_status": "milestone-1-unreviewed",
@@ -2074,7 +2074,7 @@
       "control_refs": [
         "CTL-001",
         "CTL-020",
-        "CTL-102",
+        "CTL-064",
         "CTL-101",
         "CTL-041",
         "CTL-040",
@@ -2095,14 +2095,14 @@
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
-        -526.657724,
+        -526.654364,
         11.382375,
-        26.943311
+        26.942663
       ],
       "bbox_max_m": [
-        -243.114676,
+        -243.118036,
         11.782425,
-        84.473281
+        79.444729
       ],
       "notes": "Straight chord; the true side-span curve is not registered.",
       "review_status": "milestone-1-unreviewed",
@@ -2119,7 +2119,7 @@
       "control_refs": [
         "CTL-001",
         "CTL-020",
-        "CTL-102",
+        "CTL-064",
         "CTL-101",
         "CTL-041",
         "CTL-040",
@@ -2140,14 +2140,14 @@
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
-        243.114676,
+        243.118036,
         11.382375,
-        26.943311
+        26.942663
       ],
       "bbox_max_m": [
-        526.657724,
+        526.654364,
         11.782425,
-        84.473281
+        79.444729
       ],
       "notes": "Straight chord; the true side-span curve is not registered.",
       "review_status": "milestone-1-unreviewed",
@@ -2184,12 +2184,12 @@
       "bbox_min_m": [
         -523.839141,
         -11.5824,
-        27.699567
+        27.650261
       ],
       "bbox_max_m": [
         -245.933259,
         -11.5824,
-        83.717025
+        78.737131
       ],
       "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2231,7 +2231,7 @@
       "bbox_max_m": [
         240.375295,
         -11.5824,
-        83.435564
+        78.52066
       ],
       "notes": "174 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2268,12 +2268,12 @@
       "bbox_min_m": [
         245.933259,
         -11.5824,
-        27.699567
+        27.650261
       ],
       "bbox_max_m": [
         523.839141,
         -11.5824,
-        83.717025
+        78.737131
       ],
       "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2310,12 +2310,12 @@
       "bbox_min_m": [
         -523.839141,
         -4.572,
-        27.699567
+        27.650261
       ],
       "bbox_max_m": [
         -245.933259,
         -4.572,
-        83.717025
+        78.737131
       ],
       "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2357,7 +2357,7 @@
       "bbox_max_m": [
         240.375295,
         -4.572,
-        83.435564
+        78.52066
       ],
       "notes": "174 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2394,12 +2394,12 @@
       "bbox_min_m": [
         245.933259,
         -4.572,
-        27.699567
+        27.650261
       ],
       "bbox_max_m": [
         523.839141,
         -4.572,
-        83.717025
+        78.737131
       ],
       "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2436,12 +2436,12 @@
       "bbox_min_m": [
         -523.839141,
         4.572,
-        27.699567
+        27.650261
       ],
       "bbox_max_m": [
         -245.933259,
         4.572,
-        83.717025
+        78.737131
       ],
       "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2483,7 +2483,7 @@
       "bbox_max_m": [
         240.375295,
         4.572,
-        83.435564
+        78.52066
       ],
       "notes": "174 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2520,12 +2520,12 @@
       "bbox_min_m": [
         245.933259,
         4.572,
-        27.699567
+        27.650261
       ],
       "bbox_max_m": [
         523.839141,
         4.572,
-        83.717025
+        78.737131
       ],
       "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2562,12 +2562,12 @@
       "bbox_min_m": [
         -523.839141,
         11.5824,
-        27.699567
+        27.650261
       ],
       "bbox_max_m": [
         -245.933259,
         11.5824,
-        83.717025
+        78.737131
       ],
       "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2609,7 +2609,7 @@
       "bbox_max_m": [
         240.375295,
         11.5824,
-        83.435564
+        78.52066
       ],
       "notes": "174 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2646,12 +2646,12 @@
       "bbox_min_m": [
         245.933259,
         11.5824,
-        27.699567
+        27.650261
       ],
       "bbox_max_m": [
         523.839141,
         11.5824,
-        83.717025
+        78.737131
       ],
       "notes": "101 suspenders at the derived pitch of 9.09 ft. The total count is grade A (CTL-044); distributing it evenly is reasoning, so these are INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2693,7 +2693,7 @@
       "bbox_max_m": [
         -173.862332,
         -11.5824,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2735,7 +2735,7 @@
       "bbox_max_m": [
         -243.1542,
         -11.5824,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2777,7 +2777,7 @@
       "bbox_max_m": [
         243.1542,
         -11.5824,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2819,7 +2819,7 @@
       "bbox_max_m": [
         312.446068,
         -11.5824,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2861,7 +2861,7 @@
       "bbox_max_m": [
         -173.862332,
         -4.572,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2903,7 +2903,7 @@
       "bbox_max_m": [
         -243.1542,
         -4.572,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2945,7 +2945,7 @@
       "bbox_max_m": [
         243.1542,
         -4.572,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -2987,7 +2987,7 @@
       "bbox_max_m": [
         312.446068,
         -4.572,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -3029,7 +3029,7 @@
       "bbox_max_m": [
         -173.862332,
         4.572,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -3071,7 +3071,7 @@
       "bbox_max_m": [
         -243.1542,
         4.572,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -3113,7 +3113,7 @@
       "bbox_max_m": [
         243.1542,
         4.572,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -3155,7 +3155,7 @@
       "bbox_max_m": [
         312.446068,
         4.572,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -3197,7 +3197,7 @@
       "bbox_max_m": [
         -173.862332,
         11.5824,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -3239,7 +3239,7 @@
       "bbox_max_m": [
         -243.1542,
         11.5824,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -3281,7 +3281,7 @@
       "bbox_max_m": [
         243.1542,
         11.5824,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",
@@ -3323,7 +3323,7 @@
       "bbox_max_m": [
         312.446068,
         11.5824,
-        84.2772
+        79.248
       ],
       "notes": "The Roebling system's second load path. SRC-002: \"DIAGONAL STAY CABLES CARRY PART OF THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD).\" The count is grade A (CTL-045); the reach is derived from the suspender pitch, so each fan reaches 227 ft and is INFERRED.",
       "review_status": "milestone-1-unreviewed",

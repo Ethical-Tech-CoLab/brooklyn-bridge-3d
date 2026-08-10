@@ -1,5 +1,5 @@
 {
-  "control_document_sha256": "95c504ae51f6f06f501469a4f5cbab9731206abdaecdd7efcf5d056bcfbb78c4",
+  "control_document_sha256": "2039df63a419984d213175dfcd300f8153a4d3ff4644b34eb9e712a36464cbf9",
   "controls": [
     {
       "control_id": "CTL-001",
@@ -337,6 +337,19 @@
       "confidence": "A",
       "is_placeholder": false,
       "notes": "`36' ARCH HEIGHT`, measured from the springing course. **ACTIVE** for the arch derivation. See CONF-004."
+    },
+    {
+      "control_id": "CTL-064",
+      "key": "cable_saddle_drop_below_tower_top",
+      "value": 16.5,
+      "unit": "ft",
+      "value_m": 5.0292,
+      "source_ids": [
+        "SRC-002"
+      ],
+      "confidence": "B",
+      "is_placeholder": false,
+      "notes": "**Scaled off the drawing, not stated on it.** SRC-002 is an orthographic elevation with a dimensioned 1595.5 ft main span, which fixes 0.4824 ft per pixel on the 14484 px master. Measuring the tower cornice at y=3038 px and the cable crossing the tower at y\u22483072 px gives 34 px, or 16.4 ft. Graded `B`: the drawing is grade-`A` material but the scaling is this repository's derivation, and a line on that sheet is about 10 px \u2014 5 ft \u2014 thick, so the figure is good to roughly \u00b15 ft. **Replaces a 0 ft placeholder.**"
     },
     {
       "control_id": "CTL-031",
@@ -1152,18 +1165,18 @@
       "source_ids": [],
       "confidence": "D",
       "is_placeholder": true,
-      "notes": "PLACEHOLDER. The vertical gap between the truss top chord and the main cable at midspan, which is what sets the sag. Bounded above by the cable having to clear the chord and below by zero, so the derived sag is wrong by at most a few feet \u2014 but it is still not a fact. **Retired by**: John Roebling's 1867 design report, or NYCDOT record drawings. See OQ-001."
+      "notes": "PLACEHOLDER, and now **bounded by measurement**. Scaling SRC-002 puts the cable's lowest point at about 150 ft above mean high water, against a derived truss top chord at 152 ft \u2014 so this gap is within a couple of feet of zero, which is what the row already assumed. It stays a placeholder because no source states it and the scaling is good only to about \u00b15 ft. See OQ-001."
     },
     {
       "control_id": "CTL-102",
-      "key": "cable_saddle_drop_below_tower_top",
+      "key": "cable_saddle_drop_below_tower_top_placeholder_retired",
       "value": 0.0,
       "unit": "ft",
       "value_m": 0.0,
       "source_ids": [],
       "confidence": "D",
       "is_placeholder": true,
-      "notes": "PLACEHOLDER. Drop from the tower summit (CTL-020) to the cable centerline at the saddle. Currently zero, so the model treats the tower top as the cable line. SRC-002 draws the saddle housing below the cornice, so this is certainly non-zero; no read source dimensions it. See OQ-001."
+      "notes": "**RETIRED.** Superseded by CTL-064, which is scaled off SRC-002 at 16.5 ft. Kept at zero and referenced by nothing, so the retirement is visible in the diff rather than silent."
     },
     {
       "control_id": "CTL-103",

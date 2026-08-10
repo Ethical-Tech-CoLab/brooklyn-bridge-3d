@@ -199,6 +199,125 @@ main { display: flex; flex: 1; min-height: 0; }
 
 a { color: #86c9ef; }
 
+/* ------------------------------------------------------------------ compare */
+
+.stage { position: relative; flex: 1; min-width: 0; display: flex; }
+.stage .viewport { flex: 1; min-width: 0; }
+
+/* In overlay mode the 3D view is constrained to the reference image's aspect and centred, so the
+   model letterboxes exactly as the image does. Without this the two are scaled differently and no
+   amount of nudging will make a drawing line up. */
+.overlay-fit {
+  position: relative;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  display: flex;
+}
+.overlay-fit .viewport { flex: 1; min-width: 0; }
+
+.overlay-image {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+}
+.overlay-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+.stage.split { flex-direction: row; }
+.split-pane { position: relative; min-width: 0; overflow: hidden; display: flex; }
+.split-pane.reference { background: #0b0e13; align-items: center; justify-content: center; }
+.split-image { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+.split-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.split-pane.model { flex: 1; }
+
+.split-handle {
+  width: 8px;
+  flex: 0 0 8px;
+  cursor: col-resize;
+  background: var(--line);
+  border-left: 1px solid #0b0e13;
+  border-right: 1px solid #0b0e13;
+}
+.split-handle:hover, .split-handle:focus { background: var(--accent); outline: none; }
+
+.stage-credit {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  margin: 0;
+  padding: 0.35rem 0.6rem;
+  background: rgba(11, 14, 19, 0.82);
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.35;
+}
+
+.cmp-modes { display: flex; gap: 0.3rem; margin: 0.5rem 0; }
+.cmp-modes button {
+  flex: 1;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: 5px;
+  padding: 0.3rem 0.2rem;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+.cmp-modes button.on { border-color: var(--accent); color: var(--accent); }
+.cmp-modes button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.cmp-group h3 { margin: 0.7rem 0 0.3rem; }
+.cmp-list { list-style: none; margin: 0; padding: 0; }
+.cmp-item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 0.25rem;
+  margin-bottom: 0.2rem;
+  cursor: pointer;
+  color: var(--text);
+}
+.cmp-item:hover { border-color: var(--line); }
+.cmp-item.selected { border-color: var(--accent); }
+.cmp-item img { width: 54px; height: 38px; object-fit: cover; border-radius: 3px; flex: 0 0 auto; }
+.cmp-item-text { display: flex; flex-direction: column; min-width: 0; }
+.cmp-item-text b { font-size: 0.76rem; font-weight: 600; }
+.cmp-item-text em { font-style: normal; color: var(--muted); font-size: 0.68rem; }
+.cmp-item-text .src { color: var(--muted); font-size: 0.65rem; font-family: ui-monospace, monospace; }
+
+.cmp-active { border-top: 1px solid var(--line); margin-top: 0.6rem; padding-top: 0.5rem; }
+.cmp-slider { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: var(--muted); margin: 0.2rem 0; }
+.cmp-slider input { flex: 1; }
+.cmp-slider span { width: 3.2rem; text-align: right; font-variant-numeric: tabular-nums; color: var(--text); }
+.cmp-buttons { display: flex; gap: 0.3rem; margin: 0.5rem 0; }
+.cmp-buttons button {
+  flex: 1;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 5px;
+  padding: 0.3rem;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+.credit { color: var(--muted); font-size: 0.68rem; border-top: 1px solid var(--line); padding-top: 0.4rem; margin-top: 0.5rem; }
+.credit em { font-style: normal; display: block; }
+
+.cmp-links { list-style: none; margin: 0.3rem 0; padding: 0; }
+.cmp-links li { border-left: 2px solid var(--line); padding: 0.3rem 0 0.3rem 0.5rem; margin-bottom: 0.4rem; }
+.cmp-links a { font-size: 0.78rem; display: block; }
+.cmp-links .src { display: block; color: var(--muted); font-size: 0.68rem; }
+.cmp-links .lic { display: block; color: var(--warn); font-size: 0.66rem; }
+
 /* Below 1100px the rails collapse under the viewport rather than crushing it. */
 @media (max-width: 1100px) {
   main { flex-direction: column; }

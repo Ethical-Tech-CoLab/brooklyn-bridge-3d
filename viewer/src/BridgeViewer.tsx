@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { PROVENANCE_STYLE, type Part, type Provenance } from './model';
+import { PROVENANCE_STYLE, type Part, type Provenance, type ReferenceCamera } from './model';
 
 interface Props {
   assetUrl: string;
@@ -12,6 +12,8 @@ interface Props {
   selected: string | null;
   onSelect: (partId: string | null) => void;
   onLoaded: (info: { triangles: number }) => void;
+  pose: ReferenceCamera | null;
+  poseNonce: number;
 }
 
 const SELECTION_COLOR = new THREE.Color(0xff5c8a);
@@ -25,10 +27,13 @@ export default function BridgeViewer(props: Props) {
   const stateRef = useRef<{
     renderer: THREE.WebGLRenderer;
     scene: THREE.Scene;
-    camera: THREE.PerspectiveCamera;
+    camera: THREE.PerspectiveCamera | THREE.OrthographicCamera;
+    perspective: THREE.PerspectiveCamera;
+    orthographic: THREE.OrthographicCamera;
     controls: OrbitControls;
     root: THREE.Object3D | null;
     outlines: Map<string, THREE.LineSegments>;
+    orthoHeight: number;
     disposed: boolean;
   } | null>(null);
 
@@ -50,6 +55,11 @@ export default function BridgeViewer(props: Props) {
     const camera = new THREE.PerspectiveCamera(42, 16 / 9, 1, 20000);
     camera.position.set(-620, 340, 900);
 
+    // A second, orthographic camera. The HAER measured drawing is an orthographic elevation, so an
+    // overlay against it is only meaningful if the model can be projected the same way.
+    const ortho = new THREE.OrthographicCamera(-100, 100, 100, -100, -10000, 20000);
+    ortho.position.copy(camera.position);
+
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.target.set(0, 60, 0);
@@ -70,7 +80,18 @@ export default function BridgeViewer(props: Props) {
     const grid = new THREE.GridHelper(4000, 40, 0x2a3442, 0x1b222c);
     scene.add(grid);
 
-    stateRef.current = { renderer, scene, camera, controls, root: null, outlines: new Map(), disposed: false };
+    stateRef.current = {
+      renderer,
+      scene,
+      camera,
+      perspective: camera,
+      orthographic: ortho,
+      controls,
+      root: null,
+      outlines: new Map(),
+      orthoHeight: 300,
+      disposed: false,
+    };
 
     let frame = 0;
     const tick = () => {
@@ -87,8 +108,16 @@ export default function BridgeViewer(props: Props) {
       if (!st) return;
       const w = mount.clientWidth || 1280;
       const h = mount.clientHeight || 720;
-      st.camera.aspect = w / h;
-      st.camera.updateProjectionMatrix();
+      const aspect = w / h;
+      st.perspective.aspect = aspect;
+      st.perspective.updateProjectionMatrix();
+      const halfH = st.orthoHeight / 2;
+      const halfW = halfH * aspect;
+      st.orthographic.left = -halfW;
+      st.orthographic.right = halfW;
+      st.orthographic.top = halfH;
+      st.orthographic.bottom = -halfH;
+      st.orthographic.updateProjectionMatrix();
       st.renderer.setSize(w, h, false);
     };
     resize();
@@ -208,6 +237,53 @@ export default function BridgeViewer(props: Props) {
       );
     });
   }, [props.selected, props.parts, props.assetUrl]);
+
+  // --- apply a reference view's camera pose
+  //
+  // Poses are authored in the model's Z-up frame (GEOMETRY-CONTROL.md section 1). The GLB root
+  // carries the Z-up to Y-up rotation, so a pose must be converted the same way before it is
+  // handed to the camera: (x, y, z) -> (x, z, -y). Doing this here, once, keeps every pose in
+  // reference-views.json readable against the control document.
+  useEffect(() => {
+    const st = stateRef.current;
+    const mount = mountRef.current;
+    if (!st || !mount || !props.pose) return;
+    const pose = props.pose;
+
+    const toRender = (v: readonly number[]) => new THREE.Vector3(v[0], v[2], -v[1]);
+    const eye = toRender(pose.position);
+    const target = toRender(pose.target);
+    const up = toRender(pose.up ?? [0, 0, 1]).normalize();
+
+    const aspect = (mount.clientWidth || 1280) / (mount.clientHeight || 720);
+    let camera: THREE.PerspectiveCamera | THREE.OrthographicCamera;
+    if (pose.projection === 'orthographic') {
+      const halfH = (pose.ortho_height_m ?? 300) / 2;
+      st.orthoHeight = pose.ortho_height_m ?? 300;
+      st.orthographic.left = -halfH * aspect;
+      st.orthographic.right = halfH * aspect;
+      st.orthographic.top = halfH;
+      st.orthographic.bottom = -halfH;
+      st.orthographic.updateProjectionMatrix();
+      camera = st.orthographic;
+    } else {
+      st.perspective.fov = pose.fov_y_deg ?? 42;
+      st.perspective.aspect = aspect;
+      st.perspective.updateProjectionMatrix();
+      camera = st.perspective;
+    }
+
+    camera.position.copy(eye);
+    camera.up.copy(up);
+    camera.lookAt(target);
+
+    if (st.camera !== camera) {
+      st.camera = camera;
+      st.controls.object = camera;
+    }
+    st.controls.target.copy(target);
+    st.controls.update();
+  }, [props.pose, props.poseNonce]);
 
   // --- picking
   useEffect(() => {

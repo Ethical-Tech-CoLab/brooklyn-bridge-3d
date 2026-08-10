@@ -1,3 +1,63 @@
+export interface ReferenceCamera {
+  projection: 'perspective' | 'orthographic';
+  position: [number, number, number];
+  target: [number, number, number];
+  up: [number, number, number];
+  fov_y_deg?: number;
+  ortho_height_m?: number;
+}
+
+export interface ReferenceView {
+  id: string;
+  title: string;
+  subtitle?: string;
+  kind: 'drawing' | 'photograph';
+  image: string;
+  source_id: string;
+  credit: string;
+  license: string;
+  source_url?: string;
+  camera: ReferenceCamera;
+  pose_confidence: Confidence;
+  notes?: string;
+}
+
+export interface ReferenceLink {
+  id: string;
+  title: string;
+  publisher: string;
+  url: string;
+  license: string;
+  source_id: string;
+  notes?: string;
+}
+
+export interface ReferenceViewsDocument {
+  contract_version: string;
+  kind: 'reference-views';
+  module: string;
+  description?: string;
+  pose_disclaimer: string;
+  views: ReferenceView[];
+  /**
+   * Reference material that may NOT be redistributed. Linked out rather than embedded, so a
+   * copyrighted gallery can still be part of the review path without being copied.
+   */
+  links?: ReferenceLink[];
+}
+
+export type CompareMode = 'off' | 'overlay' | 'split';
+
+/** Manual fine-alignment applied on top of a declared pose. Never persisted into the contract. */
+export interface Nudge {
+  scale: number;
+  dx: number;
+  dy: number;
+  opacity: number;
+}
+
+export const NUDGE_IDENTITY: Nudge = { scale: 1, dx: 0, dy: 0, opacity: 0.5 };
+
 /**
  * Runtime model description. Everything the viewer knows about the bridge is loaded from
  * `public/` at runtime — the viewer carries no dimensions, no part names and no source text of its

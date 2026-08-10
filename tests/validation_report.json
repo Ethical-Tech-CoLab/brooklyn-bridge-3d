@@ -1,5 +1,5 @@
 {
-  "control_document_sha256": "95c504ae51f6f06f501469a4f5cbab9731206abdaecdd7efcf5d056bcfbb78c4",
+  "control_document_sha256": "2039df63a419984d213175dfcd300f8153a4d3ff4644b34eb9e712a36464cbf9",
   "tests_total": 42,
   "asserting": 38,
   "report_only": 4,
@@ -12,7 +12,7 @@
       "rule": "control_document_hash_matches",
       "mode": "assert",
       "passed": true,
-      "detail": "sha256 95c504ae51f6",
+      "detail": "sha256 2039df63a419",
       "value": null
     },
     {
@@ -236,8 +236,8 @@
       "rule": "ratchet_min",
       "mode": "assert",
       "passed": true,
-      "detail": "controls_sourced = 86, floor 86",
-      "value": 86
+      "detail": "controls_sourced = 87, floor 86",
+      "value": 87
     },
     {
       "suite": "geometry_regression",
@@ -296,7 +296,7 @@
       "rule": "cited_sources_registered",
       "mode": "assert",
       "passed": true,
-      "detail": "17 source IDs registered",
+      "detail": "19 source IDs registered",
       "value": null
     },
     {
@@ -336,7 +336,7 @@
       "rule": "negative_control_values",
       "mode": "assert",
       "passed": true,
-      "detail": "13 forbidden value(s) checked against 98 controls",
+      "detail": "13 forbidden value(s) checked against 99 controls",
       "value": null
     },
     {
@@ -346,7 +346,7 @@
       "rule": "negative_control_values",
       "mode": "assert",
       "passed": true,
-      "detail": "2 forbidden value(s) checked against 98 controls",
+      "detail": "2 forbidden value(s) checked against 99 controls",
       "value": null
     },
     {
@@ -416,7 +416,7 @@
       "rule": "cited_sources_are_read",
       "mode": "assert",
       "passed": true,
-      "detail": "13 read sources: SRC-001, SRC-002, SRC-003, SRC-004, SRC-005, SRC-006, SRC-008, SRC-010, SRC-011, SRC-012, SRC-013, SRC-014, SRC-015",
+      "detail": "15 read sources: SRC-001, SRC-002, SRC-003, SRC-004, SRC-005, SRC-006, SRC-008, SRC-010, SRC-011, SRC-012, SRC-013, SRC-014, SRC-015, SRC-016, SRC-017",
       "value": null
     },
     {
@@ -426,10 +426,10 @@
       "rule": "grade_census",
       "mode": "report_only",
       "passed": true,
-      "detail": "A=83, B=3, D=12",
+      "detail": "A=83, B=4, D=12",
       "value": {
         "A": 83,
-        "B": 3,
+        "B": 4,
         "D": 12
       }
     }

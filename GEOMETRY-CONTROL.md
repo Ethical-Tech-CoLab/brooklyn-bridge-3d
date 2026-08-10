@@ -83,6 +83,7 @@ Machine-parsed. Column contract: `Control ID | Key | Value | Unit | Source IDs |
 | CTL-028 | tower_arch_radius | 46 | ft | SRC-002 | A | `46' RADIUS`, annotated on the pointed arch of the Manhattan tower. |
 | CTL-029 | tower_vault_height_above_roadway | 117 | ft | SRC-001, SRC-002 | A | SRC-002: `117' VAULT`, from the roadway line to the crown. SRC-001: "Height of arches above roadway 117.0 ft." |
 | CTL-030 | tower_arch_height_above_springing | 36 | ft | SRC-002 | A | `36' ARCH HEIGHT`, measured from the springing course. **ACTIVE** for the arch derivation. See CONF-004. |
+| CTL-064 | cable_saddle_drop_below_tower_top | 16.5 | ft | SRC-002 | B | **Scaled off the drawing, not stated on it.** SRC-002 is an orthographic elevation with a dimensioned 1595.5 ft main span, which fixes 0.4824 ft per pixel on the 14484 px master. Measuring the tower cornice at y=3038 px and the cable crossing the tower at y≈3072 px gives 34 px, or 16.4 ft. Graded `B`: the drawing is grade-`A` material but the scaling is this repository's derivation, and a line on that sheet is about 10 px — 5 ft — thick, so the figure is good to roughly ±5 ft. **Replaces a 0 ft placeholder.** |
 | CTL-031 | tower_arch_rise_1877 | 35.5 | ft | SRC-004 | A | "two pointed arches which have a rise of 35 feet 6 inches". Recorded, **not used for geometry**. See CONF-004. |
 | CTL-032 | tower_summit_above_foundation | 345 | ft | SRC-004 | A | "the summit of the New York tower is 345 feet above the foundation". Recorded, **not used for geometry** — SRC-004 does not say which surface it calls the foundation, and the arithmetic against CTL-020 and CTL-034 does not close. See OQ-004. |
 | CTL-033 | caisson_depth_below_mhw_brooklyn | 44.5 | ft | SRC-001, SRC-002 | A | SRC-002: "THE BROOKLYN CAISSON RESTS AT 44'-6"". SRC-001: 44.5 ft. |
@@ -189,8 +190,8 @@ placeholder is arbitrary by definition, so there is no cost to moving it.
 
 | Control ID | Key | Value | Unit | Source IDs | Confidence | Notes |
 |---|---|---:|---|---|---|---|
-| CTL-101 | min_suspender_length_at_midspan | 3 | ft | none | D | PLACEHOLDER. The vertical gap between the truss top chord and the main cable at midspan, which is what sets the sag. Bounded above by the cable having to clear the chord and below by zero, so the derived sag is wrong by at most a few feet — but it is still not a fact. **Retired by**: John Roebling's 1867 design report, or NYCDOT record drawings. See OQ-001. |
-| CTL-102 | cable_saddle_drop_below_tower_top | 0 | ft | none | D | PLACEHOLDER. Drop from the tower summit (CTL-020) to the cable centerline at the saddle. Currently zero, so the model treats the tower top as the cable line. SRC-002 draws the saddle housing below the cornice, so this is certainly non-zero; no read source dimensions it. See OQ-001. |
+| CTL-101 | min_suspender_length_at_midspan | 3 | ft | none | D | PLACEHOLDER, and now **bounded by measurement**. Scaling SRC-002 puts the cable's lowest point at about 150 ft above mean high water, against a derived truss top chord at 152 ft — so this gap is within a couple of feet of zero, which is what the row already assumed. It stays a placeholder because no source states it and the scaling is good only to about ±5 ft. See OQ-001. |
+| CTL-102 | cable_saddle_drop_below_tower_top_placeholder_retired | 0 | ft | none | D | **RETIRED.** Superseded by CTL-064, which is scaled off SRC-002 at 16.5 ft. Kept at zero and referenced by nothing, so the retirement is visible in the diff rather than silent. |
 | CTL-103 | deck_structure_depth | 3 | ft | none | D | PLACEHOLDER. Structural depth of the roadway deck above the truss bottom chord. See OQ-013. |
 | CTL-104 | truss_offset_outer | 38 | ft | none | D | PLACEHOLDER. Transverse offset of the two outer stiffening trusses from the centerline. **Bounded**: the deck is 85 ft wide (CTL-070) so this cannot exceed 42.5 ft. See OQ-002. |
 | CTL-105 | truss_offset_inner | 15 | ft | none | D | PLACEHOLDER. Transverse offset of the two inner stiffening trusses. Bounded above by CTL-104. See OQ-002. |
@@ -267,25 +268,47 @@ different character would still fail.
 | ELV-DECK | `ELV-TRUSS-BOTTOM + deck_structure_depth` | D | Placeholder depth. |
 | ELV-PROMENADE | `ELV-DECK + promenade_elevation_above_roadway` | B | 18 ft above the roadway (CTL-097). Was a `D` placeholder at 12 ft before SRC-011 and SRC-015 were read. |
 | ELV-TOWER-TOP | `tower_height_above_mhw` | A | 276.5 ft. |
-| ELV-SADDLE | `ELV-TOWER-TOP − cable_saddle_drop_below_tower_top` | D | The drop is a placeholder, so the saddle elevation is `D` even though the tower height is `A`. Weakest link, applied honestly. |
+| ELV-SADDLE | `ELV-TOWER-TOP − cable_saddle_drop_below_tower_top` | B | 276.5 − 16.5 = 260.0 ft. CTL-064 is scaled off the drawing, so the saddle is grade `B` rather than the `D` it was when the drop was a zero placeholder. |
 | ELV-CABLE-MID | `ELV-TRUSS-TOP + min_suspender_length_at_midspan` | D | **Derived, not guessed**: the cable must meet the top chord at midspan where the suspenders reach minimum length. |
 | ELV-ANCHOR-POINT | `anchorage_roadway_front_above_mhw` | A | 89.04 ft. The cable enters the anchorage at the top of the block, which SRC-004 states is roadway level. |
 | ELV-TOWER-ROADWAY | `roadway_clearance_at_tower_above_mhw` | A | 110 ft. Used only as the datum for the tower arch, per SRC-002's own `ROADWAY` line. |
 | ELV-ARCH-CROWN | `ELV-TOWER-ROADWAY + tower_vault_height_above_roadway` | A | 227 ft. Both inputs grade `A`, both from SRC-002. |
 
-**Derived main-span sag** = `ELV-SADDLE − ELV-CABLE-MID` = 276.5 − (135 + 17 + 3) = **121.5 ft**,
-a sag ratio of 1 : 13.1.
+**Derived main-span sag** = `ELV-SADDLE − ELV-CABLE-MID` = 260.0 − (135 + 17 + 3) = **105.0 ft**,
+a sag ratio of 1 : 15.2.
 
-That sits just outside the 1 : 7 to 1 : 12 band typical of suspension bridges, which is **evidence
-that CTL-102 is wrong**: a real saddle sits below the tower summit, and every foot of saddle drop
-removes a foot of sag. The model does not adjust the placeholder to make the ratio look better. It
-records the discrepancy, grades the whole sag `D`, draws the cable dotted, and files OQ-001.
+**An earlier version of this document called that ratio evidence of an error. That judgement was
+wrong, and the correction is worth recording.** The argument was that suspension bridges sit in a
+1:7 to 1:12 band, so anything shallower indicated a bad placeholder. That band describes a *pure*
+suspension bridge, in which the cable carries everything. The Brooklyn Bridge is not one. Its
+diagonal stays are a second load path — SRC-002 annotates them "DIAGONAL STAY CABLES CARRY PART OF
+THE SUSPENDED SUPERSTRUCTURE (THE DECK LOAD)" — and a stayed system tolerates, and wants, a
+shallower cable. Applying a rule of thumb from a different structural type was the mistake, not the
+geometry.
 
-**Arc-length cross-check against CTL-042.** A parabola of 1595.5 ft span and 121.5 ft sag has an arc
-length of about 1620 ft; two side-span chords add roughly 940 ft each; the total is about 3500 ft
-against a stated 3578.5 ft per cable. The 78 ft residual is the run embedded in the two anchorages,
-about 39 ft per end. This is a **consistency check, not a determination** — cable length is only
-weakly sensitive to sag, so it cannot resolve OQ-001.
+**What the drawing actually says.** SRC-002 is orthographic with a dimensioned 1595.5 ft main span,
+which fixes the scale of the 14484 px master at 0.4824 ft per pixel. Measured on that basis:
+
+| Measured off SRC-002 | Result | Model |
+|---|---:|---:|
+| Tower cornice above MHW | 276.5 ft *(used to set the scale)* | 276.5 ft |
+| Cable crossing the tower — the saddle | ≈ 260 ft | 260.0 ft |
+| Cable's lowest point at midspan | ≈ 150 ft | 155.0 ft |
+| **Sag** | **≈ 110 ft, 1 : 14.5** | **105.0 ft, 1 : 15.2** |
+
+The model and the drawing agree to about 5 ft on a 1595 ft span, which is inside the ±5 ft the
+scaling can resolve. The saddle drop that came out of this — 16.5 ft, CTL-064 — has replaced a
+0 ft placeholder, and the sag improved from 121.5 ft to 105.0 ft in the process.
+
+**This does not close OQ-001.** A number scaled off a drawing is not a number stated by a source, and
+the cable system is still graded on CTL-101, which remains a placeholder. What changed is that the
+sag is now *bounded by a measurement* rather than resting entirely on two guesses.
+
+**Arc-length cross-check against CTL-042.** A parabola of 1595.5 ft span and 105 ft sag has an arc
+length of about 1614 ft; two side-span chords add roughly 940 ft each; the total is about 3494 ft
+against a stated 3578.5 ft per cable. The 84 ft residual is the run embedded in the two anchorages,
+about 42 ft per end. A **consistency check, not a determination** — cable length is only weakly
+sensitive to sag, which is exactly why it could not settle OQ-001 either.
 
 ### 4.3 Transverse layout (Y, meters)
 
@@ -369,7 +392,7 @@ omission — OQ-014 — not an oversight.
 
 | ID | Question | Blocks | Retired by |
 |---|---|---|---|
-| OQ-001 | What is the main cable sag at midspan, and how far below the tower summit does the saddle sit? | CTL-101, CTL-102, the entire cable system's grade | J. A. Roebling's 1867 design report; NYCDOT record drawings |
+| OQ-001 | What is the main cable sag at midspan? CTL-064 now scales the saddle drop off the drawing, but nothing *states* it, and CTL-101 is still a placeholder. | CTL-101, the cable system's grade | J. A. Roebling's 1867 design report; NYCDOT record drawings |
 | OQ-002 | Where are the four present-day stiffening trusses transversely? | CTL-104, CTL-105 | NYCDOT drawings; a dimensioned section |
 | OQ-003 | What is the present-day deck arrangement — lanes, Promenade, the 2021 bike lane? | Any deck subdivision | **Largely answered by SRC-011.** Five vehicle lanes, no trucks; a two-way protected bike lane on the Manhattan-bound roadway since September 2021; the promenade pedestrian-only since then. The **transverse position** of each lane is still unregistered, so the deck is still modelled as a single envelope. |
 | OQ-013 | How high is the promenade above the roadway, exactly, and how deep is the deck structure? | CTL-097, CTL-103 | **Half answered.** SRC-011 gives the promenade as 4 ft below the girders (CTL-096, grade `A`), but no read source gives the girder elevation, so the model uses SRC-015's 18 ft above the roadway at grade `B`. Registering a girder elevation would replace a `B` with an `A`. Promenade *widths* are now fully sourced and this question no longer covers them. |
@@ -378,7 +401,7 @@ omission — OQ-014 — not an oversight.
 | OQ-004 | How do the towers taper, and what surface does SRC-004 call "the foundation" in its 345 ft statement? | CTL-108, CTL-109, CTL-032, CONF-004 | Municipal Archives tower drawings |
 | OQ-005 | Which caisson axis is which? 168 ft and 102 ft are sourced; the assignment to transverse/longitudinal is reasoned from the tower being 140 ft × 59 ft and having to sit on it. | Caisson orientation | SRC-005 plates; Municipal Archives |
 | OQ-006 | Is the Brooklyn anchorage the same size as the New York one? SRC-004 dimensions only New York; SRC-002 labels both `129'`. | Anchorage symmetry | SRC-004's Brooklyn sections; NYCDOT |
-| OQ-007 | What carries the approach viaducts, and at what spacing? | CTL-110, CTL-111, CTL-112 | SRC-004 describes brick piers and arches but does not dimension them here |
+| OQ-007 | What carries the approach viaducts, and at what spacing? | CTL-110, CTL-111, CTL-112 | **The model's supports are the wrong *kind* of thing, not merely the wrong size.** SRC-004 describes brick piers and arches, and SRC-016's modern photography shows a masonry arcade carrying the approach, not a line of slender bents. The model draws bents because nothing dimensions the arcade. Retired by NYCDOT drawings. |
 | OQ-008 | What is the real-world azimuth and origin of the bridge axis? SRC-008's coordinate locates the LOC record, not a structural element, so it cannot verify a placement. | Georeferencing, any district integration | Survey control; LiDAR |
 | OQ-009 | What is the offset between mean high water and NAVD88 at this location? | Any geodetic vertical placement | **Answered by SRC-010**: the canonical frame declares `MHW = NAVD88 + 0.59 m` within a 4000 m radius that covers this bridge. Recorded and deliberately **not applied** — the model stays in MHW because that is the datum its sources use, and the conversion belongs at placement time. |
 | OQ-010 | How many trusses were removed in 1953, and what is the resulting section? | CTL-077 | 1953 reconstruction drawings |

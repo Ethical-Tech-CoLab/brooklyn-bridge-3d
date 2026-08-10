@@ -22,13 +22,13 @@ cd viewer; npm install; npm run dev          # http://localhost:5174
 
 | | |
 |---|---|
-| Controls | **98** — 86 sourced (64 grade `A`, 22 grade `B`), 12 placeholders |
-| Sources read | **13**, including two period primaries, the only measured drawing of any East River suspension bridge in the national record, and the bridge owner's own dimensioned promenade study |
+| Controls | **99** — 87 sourced (83 grade `A`, 4 grade `B`), 12 placeholders |
+| Sources read | **13 registered and read**, plus 4 registered as linked-only or negative controls — including two period primaries, the only measured drawing of any East River suspension bridge in the national record, and the bridge owner's own dimensioned promenade study |
 | Parts | **102** across 8 systems |
 | Provenance | 0 measured · 11 documented · 89 inferred · 2 assumed |
 | Tests | **42** — 38 asserting, 4 report-only, **0 failing** |
 | Guards proven | 12 injected defects, each confirmed to fail its guard |
-| Cross-source checks | 7, all closing — see below |
+| Cross-source checks | 7, all closing |
 | Registered conflicts | 7 — five settled with reasoning, two left open |
 | Open questions | 15 — one closed, one answered, two half-answered |
 
@@ -60,16 +60,26 @@ some width; below about 1100 px the side rails stack under the viewport.
 disappears is something reasoned rather than read, which makes it the fastest way to find where this
 model is bluffing.
 
+**Then open the Compare panel.** Eight reference views ship with the model — the HAER measured
+drawing's elevation, plan and tower detail, and five HAER photographs, all works of the U.S.
+Government. Pick one and the camera flies to its viewpoint; then **Overlay** puts it over the model
+with opacity, scale and offset controls, or **Side by side** splits the frame with a draggable
+divider. The overlay constrains the 3D view to the image's own aspect ratio, so a scaled orthographic
+drawing actually lines up instead of merely sitting on top.
+
+Copyrighted galleries — HistoricBridges.org's detail photography, Historic-Structures.com's history —
+appear under **"Linked, not copied"**. They informed the model; they are not served from the site.
+
 **Where the model is weakest — aim here rather than at the parts that are already defensible:**
 
 | What | Why it deserves attack |
 |---|---|
-| **The cable sag is wrong, and left wrong** | 121.5 ft, a ratio of 1:13.1, against the 1:7–1:12 band typical of suspension bridges. The cause is CTL-102: the saddle sits at the tower summit, which the drawing plainly contradicts. It was *not* tuned to look respectable — see the argument in [GEOMETRY-CONTROL.md](GEOMETRY-CONTROL.md) §4.2, and disagree with it if you think a fitted-then-graded-`D` value would serve a reader better. |
-| **Truss and cable transverse spacing** | CTL-104/105 put them at 38 ft and 15 ft off centreline, bounded only by the 85 ft deck. Sight down the bridge axis: this is the weakest visible geometry in the model. OQ-002. |
-| **Towers above the waterline** | The 59 × 140 ft plan is grade `A` *only at mean high water*. The taper to the top is invented, which is why `tower_*_shaft` is the one grade-`D` part in an otherwise grade-`A` system. OQ-004. |
+| **The approach supports are the wrong kind of object** | Not merely the wrong size. SRC-004 describes brick piers and arches and HistoricBridges' photography shows a masonry arcade; the model draws slender bents because nothing dimensions the arcade. The only two `ASSUMED` parts in the model. OQ-007. |
+| **Truss and cable transverse spacing** | CTL-104/105 put them at 38 ft and 15 ft off centreline, bounded only by the 85 ft deck. Sight down the bridge axis: this is the weakest visible geometry. OQ-002. |
+| **Towers above the waterline** | The 59 × 140 ft plan is grade `A` *only at mean high water*. The taper to the top is invented, which is why `tower_*_shaft` is grade `D` in an otherwise grade-`A` system. OQ-004. |
 | **Caisson orientation** | 168/172 × 102 ft is solidly sourced, but *which axis is which* is reasoning. Rotated 90° the foundations are wrong, and no current test would catch it. OQ-005. |
-| **The Brooklyn Curve is drawn straight** | Its 910 ft length and 11 ft width are grade `A`, but NYCDOT calls it a *curve* and the model has no radius for it, so it runs straight down the centreline. A known, registered omission — OQ-014 — and the most obvious remaining departure from what you would see standing on it. |
-| **The deck is one envelope** | Five vehicle lanes and a protected bike lane are sourced as *facts*, but nothing registered gives their transverse positions, so the roadway is still a single slab. OQ-003. |
+| **The Brooklyn Curve is drawn straight** | Its 910 ft length and 11 ft width are grade `A`, but NYCDOT calls it a *curve* and the model has no radius for it. A registered omission — OQ-014. |
+| **The deck is one envelope** | Five vehicle lanes and a protected bike lane are sourced as *facts*, but nothing registered gives their transverse positions. OQ-003. |
 
 **Other ways in.** Drag `mesh/glb/control_skeleton.glb` onto any glTF viewer for pure shape critique
 without the metadata. Read [SOURCE-REGISTER.md](SOURCE-REGISTER.md) for the six conflicts — four are
@@ -135,6 +145,20 @@ digit error. The model uses 276.5, records 276.6 as CTL-021, and `GRT-061` fails
 figure ever reaches the geometry.
 
 All six conflicts, including the two that remain open, are in [SOURCE-REGISTER.md](SOURCE-REGISTER.md).
+
+**A correction the model made to its own critic.** An earlier version of this README called the
+derived cable sag wrong, on the grounds that its ratio fell outside the 1:7 to 1:12 band typical of
+suspension bridges. That reasoning was itself the error: the band describes a *pure* suspension
+bridge, and this one is not — its diagonal stays are a second load path, which is the defining
+feature of the Roebling system and which lets the cable run shallower.
+
+Scaling the measured drawing settled it. SRC-002 is orthographic with a dimensioned 1595.5 ft main
+span, which fixes 0.4824 ft per pixel on the 14484 px master, and the tower cornice then falls at
+exactly the sourced 276.5 ft — so the scale checks against a number that was not used to set it.
+Measured on that basis the saddle sits **16.5 ft below the tower top**, which had been a 0 ft
+placeholder, and the sag is about 110 ft against the model's 105 ft. CTL-064 now carries that figure
+at grade `B`: the drawing is grade-`A` material, but the *scaling* is this repository's own
+derivation and a line on that sheet is 5 ft thick.
 
 ---
 

@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import BridgeViewer from './BridgeViewer';
+import ComparePanel from '../components/ComparePanel';
+import CompareStage from '../components/CompareStage';
 import ConfidenceLegend from '../components/ConfidenceLegend';
 import MetadataPanel, { type ControlRow } from '../components/MetadataPanel';
 import PartTree from '../components/PartTree';
@@ -7,11 +9,16 @@ import ProvenancePanel from '../components/ProvenancePanel';
 import Toolbar from '../components/Toolbar';
 import {
   loadJson,
+  NUDGE_IDENTITY,
   type BuildReport,
+  type CompareMode,
   type ModelConfig,
+  type Nudge,
   type Part,
   type PartsDocument,
   type Provenance,
+  type ReferenceView,
+  type ReferenceViewsDocument,
 } from './model';
 
 interface ControlsDocument {
@@ -32,6 +39,12 @@ export default function App() {
   const [hoScale, setHoScale] = useState(false);
   const [triangles, setTriangles] = useState(0);
 
+  const [refs, setRefs] = useState<ReferenceViewsDocument | null>(null);
+  const [activeRef, setActiveRef] = useState<ReferenceView | null>(null);
+  const [compareMode, setCompareMode] = useState<CompareMode>('off');
+  const [nudge, setNudge] = useState<Nudge>(NUDGE_IDENTITY);
+  const [poseNonce, setPoseNonce] = useState(0);
+
   useEffect(() => {
     (async () => {
       try {
@@ -50,6 +63,12 @@ export default function App() {
         setPartsDoc(parts);
         setReport(buildReport);
         setControlsDoc(controls);
+        // Reference imagery is optional: a module that ships none simply has no compare panel.
+        try {
+          setRefs(await loadJson<ReferenceViewsDocument>('reference-views.json'));
+        } catch {
+          setRefs(null);
+        }
       } catch (err) {
         setError(err instanceof Error ? err.message : String(err));
       }
@@ -88,6 +107,31 @@ export default function App() {
     return next;
   };
 
+  const viewport = (
+    <BridgeViewer
+      assetUrl={hoScale ? config.assets.ho : config.assets.prototype}
+      parts={partMap}
+      hiddenSystems={hiddenSystems}
+      hiddenProvenance={hiddenProvenance}
+      selected={selected}
+      onSelect={setSelected}
+      onLoaded={({ triangles: t }) => setTriangles(t)}
+      pose={activeRef?.camera ?? null}
+      poseNonce={poseNonce}
+    />
+  );
+
+  const pickRef = (view: ReferenceView | null) => {
+    setActiveRef(view);
+    setNudge(NUDGE_IDENTITY);
+    if (view) {
+      setPoseNonce((n) => n + 1);
+      if (compareMode === 'off') setCompareMode('overlay');
+    } else {
+      setCompareMode('off');
+    }
+  };
+
   return (
     <div className="app">
       <Toolbar
@@ -107,17 +151,28 @@ export default function App() {
             onToggleSystem={(system) => setHiddenSystems((s) => toggle(s, system))}
             onSelect={setSelected}
           />
+          {refs && (
+            <ComparePanel
+              doc={refs}
+              activeId={activeRef?.id ?? null}
+              mode={compareMode}
+              nudge={nudge}
+              onPick={pickRef}
+              onMode={setCompareMode}
+              onNudge={(patch) => setNudge((n) => ({ ...n, ...patch }))}
+              onRecall={() => setPoseNonce((n) => n + 1)}
+              onReset={() => setNudge(NUDGE_IDENTITY)}
+            />
+          )}
         </aside>
 
-        <BridgeViewer
-          assetUrl={hoScale ? config.assets.ho : config.assets.prototype}
-          parts={partMap}
-          hiddenSystems={hiddenSystems}
-          hiddenProvenance={hiddenProvenance}
-          selected={selected}
-          onSelect={setSelected}
-          onLoaded={({ triangles: t }) => setTriangles(t)}
-        />
+        {activeRef && compareMode !== 'off' ? (
+          <CompareStage view={activeRef} mode={compareMode} nudge={nudge}>
+            {viewport}
+          </CompareStage>
+        ) : (
+          viewport
+        )}
 
         <aside className="rail right">
           <ProvenancePanel

@@ -1,6 +1,6 @@
 {
   "ho_scale_denominator": 87.1,
-  "control_document_sha256": "95c504ae51f6f06f501469a4f5cbab9731206abdaecdd7efcf5d056bcfbb78c4",
+  "control_document_sha256": "2039df63a419984d213175dfcd300f8153a4d3ff4644b34eb9e712a36464cbf9",
   "controls": [
     {
       "prototype_m": 486.3084,
@@ -273,6 +273,19 @@
       "key": "tower_arch_height_above_springing",
       "unit": "ft",
       "confidence": "A",
+      "is_placeholder": false
+    },
+    {
+      "prototype_m": 5.0292,
+      "prototype_ft": 16.5,
+      "prototype_in": 198.0,
+      "ho_mm": 57.7,
+      "ho_in": 2.27,
+      "ho_ft": 0.19,
+      "control_id": "CTL-064",
+      "key": "cable_saddle_drop_below_tower_top",
+      "unit": "ft",
+      "confidence": "B",
       "is_placeholder": false
     },
     {
@@ -933,7 +946,7 @@
       "ho_in": 0.0,
       "ho_ft": 0.0,
       "control_id": "CTL-102",
-      "key": "cable_saddle_drop_below_tower_top",
+      "key": "cable_saddle_drop_below_tower_top_placeholder_retired",
       "unit": "ft",
       "confidence": "D",
       "is_placeholder": true
