@@ -1,0 +1,833 @@
+{
+ "tool": "photo-survey/harvest@1.0.0",
+ "generated_at": "2026-08-10T18:07:03Z",
+ "module_id": "brooklyn-bridge-3d",
+ "kept": 272,
+ "rejected_for_licence": 5,
+ "collections": {
+  "Wikimedia Commons": 272
+ },
+ "asset_hints": {
+  "obs-004d26cd1ca5": [
+   "bridge"
+  ],
+  "obs-017e43a63537": [
+   "bridge"
+  ],
+  "obs-022de6baa30b": [
+   "bridge"
+  ],
+  "obs-0352cde21777": [
+   "bridge"
+  ],
+  "obs-035bd73d1091": [
+   "bridge"
+  ],
+  "obs-03fb26ceb4a3": [
+   "bridge"
+  ],
+  "obs-062009cf1959": [
+   "bridge"
+  ],
+  "obs-0620f5dad57c": [
+   "bridge"
+  ],
+  "obs-0660122592b2": [
+   "bridge"
+  ],
+  "obs-06e68c8f7d34": [
+   "bridge"
+  ],
+  "obs-07479d202164": [
+   "bridge"
+  ],
+  "obs-079ce51a6b4e": [
+   "bridge"
+  ],
+  "obs-08ad247b5c24": [
+   "bridge"
+  ],
+  "obs-093acfef8d5f": [
+   "bridge"
+  ],
+  "obs-0b4fc73b7cb5": [
+   "bridge"
+  ],
+  "obs-0bd308432405": [
+   "bridge"
+  ],
+  "obs-0f2f33cda383": [
+   "bridge"
+  ],
+  "obs-10195e1b1b88": [
+   "bridge"
+  ],
+  "obs-1157ea1ae053": [
+   "bridge"
+  ],
+  "obs-115d4f9b4734": [
+   "bridge"
+  ],
+  "obs-11e77032b506": [
+   "bridge"
+  ],
+  "obs-124112d34c9b": [
+   "bridge"
+  ],
+  "obs-1893e7885a45": [
+   "bridge"
+  ],
+  "obs-18b27c2aaad5": [
+   "bridge"
+  ],
+  "obs-1a42c4114ab3": [
+   "bridge"
+  ],
+  "obs-1c680080bbe2": [
+   "bridge"
+  ],
+  "obs-1d05e8e1b0cd": [
+   "bridge"
+  ],
+  "obs-1d33ae813210": [
+   "bridge"
+  ],
+  "obs-1e2b68863326": [
+   "bridge"
+  ],
+  "obs-2049c44699cf": [
+   "bridge"
+  ],
+  "obs-210bb04fe2a0": [
+   "bridge"
+  ],
+  "obs-2115a4aa39f1": [
+   "bridge"
+  ],
+  "obs-213033cc048d": [
+   "bridge"
+  ],
+  "obs-224755cdbb99": [
+   "bridge"
+  ],
+  "obs-238373b19fdf": [
+   "bridge"
+  ],
+  "obs-23a7f3a5c646": [
+   "bridge"
+  ],
+  "obs-23d001d7a23d": [
+   "bridge"
+  ],
+  "obs-25bb3d070b92": [
+   "bridge"
+  ],
+  "obs-27bbf6c20eb4": [
+   "bridge"
+  ],
+  "obs-2a0433f3ab36": [
+   "bridge"
+  ],
+  "obs-2a0ee010ef28": [
+   "bridge"
+  ],
+  "obs-2a56d3ad94fe": [
+   "bridge"
+  ],
+  "obs-2a61d98a0688": [
+   "bridge"
+  ],
+  "obs-2b45e1f8360c": [
+   "bridge"
+  ],
+  "obs-2d32e36b3902": [
+   "bridge"
+  ],
+  "obs-2ddfa1ecb195": [
+   "bridge"
+  ],
+  "obs-2e44dbd009d4": [
+   "bridge"
+  ],
+  "obs-2e4d2e9dcfa8": [
+   "bridge"
+  ],
+  "obs-2e805b7e6f24": [
+   "bridge"
+  ],
+  "obs-2ef140005a4c": [
+   "bridge"
+  ],
+  "obs-306b79f83f36": [
+   "bridge"
+  ],
+  "obs-30ce1e8f48a0": [
+   "bridge"
+  ],
+  "obs-3122219764e4": [
+   "bridge"
+  ],
+  "obs-3167e27d19fe": [
+   "bridge"
+  ],
+  "obs-31b8c6c24c6f": [
+   "bridge"
+  ],
+  "obs-32954a141c0d": [
+   "bridge"
+  ],
+  "obs-33bd936ff6db": [
+   "bridge"
+  ],
+  "obs-344339150f2e": [
+   "bridge"
+  ],
+  "obs-35684512a1b5": [
+   "bridge"
+  ],
+  "obs-35a905d8136e": [
+   "bridge"
+  ],
+  "obs-35bda000b925": [
+   "bridge"
+  ],
+  "obs-35f2f94d57c9": [
+   "bridge"
+  ],
+  "obs-375056fb6da0": [
+   "bridge"
+  ],
+  "obs-38164596a216": [
+   "bridge"
+  ],
+  "obs-38480a7a63da": [
+   "bridge"
+  ],
+  "obs-385348ea3239": [
+   "bridge"
+  ],
+  "obs-3884cb5fe15b": [
+   "bridge"
+  ],
+  "obs-39a8e2a746c3": [
+   "bridge"
+  ],
+  "obs-3cae25e7b9ba": [
+   "bridge"
+  ],
+  "obs-3ce14e9f28c1": [
+   "bridge"
+  ],
+  "obs-3db63df3bb9c": [
+   "bridge"
+  ],
+  "obs-3e5e946a20b4": [
+   "bridge"
+  ],
+  "obs-3e87784215cc": [
+   "bridge"
+  ],
+  "obs-3f0f20380167": [
+   "bridge"
+  ],
+  "obs-429e01d2669c": [
+   "bridge"
+  ],
+  "obs-42b89a1312ba": [
+   "bridge"
+  ],
+  "obs-43ad37b00461": [
+   "bridge"
+  ],
+  "obs-45800f0bc489": [
+   "bridge"
+  ],
+  "obs-45a1d393faf3": [
+   "bridge"
+  ],
+  "obs-45d9fa4cfad2": [
+   "bridge"
+  ],
+  "obs-4630fb5de582": [
+   "bridge"
+  ],
+  "obs-46c11b9acb58": [
+   "bridge"
+  ],
+  "obs-47ee1c7dbccc": [
+   "bridge"
+  ],
+  "obs-4886dd8e75ba": [
+   "bridge"
+  ],
+  "obs-48a405d7ceff": [
+   "bridge"
+  ],
+  "obs-4dd936e404fa": [
+   "bridge"
+  ],
+  "obs-4e3ecc21c8b1": [
+   "bridge"
+  ],
+  "obs-4ec54d41206b": [
+   "bridge"
+  ],
+  "obs-4f0adb8316a6": [
+   "bridge"
+  ],
+  "obs-50d8cea56fd2": [
+   "bridge"
+  ],
+  "obs-52378c180df8": [
+   "bridge"
+  ],
+  "obs-533279b8dd60": [
+   "bridge"
+  ],
+  "obs-53dd458fca0e": [
+   "bridge"
+  ],
+  "obs-54203f910de2": [
+   "bridge"
+  ],
+  "obs-548c44248887": [
+   "bridge"
+  ],
+  "obs-5607dd15cc03": [
+   "bridge"
+  ],
+  "obs-5661ff83c5ec": [
+   "bridge"
+  ],
+  "obs-5840cac06790": [
+   "bridge"
+  ],
+  "obs-589a8aa2d14c": [
+   "bridge"
+  ],
+  "obs-5a46462d8ebc": [
+   "bridge"
+  ],
+  "obs-5bd0d355bdf5": [
+   "bridge"
+  ],
+  "obs-5c59b3c238ff": [
+   "bridge"
+  ],
+  "obs-5ce847baf22e": [
+   "bridge"
+  ],
+  "obs-5d56ca5ca894": [
+   "bridge"
+  ],
+  "obs-5e25c0b33d3c": [
+   "bridge"
+  ],
+  "obs-60cde5f5697e": [
+   "bridge"
+  ],
+  "obs-61f8579c778a": [
+   "bridge"
+  ],
+  "obs-62316a8e4265": [
+   "bridge"
+  ],
+  "obs-626f5ab93840": [
+   "bridge"
+  ],
+  "obs-630bea130b74": [
+   "bridge"
+  ],
+  "obs-67500d1cbd98": [
+   "bridge"
+  ],
+  "obs-676d5ee2955f": [
+   "bridge"
+  ],
+  "obs-6795435371a1": [
+   "bridge"
+  ],
+  "obs-6aafcd3c7478": [
+   "bridge"
+  ],
+  "obs-6cb998438a19": [
+   "bridge"
+  ],
+  "obs-6cc1041f38ef": [
+   "bridge"
+  ],
+  "obs-6ce8cb7e1c3c": [
+   "bridge"
+  ],
+  "obs-6e7cdec49666": [
+   "bridge"
+  ],
+  "obs-6e7ff33f06d6": [
+   "bridge"
+  ],
+  "obs-7287d52f3e7c": [
+   "bridge"
+  ],
+  "obs-74ef1a0d746d": [
+   "bridge"
+  ],
+  "obs-75173449c3ea": [
+   "bridge"
+  ],
+  "obs-7562af0ced27": [
+   "bridge"
+  ],
+  "obs-762300ffc87a": [
+   "bridge"
+  ],
+  "obs-77f805f06f86": [
+   "bridge"
+  ],
+  "obs-780c5316517c": [
+   "bridge"
+  ],
+  "obs-79671213cd3c": [
+   "bridge"
+  ],
+  "obs-7c3941245a8a": [
+   "bridge"
+  ],
+  "obs-7e24d072b979": [
+   "bridge"
+  ],
+  "obs-7f58249dd906": [
+   "bridge"
+  ],
+  "obs-8074f7c27cc0": [
+   "bridge"
+  ],
+  "obs-80cd6876f008": [
+   "bridge"
+  ],
+  "obs-82f4b242e203": [
+   "bridge"
+  ],
+  "obs-85d28a73bda3": [
+   "bridge"
+  ],
+  "obs-86b7b4311d65": [
+   "bridge"
+  ],
+  "obs-880965f89417": [
+   "bridge"
+  ],
+  "obs-888413bb4b5b": [
+   "bridge"
+  ],
+  "obs-88e23a06cb84": [
+   "bridge"
+  ],
+  "obs-89dc5f4705b1": [
+   "bridge"
+  ],
+  "obs-8b40ad740ba2": [
+   "bridge"
+  ],
+  "obs-8c04d0b21d0b": [
+   "bridge"
+  ],
+  "obs-8c6fb77dcfb7": [
+   "bridge"
+  ],
+  "obs-8d1af72d1602": [
+   "bridge"
+  ],
+  "obs-8d8f67582859": [
+   "bridge"
+  ],
+  "obs-8ee89fbdd5e3": [
+   "bridge"
+  ],
+  "obs-8f70d1ad949f": [
+   "bridge"
+  ],
+  "obs-8fc2830c1beb": [
+   "bridge"
+  ],
+  "obs-8fd9284ba0e3": [
+   "bridge"
+  ],
+  "obs-919da53eed66": [
+   "bridge"
+  ],
+  "obs-925061bf708d": [
+   "bridge"
+  ],
+  "obs-938b313b59e5": [
+   "bridge"
+  ],
+  "obs-95373084d06a": [
+   "bridge"
+  ],
+  "obs-953dfc3df33c": [
+   "bridge"
+  ],
+  "obs-978b2bbdc8d2": [
+   "bridge"
+  ],
+  "obs-9b13cdeba210": [
+   "bridge"
+  ],
+  "obs-9c59d9a1056e": [
+   "bridge"
+  ],
+  "obs-9d77391c4b57": [
+   "bridge"
+  ],
+  "obs-9e5941417eea": [
+   "bridge"
+  ],
+  "obs-9eab883744f5": [
+   "bridge"
+  ],
+  "obs-9f97f83b9eed": [
+   "bridge"
+  ],
+  "obs-a01973598cc7": [
+   "bridge"
+  ],
+  "obs-a0b5e8135c08": [
+   "bridge"
+  ],
+  "obs-a2379b08e9e0": [
+   "bridge"
+  ],
+  "obs-a2a33c877617": [
+   "bridge"
+  ],
+  "obs-a30ea2568f7c": [
+   "bridge"
+  ],
+  "obs-a6daa88c7bde": [
+   "bridge"
+  ],
+  "obs-a7fa22fef7df": [
+   "bridge"
+  ],
+  "obs-a848b9492414": [
+   "bridge"
+  ],
+  "obs-a89fc3ef8708": [
+   "bridge"
+  ],
+  "obs-a8dd45675664": [
+   "bridge"
+  ],
+  "obs-aa2c36bf2ac1": [
+   "bridge"
+  ],
+  "obs-aa8503c79178": [
+   "bridge"
+  ],
+  "obs-aafc1e07b2c3": [
+   "bridge"
+  ],
+  "obs-abc3703075f5": [
+   "bridge"
+  ],
+  "obs-ad65da740932": [
+   "bridge"
+  ],
+  "obs-af5164cee42a": [
+   "bridge"
+  ],
+  "obs-b15f31099ca1": [
+   "bridge"
+  ],
+  "obs-b2ebde289eed": [
+   "bridge"
+  ],
+  "obs-b3632fd2b40d": [
+   "bridge"
+  ],
+  "obs-b3cc9b03cf56": [
+   "bridge"
+  ],
+  "obs-b3fc7f7e4038": [
+   "bridge"
+  ],
+  "obs-b4ddf9ef3133": [
+   "bridge"
+  ],
+  "obs-b4fba3f4a7eb": [
+   "bridge"
+  ],
+  "obs-b4fbfdf13285": [
+   "bridge"
+  ],
+  "obs-b669dd97e6dc": [
+   "bridge"
+  ],
+  "obs-b6839e800282": [
+   "bridge"
+  ],
+  "obs-b73b8f75a9c5": [
+   "bridge"
+  ],
+  "obs-b759b7ab052f": [
+   "bridge"
+  ],
+  "obs-b81e3201c1e0": [
+   "bridge"
+  ],
+  "obs-b8b72e079e37": [
+   "bridge"
+  ],
+  "obs-ba2a261a17f1": [
+   "bridge"
+  ],
+  "obs-ba7b1f0216c0": [
+   "bridge"
+  ],
+  "obs-bb6013a22022": [
+   "bridge"
+  ],
+  "obs-bbab6e956c56": [
+   "bridge"
+  ],
+  "obs-bc2463ff27c9": [
+   "bridge"
+  ],
+  "obs-bc4acc326482": [
+   "bridge"
+  ],
+  "obs-bc9b28559132": [
+   "bridge"
+  ],
+  "obs-bd38dc49b0df": [
+   "bridge"
+  ],
+  "obs-bd62597f7119": [
+   "bridge"
+  ],
+  "obs-be49e67cc902": [
+   "bridge"
+  ],
+  "obs-bea22bf84a6f": [
+   "bridge"
+  ],
+  "obs-beb35633926c": [
+   "bridge"
+  ],
+  "obs-c0144d030d0a": [
+   "bridge"
+  ],
+  "obs-c1831c73add5": [
+   "bridge"
+  ],
+  "obs-c208e879f711": [
+   "bridge"
+  ],
+  "obs-c354d7830f11": [
+   "bridge"
+  ],
+  "obs-c6bb77643225": [
+   "bridge"
+  ],
+  "obs-c6dee43d60f8": [
+   "bridge"
+  ],
+  "obs-c784bf7519b5": [
+   "bridge"
+  ],
+  "obs-c96199ab9104": [
+   "bridge"
+  ],
+  "obs-c96d8a068ecd": [
+   "bridge"
+  ],
+  "obs-c99473ff78e1": [
+   "bridge"
+  ],
+  "obs-cc42a7687144": [
+   "bridge"
+  ],
+  "obs-cc97d61e0271": [
+   "bridge"
+  ],
+  "obs-ccd3e7a42319": [
+   "bridge"
+  ],
+  "obs-ce42f53c7b0e": [
+   "bridge"
+  ],
+  "obs-d0791e300817": [
+   "bridge"
+  ],
+  "obs-d2a25de445a1": [
+   "bridge"
+  ],
+  "obs-d330cd0b36a2": [
+   "bridge"
+  ],
+  "obs-d3682c216546": [
+   "bridge"
+  ],
+  "obs-d3dcddbe6ac4": [
+   "bridge"
+  ],
+  "obs-d6165073a4c6": [
+   "bridge"
+  ],
+  "obs-d66160564b38": [
+   "bridge"
+  ],
+  "obs-d69d2f080170": [
+   "bridge"
+  ],
+  "obs-d6d1df1da11a": [
+   "bridge"
+  ],
+  "obs-dfdd4f1f6ad8": [
+   "bridge"
+  ],
+  "obs-dfe9b54f33f8": [
+   "bridge"
+  ],
+  "obs-e2c1892e653a": [
+   "bridge"
+  ],
+  "obs-e3244d8ded5e": [
+   "bridge"
+  ],
+  "obs-e399ec912650": [
+   "bridge"
+  ],
+  "obs-e3b7731b9393": [
+   "bridge"
+  ],
+  "obs-e3eea2ded423": [
+   "bridge"
+  ],
+  "obs-e477a4ce95e4": [
+   "bridge"
+  ],
+  "obs-e4b0860db439": [
+   "bridge"
+  ],
+  "obs-e60edbd98dcf": [
+   "bridge"
+  ],
+  "obs-e67fd2f9fd1a": [
+   "bridge"
+  ],
+  "obs-e6f1680d6123": [
+   "bridge"
+  ],
+  "obs-e7f115ac0571": [
+   "bridge"
+  ],
+  "obs-e9b80b20f597": [
+   "bridge"
+  ],
+  "obs-eafed7727266": [
+   "bridge"
+  ],
+  "obs-eccac657301e": [
+   "bridge"
+  ],
+  "obs-ecdfcbab5b11": [
+   "bridge"
+  ],
+  "obs-ecfa9b2b170a": [
+   "bridge"
+  ],
+  "obs-ed1e688f99f1": [
+   "bridge"
+  ],
+  "obs-edbc27e7ee47": [
+   "bridge"
+  ],
+  "obs-ee029fc1e300": [
+   "bridge"
+  ],
+  "obs-ee805c108325": [
+   "bridge"
+  ],
+  "obs-f0100d5382a5": [
+   "bridge"
+  ],
+  "obs-f056b1849559": [
+   "bridge"
+  ],
+  "obs-f0ade51f7ab0": [
+   "bridge"
+  ],
+  "obs-f135f424fc83": [
+   "bridge"
+  ],
+  "obs-f3d6902230e7": [
+   "bridge"
+  ],
+  "obs-f4400c5ed1ba": [
+   "bridge"
+  ],
+  "obs-f47d3fcdbf40": [
+   "bridge"
+  ],
+  "obs-f5239e393583": [
+   "bridge"
+  ],
+  "obs-f5e74d826e7f": [
+   "bridge"
+  ],
+  "obs-f6c8dfe31996": [
+   "bridge"
+  ],
+  "obs-f7ae5ed3235e": [
+   "bridge"
+  ],
+  "obs-f7ff7f26e286": [
+   "bridge"
+  ],
+  "obs-f898a35b94f6": [
+   "bridge"
+  ],
+  "obs-f8d42db7874d": [
+   "bridge"
+  ],
+  "obs-f8efd7efb31b": [
+   "bridge"
+  ],
+  "obs-f945a4b18ed7": [
+   "bridge"
+  ],
+  "obs-f9e410d43aba": [
+   "bridge"
+  ],
+  "obs-fb0dd1a81573": [
+   "bridge"
+  ],
+  "obs-fbb6e45812fd": [
+   "bridge"
+  ],
+  "obs-fbfcd923e525": [
+   "bridge"
+  ],
+  "obs-fc61fca1549c": [
+   "bridge"
+  ],
+  "obs-fd56b980a27b": [
+   "bridge"
+  ],
+  "obs-fe301a66706a": [
+   "bridge"
+  ],
+  "obs-ff6f0a6493db": [
+   "bridge"
+  ],
+  "obs-ffe738c8407a": [
+   "bridge"
+  ]
+ },
+ "source_failures": [
+  "api.openverse.org HTTP 401",
+  "api.openverse.org HTTP 429"
+ ],
+ "note": "Only images already published under a reuse-permitting licence. Anything without an explicit licence is rejected rather than assumed. Share-alike images are marked derive_appearance: facts may be read from them, the images are not vendored. Every record is auto_screened until a person reviews it."
+}

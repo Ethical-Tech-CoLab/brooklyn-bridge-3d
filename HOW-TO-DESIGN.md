@@ -380,6 +380,27 @@ Use absolute output paths.
 changes from an explicit token as well. Set a viewport explicitly or screenshots fail with zero
 width. Detach long-running dev servers or they die with the session.
 
+**A field that cannot express "I don't know" launders ignorance rather than preventing it.** The
+value still gets written; it just stops being marked as a guess. A photo-survey contract required a
+camera position and a full RFC3339 timestamp — reasonable for a volunteer with a phone, impossible
+for an archival plate. The harvester complied by truncating free text to ten characters and
+declaring day precision on all 272 records, so `captured_at: "Taken on 2"` shipped wearing a
+confident precision badge. Make absence expressible, then make it *declared*: a position may now be
+omitted only when `position_source` says `unknown`, and a date may be as short as `1898`, with the
+stated precision cross-checked against the string. Same rule as grade `D` — the honest answer must
+have somewhere to go.
+
+**A version declared is not a version checked.** A published document claimed
+`contract_version: 1.0.0` and violated the contract six ways: invented field names, wrong types,
+fields a strict definition forbids. Nobody had lied; the tooling simply never asked, because
+declaring conformance costs nothing and validating it takes a command. If you write a document
+against a schema, validate it in CI on the way out — otherwise the version string is decoration.
+
+**A code path that only runs after a human acts is a code path that has never run.** Half of those
+violations lived in the branch that executes when a reviewer accepts a photograph, which stayed
+dormant through an entire campaign. Feed the tool a synthetic decision file and make the branch run
+once before you ship it; the first execution found an empty required array within seconds.
+
 ---
 
 ## 12. Shared contract integration

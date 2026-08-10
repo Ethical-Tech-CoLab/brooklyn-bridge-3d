@@ -148,6 +148,22 @@
       "rationale": "SRC-018 is harvested, licence-checked and entirely auto_screened: 272 photographs nobody has looked at. The register row exists and looks complete, which makes citing it by accident easy. This fails the build if any control or material rule cites it before a person has accepted a single photograph. It is also the guard that lets the corpus be committed early -- the evidence can sit in the repository without silently becoming evidence."
     },
     {
+      "id": "STT-018",
+      "title": "A photograph with no camera position says so out loud",
+      "rule": "photo_absent_position_is_declared",
+      "mode": "assert",
+      "survey": "viewer/public/photo-survey.json",
+      "rationale": "193 of the 272 records are archival or uploaded without EXIF and legitimately have no camera fix. The shared contract permits the omission only when position_source is 'unknown', so that a genuinely position-less archive plate cannot be confused with a survey that silently dropped its GPS. This asserts the distinction locally rather than trusting that whatever wrote the file got it right."
+    },
+    {
+      "id": "STT-019",
+      "title": "Stated date precision never exceeds what the timestamp carries",
+      "rule": "photo_precision_matches_timestamp",
+      "mode": "assert",
+      "survey": "viewer/public/photo-survey.json",
+      "rationale": "The first harvest truncated free text to ten characters and stamped every record 'day', so the corpus read captured_at 'Taken on 2' with a confident day-precision badge on it. Nothing caught it, because every test asked whether the model was sourced and none asked whether the sources were sane. A wrong date that announces itself is recoverable; a wrong date wearing a precision badge is not."
+    },
+    {
       "id": "STT-014",
       "title": "Census of controls by grade",
       "rule": "grade_census",

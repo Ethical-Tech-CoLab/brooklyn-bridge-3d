@@ -1,7 +1,7 @@
 {
   "control_document_sha256": "276849e29f797fa5b82f2353055e64e2d6054ae66f0cbedbc69b2850c8e3e16d",
-  "tests_total": 46,
-  "asserting": 41,
+  "tests_total": 48,
+  "asserting": 43,
   "report_only": 5,
   "failures": 0,
   "results": [
@@ -487,6 +487,26 @@
       "mode": "assert",
       "passed": true,
       "detail": "272 photographs, 0 reviewed; 0 control/material rows cite SRC-018",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-018",
+      "title": "A photograph with no camera position says so out loud",
+      "rule": "photo_absent_position_is_declared",
+      "mode": "assert",
+      "passed": true,
+      "detail": "193 of 272 photographs carry no camera position, each declared",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-019",
+      "title": "Stated date precision never exceeds what the timestamp carries",
+      "rule": "photo_precision_matches_timestamp",
+      "mode": "assert",
+      "passed": true,
+      "detail": "272 photographs dated: day=142, exact=90, unknown=3, year=37",
       "value": null
     },
     {

@@ -26,8 +26,8 @@ cd viewer; npm install; npm run dev          # http://localhost:5174
 | Sources read | **13 registered and read**, plus 4 registered as linked-only or negative controls |
 | Parts | **106** across 8 systems |
 | Provenance | 0 measured · 11 documented · 93 inferred · 2 assumed |
-| Tests | **45** — 40 asserting, 5 report-only, **0 failing** |
-| Guards proven | 13 injected defects, each confirmed to fail its guard |
+| Tests | **48** — 43 asserting, 5 report-only, **0 failing** |
+| Guards proven | 16 injected defects, each confirmed to fail its guard |
 | Cross-source checks | 8, all closing |
 | Registered conflicts | 8 — five settled with reasoning, three left open |
 | Open questions | 17 — one closed, one answered, two half-answered |

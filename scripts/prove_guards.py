@@ -129,6 +129,37 @@ def defect_cite_unreviewed_photos(ctx: vd.Ctx) -> None:
     object.__setattr__(rule, "source_ids", tuple(list(rule.source_ids) + ["SRC-018"]))
 
 
+def defect_photo_position_dropped(ctx: vd.Ctx) -> None:
+    """Lose a camera position without saying so.
+
+    The shape of a real regression: the contract lets `position` be absent, so a harvester that
+    silently stopped reading EXIF would produce a corpus that still validated. Only the paired
+    `position_source` tells a genuine archive plate apart from a survey that lost its fix.
+    """
+    ctx.photo_survey = {
+        "observations": [
+            {"observation_id": "obs-lost-gps", "position_source": "exif_gps",
+             "captured_at": "2016-06-02", "captured_precision": "day",
+             "review": {"status": "auto_screened"}},
+        ]
+    }
+
+
+def defect_photo_precision_overclaimed(ctx: vd.Ctx) -> None:
+    """Stamp day precision on a date that is not one.
+
+    This is verbatim what the first harvest shipped: Wikimedia's free-text "Taken on 2 June 2016"
+    truncated to ten characters, with `captured_precision` declared rather than derived.
+    """
+    ctx.photo_survey = {
+        "observations": [
+            {"observation_id": "obs-taken-on", "position_source": "unknown",
+             "captured_at": "Taken on 2", "captured_precision": "day",
+             "review": {"status": "auto_screened"}},
+        ]
+    }
+
+
 def defect_saddles_never_built(ctx: vd.Ctx) -> None:
     """Register the eight saddle bearings and then never model them.
 
@@ -162,6 +193,8 @@ CASES: list[tuple[str, Path, str, Callable[[vd.Ctx], None]]] = [
     ("the brief's four subway tracks get modelled", STT, "STT-008", defect_subway_track),
     ("the eight sourced saddles are registered but never built", STT, "STT-015", defect_saddles_never_built),
     ("an unreviewed photo corpus is cited for a material", STT, "STT-017", defect_cite_unreviewed_photos),
+    ("a camera position goes missing without being declared", STT, "STT-018", defect_photo_position_dropped),
+    ("scraped free text is stamped with day precision", STT, "STT-019", defect_photo_precision_overclaimed),
 ]
 
 

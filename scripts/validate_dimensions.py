@@ -64,6 +64,16 @@ class Ctx:
         self.read_sources = self._read_sources(register_text)
         self.open_questions = set(OPEN_QUESTION_RE.findall(CONTROL_DOC.read_text(encoding="utf-8")))
         self.checks = {c["id"]: c for c in self.report["derived"]["checks"]}
+        # Lets prove_guards.py inject a corrupted corpus without touching the file on disk.
+        self.photo_survey: dict[str, Any] | None = None
+
+    def survey(self, rel_path: str) -> dict[str, Any] | None:
+        if self.photo_survey is not None:
+            return self.photo_survey
+        path = REPO / rel_path
+        if not path.exists():
+            return None
+        return json.loads(path.read_text(encoding="utf-8"))
 
     @staticmethod
     def _read_sources(text: str) -> set[str]:
@@ -525,16 +535,15 @@ def _photos_not_cited(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
     looked. Citing it in that state would be the exact over-claim the register warns about, and it
     would be easy to do by accident because the source row exists and looks complete.
     """
-    survey_path = REPO / t["survey"]
+    survey = ctx.survey(t["survey"])
     sid = t["source_id"]
     citing = [c.control_id for c in ctx.model.controls.values() if sid in c.source_ids]
     citing += [r.material_id for r in ctx.model.materials if sid in r.source_ids]
 
-    if not survey_path.exists():
+    if survey is None:
         return ok(f"{sid} has no survey yet; {len(citing)} rows cite it") if not citing else bad(
             f"{sid} is cited by {', '.join(citing)} but no survey exists")
 
-    survey = json.loads(survey_path.read_text(encoding="utf-8"))
     obs = survey.get("observations", [])
     accepted = [o for o in obs if o.get("review", {}).get("status") == "accepted"]
     if not accepted and citing:
@@ -543,6 +552,76 @@ def _photos_not_cited(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
             "has been reviewed by a person -- every record is still auto_screened"
         )
     return ok(f"{len(obs)} photographs, {len(accepted)} reviewed; {len(citing)} control/material rows cite {sid}")
+
+
+@measure("photo_absent_position_is_declared")
+def _photo_position_declared(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
+    """A record without a camera position must say `position_source: unknown`.
+
+    The shared contract relaxed `position` from required so that an archival plate could be
+    represented at all. The relaxation is only safe because the absence has to be declared:
+    otherwise a survey that lost its GPS and an archive photograph that never had one become
+    indistinguishable, and the second is evidence while the first is a bug.
+    """
+    doc = ctx.survey(t["survey"])
+    if doc is None:
+        return ok("no survey to check")
+    obs = doc.get("observations", [])
+    undeclared = [        o["observation_id"] for o in obs
+        if "position" not in o and o.get("position_source") != "unknown"
+    ]
+    if undeclared:
+        return bad(
+            "%d record(s) have no position and do not declare position_source 'unknown', "
+            "e.g. %s" % (len(undeclared), ", ".join(undeclared[:3]))
+        )
+    missing = sum(1 for o in obs if "position" not in o)
+    return ok("%d of %d photographs carry no camera position, each declared" % (missing, len(obs)))
+
+
+# What each precision word promises the timestamp will contain.
+_PRECISION_MIN_LEN = {"exact": 16, "day": 10, "month": 7, "year": 4, "decade": 4}
+
+
+@measure("photo_precision_matches_timestamp")
+def _photo_precision_matches(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
+    """`captured_precision` may not promise more than `captured_at` delivers.
+
+    This is the guard for a defect that shipped: a harvester truncated Wikimedia's free-text
+    dates to ten characters and labelled all 272 records `day`, producing a corpus that read
+    `captured_at: "Taken on 2"` and looked precisely dated. Checking the two fields against each
+    other costs nothing and makes the failure loud.
+    """
+    doc = ctx.survey(t["survey"])
+    if doc is None:
+        return ok("no survey to check")
+    obs = doc.get("observations", [])
+
+    bad_rows: list[str] = []
+    for o in obs:
+        prec = o.get("captured_precision", "unknown")
+        stamp = o.get("captured_at")
+        if prec == "unknown":
+            if stamp:
+                bad_rows.append("%s has a date but calls its precision unknown" % o["observation_id"])
+            continue
+        if stamp is None:
+            bad_rows.append("%s claims %s precision with no date at all" % (o["observation_id"], prec))
+            continue
+        if not re.match(r"^\d{4}(-\d{2}(-\d{2}([T ]\d{2}:\d{2}(:\d{2})?)?)?)?s?$", stamp):
+            bad_rows.append("%s has captured_at %r, which is not a date" % (o["observation_id"], stamp))
+            continue
+        if len(stamp.rstrip("s")) < _PRECISION_MIN_LEN[prec]:
+            bad_rows.append("%s claims %s precision from %r" % (o["observation_id"], prec, stamp))
+
+    if bad_rows:
+        return bad("%d photograph date(s) over-claim precision: %s"
+                   % (len(bad_rows), "; ".join(bad_rows[:3])))
+    counts: dict[str, int] = {}
+    for o in obs:
+        counts[o.get("captured_precision", "unknown")] = counts.get(o.get("captured_precision", "unknown"), 0) + 1
+    return ok("%d photographs dated: %s" % (
+        len(obs), ", ".join("%s=%d" % kv for kv in sorted(counts.items()))))
 
 
 @measure("grade_census")
