@@ -517,6 +517,34 @@ def _must_have_geometry(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
     return ok(f"{len(t['control_ids'])} structural counts all carry geometry")
 
 
+@measure("unreviewed_photo_corpus_not_cited")
+def _photos_not_cited(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
+    """A photograph corpus may not grade anything until a person has reviewed it.
+
+    SRC-018 is harvested and licence-checked but every record is `auto_screened` -- nobody has
+    looked. Citing it in that state would be the exact over-claim the register warns about, and it
+    would be easy to do by accident because the source row exists and looks complete.
+    """
+    survey_path = REPO / t["survey"]
+    sid = t["source_id"]
+    citing = [c.control_id for c in ctx.model.controls.values() if sid in c.source_ids]
+    citing += [r.material_id for r in ctx.model.materials if sid in r.source_ids]
+
+    if not survey_path.exists():
+        return ok(f"{sid} has no survey yet; {len(citing)} rows cite it") if not citing else bad(
+            f"{sid} is cited by {', '.join(citing)} but no survey exists")
+
+    survey = json.loads(survey_path.read_text(encoding="utf-8"))
+    obs = survey.get("observations", [])
+    accepted = [o for o in obs if o.get("review", {}).get("status") == "accepted"]
+    if not accepted and citing:
+        return bad(
+            f"{sid} is cited by {', '.join(citing)} but none of its {len(obs)} photographs "
+            "has been reviewed by a person -- every record is still auto_screened"
+        )
+    return ok(f"{len(obs)} photographs, {len(accepted)} reviewed; {len(citing)} control/material rows cite {sid}")
+
+
 @measure("grade_census")
 def _grade_census(ctx: Ctx, _t: dict[str, Any]) -> dict[str, Any]:
     counts: dict[str, int] = {}

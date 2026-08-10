@@ -30,6 +30,40 @@ only in the [verification queue](#verification-queue).
 | SRC-015 | Wikipedia — Brooklyn Bridge | [en.wikipedia.org/wiki/Brooklyn_Bridge](https://en.wikipedia.org/wiki/Brooklyn_Bridge) | Tertiary encyclopaedia | CC BY-SA | **read** | B/C | Used for exactly one control: the promenade sits 18 ft above the automobile lanes (CTL-097). Its "4 ft below the girders" statement is independently confirmed grade `A` by SRC-011, which is some evidence its 18 ft is also sound — but no primary or owner document read here states it, so it stays grade `B`. Everything else it says is already covered by a better source. |
 | SRC-016 | HistoricBridges.org — Brooklyn Bridge photo galleries 3 and 4 | [gallery 3](https://historicbridges.org/bridges/browser/photosviewer.php?bridgebrowser=newyork/brooklyn/&gallerynum=3&gallerysize=2) · [gallery 4](https://historicbridges.org/bridges/browser/photosviewer.php?bridgebrowser=newyork/brooklyn/&gallerynum=4&gallerysize=2) | Modern detail photography | **© HistoricBridges.org. NOT redistributable.** | **read** — 12 full-size plates examined | B for arrangement, **never for a dimension** | The Tier B detail source the brief anticipated. **Its images are not copied into this repository and are not served from the published site**; the viewer links out to the galleries instead. What was learned from them is recorded below and in OQ-007. |
 | SRC-017 | Historic-Structures.com — The Brooklyn Bridge, New York | [historic-structures.com/ny/new_york/brooklyn-bridge](https://www.historic-structures.com/ny/new_york/brooklyn-bridge/) | Secondary narrative | © Historic-Structures.com | **read** | — | Narrative construction history. **Its illustrations carry Library of Congress digital IDs** (`570574c`, `120491p` and others), which is how the HAER plates now in `sources/photos/` were identified — and then fetched from the LOC CDN at full resolution rather than copied from here. Cites no dimension this repository does not already hold from a better source. |
+| SRC-018 | **Reviewed photograph corpus** — openly-licensed imagery, screened by a person | [sources/photos/photo-campaign.json](sources/photos/photo-campaign.json) · survey: [viewer/public/photo-survey.json](viewer/public/photo-survey.json) · review sheet: `viewer/public/review/index.html` | Crowd-sourced photography, human-reviewed | Per image; every record carries its own SPDX licence and a `usage` of `redistribute` or `derive_appearance`. Anything whose licence could not be read was **rejected, not assumed**. | **harvested — 272 observations, review pending** | **B for material and arrangement. Never for a dimension.** | Built with the shared `tools/photo-survey/` pipeline. **This is the source class that can close the questions documents could not**: what the deck and promenade surfaces are made of (MAT-009, MAT-010, both grade `D`), what actually carries the approach (OQ-007), and how the masonry above the saddle is arranged (OQ-016). See the limits below before citing it. |
+
+---
+
+## SRC-018 — what a reviewed photograph may and may not do
+
+This repository has said from Milestone 1 that *a photograph is not in the register, so it cannot
+grade a control*. SRC-018 does not overturn that. It **narrows** it, and the narrowing is worth
+stating precisely, because the temptation to over-read a good photograph is exactly what the rule
+was protecting against.
+
+**It may grade a material.** Whether a pier is granite or brick is a fact a photograph settles as
+well as a document does, and better than an absent document does. `MAT-009` (deck surfacing) and
+`MAT-010` (promenade decking) are graded `D` today for want of any source that says what the
+surfaces are — not because the answer is unknowable, but because nothing *registered* said it.
+
+**It may settle an arrangement.** OQ-007 records that the approach supports are the wrong *kind* of
+object; a photograph of the arcade answers that. OQ-016 asks how the masonry above the saddle is
+arranged; a photograph of a tower top answers that too.
+
+**It may not carry a dimension.** Without scale control in the frame, a photograph cannot measure.
+This is the line that must not move. The 85 ft deck, the 1595.5 ft span and the 276.5 ft towers come
+from a measured drawing and two period primaries, and they stay there. The category vocabulary in
+`photo-campaign.json` enforces this: every category declares what it grants, the closed set is
+`material · arrangement · existence · condition · appearance`, and **`dimension` is not in it**.
+
+**Nothing is accepted until a person has looked.** All 272 records are `auto_screened` right now,
+which is the honest state: harvested, licence-checked, and unexamined. Until the review sheet is
+worked through, SRC-018 grades nothing at all, and no control cites it.
+
+**The search coordinate is not a control.** `photo-campaign.json` carries a lat/lon to search
+around. OQ-008 records that this repository has no sourced position for the bridge axis, and
+`HOW-TO-DESIGN.md` §11 records a sibling nearly using an invented coordinate to "verify" a
+placement. A search centre must never become a position.
 
 ---
 

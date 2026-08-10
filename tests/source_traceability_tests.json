@@ -139,6 +139,15 @@
       "rationale": "Report-only: many controls are recorded purely for traceability and must NOT reach geometry, such as the superseded tower height CTL-021. But this census is how the missing saddles were found, so it stays visible."
     },
     {
+      "id": "STT-017",
+      "title": "An unreviewed photograph corpus grades nothing",
+      "rule": "unreviewed_photo_corpus_not_cited",
+      "mode": "assert",
+      "source_id": "SRC-018",
+      "survey": "viewer/public/photo-survey.json",
+      "rationale": "SRC-018 is harvested, licence-checked and entirely auto_screened: 272 photographs nobody has looked at. The register row exists and looks complete, which makes citing it by accident easy. This fails the build if any control or material rule cites it before a person has accepted a single photograph. It is also the guard that lets the corpus be committed early -- the evidence can sit in the repository without silently becoming evidence."
+    },
+    {
       "id": "STT-014",
       "title": "Census of controls by grade",
       "rule": "grade_census",

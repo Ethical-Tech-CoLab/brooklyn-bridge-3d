@@ -118,6 +118,17 @@ def defect_promenade_overlap(ctx: vd.Ctx) -> None:
     by_id["promenade_brooklyn_side_span"]["bbox_min_m"][0] -= 16.6  # back to the tower centerline
 
 
+def defect_cite_unreviewed_photos(ctx: vd.Ctx) -> None:
+    """Cite the photograph corpus for a material before anyone has reviewed it.
+
+    The tempting version of this mistake: MAT-010 grades the promenade decking D because no source
+    says what the planks are, a corpus of 272 photographs of that decking now exists, and pointing
+    the material rule at it looks like progress. It is not -- nobody has looked at them yet.
+    """
+    rule = ctx.model.materials[0]
+    object.__setattr__(rule, "source_ids", tuple(list(rule.source_ids) + ["SRC-018"]))
+
+
 def defect_saddles_never_built(ctx: vd.Ctx) -> None:
     """Register the eight saddle bearings and then never model them.
 
@@ -150,6 +161,7 @@ CASES: list[tuple[str, Path, str, Callable[[vd.Ctx], None]]] = [
     ("a control cites a source that was never read", STT, "STT-013", defect_unread_source),
     ("the brief's four subway tracks get modelled", STT, "STT-008", defect_subway_track),
     ("the eight sourced saddles are registered but never built", STT, "STT-015", defect_saddles_never_built),
+    ("an unreviewed photo corpus is cited for a material", STT, "STT-017", defect_cite_unreviewed_photos),
 ]
 
 

@@ -1,7 +1,7 @@
 {
   "control_document_sha256": "276849e29f797fa5b82f2353055e64e2d6054ae66f0cbedbc69b2850c8e3e16d",
-  "tests_total": 45,
-  "asserting": 40,
+  "tests_total": 46,
+  "asserting": 41,
   "report_only": 5,
   "failures": 0,
   "results": [
@@ -306,7 +306,7 @@
       "rule": "cited_sources_registered",
       "mode": "assert",
       "passed": true,
-      "detail": "19 source IDs registered",
+      "detail": "20 source IDs registered",
       "value": null
     },
     {
@@ -478,6 +478,16 @@
         "CTL-098",
         "CTL-099"
       ]
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-017",
+      "title": "An unreviewed photograph corpus grades nothing",
+      "rule": "unreviewed_photo_corpus_not_cited",
+      "mode": "assert",
+      "passed": true,
+      "detail": "272 photographs, 0 reviewed; 0 control/material rows cite SRC-018",
+      "value": null
     },
     {
       "suite": "source_traceability",

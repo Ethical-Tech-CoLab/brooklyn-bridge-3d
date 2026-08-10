@@ -1,0 +1,78 @@
+{
+  "module_id": "brooklyn-bridge-3d",
+  "campaign_name": "Brooklyn Bridge — material and arrangement evidence",
+  "frame_id": "nyc-harbor-enu",
+  "purpose": "Close the open questions that documents could not. This model reached 45 passing tests with 12 placeholders left, and the survivors are not dimensional gaps that a better drawing would fill -- they are questions about what things are MADE OF and how they are ARRANGED, which is exactly what a photograph settles. Every material rule for the deck, the promenade and the stairs is graded D because no registered source says what the surfaces are. OQ-007 records that the approach supports are the wrong KIND of object. OQ-016 asks how the masonry above the saddle is arranged. A person reviewing openly-licensed photographs can answer all three; no amount of re-reading the 1877 report can.",
+
+  "user_agent": "brooklyn-bridge-3d/1.0 (https://github.com/Ethical-Tech-CoLab/brooklyn-bridge-3d; openly-licensed imagery survey) Python-urllib/3.12",
+  "per_shot_limit": 60,
+
+  "area": {
+    "lat": 40.7061,
+    "lon": -73.9969,
+    "radius_m": 1200,
+    "note": "Midspan of the main span, roughly. A 1.2 km radius reaches both towers, both anchorages and the DUMBO approach. The coordinate is for SEARCH ONLY and is not a control: OQ-008 records that this repository has no sourced position for the bridge axis, and a search centre must never become one."
+  },
+  "area_informs": ["bridge"],
+
+  "categories": [
+    { "id": "masonry",    "label": "masonry",   "grants": "material",
+      "help": "Tower or anchorage stonework close enough to tell granite from limestone, and to see the coursing SRC-002 describes. Feeds MAT-002 and MAT-003." },
+    { "id": "arcade",     "label": "arcade",    "grants": "arrangement",
+      "help": "The approach viaduct from below or beside. OQ-007: the model draws slender bents, but SRC-004 describes brick piers and arches. This is the category that settles what actually carries the approach." },
+    { "id": "cornice",    "label": "cornice",   "grants": "arrangement",
+      "help": "The tower top above the saddle. OQ-016: the model opens the masonry across the cable corridor because SRC-002 says the cables pass THROUGH the towers, but nothing dimensions the opening." },
+    { "id": "saddle",     "label": "saddle",    "grants": "arrangement",
+      "help": "Where a main cable crosses a tower. Shows how much of the cable is visible above the masonry -- the thing that looked wrong in the render." },
+    { "id": "truss",      "label": "truss",     "grants": "arrangement",
+      "help": "A transverse or oblique view of the stiffening trusses. OQ-002: their spacing across the 85 ft deck is a placeholder. A photograph cannot measure it, but it can show how many there are and roughly where they sit." },
+    { "id": "cable",      "label": "cable",     "grants": "material",
+      "help": "Main cable, suspenders, diagonal stays, cable bands. Wrapping, galvanising and the stay arrangement that SRC-002 annotates." },
+    { "id": "deck",       "label": "deck",      "grants": "material",
+      "help": "The roadway surface and its framing. MAT-009 is graded D because no read source says what the wearing surface is." },
+    { "id": "promenade",  "label": "promenade", "grants": "material",
+      "help": "The walkway decking. MAT-010 is D even though every photograph shows timber, because 'wood deck' in SRC-011 is a TYPOLOGY NAME and not a materials statement. A reviewed photograph is what changes that honestly." },
+    { "id": "stair",      "label": "stair",     "grants": "existence",
+      "help": "The Washington Street stair down to DUMBO, or the Manhattan approach stair. Their location is sourced; their form is not. OQ-015." },
+    { "id": "railing",    "label": "railing",   "grants": "material",
+      "help": "Promenade railings, fencing and the balustrade. Not yet modelled at all." },
+    { "id": "lighting",   "label": "lighting",  "grants": "existence",
+      "help": "Lamp standards on the promenade. Not modelled; the brief lists them under details." },
+    { "id": "context",    "label": "context",   "grants": "appearance",
+      "help": "A good overall view that shows the bridge in its setting but settles no single component. Useful for the compare panel, weak as evidence." }
+  ],
+
+  "shots": [
+    { "subject": "bridge_overall",       "commons_category": "Brooklyn Bridge",
+      "openverse": "Brooklyn Bridge New York",                    "informs": ["bridge"] },
+    { "subject": "towers",               "commons_category": "Towers of the Brooklyn Bridge",
+      "openverse": "Brooklyn Bridge tower arches masonry",        "informs": ["tower_manhattan", "tower_brooklyn"] },
+    { "subject": "tower_tops_saddles",   "commons_category": null,
+      "openverse": "Brooklyn Bridge tower top cable saddle",      "informs": ["saddle_group_manhattan", "saddle_group_brooklyn"] },
+    { "subject": "cables_and_stays",     "commons_category": "Cables of the Brooklyn Bridge",
+      "openverse": "Brooklyn Bridge cables suspenders stays",     "informs": ["cables", "stays"] },
+    { "subject": "promenade",            "commons_category": "Brooklyn Bridge Promenade",
+      "openverse": "Brooklyn Bridge promenade boardwalk",         "informs": ["promenade_crown"] },
+    { "subject": "anchorages",           "commons_category": null,
+      "openverse": "Brooklyn Bridge anchorage masonry",           "informs": ["anchorages"] },
+    { "subject": "approach_arcade",      "commons_category": null,
+      "openverse": "Brooklyn Bridge approach arches Brooklyn",    "informs": ["approach_girder_brooklyn"] },
+    { "subject": "archway_under",        "commons_category": "Brooklyn Bridge (underside)",
+      "openverse": "under Brooklyn Bridge arch DUMBO",            "informs": ["approach_girder_brooklyn"] },
+    { "subject": "washington_street",    "commons_category": null,
+      "openverse": "Washington Street DUMBO Brooklyn Bridge stair", "informs": ["stair_brooklyn_washington_street"] },
+    { "subject": "deck_and_roadway",     "commons_category": null,
+      "openverse": "Brooklyn Bridge roadway traffic deck",        "informs": ["deck_main_span_brooklyn_half"] },
+    { "subject": "trusses",              "commons_category": null,
+      "openverse": "Brooklyn Bridge stiffening truss steel",      "informs": ["truss_outer_north_main_span"] },
+    { "subject": "construction_history", "commons_category": "Construction of the Brooklyn Bridge",
+      "openverse": "Brooklyn Bridge construction 1883",           "informs": ["bridge"] }
+  ],
+
+  "outputs": {
+    "raw": "sources/photos/photos.raw.json",
+    "decisions": "sources/photos/review-decisions.json",
+    "survey": "viewer/public/photo-survey.json",
+    "review_sheet": "viewer/public/review/index.html"
+  }
+}
