@@ -84,10 +84,40 @@ appear under **"Linked, not copied"**. They informed the model; they are not ser
 | **The tower cornice opening is reasoned** | That the masonry above the saddle cannot be solid across the cable lines follows from a grade-`A` statement; *how wide* the opening is does not. OQ-016. |
 
 **Other ways in.** Drag `mesh/glb/control_skeleton.glb` onto any glTF viewer for pure shape critique
-without the metadata. Read [SOURCE-REGISTER.md](SOURCE-REGISTER.md) for the six conflicts — four are
+without the metadata. Read [SOURCE-REGISTER.md](SOURCE-REGISTER.md) for the conflicts — most are
 settled with reasoning you are invited to dispute. And check the sources directly: the HAER measured
 drawing and both Roebling reports are committed under [sources/drawings/](sources/drawings), so every
 grade `A` number can be traced back to the sheet it came off.
+
+---
+
+## Help close the open questions — the photo review
+
+**[Open the review sheet](https://ethical-tech-colab.github.io/brooklyn-bridge-3d/review/index.html)**
+— 272 openly-licensed photographs, no install, works on a phone.
+
+Every placeholder still standing in this model is a question about **what something is made of** or
+**how it is arranged** — not a dimensional gap that a better drawing would fill. The deck and
+promenade surfaces are graded `D` because no registered source says what they are. The approach
+supports are the wrong *kind* of object. Nobody has established how the masonry above the saddle is
+arranged. A person looking at photographs settles all three; re-reading the 1877 report settles none
+of them.
+
+So: tick every category a photograph can actually inform, `skip` the rest, press **Save**, and drop
+the downloaded `review-decisions.json` into [sources/photos/](sources/photos). The legend names the
+open question behind each category, so a tick answers something specific.
+
+Two limits, enforced rather than merely stated:
+
+- **A photograph cannot carry a dimension.** Without scale control in the frame it cannot measure.
+  The category vocabulary's closed grant set is `material · arrangement · existence · condition ·
+  appearance`, and `dimension` is deliberately not in it.
+- **Nothing is evidence until someone looks.** All 272 records are `auto_screened` today, so SRC-018
+  grades nothing, and `STT-017` fails the build if any control or material rule cites it before a
+  single photograph has been accepted.
+
+Built with the shared [`tools/photo-survey/`](https://github.com/Ethical-Tech-CoLab/digital-3d-shared-contracts/tree/main/tools/photo-survey)
+pipeline, so any structure in this programme can run the same campaign.
 
 ---
 
