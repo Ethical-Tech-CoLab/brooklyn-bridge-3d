@@ -46,6 +46,21 @@ So there is no duplicate or stale viewer to remove. There is, however, a **real 
 | Artifact | Manhattan | Brooklyn (here) | Note |
 |---|---|---|---|
 | `frames/nyc-harbor-enu.json` | ✅ | ✅ | **Copied byte-for-byte and hash-verified by `GRT-080`.** |
+
+**A trap worth knowing about, because it cost a CI run.** "Copy byte-for-byte and verify by hash"
+has a platform dimension that is easy to miss: **git's line-ending translation is a
+re-serialisation.** With no `.gitattributes`, the frame checks out CRLF on Windows and LF on Linux,
+the two hash differently, and `GRT-080` passes on a developer's machine while failing in CI. The
+canonical bytes are the LF ones, because that is what git stores and what every non-Windows clone
+receives.
+
+The same defect ran deeper: Python's `write_text` uses `os.linesep`, so **the build itself emitted
+CRLF on Windows**, which would have made every generated artifact differ by platform and broken the
+byte-identity gate permanently. Both are fixed — `.gitattributes` pins `eol=lf`, and every text
+writer in `scripts/` now passes `newline="\n"` explicitly.
+
+| Artifact | Manhattan | Brooklyn (here) | Note |
+|---|---|---|---|
 | `bridge-manifest.json` (module manifest) | ✅ | ❌ | Milestone 5 |
 | `bridge/asset-registry.json` | ✅ | ❌ | Milestone 5 |
 | `bridge/lod.json` (LOD ladder) | ✅ | ❌ | Milestone 5 |

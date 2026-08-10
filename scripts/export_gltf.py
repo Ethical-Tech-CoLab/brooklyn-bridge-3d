@@ -302,7 +302,10 @@ class GltfBuilder:
         gltf = self.to_gltf_dict()
         gltf["buffers"][0]["uri"] = bin_path.name
         bin_path.write_bytes(bytes(self._buffer))
-        path.write_text(json.dumps(gltf, indent=2), encoding="utf-8")
+        # newline="\n": the Windows default would translate \n to \r\n and make this file differ
+        # byte-for-byte between platforms.
+        with path.open("w", encoding="utf-8", newline="\n") as fh:
+            fh.write(json.dumps(gltf, indent=2))
         return path
 
 

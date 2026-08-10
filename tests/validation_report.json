@@ -276,7 +276,7 @@
       "rule": "file_sha256",
       "mode": "assert",
       "passed": true,
-      "detail": "viewer/public/frames/nyc-harbor-enu.json matches the canonical frame (d23ed470107c8583)",
+      "detail": "viewer/public/frames/nyc-harbor-enu.json matches the canonical frame (84b0f929bcd280e0)",
       "value": null
     },
     {

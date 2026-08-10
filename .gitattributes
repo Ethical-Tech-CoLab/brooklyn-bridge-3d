@@ -1,0 +1,31 @@
+# Line endings are part of the bytes, and this repository makes byte-level claims.
+#
+# GRT-080 asserts that viewer/public/frames/nyc-harbor-enu.json is a byte-for-byte copy of the
+# canonical frame published by digital-3d-shared-contracts. Without this file, git checks that JSON
+# out with CRLF on Windows and LF on Linux, the two hash differently, and the test passes on a
+# developer's machine while failing in CI -- which is exactly what happened on the first Pages run.
+# Line-ending translation IS a re-serialisation, and the contract says do not re-serialise.
+#
+# Everything textual is therefore normalised to LF in the repository AND in the working tree, so the
+# hash is the same everywhere and a rebuild on any platform is byte-identical to what is committed.
+
+* text=auto eol=lf
+
+# Generated model artifacts: text, but never hand-edited. Same LF rule applies so that a rebuild
+# produces no spurious diff.
+*.json text eol=lf
+*.gltf text eol=lf
+
+# Binaries: never translated, never diffed as text.
+*.glb binary
+*.bin binary
+*.pdf binary
+*.tif binary
+*.tiff binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.avif binary
+*.ply binary
+*.blend binary
+*.step binary

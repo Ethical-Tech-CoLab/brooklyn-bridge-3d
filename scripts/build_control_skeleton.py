@@ -1577,7 +1577,11 @@ def _material_color(material: str, provenance: str) -> tuple[float, float, float
 
 def _write_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    # newline="\n" explicitly: the default on Windows translates \n to \r\n, which would make the
+    # build output differ byte-for-byte between platforms and break both the CI byte-identity gate
+    # and GRT-080's hash of the canonical frame.
+    with path.open("w", encoding="utf-8", newline="\n") as fh:
+        fh.write(json.dumps(payload, indent=2) + "\n")
 
 
 def main() -> int:

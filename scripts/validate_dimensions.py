@@ -549,7 +549,10 @@ def run() -> tuple[int, dict[str, Any]]:
         "failures": failures,
         "results": results,
     }
-    REPORT_OUT.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    # newline="\n" so the report is byte-identical on every platform; see _write_json in
+    # build_control_skeleton.py.
+    with REPORT_OUT.open("w", encoding="utf-8", newline="\n") as fh:
+        fh.write(json.dumps(summary, indent=2) + "\n")
     print("\n" + "-" * 78)
     print(
         f"{summary['tests_total']} tests: {summary['asserting']} asserting, "

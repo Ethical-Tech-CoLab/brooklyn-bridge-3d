@@ -228,7 +228,7 @@
       "title": "The canonical scene frame is a byte-for-byte copy of the shared contract",
       "rule": "file_sha256",
       "path": "viewer/public/frames/nyc-harbor-enu.json",
-      "expected_sha256": "d23ed470107c8583f7b9003803083a692397c8a191b07dc54bc99b9c59889d66",
+      "expected_sha256": "84b0f929bcd280e06010e7c7cd90424692a64cdd45667fc1262366db4afd969d",
       "mode": "assert",
       "rationale": "HOW-TO-DESIGN.md section 12: copy the canonical frame byte-for-byte and verify by hash. Do not re-serialise it, and do not edit the anchor. The same bytes are carried by digital-3d-shared-contracts, manhattan-bridge-3d and dumbo-district-3d; a re-serialised copy would drift silently and only surface as a placement disagreement much later."
     },
