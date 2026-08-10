@@ -401,6 +401,21 @@ violations lived in the branch that executes when a reviewer accepts a photograp
 dormant through an entire campaign. Feed the tool a synthetic decision file and make the branch run
 once before you ship it; the first execution found an empty required array within seconds.
 
+**Crowd-sourced photography is biased toward the view worth photographing, which is systematically
+not the view your model is missing.** A campaign of 272 licence-checked images produced a decisive
+answer on the promenade decking and the roadway surface — both photographed constantly — and
+returned *zero* frames of the approach arcade and zero of the staircase, which were the two
+categories it was built to close. People shoot the bridge from the promenade and the waterfront,
+not the viaduct they drive under. Plan for this: put the categories you actually need in the
+campaign so the gap is measured rather than assumed, and treat an empty category as a finding worth
+recording. It tells you to go and get the drawings instead of harvesting more.
+
+**Re-arm a guard when the world changes underneath it.** A guard forbidding citation of an
+unreviewed photo corpus stopped being able to fail the moment the corpus was reviewed — the
+injected defect had become a legitimate act. Nothing alerted us except a defect-injection harness
+that reported the guard as vacuous. A guard that cannot fail is worse than no guard, because the
+roster still counts it. If you assert that your guards have teeth, assert it every build.
+
 ---
 
 ## 12. Shared contract integration

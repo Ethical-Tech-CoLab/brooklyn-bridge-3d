@@ -624,6 +624,25 @@ def _photo_precision_matches(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
         len(obs), ", ".join("%s=%d" % kv for kv in sorted(counts.items()))))
 
 
+@measure("photo_source_grades_no_control")
+def _photo_grades_no_control(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
+    """A photographic source may appear on a material rule, never on a dimensional control.
+
+    The register has said this since the corpus existed, but saying it cost nothing while nothing
+    could cite SRC-018. Now that the review has happened and two material rules legitimately do,
+    the boundary is live and needs enforcing rather than asserting.
+    """
+    sid = t["source_id"]
+    controls = sorted(c.control_id for c in ctx.model.controls.values() if sid in c.source_ids)
+    materials = sorted(r.material_id for r in ctx.model.materials if sid in r.source_ids)
+    if controls:
+        return bad(
+            f"{sid} is a photographic source and cannot carry a dimension, but it is cited by "
+            f"control(s) {', '.join(controls)}"
+        )
+    return ok(f"{sid} grades {len(materials)} material rule(s) ({', '.join(materials)}) and no control")
+
+
 @measure("grade_census")
 def _grade_census(ctx: Ctx, _t: dict[str, Any]) -> dict[str, Any]:
     counts: dict[str, int] = {}

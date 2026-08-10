@@ -30,7 +30,7 @@ only in the [verification queue](#verification-queue).
 | SRC-015 | Wikipedia — Brooklyn Bridge | [en.wikipedia.org/wiki/Brooklyn_Bridge](https://en.wikipedia.org/wiki/Brooklyn_Bridge) | Tertiary encyclopaedia | CC BY-SA | **read** | B/C | Used for exactly one control: the promenade sits 18 ft above the automobile lanes (CTL-097). Its "4 ft below the girders" statement is independently confirmed grade `A` by SRC-011, which is some evidence its 18 ft is also sound — but no primary or owner document read here states it, so it stays grade `B`. Everything else it says is already covered by a better source. |
 | SRC-016 | HistoricBridges.org — Brooklyn Bridge photo galleries 3 and 4 | [gallery 3](https://historicbridges.org/bridges/browser/photosviewer.php?bridgebrowser=newyork/brooklyn/&gallerynum=3&gallerysize=2) · [gallery 4](https://historicbridges.org/bridges/browser/photosviewer.php?bridgebrowser=newyork/brooklyn/&gallerynum=4&gallerysize=2) | Modern detail photography | **© HistoricBridges.org. NOT redistributable.** | **read** — 12 full-size plates examined | B for arrangement, **never for a dimension** | The Tier B detail source the brief anticipated. **Its images are not copied into this repository and are not served from the published site**; the viewer links out to the galleries instead. What was learned from them is recorded below and in OQ-007. |
 | SRC-017 | Historic-Structures.com — The Brooklyn Bridge, New York | [historic-structures.com/ny/new_york/brooklyn-bridge](https://www.historic-structures.com/ny/new_york/brooklyn-bridge/) | Secondary narrative | © Historic-Structures.com | **read** | — | Narrative construction history. **Its illustrations carry Library of Congress digital IDs** (`570574c`, `120491p` and others), which is how the HAER plates now in `sources/photos/` were identified — and then fetched from the LOC CDN at full resolution rather than copied from here. Cites no dimension this repository does not already hold from a better source. |
-| SRC-018 | **Reviewed photograph corpus** — openly-licensed imagery, screened by a person | [sources/photos/photo-campaign.json](sources/photos/photo-campaign.json) · survey: [viewer/public/photo-survey.json](viewer/public/photo-survey.json) · review sheet: `viewer/public/review/index.html` | Crowd-sourced photography, human-reviewed | Per image; every record carries its own SPDX licence and a `usage` of `redistribute` or `derive_appearance`. Anything whose licence could not be read was **rejected, not assumed**. | **harvested — 272 observations, review pending** | **B for material and arrangement. Never for a dimension.** | Built with the shared `tools/photo-survey/` pipeline. **This is the source class that can close the questions documents could not**: what the deck and promenade surfaces are made of (MAT-009, MAT-010, both grade `D`), what actually carries the approach (OQ-007), and how the masonry above the saddle is arranged (OQ-016). See the limits below before citing it. |
+| SRC-018 | **Reviewed photograph corpus** — openly-licensed imagery, screened by a person | [sources/photos/photo-campaign.json](sources/photos/photo-campaign.json) · survey: [viewer/public/photo-survey.json](viewer/public/photo-survey.json) · review sheet: `viewer/public/review/index.html` | Crowd-sourced photography, human-reviewed | Per image; every record carries its own SPDX licence and a `usage` of `redistribute` or `derive_appearance`. Anything whose licence could not be read was **rejected, not assumed**. | **read** — reviewed by the repository owner: 252 of 272 decided, **100 accepted, 152 refused, 20 undecided** | **B for material and arrangement. Never for a dimension.** | Built with the shared `tools/photo-survey/` pipeline. Closed MAT-009 (deck → asphalt) and MAT-010 (promenade → timber), both `D` → `B`, and confirmed the tower-top arrangement behind OQ-016. **Did not close OQ-007 or OQ-015**: the `arcade` and `stair` categories drew zero ticks in 252 decisions. See the limits below before citing it. |
 
 ---
 
@@ -43,12 +43,19 @@ was protecting against.
 
 **It may grade a material.** Whether a pier is granite or brick is a fact a photograph settles as
 well as a document does, and better than an absent document does. `MAT-009` (deck surfacing) and
-`MAT-010` (promenade decking) are graded `D` today for want of any source that says what the
-surfaces are — not because the answer is unknowable, but because nothing *registered* said it.
+`MAT-010` (promenade decking) were graded `D` for want of any source that said what the surfaces
+are — not because the answer was unknowable, but because nothing *registered* said it. Both now
+cite SRC-018 at grade `B`: asphalt and timber respectively, read off eighteen and twelve accepted
+photographs. `B` rather than `A` because a reviewer observed a surface, which is not a
+specification, and a wearing course is renewed on a maintenance cycle rather than being an
+as-built fact.
 
 **It may settle an arrangement.** OQ-007 records that the approach supports are the wrong *kind* of
 object; a photograph of the arcade answers that. OQ-016 asks how the masonry above the saddle is
-arranged; a photograph of a tower top answers that too.
+arranged; a photograph of a tower top answers that too — and fourteen accepted `cornice` frames
+did, confirming the raised corner blocks with the cables passing over saddles in the gaps between
+them. Note what that is worth: it *confirmed an inference the model had already made*, changing no
+geometry. Evidence that agrees with you is still evidence, but it is the cheapest kind.
 
 **It may not carry a dimension.** Without scale control in the frame, a photograph cannot measure.
 This is the line that must not move. The 85 ft deck, the 1595.5 ft span and the 276.5 ft towers come
@@ -56,9 +63,19 @@ from a measured drawing and two period primaries, and they stay there. The categ
 `photo-campaign.json` enforces this: every category declares what it grants, the closed set is
 `material · arrangement · existence · condition · appearance`, and **`dimension` is not in it**.
 
-**Nothing is accepted until a person has looked.** All 272 records are `auto_screened` right now,
-which is the honest state: harvested, licence-checked, and unexamined. Until the review sheet is
-worked through, SRC-018 grades nothing at all, and no control cites it.
+**Nothing is accepted until a person has looked** — and someone now has. 252 of the 272 records were
+decided: **100 accepted, 152 refused, 20 left undecided**. A 60% refusal rate is the number that
+makes the rest trustworthy; a reviewer who kept everything would have told us nothing.
+
+**The two categories that mattered most came back empty.** The campaign asked for `arcade` (OQ-007,
+the model's largest known error) and `stair` (OQ-015). Across 252 decisions the reviewer tagged
+each of them **zero** times. The photographs do not exist in an openly-licensed corpus, because
+people photograph this bridge from the promenade and the waterfront — not the viaduct they drive
+under, and not the staircase they came up. That is a real finding and it is recorded rather than
+buried: crowd-sourced imagery is biased toward the view that is worth photographing, which is
+systematically *not* the view an engineering model is missing. Retiring OQ-007 and OQ-015 needs the
+NYCDOT drawings or a targeted street-level collection, and no amount of further harvesting will
+substitute.
 
 **The search coordinate is not a control.** `photo-campaign.json` carries a lat/lon to search
 around. OQ-008 records that this repository has no sourced position for the bridge axis, and

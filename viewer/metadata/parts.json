@@ -1,5 +1,5 @@
 {
-  "control_document_sha256": "276849e29f797fa5b82f2353055e64e2d6054ae66f0cbedbc69b2850c8e3e16d",
+  "control_document_sha256": "b02cb55085dd0d5a6110ce3196ef6ce7ebe684f97724ec5a4459055c9474ef9c",
   "generator": "build_control_skeleton.py@1.0.0",
   "vertical_datum": "mean high water (MHW)",
   "units": "meters",
@@ -1044,9 +1044,9 @@
       ],
       "confidence": "D",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "asphalt",
       "material_id": "MAT-009",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-003",
         "OQ-013"
@@ -1083,9 +1083,9 @@
       ],
       "confidence": "D",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "asphalt",
       "material_id": "MAT-009",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-003",
         "OQ-013"
@@ -1123,9 +1123,9 @@
       ],
       "confidence": "D",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "asphalt",
       "material_id": "MAT-009",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-003",
         "OQ-013"
@@ -1162,9 +1162,9 @@
       ],
       "confidence": "D",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "asphalt",
       "material_id": "MAT-009",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-003",
         "OQ-013"
@@ -1201,9 +1201,9 @@
       ],
       "confidence": "D",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "asphalt",
       "material_id": "MAT-009",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-003",
         "OQ-013"
@@ -1241,9 +1241,9 @@
       ],
       "confidence": "D",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "asphalt",
       "material_id": "MAT-009",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-003",
         "OQ-013"
@@ -1280,9 +1280,9 @@
       ],
       "confidence": "D",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "asphalt",
       "material_id": "MAT-009",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-003",
         "OQ-013"
@@ -1320,9 +1320,9 @@
       ],
       "confidence": "D",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "asphalt",
       "material_id": "MAT-009",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-003",
         "OQ-013"
@@ -1359,9 +1359,9 @@
       ],
       "confidence": "B",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "timber",
       "material_id": "MAT-010",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-013"
       ],
@@ -1397,9 +1397,9 @@
       ],
       "confidence": "B",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "timber",
       "material_id": "MAT-010",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-013"
       ],
@@ -1435,9 +1435,9 @@
       ],
       "confidence": "B",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "timber",
       "material_id": "MAT-010",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [],
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
@@ -1471,9 +1471,9 @@
       ],
       "confidence": "B",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "timber",
       "material_id": "MAT-010",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-013"
       ],
@@ -1509,9 +1509,9 @@
       ],
       "confidence": "B",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "timber",
       "material_id": "MAT-010",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [],
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
@@ -1545,9 +1545,9 @@
       ],
       "confidence": "B",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "timber",
       "material_id": "MAT-010",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-013"
       ],
@@ -1583,9 +1583,9 @@
       ],
       "confidence": "B",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "timber",
       "material_id": "MAT-010",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [],
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
@@ -1619,9 +1619,9 @@
       ],
       "confidence": "B",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "timber",
       "material_id": "MAT-010",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-013"
       ],
@@ -1657,9 +1657,9 @@
       ],
       "confidence": "B",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "timber",
       "material_id": "MAT-010",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-013"
       ],
@@ -1695,9 +1695,9 @@
       ],
       "confidence": "B",
       "provenance": "INFERRED",
-      "material": "roadway_surface",
+      "material": "timber",
       "material_id": "MAT-010",
-      "material_confidence": "D",
+      "material_confidence": "B",
       "open_questions": [
         "OQ-014"
       ],

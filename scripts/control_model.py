@@ -36,6 +36,12 @@ ALLOWED_MATERIALS = (
     "concrete",
     "steel_structural",
     "steel_wire",
+    # `asphalt` and `timber` are deliberately *narrower* than `roadway_surface`, and a rule may
+    # only use them once a source says which one it is. The generic stays in the vocabulary for
+    # exactly that reason: a surface nobody has identified must have somewhere honest to sit,
+    # rather than being forced to pick one and quietly become a claim.
+    "asphalt",
+    "timber",
     "roadway_surface",
     "reference",
 )

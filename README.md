@@ -26,8 +26,8 @@ cd viewer; npm install; npm run dev          # http://localhost:5174
 | Sources read | **13 registered and read**, plus 4 registered as linked-only or negative controls |
 | Parts | **106** across 8 systems |
 | Provenance | 0 measured · 11 documented · 93 inferred · 2 assumed |
-| Tests | **48** — 43 asserting, 5 report-only, **0 failing** |
-| Guards proven | 16 injected defects, each confirmed to fail its guard |
+| Tests | **49** — 44 asserting, 5 report-only, **0 failing** |
+| Guards proven | 17 injected defects, each confirmed to fail its guard |
 | Cross-source checks | 8, all closing |
 | Registered conflicts | 8 — five settled with reasoning, three left open |
 | Open questions | 17 — one closed, one answered, two half-answered |
@@ -91,30 +91,43 @@ grade `A` number can be traced back to the sheet it came off.
 
 ---
 
-## Help close the open questions — the photo review
+## What the photo review settled — and what it did not
 
-**[Open the review sheet](https://ethical-tech-colab.github.io/brooklyn-bridge-3d/review/index.html)**
-— 272 openly-licensed photographs, no install, works on a phone.
+**[The review sheet](https://ethical-tech-colab.github.io/brooklyn-bridge-3d/review/index.html)** —
+272 openly-licensed photographs. 252 have now been decided: **100 accepted, 152 refused, 20 left
+open.** The 60% refusal rate is what makes the rest worth anything; a reviewer who kept everything
+would have told us nothing.
 
-Every placeholder still standing in this model is a question about **what something is made of** or
-**how it is arranged** — not a dimensional gap that a better drawing would fill. The deck and
-promenade surfaces are graded `D` because no registered source says what they are. The approach
-supports are the wrong *kind* of object. Nobody has established how the masonry above the saddle is
-arranged. A person looking at photographs settles all three; re-reading the 1877 report settles none
-of them.
+**Two placeholders retired.** `MAT-009` and `MAT-010` were graded `D` — not because the answer was
+unknowable, but because nothing *registered* said it. Eighteen accepted `deck` frames show
+bituminous pavement; twelve accepted `promenade` frames show transverse timber planking. Both now
+cite SRC-018 at grade `B`, and the model renders the walkway in timber instead of asphalt grey. `B`
+rather than `A`: a reviewer observed a surface, which is not a specification, and a wearing course
+is renewed on a maintenance cycle rather than being an as-built fact.
 
-So: tick every category a photograph can actually inform, `skip` the rest, press **Save**, and drop
-the downloaded `review-decisions.json` into [sources/photos/](sources/photos). The legend names the
-open question behind each category, so a tick answers something specific.
+**One inference confirmed.** Fourteen `cornice` frames show the tower top exactly as the model
+builds it — raised blocks at the four corners, outboard of the outer cables, masonry stepping down
+between them so each cable passes over a saddle in the gap. No geometry changed. Evidence that
+agrees with you is still evidence, but it is the cheapest kind.
 
-Two limits, enforced rather than merely stated:
+**The two categories that mattered most came back empty.** The campaign asked for `arcade`
+(`OQ-007`, the largest known error in this model) and `stair` (`OQ-015`). Across 252 decisions each
+was ticked **zero** times. People photograph this bridge from the promenade and the waterfront —
+not the viaduct they drive under, and not the staircase they came up. **Crowd-sourced imagery is
+biased toward the view worth photographing, which is systematically not the view an engineering
+model is missing.** That is the most useful thing the campaign produced, and it argues for the
+NYCDOT drawings rather than for more harvesting.
 
-- **A photograph cannot carry a dimension.** Without scale control in the frame it cannot measure.
-  The category vocabulary's closed grant set is `material · arrangement · existence · condition ·
-  appearance`, and `dimension` is deliberately not in it.
-- **Nothing is evidence until someone looks.** All 272 records are `auto_screened` today, so SRC-018
-  grades nothing, and `STT-017` fails the build if any control or material rule cites it before a
-  single photograph has been accepted.
+Two limits stayed enforced throughout, in code rather than in prose:
+
+- **A photograph cannot carry a dimension.** The grant vocabulary is closed to `material ·
+  arrangement · existence · condition · appearance`; `dimension` is absent. `STT-020` now fails the
+  build if SRC-018 ever appears on a dimensional control — a boundary that cost nothing to assert
+  while the corpus was uncitable, and needed enforcing the moment it wasn't.
+- **Nothing was evidence until someone looked.** `STT-017` blocked any citation of SRC-018 until a
+  photograph had been accepted. Re-arming that guard afterwards is itself recorded: the injected
+  defect had quietly become legitimate, so the guard could no longer fail, and a guard that cannot
+  fail is worse than no guard because the roster still counts it.
 
 Built with the shared [`tools/photo-survey/`](https://github.com/Ethical-Tech-CoLab/digital-3d-shared-contracts/tree/main/tools/photo-survey)
 pipeline, so any structure in this programme can run the same campaign.

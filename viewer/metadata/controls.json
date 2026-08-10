@@ -1,5 +1,5 @@
 {
-  "control_document_sha256": "276849e29f797fa5b82f2353055e64e2d6054ae66f0cbedbc69b2850c8e3e16d",
+  "control_document_sha256": "b02cb55085dd0d5a6110ce3196ef6ce7ebe684f97724ec5a4459055c9474ef9c",
   "controls": [
     {
       "control_id": "CTL-001",
@@ -1388,18 +1388,22 @@
     {
       "material_id": "MAT-009",
       "pattern": "deck_*",
-      "material": "roadway_surface",
-      "source_ids": [],
-      "confidence": "D",
-      "notes": "No read source states the present wearing surface. Graded `D` deliberately; **this does not lower the geometry grade of any deck part**."
+      "material": "asphalt",
+      "source_ids": [
+        "SRC-018"
+      ],
+      "confidence": "B",
+      "notes": "Was `roadway_surface`/`D`. Eighteen photographs accepted in the SRC-018 review are tagged `deck`, and the roadway reads unambiguously as bituminous pavement with painted lane markings in every one \u2014 including driver's-eye views on the bridge proper. `B`, not `A`: a reviewer observed a surface, which is not the same as a specification stating one, and a wearing course is renewed on a maintenance cycle rather than being an as-built fact."
     },
     {
       "material_id": "MAT-010",
       "pattern": "promenade_*",
-      "material": "roadway_surface",
-      "source_ids": [],
-      "confidence": "D",
-      "notes": "The Promenade decking is famously timber, and SRC-011 does call its sections \"wood deck\" \u2014 but that is a *typology name*, not a materials statement, and reading it as one would be exactly the over-claim this axis exists to prevent. Stays `D` until a source says what the planks are."
+      "material": "timber",
+      "source_ids": [
+        "SRC-018"
+      ],
+      "confidence": "B",
+      "notes": "Was `roadway_surface`/`D`, on the grounds that SRC-011's \"wood deck\" is a *typology name* and reading it as a materials statement would be the exact over-claim this axis exists to prevent. That reasoning was right and is now moot: twelve accepted photographs show transverse timber planking directly, so the claim rests on the planks and not on the label. This is the placeholder the photo campaign was built to retire."
     },
     {
       "material_id": "MAT-011",
@@ -1425,7 +1429,7 @@
       "material": "steel_structural",
       "source_ids": [],
       "confidence": "D",
-      "notes": "The staircases exist and are located (SRC-011 puts the Brooklyn one in the Brooklyn Curve; SRC-012 and SRC-013 name the streets; SRC-014 is direct testimony). Nothing read says what they are made of."
+      "notes": "The staircases exist and are located (SRC-011 puts the Brooklyn one in the Brooklyn Curve; SRC-012 and SRC-013 name the streets; SRC-014 is direct testimony). Nothing read says what they are made of. **Stays `D` after the SRC-018 review**: the campaign offered a `stair` category precisely to close this, and the reviewer tagged it zero times in 252 decisions. A corpus harvested from bridge photography contains almost no pictures of the thing at the *bottom* of the bridge. See OQ-015."
     },
     {
       "material_id": "MAT-013",

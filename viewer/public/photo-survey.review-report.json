@@ -1,9 +1,20 @@
 {
  "tool": "photo-survey/build_corpus@1.0.0",
  "module_id": "brooklyn-bridge-3d",
- "accepted": 0,
- "auto_screened": 272,
- "refused_by_review": 0,
- "by_category": {},
+ "accepted": 100,
+ "auto_screened": 20,
+ "refused_by_review": 152,
+ "by_category": {
+  "deck": 18,
+  "masonry": 21,
+  "truss": 10,
+  "railing": 4,
+  "promenade": 12,
+  "cable": 28,
+  "cornice": 14,
+  "context": 49,
+  "lighting": 6,
+  "saddle": 3
+ },
  "grants_note": "An accepted photograph supports material, arrangement, existence, condition and appearance, and grants confidence B at best. It does NOT carry a dimension: without scale control in the frame a photograph cannot measure. Dimensional claims stay with measured drawings and primary documents."
 }

@@ -1,7 +1,7 @@
 {
-  "control_document_sha256": "276849e29f797fa5b82f2353055e64e2d6054ae66f0cbedbc69b2850c8e3e16d",
-  "tests_total": 48,
-  "asserting": 43,
+  "control_document_sha256": "b02cb55085dd0d5a6110ce3196ef6ce7ebe684f97724ec5a4459055c9474ef9c",
+  "tests_total": 49,
+  "asserting": 44,
   "report_only": 5,
   "failures": 0,
   "results": [
@@ -12,7 +12,7 @@
       "rule": "control_document_hash_matches",
       "mode": "assert",
       "passed": true,
-      "detail": "sha256 276849e29f79",
+      "detail": "sha256 b02cb55085dd",
       "value": null
     },
     {
@@ -426,7 +426,7 @@
       "rule": "cited_sources_are_read",
       "mode": "assert",
       "passed": true,
-      "detail": "15 read sources: SRC-001, SRC-002, SRC-003, SRC-004, SRC-005, SRC-006, SRC-008, SRC-010, SRC-011, SRC-012, SRC-013, SRC-014, SRC-015, SRC-016, SRC-017",
+      "detail": "16 read sources: SRC-001, SRC-002, SRC-003, SRC-004, SRC-005, SRC-006, SRC-008, SRC-010, SRC-011, SRC-012, SRC-013, SRC-014, SRC-015, SRC-016, SRC-017, SRC-018",
       "value": null
     },
     {
@@ -486,7 +486,7 @@
       "rule": "unreviewed_photo_corpus_not_cited",
       "mode": "assert",
       "passed": true,
-      "detail": "272 photographs, 0 reviewed; 0 control/material rows cite SRC-018",
+      "detail": "120 photographs, 100 reviewed; 2 control/material rows cite SRC-018",
       "value": null
     },
     {
@@ -496,7 +496,7 @@
       "rule": "photo_absent_position_is_declared",
       "mode": "assert",
       "passed": true,
-      "detail": "193 of 272 photographs carry no camera position, each declared",
+      "detail": "89 of 120 photographs carry no camera position, each declared",
       "value": null
     },
     {
@@ -506,7 +506,17 @@
       "rule": "photo_precision_matches_timestamp",
       "mode": "assert",
       "passed": true,
-      "detail": "272 photographs dated: day=142, exact=90, unknown=3, year=37",
+      "detail": "120 photographs dated: day=51, exact=45, unknown=2, year=22",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-020",
+      "title": "A photograph may grade a material but never a dimension",
+      "rule": "photo_source_grades_no_control",
+      "mode": "assert",
+      "passed": true,
+      "detail": "SRC-018 grades 2 material rule(s) (MAT-009, MAT-010) and no control",
       "value": null
     },
     {

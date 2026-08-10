@@ -164,6 +164,14 @@
       "rationale": "The first harvest truncated free text to ten characters and stamped every record 'day', so the corpus read captured_at 'Taken on 2' with a confident day-precision badge on it. Nothing caught it, because every test asked whether the model was sourced and none asked whether the sources were sane. A wrong date that announces itself is recoverable; a wrong date wearing a precision badge is not."
     },
     {
+      "id": "STT-020",
+      "title": "A photograph may grade a material but never a dimension",
+      "rule": "photo_source_grades_no_control",
+      "mode": "assert",
+      "source_id": "SRC-018",
+      "rationale": "SRC-018 is now reviewed, so it may legitimately be cited - and the moment a source becomes citable is the moment its limits stop being theoretical. A photograph settles what something is made of and how it is arranged; without scale control in the frame it cannot measure. This allows SRC-018 on material rules and forbids it on any dimensional control, so the 85 ft deck and the 1595.5 ft span cannot quietly acquire a photographic justification."
+    },
+    {
       "id": "STT-014",
       "title": "Census of controls by grade",
       "rule": "grade_census",

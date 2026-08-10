@@ -1,7 +1,7 @@
 {
   "generator": "build_control_skeleton.py@1.0.0",
   "control_document": "GEOMETRY-CONTROL.md",
-  "control_document_sha256": "276849e29f797fa5b82f2353055e64e2d6054ae66f0cbedbc69b2850c8e3e16d",
+  "control_document_sha256": "b02cb55085dd0d5a6110ce3196ef6ce7ebe684f97724ec5a4459055c9474ef9c",
   "controls_total": 99,
   "controls_sourced": 87,
   "controls_placeholder": 12,

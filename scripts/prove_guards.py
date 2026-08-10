@@ -119,14 +119,39 @@ def defect_promenade_overlap(ctx: vd.Ctx) -> None:
 
 
 def defect_cite_unreviewed_photos(ctx: vd.Ctx) -> None:
-    """Cite the photograph corpus for a material before anyone has reviewed it.
+    """Cite the photograph corpus for a material while nobody has reviewed it.
 
     The tempting version of this mistake: MAT-010 grades the promenade decking D because no source
     says what the planks are, a corpus of 272 photographs of that decking now exists, and pointing
     the material rule at it looks like progress. It is not -- nobody has looked at them yet.
+
+    This injector had to be re-armed once the review actually happened. It used to add the citation
+    alone, which was a genuine defect while the corpus was unreviewed and became a *legitimate* act
+    the moment 100 photographs were accepted -- so the guard silently stopped being able to fail.
+    A guard that cannot fail is worse than no guard, because the roster still counts it. Both halves
+    of the defect are now injected together: the citation, and the unreviewed corpus that makes it
+    a lie. The rule still matters, for the next corpus and for every other module running this
+    pipeline.
     """
     rule = ctx.model.materials[0]
     object.__setattr__(rule, "source_ids", tuple(list(rule.source_ids) + ["SRC-018"]))
+    ctx.photo_survey = {
+        "observations": [
+            {"observation_id": "obs-nobody-looked", "position_source": "unknown",
+             "review": {"status": "auto_screened"}},
+        ]
+    }
+
+
+def defect_photo_grades_a_dimension(ctx: vd.Ctx) -> None:
+    """Let the reviewed photo corpus justify a dimensional control.
+
+    The defect that becomes available the moment a source stops being forbidden. SRC-018 can now be
+    cited, 100 photographs stand behind it, and adding it to a control that needs a better source
+    reads like strengthening the evidence. It is the one thing a photograph cannot do.
+    """
+    ctl = next(c for c in ctx.model.controls.values() if c.source_ids)
+    object.__setattr__(ctl, "source_ids", tuple(list(ctl.source_ids) + ["SRC-018"]))
 
 
 def defect_photo_position_dropped(ctx: vd.Ctx) -> None:
@@ -195,6 +220,7 @@ CASES: list[tuple[str, Path, str, Callable[[vd.Ctx], None]]] = [
     ("an unreviewed photo corpus is cited for a material", STT, "STT-017", defect_cite_unreviewed_photos),
     ("a camera position goes missing without being declared", STT, "STT-018", defect_photo_position_dropped),
     ("scraped free text is stamped with day precision", STT, "STT-019", defect_photo_precision_overclaimed),
+    ("a reviewed photo corpus is made to justify a dimension", STT, "STT-020", defect_photo_grades_a_dimension),
 ]
 
 

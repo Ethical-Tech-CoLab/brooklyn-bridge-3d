@@ -53,6 +53,11 @@ MATERIAL_COLORS = {
     "concrete": (0.62, 0.62, 0.60, 1.0),
     "steel_structural": (0.42, 0.47, 0.53, 1.0),
     "steel_wire": (0.85, 0.72, 0.35, 1.0),
+    # Split out of `roadway_surface` once the reviewed photo corpus (SRC-018) showed what the two
+    # surfaces actually are. Rendering the timber promenade in asphalt grey was a visible untruth
+    # that survived only because one generic name covered both.
+    "asphalt": (0.30, 0.30, 0.32, 1.0),
+    "timber": (0.60, 0.45, 0.30, 1.0),
     "roadway_surface": (0.34, 0.34, 0.36, 1.0),
     "reference": (0.30, 0.75, 0.85, 1.0),
 }
