@@ -26,8 +26,8 @@ cd viewer; npm install; npm run dev          # http://localhost:5174
 | Sources read | **13 registered and read**, plus 4 registered as linked-only or negative controls |
 | Parts | **106** across 8 systems |
 | Provenance | 0 measured · 11 documented · 93 inferred · 2 assumed |
-| Tests | **49** — 44 asserting, 5 report-only, **0 failing** |
-| Guards proven | 17 injected defects, each confirmed to fail its guard |
+| Tests | **50** — 45 asserting, 5 report-only, **0 failing** |
+| Guards proven | 18 injected defects, each confirmed to fail its guard |
 | Cross-source checks | 8, all closing |
 | Registered conflicts | 8 — five settled with reasoning, three left open |
 | Open questions | 17 — one closed, one answered, two half-answered |
@@ -128,6 +128,10 @@ Two limits stayed enforced throughout, in code rather than in prose:
   photograph had been accepted. Re-arming that guard afterwards is itself recorded: the injected
   defect had quietly become legitimate, so the guard could no longer fail, and a guard that cannot
   fail is worse than no guard because the roster still counts it.
+- **An archival photograph cannot describe today's bridge.** The accepted corpus runs 1867–2026.
+  Every category is declared `renewed` or `stable`, and `STT-021` refuses a pre-1960 frame as
+  evidence for anything renewed. Granite is original fabric; asphalt is not. The reviewer had
+  already got this right by instinct — the guard exists so the next reviewer need not.
 
 Built with the shared [`tools/photo-survey/`](https://github.com/Ethical-Tech-CoLab/digital-3d-shared-contracts/tree/main/tools/photo-survey)
 pipeline, so any structure in this programme can run the same campaign.

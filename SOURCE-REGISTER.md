@@ -67,6 +67,16 @@ from a measured drawing and two period primaries, and they stay there. The categ
 decided: **100 accepted, 152 refused, 20 left undecided**. A 60% refusal rate is the number that
 makes the rest trustworthy; a reviewer who kept everything would have told us nothing.
 
+**The corpus is temporally mixed, and that is a hazard as well as a resource.** The 100 accepted
+photographs run from **1867 to 2026** — nineteen predate 1920. The reviewer tagged every one of
+those `context` and nothing else, which was exactly right and entirely uncoerced. `STT-021` now
+enforces it: each category is declared `renewed` or `stable` in the campaign, and a renewed subject
+may only be evidenced by photography after 1960. Granite is original fabric, so an 1876 frame is
+still evidence about it; asphalt is on a maintenance cycle, so a Victorian frame is evidence about
+a surface that no longer exists. The first run of that guard immediately caught an accepted
+photograph with no date at all supporting three renewed subjects — its date turned out to be
+recorded as `04/17/24`, a format the harvester could not read.
+
 **The two categories that mattered most came back empty.** The campaign asked for `arcade` (OQ-007,
 the model's largest known error) and `stair` (OQ-015). Across 252 decisions the reviewer tagged
 each of them **zero** times. The photographs do not exist in an openly-licensed corpus, because

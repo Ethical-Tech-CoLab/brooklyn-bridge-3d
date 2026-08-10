@@ -1423,7 +1423,7 @@
    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Brooklyn_bridge_04.24.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Brooklyn_bridge_04.24.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
    "position_source": "unknown",
-   "captured_precision": "unknown",
+   "captured_precision": "day",
    "license": "CC0-1.0",
    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
    "attribution_text": "12445yavin (CC0 1.0 Universal)",
@@ -1437,6 +1437,7 @@
     "grants_confidence": "B"
    },
    "notes": "File:Brooklyn bridge 04.24.jpg | https://commons.wikimedia.org/wiki/File:Brooklyn_bridge_04.24.jpg",
+   "captured_at": "2024-04-17",
    "categories": [
     "deck",
     "promenade",
@@ -3856,6 +3857,6 @@
  "provenance": {
   "module_id": "brooklyn-bridge-3d",
   "generated_by": "photo-survey/build_corpus@1.0.0",
-  "generated_at": "2026-08-10T21:22:42Z"
+  "generated_at": "2026-08-10T21:30:45Z"
  }
 }

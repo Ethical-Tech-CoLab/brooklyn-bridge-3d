@@ -416,6 +416,23 @@ injected defect had become a legitimate act. Nothing alerted us except a defect-
 that reported the guard as vacuous. A guard that cannot fail is worse than no guard, because the
 roster still counts it. If you assert that your guards have teeth, assert it every build.
 
+**A photograph is evidence about the day it was taken, and your corpus is not from one day.** A
+harvested set spanned 1867 to 2026, and the model is of the structure as it stands. Those are only
+compatible if archival frames are kept away from claims they cannot support: the granite is
+original fabric so an 1876 photograph still evidences it, while the roadway surface is renewed on a
+maintenance cycle so a Victorian photograph evidences something that no longer exists. Declare each
+subject `renewed` or `stable` and refuse old photography for the renewed ones. The human reviewer
+here got it right unprompted — tagging every pre-1920 frame as context only — which is precisely
+why it needed encoding: correctness that depends on one person's instinct is not yet a property of
+the system.
+
+**Ambiguity is a legitimate parse result.** EXIF and archive captions emit `04/17/24`, and the
+day/month order is only recoverable when one field exceeds 12. Given `04/05/24`, guessing a
+convention is wrong roughly half the time while looking exactly as confident as a correct answer;
+degrading to `2024` at year precision is right every time. Prefer a coarser true answer to a
+precise coin-flip — and note that this only became visible because a *different* guard demanded a
+date the parser had silently failed to produce.
+
 ---
 
 ## 12. Shared contract integration

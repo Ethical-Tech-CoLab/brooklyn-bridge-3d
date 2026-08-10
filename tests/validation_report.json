@@ -1,7 +1,7 @@
 {
   "control_document_sha256": "b02cb55085dd0d5a6110ce3196ef6ce7ebe684f97724ec5a4459055c9474ef9c",
-  "tests_total": 49,
-  "asserting": 44,
+  "tests_total": 50,
+  "asserting": 45,
   "report_only": 5,
   "failures": 0,
   "results": [
@@ -506,7 +506,7 @@
       "rule": "photo_precision_matches_timestamp",
       "mode": "assert",
       "passed": true,
-      "detail": "120 photographs dated: day=51, exact=45, unknown=2, year=22",
+      "detail": "120 photographs dated: day=52, exact=45, unknown=1, year=22",
       "value": null
     },
     {
@@ -517,6 +517,16 @@
       "mode": "assert",
       "passed": true,
       "detail": "SRC-018 grades 2 material rule(s) (MAT-009, MAT-010) and no control",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-021",
+      "title": "A claim about today's fabric may not rest on an archival photograph",
+      "rule": "renewed_subjects_need_current_photographs",
+      "mode": "assert",
+      "passed": true,
+      "detail": "25 photographs evidence renewed subjects, all dated 1960 or later",
       "value": null
     },
     {

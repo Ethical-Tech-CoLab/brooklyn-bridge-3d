@@ -1216,7 +1216,7 @@
    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Brooklyn_bridge_04.24.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Brooklyn_bridge_04.24.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
    "position_source": "unknown",
-   "captured_precision": "unknown",
+   "captured_precision": "day",
    "license": "CC0-1.0",
    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
    "attribution_text": "12445yavin (CC0 1.0 Universal)",
@@ -1227,7 +1227,8 @@
     "status": "auto_screened",
     "notes": "Harvested for 'bridge_overall'. No person has looked at this yet."
    },
-   "notes": "File:Brooklyn bridge 04.24.jpg | https://commons.wikimedia.org/wiki/File:Brooklyn_bridge_04.24.jpg"
+   "notes": "File:Brooklyn bridge 04.24.jpg | https://commons.wikimedia.org/wiki/File:Brooklyn_bridge_04.24.jpg",
+   "captured_at": "2024-04-17"
   },
   {
    "observation_id": "obs-35f2f94d57c9",
@@ -1751,7 +1752,7 @@
    "observation_id": "obs-4ec54d41206b",
    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Panoramic_View_of_the_Brooklyn_Bridge.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Panoramic_View_of_the_Brooklyn_Bridge.jpg/1280px-Panoramic_View_of_the_Brooklyn_Bridge.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "position_source": "exif_gps",
+   "position_source": "unknown",
    "captured_precision": "day",
    "license": "CC-BY-SA-3.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
@@ -1764,10 +1765,6 @@
     "notes": "Harvested for 'area_geosearch'. No person has looked at this yet."
    },
    "notes": "File:Panoramic View of the Brooklyn Bridge.jpg | https://commons.wikimedia.org/wiki/File:Panoramic_View_of_the_Brooklyn_Bridge.jpg",
-   "position": {
-    "lon": -73.9975,
-    "lat": 40.706389
-   },
    "captured_at": "2013-09-10"
   },
   {
@@ -5257,7 +5254,7 @@
    "observation_id": "obs-f9e410d43aba",
    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Brooklyn_Bridge_from_Brooklyn_Bridge_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Brooklyn_Bridge_from_Brooklyn_Bridge_Park.jpg/1280px-Brooklyn_Bridge_from_Brooklyn_Bridge_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "position_source": "unknown",
+   "position_source": "exif_gps",
    "captured_precision": "day",
    "license": "CC-BY-SA-3.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
@@ -5270,6 +5267,10 @@
     "notes": "Harvested for 'area_geosearch'. No person has looked at this yet."
    },
    "notes": "File:Brooklyn Bridge from Brooklyn Bridge Park.jpg | https://commons.wikimedia.org/wiki/File:Brooklyn_Bridge_from_Brooklyn_Bridge_Park.jpg",
+   "position": {
+    "lon": -73.9975,
+    "lat": 40.706389
+   },
    "captured_at": "2012-04-19"
   },
   {
@@ -5422,6 +5423,6 @@
  "provenance": {
   "module_id": "brooklyn-bridge-3d",
   "generated_by": "photo-survey/harvest@1.0.0",
-  "generated_at": "2026-08-10T18:07:03Z"
+  "generated_at": "2026-08-10T21:30:34Z"
  }
 }

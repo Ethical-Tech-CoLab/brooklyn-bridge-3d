@@ -154,6 +154,24 @@ def defect_photo_grades_a_dimension(ctx: vd.Ctx) -> None:
     object.__setattr__(ctl, "source_ids", tuple(list(ctl.source_ids) + ["SRC-018"]))
 
 
+def defect_archival_photo_grades_current_fabric(ctx: vd.Ctx) -> None:
+    """Let an 1890s photograph testify about today's roadway.
+
+    The trap the reviewer avoided by instinct and nothing enforced. The corpus runs from 1867 to
+    2026, and the model is of the bridge as it stands: granite is original fabric so an archival
+    frame is still evidence about it, while asphalt is renewed on a maintenance cycle, so a
+    Victorian photograph of the roadway is evidence about a surface that no longer exists.
+    """
+    ctx.photo_survey = {
+        "observations": [
+            {"observation_id": "obs-victorian-roadway", "position_source": "unknown",
+             "captured_at": "1898", "captured_precision": "year",
+             "categories": ["deck"], "category": "deck",
+             "review": {"status": "accepted"}},
+        ]
+    }
+
+
 def defect_photo_position_dropped(ctx: vd.Ctx) -> None:
     """Lose a camera position without saying so.
 
@@ -221,6 +239,7 @@ CASES: list[tuple[str, Path, str, Callable[[vd.Ctx], None]]] = [
     ("a camera position goes missing without being declared", STT, "STT-018", defect_photo_position_dropped),
     ("scraped free text is stamped with day precision", STT, "STT-019", defect_photo_precision_overclaimed),
     ("a reviewed photo corpus is made to justify a dimension", STT, "STT-020", defect_photo_grades_a_dimension),
+    ("an 1898 photograph is made to describe today's roadway", STT, "STT-021", defect_archival_photo_grades_current_fabric),
 ]
 
 

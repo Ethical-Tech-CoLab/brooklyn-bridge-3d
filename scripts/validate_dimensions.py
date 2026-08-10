@@ -643,6 +643,55 @@ def _photo_grades_no_control(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
     return ok(f"{sid} grades {len(materials)} material rule(s) ({', '.join(materials)}) and no control")
 
 
+@measure("renewed_subjects_need_current_photographs")
+def _renewed_needs_current(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
+    """A photograph of a thing that gets replaced describes only the day it was taken.
+
+    The corpus reaches back to 1867, and the model is of the bridge as it stands. Those two facts
+    are compatible only if archival frames are kept away from the claims they cannot support: the
+    granite is original fabric and an 1876 photograph of it is still evidence, while the asphalt is
+    on a maintenance cycle and a 1905 photograph of the roadway is evidence about a surface that no
+    longer exists.
+    """
+    doc = ctx.survey(t["survey"])
+    if doc is None:
+        return ok("no survey to check")
+    campaign = json.loads((REPO / t["campaign"]).read_text(encoding="utf-8"))
+    cutoff = int(campaign.get("renewed_not_before", 1960))
+    renewed = {c["id"] for c in campaign["categories"] if c.get("temporal") == "renewed"}
+    if not renewed:
+        return bad("no category declares temporal='renewed'; the guard would be vacuous")
+
+    offenders: list[str] = []
+    undated: list[str] = []
+    checked = 0
+    for o in doc.get("observations", []):
+        if o.get("review", {}).get("status") != "accepted":
+            continue
+        tags = renewed & set(o.get("categories") or [])
+        if not tags:
+            continue
+        checked += 1
+        stamp = o.get("captured_at")
+        if not stamp:
+            undated.append("%s (%s)" % (o["observation_id"], ",".join(sorted(tags))))
+            continue
+        if int(stamp[:4]) < cutoff:
+            offenders.append("%s dated %s carries %s" % (o["observation_id"], stamp[:4], ",".join(sorted(tags))))
+
+    if offenders:
+        return bad(
+            "%d photograph(s) older than %d evidence a renewed subject: %s"
+            % (len(offenders), cutoff, "; ".join(offenders[:3]))
+        )
+    if undated:
+        return bad(
+            "%d accepted photograph(s) evidence a renewed subject with no date, so nothing can "
+            "establish they describe the bridge as it stands: %s" % (len(undated), "; ".join(undated[:3]))
+        )
+    return ok("%d photographs evidence renewed subjects, all dated %d or later" % (checked, cutoff))
+
+
 @measure("grade_census")
 def _grade_census(ctx: Ctx, _t: dict[str, Any]) -> dict[str, Any]:
     counts: dict[str, int] = {}

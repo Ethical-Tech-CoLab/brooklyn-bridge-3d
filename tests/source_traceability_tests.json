@@ -172,6 +172,15 @@
       "rationale": "SRC-018 is now reviewed, so it may legitimately be cited - and the moment a source becomes citable is the moment its limits stop being theoretical. A photograph settles what something is made of and how it is arranged; without scale control in the frame it cannot measure. This allows SRC-018 on material rules and forbids it on any dimensional control, so the 85 ft deck and the 1595.5 ft span cannot quietly acquire a photographic justification."
     },
     {
+      "id": "STT-021",
+      "title": "A claim about today's fabric may not rest on an archival photograph",
+      "rule": "renewed_subjects_need_current_photographs",
+      "mode": "assert",
+      "survey": "viewer/public/photo-survey.json",
+      "campaign": "sources/photos/photo-campaign.json",
+      "rationale": "The accepted corpus spans 1867 to 2026. MAT-009 says the roadway is asphalt and MAT-010 says the promenade is timber -- both present-tense claims about surfaces that are renewed on a maintenance cycle, and neither was true of the 1883 bridge. The reviewer avoided the trap by instinct, tagging all 19 pre-1960 photographs `context` and nothing else, but nothing enforced it: one archival frame tagged `deck` would have made MAT-009 rest partly on a surface that no longer exists. Categories are now declared `renewed` or `stable` in the campaign, and a renewed subject may only be evidenced by photography after the stated cutoff. Granite is stable and an 1876 photograph of it is still evidence; asphalt is not."
+    },
+    {
       "id": "STT-014",
       "title": "Census of controls by grade",
       "rule": "grade_census",
