@@ -1,6 +1,8 @@
 # Brooklyn Bridge Digital Twin
 
-**▶ [View the model in your browser](https://ethical-tech-colab.github.io/brooklyn-bridge-3d/)**
+**▶ [View the model in your browser](https://ethical-tech-colab.github.io/brooklyn-bridge-3d/)** ·
+**[🔍 Photograph audit](https://ethical-tech-colab.github.io/brooklyn-bridge-3d/review/)** — 272
+openly-licensed photographs, **252 reviewed by a person**
 
 A source-governed, part-addressable control skeleton of the Brooklyn Bridge, built for browser
 rendering and HO-scale study.
