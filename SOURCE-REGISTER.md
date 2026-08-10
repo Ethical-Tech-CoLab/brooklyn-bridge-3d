@@ -23,6 +23,11 @@ only in the [verification queue](#verification-queue).
 | SRC-007 | HAER No. NY-18 photographs (77 b/w, 8 colour transparencies) | [loc.gov/pictures/collection/hh/item/ny1234](https://www.loc.gov/pictures/collection/hh/item/ny1234/) | Archival photographs | U.S. Government work | registered (catalogue read, images not yet retrieved) | B (future) | Tier B detail geometry for Milestone 4. Cannot grade a control until individual plates are examined. |
 | SRC-008 | Library of Congress catalogue record for HAER NY-18 (survey `ny1234`) | [loc.gov/pictures/item/ny1234](https://www.loc.gov/pictures/item/ny1234/) | Catalogue metadata | U.S. Government work | **read** | C | Gives call number HAER NY,31-NEYO,90-, NRHP 66000523, and a latitude/longitude of 40.709109, −74.000695. **That coordinate locates the record, not any structural element**, so it may not verify a placement. See OQ-008. |
 | SRC-010 | `digital-3d-shared-contracts` — canonical scene frame `nyc-harbor-enu`, contract version 1.0.0 | [Ethical-Tech-CoLab/digital-3d-shared-contracts](https://github.com/Ethical-Tech-CoLab/digital-3d-shared-contracts) · local: [viewer/public/frames/nyc-harbor-enu.json](viewer/public/frames/nyc-harbor-enu.json) | Programme contract | CC BY 4.0 / MIT | **read** | A | The shared ENU frame every module in this programme places into. Declares `MHW = NAVD88 + 0.59 m` within a 4000 m validity radius, which is what allows this repository to author in MHW without ever converting. Copied in byte-for-byte and hash-verified by `GRT-080`. |
+| SRC-011 | **NYC DOT, *Brooklyn Bridge Promenade*, August 2016** (39 pp.) | [nyc.gov/html/dot/downloads/pdf/brooklyn-bridge-promenade.pdf](https://www.nyc.gov/html/dot/downloads/pdf/brooklyn-bridge-promenade.pdf) · local: [sources/drawings/nycdot-brooklyn-bridge-promenade.pdf](sources/drawings/nycdot-brooklyn-bridge-promenade.pdf) | **Owner's engineering study** | © City of New York; quoted and retained for citation | **read** (all 39 pages) | A | **The single most valuable modern source found.** The bridge's own owner, dimensioning the promenade end to end: a longitudinal typology with eight named sections and their lengths, a width for each, and the deck-to-girder relationship. Names the **Brooklyn Curve** and states that its extra north-side space accommodates the staircase. Also dates the 1980s Adams/Tillary ramp and the 1982 removal of the tower stairs. |
+| SRC-012 | Brooklyn Bridge Park — Brooklyn Bridge access page | [brooklynbridgepark.org/places-to-see/brooklyn-bridge](https://brooklynbridgepark.org/places-to-see/brooklyn-bridge) | Official park operator | © BBP; quoted | **read** | B | "…use the Brooklyn Bridge Pedestrian Walkway which begins at the intersection of Tillary Street and Boerum Place or access the pedestrian walkway via the staircase located in the underpass on Washington Street/Cadman Plaza East and Prospect Street." Locates **both** Brooklyn-side termini by street. |
+| SRC-013 | NYC Tourism + Conventions — guide to the Brooklyn Bridge | [nyctourism.com/articles/guide-to-the-brooklyn-bridge](https://www.nyctourism.com/articles/guide-to-the-brooklyn-bridge) | Official destination marketing organisation | © NYC Tourism; quoted | **read** | B | "The pedestrian stairs on the Brooklyn side are located at Washington Street and Prospect Street, right at the northeast corner of Cadman Plaza. You can also just walk straight onto the bridge from Adams Street." Independently corroborates SRC-012 on the stair location, and distinguishes the stair entrance from the Adams Street one. |
+| SRC-014 | **Field observation, repository owner, 2026** | Direct observation on the bridge and in DUMBO; photographs taken outside Westville DUMBO | **Eyewitness testimony** | — | **read** | B for arrangement, D for any dimension | "Road moves to the right and walkway comes to middle going into Brooklyn. Leaving Brooklyn, cars are on right, walkway emerges from the middle. This middle area is where there are steps that tourists use to walk across the bridge to/from DUMBO. The stairs exit to Washington Street about 1.5 blocks from where I took pictures outside Westville DUMBO." **Registered because it is testimony about arrangement, and it is what prompted SRC-011 to be sought.** It may establish that an element exists and how it is arranged; it may **not** grade any dimension. |
+| SRC-015 | Wikipedia — Brooklyn Bridge | [en.wikipedia.org/wiki/Brooklyn_Bridge](https://en.wikipedia.org/wiki/Brooklyn_Bridge) | Tertiary encyclopaedia | CC BY-SA | **read** | B/C | Used for exactly one control: the promenade sits 18 ft above the automobile lanes (CTL-097). Its "4 ft below the girders" statement is independently confirmed grade `A` by SRC-011, which is some evidence its 18 ft is also sound — but no primary or owner document read here states it, so it stays grade `B`. Everything else it says is already covered by a better source. |
 
 ---
 
@@ -44,6 +49,22 @@ number arriving without a label.
 
 ---
 
+## Consulted but NOT registered
+
+Material that was looked at and that **grades nothing**. It is listed so that the boundary between
+"informed the work" and "supports a number" stays visible.
+
+| Material | Why it is not registered |
+|---|---|
+| Two photographs supplied by the repository owner, from a tour site: a view along the promenade toward a tower, and a view of the bridge from DUMBO. | **No licence.** They are not committed to this repository and no control cites them. They were reviewed for orientation only. They are consistent with the model — the walkway is elevated above the roadway, the diagonal stays radiate from the tower tops as SRC-002 describes, the towers show two pointed arches — and the DUMBO view makes the shallow cable sag of OQ-001 look as wrong as the arithmetic says it is. **None of that is evidence in the register's sense**, and per the rule in `HOW-TO-DESIGN.md`, a photograph cannot grade a control. |
+| SRC-007, the HAER photographs | Registered but **not yet read** — the catalogue has been examined, the individual plates have not. Grade `B` when they are. |
+
+The distinction matters most where it is most tempting to ignore. Every photograph shows the
+promenade decked in timber; the material table still grades `promenade_*` as `D`, because no source
+in the register says what the planks are.
+
+---
+
 ## Verification queue — registered, not yet read
 
 Nothing below may be cited by a control until it moves into the register above.
@@ -52,7 +73,7 @@ Nothing below may be cited by a control until it moves into the register above.
 |---|---|---|
 | **NYCDOT record, shop and rehabilitation drawings** | The single highest-value action available. Not public: this is a **FOIL request, not a research problem**, and it has a long lead time. It would retire more open questions than everything else combined. | **To file. Week one.** |
 | NYC Municipal Archives, 52 Chambers Street — original construction drawings | SRC-001 states plainly that "the original drawings are available for reference" there, and that this is *why* HAER prepared no historical report. That sentence is a direct pointer to the primary record. | Not visited |
-| NYC DOT Brooklyn Bridge facts page | The modern owner's own published figures. | **Retrieval failed** — `nyc.gov` returned HTTP 403 to every attempt on 2026-08-09. Not read, therefore not cited anywhere. |
+| NYC DOT Brooklyn Bridge facts page (HTML) | The modern owner's own published figures. | **Retrieval failed** — `nyc.gov` returns HTTP 403 to a plain fetch of its HTML. Its *PDFs* serve fine, which is how SRC-011 was obtained. Worth another attempt with a browser user agent. |
 | Robert M. Vogel, *Building Brooklyn Bridge: The Design and Construction, 1867–1883* (Smithsonian, 1983) | The actual origin of SRC-001's statistics table. Reading it directly would convert a transmitted table into an examined source. | Not read |
 | David McCullough, *The Great Bridge* (1972) | SRC-001 calls this "what is accepted by most authorities as the standard text". Secondary, but authoritative on the historical record. | Not read |
 | 2017 NYC Topobathymetric LiDAR (1 ft DEM/DSM + classified point cloud) | Aerial, so it sees the **top of the deck**: the right tool for approach grade and ground profile, useless for anything underneath. | Not retrieved |
@@ -72,6 +93,23 @@ Kept, not resolved silently. A model that hides source disagreement is lying by 
 | **CONF-004 — tower arch rise** | SRC-002: "36' ARCH HEIGHT", measured from the springing course. SRC-004: the pointed arches "have a rise of 35 feet 6 inches". | **open** | 6 in apart, and the two may not measure to the same point — SRC-004 is describing the New York tower's masonry contract, SRC-002 is a 20th-century survey of the same tower. Both recorded (CTL-030, CTL-031); the derivation uses SRC-002. See OQ-004. |
 | **CONF-005 — anchorage top elevation** | SRC-004 gives the New York anchorage roadway at `89.04 ft` (front) and `85.24 ft` (rear) above high water; it also reports the **Brooklyn** anchorage masonry "brought up to 78 feet 6 inches above high water, and entirely completed … as far as it can be preparatory to cable-making". | **open** | The 78'-6" figure is a *state of works in 1875*, before the cornice and the top courses that SRC-004 elsewhere says are "to be set after the cables are made" — so it is almost certainly not the finished height. The model uses the New York anchorage's 89.04 ft and records the asymmetry as OQ-006. |
 | **CONF-006 — main span figure inside SRC-004's wire specification** | SRC-004, wire specification: "one main span of 1,000 ft., and two side spans of 930 ft. each". | **settled — OCR damage** | The same document's own errata page corrects an unrelated OCR fault, and every other source gives 1,595.5 ft. The side-span figure in that sentence (930 ft) agrees with SRC-001 and SRC-002 and is used; the "1,000 ft." is treated as damaged text and is **not** recorded as a control. |
+| **CONF-007 — how far the promenade actually runs** | SRC-002 dimensions the bridge from Park Row to Adams Street: 5989 ft. SRC-011's promenade typology sums to **6653 ft**. | **settled — they measure different things** | Both are right. The 664 ft difference is the promenade continuing past the bridge's Adams Street terminus: SRC-011 names that section the **Brooklyn Curve** (910 ft) and SRC-012 gives its far end as Tillary Street and Boerum Place. SRC-011 dates the ramp to Adams/Tillary to the 1980s, a century after SRC-002's structure. **The model now carries both**, and CHK-006 checks the on-structure typologies against the 1883 bridge separately. |
+
+---
+
+## Retrieval note — how these sources were found
+
+The first pass used direct HTTP fetches and archival full texts. **The Tavily MCP server rejected
+its key** (`Invalid API key`) on every attempt, so no web search ran during Milestone 1, and the
+modern owner-published material was missed entirely — including SRC-011, which is the best modern
+source for this bridge that exists in public.
+
+The key was present in the environment the whole time; the MCP server was holding a stale copy.
+Calling the Tavily REST API directly with `TAVILY_API_KEY` works, and that is how SRC-011 to SRC-013
+were found. **`nyc.gov` also returns HTTP 403 to a plain fetch of its HTML pages but serves its PDFs
+without complaint**, which is why the promenade study was reachable when the facts page was not.
+
+Recorded here because the failure was silent and cost a whole milestone's worth of modern sourcing.
 
 ---
 

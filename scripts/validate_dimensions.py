@@ -165,8 +165,8 @@ def _no_callout(ctx: Ctx, _t: dict[str, Any]) -> dict[str, Any]:
 # ------------------------------------------------------------------ deck chain
 
 
-def _deck_segments(ctx: Ctx) -> list[tuple[str, float, float]]:
-    ids = ctx.report["derived"]["deck_chain_ids"]
+def _chain_segments(ctx: Ctx, chain_key: str = "deck_chain_ids") -> list[tuple[str, float, float]]:
+    ids = ctx.report["derived"][chain_key]
     by_id = {p["part_id"]: p for p in ctx.parts}
     out = []
     for part_id in ids:
@@ -176,19 +176,63 @@ def _deck_segments(ctx: Ctx) -> list[tuple[str, float, float]]:
     return out
 
 
+def _deck_segments(ctx: Ctx) -> list[tuple[str, float, float]]:
+    return _chain_segments(ctx, "deck_chain_ids")
+
+
 @measure("deck_chain_continuous")
 def _deck_continuous(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
     tol = t["tolerance_m"]
-    segs = _deck_segments(ctx)
+    segs = _chain_segments(ctx, t.get("chain", "deck_chain_ids"))
     gaps = []
     for (id_a, _, end_a), (id_b, start_b, _) in zip(segs, segs[1:]):
         gap = start_b - end_a
         if gap > tol:
             gaps.append(f"{gap:.3f} m between {id_a} and {id_b}")
     if gaps:
-        return bad("longitudinal gap in the deck chain: " + "; ".join(gaps), value=gaps)
+        return bad("longitudinal gap in the chain: " + "; ".join(gaps), value=gaps)
     worst = max((segs[i + 1][1] - segs[i][2]) for i in range(len(segs) - 1))
     return ok(f"{len(segs)} segments, largest joint {worst:.6f} m", value=worst)
+
+
+@measure("chain_segments_do_not_overlap")
+def _no_overlap(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
+    """Neighbouring segments must abut, not overlap.
+
+    Continuity alone does not catch this: an overlap has no gap, so GRT-030 and GRT-033 both pass
+    while two slabs occupy the same space. The first promenade build put the tower balcony inside the
+    side span at both ends this way.
+    """
+    tol = t["tolerance_m"]
+    segs = _chain_segments(ctx, t["chain"])
+    overlaps = []
+    for (id_a, _, end_a), (id_b, start_b, _) in zip(segs, segs[1:]):
+        if start_b < end_a - tol:
+            overlaps.append(f"{end_a - start_b:.2f} m between {id_a} and {id_b}")
+    if overlaps:
+        return bad("segments overlap: " + "; ".join(overlaps))
+    return ok(f"{len(segs)} segments abut cleanly")
+
+
+@measure("promenade_outlasts_roadway")
+def _promenade_outlasts(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
+    """The walkway must not stop where the road stops.
+
+    SRC-011's Brooklyn Curve carries the promenade past the roadway's Adams Street terminus, and
+    SRC-012 puts its far end at Tillary and Boerum. A model whose walkway ended with the road would
+    contradict three sources and, more to the point, would leave the tourist stair to DUMBO attached
+    to nothing.
+    """
+    deck = _chain_segments(ctx, "deck_chain_ids")
+    prom = _chain_segments(ctx, "promenade_chain_ids")
+    overhang = prom[-1][2] - deck[-1][2]
+    expected = ctx.model.m(t["control_key"])
+    residual = overhang - expected
+    detail = (
+        f"promenade runs {overhang:.2f} m past the roadway terminus "
+        f"against a sourced {expected:.2f} m (residual {residual:+.4f} m)"
+    )
+    return ok(detail, value=overhang) if abs(residual) <= t["tolerance_m"] else bad(detail)
 
 
 @measure("deck_chain_extent")

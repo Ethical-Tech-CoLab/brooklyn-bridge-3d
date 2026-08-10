@@ -1,7 +1,7 @@
 {
-  "control_document_sha256": "c3bc867a179bf499cb94ddbd73a148c2f04f271815c9f261e6ee65ff093ca6df",
-  "tests_total": 36,
-  "asserting": 32,
+  "control_document_sha256": "95c504ae51f6f06f501469a4f5cbab9731206abdaecdd7efcf5d056bcfbb78c4",
+  "tests_total": 42,
+  "asserting": 38,
   "report_only": 4,
   "failures": 0,
   "results": [
@@ -12,7 +12,7 @@
       "rule": "control_document_hash_matches",
       "mode": "assert",
       "passed": true,
-      "detail": "sha256 c3bc867a179b",
+      "detail": "sha256 95c504ae51f6",
       "value": null
     },
     {
@@ -77,6 +77,26 @@
     },
     {
       "suite": "geometry_regression",
+      "id": "GRT-015",
+      "title": "NYCDOT's 2016 promenade typology agrees with HAER's 1883 bridge length",
+      "rule": "build_check",
+      "mode": "assert",
+      "passed": true,
+      "detail": "residual -77.5000 ft (tolerance 30.0 m)",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-016",
+      "title": "The promenade's passage through a tower fits inside that tower",
+      "rule": "build_check",
+      "mode": "assert",
+      "passed": true,
+      "detail": "residual -4.5000 ft (tolerance 2.0 m)",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
       "id": "GRT-020",
       "title": "Count of parts whose provenance is MEASURED",
       "rule": "provenance_census",
@@ -92,10 +112,10 @@
       "rule": "provenance_census_all",
       "mode": "report_only",
       "passed": true,
-      "detail": "ASSUMED=2, DOCUMENTED=11, INFERRED=80",
+      "detail": "ASSUMED=2, DOCUMENTED=11, INFERRED=89",
       "value": {
         "DOCUMENTED": 11,
-        "INFERRED": 80,
+        "INFERRED": 89,
         "ASSUMED": 2
       }
     },
@@ -141,12 +161,52 @@
     },
     {
       "suite": "geometry_regression",
+      "id": "GRT-033",
+      "title": "No longitudinal gap anywhere in the promenade chain",
+      "rule": "deck_chain_continuous",
+      "mode": "assert",
+      "passed": true,
+      "detail": "10 segments, largest joint 0.000000 m",
+      "value": 0.0
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-034",
+      "title": "The promenade runs past the roadway terminus by the sourced Brooklyn Curve length",
+      "rule": "promenade_outlasts_roadway",
+      "mode": "assert",
+      "passed": true,
+      "detail": "promenade runs 277.37 m past the roadway terminus against a sourced 277.37 m (residual -0.0000 m)",
+      "value": 277.36799999999994
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-035",
+      "title": "Promenade segments abut rather than overlap",
+      "rule": "chain_segments_do_not_overlap",
+      "mode": "assert",
+      "passed": true,
+      "detail": "10 segments abut cleanly",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
+      "id": "GRT-036",
+      "title": "Deck segments abut rather than overlap",
+      "rule": "chain_segments_do_not_overlap",
+      "mode": "assert",
+      "passed": true,
+      "detail": "8 segments abut cleanly",
+      "value": null
+    },
+    {
+      "suite": "geometry_regression",
       "id": "GRT-040",
       "title": "Every part matches a material rule",
       "rule": "parts_have_material",
       "mode": "assert",
       "passed": true,
-      "detail": "93 parts",
+      "detail": "102 parts",
       "value": null
     },
     {
@@ -176,8 +236,8 @@
       "rule": "ratchet_min",
       "mode": "assert",
       "passed": true,
-      "detail": "controls_sourced = 66, floor 66",
-      "value": 66
+      "detail": "controls_sourced = 86, floor 86",
+      "value": 86
     },
     {
       "suite": "geometry_regression",
@@ -186,8 +246,8 @@
       "rule": "ratchet_min",
       "mode": "assert",
       "passed": true,
-      "detail": "parts_total = 93, floor 93",
-      "value": 93
+      "detail": "parts_total = 102, floor 102",
+      "value": 102
     },
     {
       "suite": "geometry_regression",
@@ -236,7 +296,7 @@
       "rule": "cited_sources_registered",
       "mode": "assert",
       "passed": true,
-      "detail": "12 source IDs registered",
+      "detail": "17 source IDs registered",
       "value": null
     },
     {
@@ -276,7 +336,7 @@
       "rule": "negative_control_values",
       "mode": "assert",
       "passed": true,
-      "detail": "13 forbidden value(s) checked against 78 controls",
+      "detail": "13 forbidden value(s) checked against 98 controls",
       "value": null
     },
     {
@@ -286,7 +346,7 @@
       "rule": "negative_control_values",
       "mode": "assert",
       "passed": true,
-      "detail": "2 forbidden value(s) checked against 78 controls",
+      "detail": "2 forbidden value(s) checked against 98 controls",
       "value": null
     },
     {
@@ -306,7 +366,7 @@
       "rule": "forbidden_part_substrings",
       "mode": "assert",
       "passed": true,
-      "detail": "none of 8 forbidden substrings appears in 93 part IDs",
+      "detail": "none of 8 forbidden substrings appears in 102 part IDs",
       "value": null
     },
     {
@@ -316,7 +376,7 @@
       "rule": "open_questions_registered",
       "mode": "assert",
       "passed": true,
-      "detail": "13 open questions registered",
+      "detail": "15 open questions registered",
       "value": null
     },
     {
@@ -346,7 +406,7 @@
       "rule": "parts_have_required_fields",
       "mode": "assert",
       "passed": true,
-      "detail": "93 parts complete",
+      "detail": "102 parts complete",
       "value": null
     },
     {
@@ -356,7 +416,7 @@
       "rule": "cited_sources_are_read",
       "mode": "assert",
       "passed": true,
-      "detail": "8 read sources: SRC-001, SRC-002, SRC-003, SRC-004, SRC-005, SRC-006, SRC-008, SRC-010",
+      "detail": "13 read sources: SRC-001, SRC-002, SRC-003, SRC-004, SRC-005, SRC-006, SRC-008, SRC-010, SRC-011, SRC-012, SRC-013, SRC-014, SRC-015",
       "value": null
     },
     {
@@ -366,10 +426,10 @@
       "rule": "grade_census",
       "mode": "report_only",
       "passed": true,
-      "detail": "A=64, B=2, D=12",
+      "detail": "A=83, B=3, D=12",
       "value": {
-        "A": 64,
-        "B": 2,
+        "A": 83,
+        "B": 3,
         "D": 12
       }
     }

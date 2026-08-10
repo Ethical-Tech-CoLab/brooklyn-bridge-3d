@@ -1,23 +1,23 @@
 {
   "generator": "build_control_skeleton.py@1.0.0",
   "control_document": "GEOMETRY-CONTROL.md",
-  "control_document_sha256": "c3bc867a179bf499cb94ddbd73a148c2f04f271815c9f261e6ee65ff093ca6df",
-  "controls_total": 78,
-  "controls_sourced": 66,
+  "control_document_sha256": "95c504ae51f6f06f501469a4f5cbab9731206abdaecdd7efcf5d056bcfbb78c4",
+  "controls_total": 98,
+  "controls_sourced": 86,
   "controls_placeholder": 12,
-  "material_rules": 13,
-  "parts_total": 93,
+  "material_rules": 14,
+  "parts_total": 102,
   "provenance": {
     "MEASURED": 0,
     "DOCUMENTED": 11,
-    "INFERRED": 80,
+    "INFERRED": 89,
     "ASSUMED": 2
   },
   "confidence": {
     "A": 40,
-    "B": 0,
+    "B": 10,
     "C": 0,
-    "D": 53
+    "D": 52
   },
   "systems": [
     "anchorages",
@@ -49,7 +49,7 @@
       "ELV-CLEARANCE": 41.148,
       "ELV-TRUSS-TOP": 46.3296,
       "ELV-DECK-MID": 42.0624,
-      "ELV-PROMENADE-MID": 45.72,
+      "ELV-PROMENADE-MID": 47.5488,
       "ELV-ARCH-SPRINGING": 58.2168,
       "ELV-ARCH-CROWN": 69.1896,
       "ELV-CABLE-MID": 47.244,
@@ -76,6 +76,20 @@
       "deck_brooklyn_anchorage_top",
       "deck_brooklyn_approach"
     ],
+    "promenade_chain_ids": [
+      "promenade_manhattan_concrete_approach",
+      "promenade_manhattan_side_span",
+      "promenade_tower_manhattan",
+      "promenade_main_span_manhattan_half",
+      "promenade_crown",
+      "promenade_main_span_brooklyn_half",
+      "promenade_tower_brooklyn",
+      "promenade_brooklyn_side_span",
+      "promenade_brooklyn_concrete_approach",
+      "promenade_brooklyn_curve"
+    ],
+    "promenade_extends_past_roadway_ft": 910.0,
+    "promenade_typology_total_ft": 6653.0,
     "checks": [
       {
         "id": "CHK-001",
@@ -125,6 +139,26 @@
         "residual_m": -0.120317,
         "residual_ft": -0.3947,
         "tolerance_m": 0.2,
+        "passed": true
+      },
+      {
+        "id": "CHK-006",
+        "description": "SRC-011's on-structure promenade typologies sum to the 1883 bridge proper length",
+        "value_m": 1029.6144,
+        "expected_m": 1053.2364,
+        "residual_m": -23.622,
+        "residual_ft": -77.5,
+        "tolerance_m": 30.0,
+        "passed": true
+      },
+      {
+        "id": "CHK-007",
+        "description": "promenade passage through one tower is no longer than that tower is thick at MHW",
+        "value_m": 16.6116,
+        "expected_m": 17.9832,
+        "residual_m": -1.3716,
+        "residual_ft": -4.5,
+        "tolerance_m": 2.0,
         "passed": true
       }
     ]

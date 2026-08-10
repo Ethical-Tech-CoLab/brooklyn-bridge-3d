@@ -1,5 +1,5 @@
 {
-  "control_document_sha256": "c3bc867a179bf499cb94ddbd73a148c2f04f271815c9f261e6ee65ff093ca6df",
+  "control_document_sha256": "95c504ae51f6f06f501469a4f5cbab9731206abdaecdd7efcf5d056bcfbb78c4",
   "generator": "build_control_skeleton.py@1.0.0",
   "vertical_datum": "mean high water (MHW)",
   "units": "meters",
@@ -1172,20 +1172,20 @@
       "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
     },
     {
-      "part_id": "promenade_manhattan_approach",
+      "part_id": "promenade_manhattan_concrete_approach",
       "system": "deck_system",
       "subsystem": "promenade",
       "source_basis": [
         "control_dimension",
+        "drawing",
         "inferred"
       ],
       "control_refs": [
-        "CTL-107",
-        "CTL-106",
-        "CTL-005",
-        "CTL-057"
+        "CTL-088",
+        "CTL-080",
+        "CTL-097"
       ],
-      "confidence": "D",
+      "confidence": "B",
       "provenance": "INFERRED",
       "material": "roadway_surface",
       "material_id": "MAT-010",
@@ -1197,34 +1197,33 @@
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
         -1002.8682,
-        -2.286,
-        14.1732
+        -2.5908,
+        16.002
       ],
       "bbox_max_m": [
         -526.6182,
-        2.286,
-        30.796992
+        2.5908,
+        32.625792
       ],
-      "notes": "",
+      "notes": "SRC-011 typology 1, 17 ft \u2014 the widest section. The 2365 ft is both ends combined, so the split between them is reasoning.",
       "review_status": "milestone-1-unreviewed",
       "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
     },
     {
-      "part_id": "promenade_suspended",
+      "part_id": "promenade_manhattan_side_span",
       "system": "deck_system",
       "subsystem": "promenade",
       "source_basis": [
         "control_dimension",
+        "drawing",
         "inferred"
       ],
       "control_refs": [
-        "CTL-107",
-        "CTL-106",
-        "CTL-003",
-        "CTL-057",
-        "CTL-010"
+        "CTL-090",
+        "CTL-082",
+        "CTL-097"
       ],
-      "confidence": "D",
+      "confidence": "B",
       "provenance": "INFERRED",
       "material": "roadway_surface",
       "material_id": "MAT-010",
@@ -1236,33 +1235,255 @@
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
         -526.6182,
-        -2.286,
-        30.339792
+        -1.9812,
+        32.168592
       ],
       "bbox_max_m": [
-        526.6182,
-        2.286,
-        45.72
+        -251.46,
+        1.9812,
+        38.827207
       ],
-      "notes": "The Promenade is documented to exist (SRC-006 photographs it as its own group of plates, SRC-002 draws it) but no read source dimensions it, so it is INFERRED, not ASSUMED.",
+      "notes": "SRC-011 typology 3, 13 ft \u2014 where the main cables come down alongside the path.",
       "review_status": "milestone-1-unreviewed",
       "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
     },
     {
-      "part_id": "promenade_brooklyn_approach",
+      "part_id": "promenade_tower_manhattan",
       "system": "deck_system",
       "subsystem": "promenade",
       "source_basis": [
         "control_dimension",
+        "drawing",
         "inferred"
       ],
       "control_refs": [
-        "CTL-107",
-        "CTL-106",
-        "CTL-006",
-        "CTL-057"
+        "CTL-092",
+        "CTL-084",
+        "CTL-097"
       ],
-      "confidence": "D",
+      "confidence": "B",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-010",
+      "material_confidence": "D",
+      "open_questions": [],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -251.46,
+        -6.5532,
+        38.370007
+      ],
+      "bbox_max_m": [
+        -234.8484,
+        6.5532,
+        39.305923
+      ],
+      "notes": "SRC-011 typology 5, 43 ft \u2014 the path opens into the tower balcony. Position is grade A: the tower centerline.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "promenade_main_span_manhattan_half",
+      "system": "deck_system",
+      "subsystem": "promenade",
+      "source_basis": [
+        "control_dimension",
+        "drawing",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-090",
+        "CTL-082",
+        "CTL-097"
+      ],
+      "confidence": "B",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-010",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -234.8484,
+        -1.9812,
+        38.848723
+      ],
+      "bbox_max_m": [
+        -54.102,
+        1.9812,
+        45.649889
+      ],
+      "notes": "SRC-011 typology 3.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "promenade_crown",
+      "system": "deck_system",
+      "subsystem": "promenade",
+      "source_basis": [
+        "control_dimension",
+        "drawing",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-093",
+        "CTL-085",
+        "CTL-097"
+      ],
+      "confidence": "B",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-010",
+      "material_confidence": "D",
+      "open_questions": [],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -54.102,
+        -2.4384,
+        45.192689
+      ],
+      "bbox_max_m": [
+        54.102,
+        2.4384,
+        45.649889
+      ],
+      "notes": "SRC-011 typology 6, 355 ft at 16 ft wide. The length is grade A; centring it on midspan is inference from the cable profile, not a statement in the source, so this stays INFERRED.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "promenade_main_span_brooklyn_half",
+      "system": "deck_system",
+      "subsystem": "promenade",
+      "source_basis": [
+        "control_dimension",
+        "drawing",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-090",
+        "CTL-082",
+        "CTL-097"
+      ],
+      "confidence": "B",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-010",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        54.102,
+        -1.9812,
+        38.848723
+      ],
+      "bbox_max_m": [
+        234.8484,
+        1.9812,
+        45.649889
+      ],
+      "notes": "SRC-011 typology 3.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "promenade_tower_brooklyn",
+      "system": "deck_system",
+      "subsystem": "promenade",
+      "source_basis": [
+        "control_dimension",
+        "drawing",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-092",
+        "CTL-084",
+        "CTL-097"
+      ],
+      "confidence": "B",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-010",
+      "material_confidence": "D",
+      "open_questions": [],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        234.8484,
+        -6.5532,
+        38.370007
+      ],
+      "bbox_max_m": [
+        251.46,
+        6.5532,
+        39.305923
+      ],
+      "notes": "SRC-011 typology 5, 43 ft.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "promenade_brooklyn_side_span",
+      "system": "deck_system",
+      "subsystem": "promenade",
+      "source_basis": [
+        "control_dimension",
+        "drawing",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-090",
+        "CTL-082",
+        "CTL-097"
+      ],
+      "confidence": "B",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-010",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-013"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        251.46,
+        -1.9812,
+        32.168592
+      ],
+      "bbox_max_m": [
+        526.6182,
+        1.9812,
+        38.827207
+      ],
+      "notes": "SRC-011 typology 3.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "promenade_brooklyn_concrete_approach",
+      "system": "deck_system",
+      "subsystem": "promenade",
+      "source_basis": [
+        "control_dimension",
+        "drawing",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-088",
+        "CTL-080",
+        "CTL-097"
+      ],
+      "confidence": "B",
       "provenance": "INFERRED",
       "material": "roadway_surface",
       "material_id": "MAT-010",
@@ -1274,15 +1495,129 @@
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
         526.6182,
-        -2.286,
-        23.9268
+        -2.5908,
+        25.7556
       ],
       "bbox_max_m": [
         822.579,
-        2.286,
-        30.796992
+        2.5908,
+        32.625792
       ],
-      "notes": "",
+      "notes": "SRC-011 typology 1. SRC-011 annotates this section: pedestrians coming up from the stairs must cross the bike lane to enter the promenade.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "promenade_brooklyn_curve",
+      "system": "deck_system",
+      "subsystem": "promenade",
+      "source_basis": [
+        "control_dimension",
+        "drawing",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-095",
+        "CTL-087",
+        "CTL-097"
+      ],
+      "confidence": "B",
+      "provenance": "INFERRED",
+      "material": "roadway_surface",
+      "material_id": "MAT-010",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-014"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        822.579,
+        -1.6764,
+        15.42288
+      ],
+      "bbox_max_m": [
+        1099.947,
+        1.6764,
+        26.2128
+      ],
+      "notes": "SRC-011 typology 8, 910 ft at 11 ft wide \u2014 **the section that carries the walkway past the roadway's Adams Street terminus** toward Tillary Street and Boerum Place (SRC-012). Length and width are grade A. Its horizontal curve is NOT modelled: no read source gives a radius, so it is drawn straight along the centerline the walkway holds while the road diverges (SRC-014). See OQ-014.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stair_brooklyn_washington_street",
+      "system": "deck_system",
+      "subsystem": "stair",
+      "source_basis": [
+        "control_dimension",
+        "drawing",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-107",
+        "CTL-097",
+        "CTL-095"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-014",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-015"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        916.0002,
+        1.6764,
+        20.7264
+      ],
+      "bbox_max_m": [
+        923.3154,
+        5.334,
+        26.2128
+      ],
+      "notes": "The tourist stair between the promenade and DUMBO. SRC-011 places it in the Brooklyn Curve \u2014 that section's 11 ft path has \"excess space on north side of fence to accommodate staircase\". SRC-012 and SRC-013 both put its foot at Washington Street and Prospect Street, in the underpass by Cadman Plaza East. SRC-014 confirms it from the ground. Its dimensions are a placeholder (CTL-107), see OQ-015.",
+      "review_status": "milestone-1-unreviewed",
+      "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
+    },
+    {
+      "part_id": "stair_manhattan_approach",
+      "system": "deck_system",
+      "subsystem": "stair",
+      "source_basis": [
+        "control_dimension",
+        "drawing",
+        "inferred"
+      ],
+      "control_refs": [
+        "CTL-107",
+        "CTL-097",
+        "CTL-095"
+      ],
+      "confidence": "D",
+      "provenance": "INFERRED",
+      "material": "steel_structural",
+      "material_id": "MAT-014",
+      "material_confidence": "D",
+      "open_questions": [
+        "OQ-015"
+      ],
+      "prototype_units": "meters",
+      "ho_scale_units": "millimeters",
+      "bbox_min_m": [
+        -978.789,
+        1.6764,
+        11.925545
+      ],
+      "bbox_max_m": [
+        -971.4738,
+        5.334,
+        17.411945
+      ],
+      "notes": "SRC-011 marks a staircase on the Manhattan concrete approach as a pinch point: \"Staircase creates pinch point. Bikes traveling at high downhill speed do not have space to pass bikes entering the bridge.\" Dimensions are a placeholder, see OQ-015.",
       "review_status": "milestone-1-unreviewed",
       "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
     },

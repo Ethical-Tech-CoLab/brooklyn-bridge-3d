@@ -1,0 +1,80 @@
+name: Deploy viewer to GitHub Pages
+
+# The published site is the viewer's production build. Everything it serves -- the GLBs, parts.json,
+# controls.json, build_report.json and the canonical scene frame -- is committed under
+# viewer/public/, so the site is reproducible from a clean checkout.
+#
+# The model is rebuilt and revalidated before deployment rather than trusting the committed
+# artifacts, so a control document that was edited without rebuilding fails here (GRT-001) instead
+# of quietly shipping a viewer whose metadata disagrees with its geometry.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Rebuild the control skeleton from GEOMETRY-CONTROL.md
+        run: python scripts/build_control_skeleton.py
+
+      - name: Validate
+        run: python scripts/validate_dimensions.py
+
+      - name: Prove the guards still fail on the defects they catch
+        run: python scripts/prove_guards.py
+
+      - name: Confirm the rebuild is byte-identical to what is committed
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::The committed artifacts do not match a fresh build. Run scripts/build_control_skeleton.py and commit the result."
+            git --no-pager diff --stat
+            exit 1
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: viewer/package-lock.json
+
+      - name: Install viewer dependencies
+        working-directory: viewer
+        run: npm ci
+
+      - name: Build the viewer
+        working-directory: viewer
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: viewer/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

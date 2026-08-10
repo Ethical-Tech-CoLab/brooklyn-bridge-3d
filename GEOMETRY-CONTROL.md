@@ -141,7 +141,35 @@ See OQ-006 on whether the Brooklyn anchorage matches.
 | CTL-075 | stiffening_truss_depth_outer_original | 8.7 | ft | SRC-001 | A | "Height of outer trusses 8.7 ft." The original outer trusses were half the depth of the inner ones. |
 | CTL-076 | stiffening_truss_depth_present | 17 | ft | SRC-001 | A | SRC-001 note 2: "In the 1953 reconstruction of the suspended superstructure, the intermediate trusses were removed and the outer trusses were raised to the height of the inner trusses." All surviving trusses are therefore 17 ft deep. |
 | CTL-077 | stiffening_truss_count_present | 4 | count | SRC-001 | B | **Reasoned, not stated.** Six trusses comprise two outer, two intermediate and two inner; SRC-001 note 2 says the intermediates were removed, leaving four. No read source states the number `4`. Graded `B` and flagged: see OQ-010. |
-| CTL-078 | promenade_width_original | 15 | ft | SRC-003 | B | "a 15-foot-wide walkway", describing the original deck division. Whether the present Promenade matches is not registered. See OQ-013. |
+| CTL-078 | promenade_width_original | 15 | ft | SRC-003 | B | "a 15-foot-wide walkway", describing the original 1883 deck division. The present-day widths are CTL-088 to CTL-095 and are quite different. |
+
+### 2.7 The promenade — SRC-011's longitudinal typology
+
+NYC DOT's own 2016 study divides the promenade into eight named sections and dimensions each one.
+This is the **owner** measuring the thing as it stands today, so every row here is grade `A`.
+
+| Control ID | Key | Value | Unit | Source IDs | Confidence | Notes |
+|---|---|---:|---|---|---|---|
+| CTL-080 | promenade_length_concrete_approaches | 2365 | ft | SRC-011 | A | "Concrete Approaches - 2365 feet: 35%". Both ends combined. |
+| CTL-081 | promenade_length_wood_deck_approaches | 750 | ft | SRC-011 | A | "Wood Deck Approaches - 750 feet: 11%". |
+| CTL-082 | promenade_length_wood_deck_with_cables | 1510 | ft | SRC-011 | A | "Wood Deck with Cables – 1,510 feet: 23%". The stretch where the main cables descend alongside the path. |
+| CTL-083 | promenade_length_tower_ramps | 540 | ft | SRC-011 | A | "Tower Ramps - 540 feet: 8%". Four ramps, two at each tower. |
+| CTL-084 | promenade_length_towers | 109 | ft | SRC-011 | A | "Towers - 109 feet: 2%". The passage through both towers. |
+| CTL-085 | promenade_length_crown | 355 | ft | SRC-011 | A | "Crown – 355 feet: 5%". The high point at midspan. |
+| CTL-086 | promenade_length_trunk_cable_bases | 114 | ft | SRC-011 | A | "Trunk Cable Bases - 114 feet, 2%". Where the cables reach path level — the narrowest points on the bridge. |
+| CTL-087 | promenade_length_brooklyn_curve | 910 | ft | SRC-011 | A | "Brooklyn Curve - 910 feet: 14%". **The section that carries the promenade past the bridge's Adams Street terminus toward Tillary Street and Boerum Place (SRC-012), and the section that holds the Washington Street staircase.** See CONF-007. |
+| CTL-088 | promenade_width_concrete_approach | 17 | ft | SRC-011 | A | "1. CONCRETE APPROACHES 17'". The widest section. |
+| CTL-089 | promenade_width_wood_deck_approach | 16 | ft | SRC-011 | A | "Width of 16' is generally acceptable for a shared use path." |
+| CTL-090 | promenade_width_wood_deck_with_cables | 13 | ft | SRC-011 | A | "Cable supports connect inside of fence narrowing effective width of pathway 13'". |
+| CTL-091 | promenade_width_tower_ramp | 12 | ft | SRC-011 | A | "Approaching tower, fence moves from outside of cables to inside, narrowing path further 12'". |
+| CTL-092 | promenade_width_at_towers | 43 | ft | SRC-011 | A | "5. TOWERS 43'". The path opens out into the tower balconies. |
+| CTL-093 | promenade_width_crown | 16 | ft | SRC-011 | A | "6. CROWN … 16'". |
+| CTL-094 | promenade_width_trunk_cable_base | 10 | ft | SRC-011 | A | "Narrowest point on bridge is at trunk cable bases where the path is 10'". |
+| CTL-095 | promenade_width_brooklyn_curve | 11 | ft | SRC-011 | A | "8. BROOKLYN CURVE … 11'", annotated "Narrow path, excess space on north side of fence to accommodate staircase". **This is the sourced statement that puts the staircase in this section.** |
+| CTL-096 | promenade_below_girder_height | 4 | ft | SRC-011, SRC-015 | A | "The majority of the wood deck is 4' below girders except at the towers and tower ramps" — 79% of the length. Independently in SRC-015. |
+| CTL-097 | promenade_elevation_above_roadway | 18 | ft | SRC-015 | B | The promenade sits 18 ft above the automobile lanes. **Graded `B`, not `A`**: no primary or owner document read here states it, and SRC-015 is tertiary. It supersedes a 12 ft placeholder. SRC-011's grade-`A` "4 ft below girders" (CTL-096) is the relationship that will replace this once a girder elevation is registered — see OQ-013. |
+| CTL-098 | vehicle_lane_count | 5 | count | SRC-011 | A | Present-day. NYC DOT: the bridge "supports five lanes of vehicles (no trucks), a pedestrian promenade and protected bike lane". SRC-011's 2016 history page says six lanes; one was taken for the bike lane in 2021. See CTL-099. |
+| CTL-099 | bike_lane_opened_year | 2021 | count | SRC-011 | A | September 2021: a two-way protected bike lane replaced the leftmost Manhattan-bound vehicle lane, and the promenade became **pedestrian-only**. Recorded as a date, not a dimension; it is what makes CTL-098 current rather than historic. |
 
 ---
 
@@ -166,8 +194,8 @@ placeholder is arbitrary by definition, so there is no cost to moving it.
 | CTL-103 | deck_structure_depth | 3 | ft | none | D | PLACEHOLDER. Structural depth of the roadway deck above the truss bottom chord. See OQ-013. |
 | CTL-104 | truss_offset_outer | 38 | ft | none | D | PLACEHOLDER. Transverse offset of the two outer stiffening trusses from the centerline. **Bounded**: the deck is 85 ft wide (CTL-070) so this cannot exceed 42.5 ft. See OQ-002. |
 | CTL-105 | truss_offset_inner | 15 | ft | none | D | PLACEHOLDER. Transverse offset of the two inner stiffening trusses. Bounded above by CTL-104. See OQ-002. |
-| CTL-106 | promenade_elevation_above_roadway | 12 | ft | none | D | PLACEHOLDER. The Promenade runs above the roadway on the Brooklyn Bridge — SRC-006 confirms it exists and photographs it, and SRC-002 draws it, but no read source dimensions its height. **The existence is documented; only the value is a guess**, so parts depending on it are `INFERRED`, not `ASSUMED`. See OQ-013. |
-| CTL-107 | promenade_width_present | 15 | ft | none | D | PLACEHOLDER. Present-day Promenade width. CTL-078 gives 15 ft for the *original* walkway; carrying that forward to today would be an unsourced claim about a deck that has been rebuilt at least twice. See OQ-013. |
+| CTL-106 | brooklyn_curve_terminus_drop | 15.9 | ft | none | D | PLACEHOLDER, but bounded and not arbitrary. The Brooklyn Curve descends past Adams Street toward Tillary/Boerum (SRC-011, SRC-012). Its 910 ft length is grade `A` (CTL-087); carrying it down at this bridge's own sourced Brooklyn approach gradient (CTL-015, 1.75%) gives 15.9 ft of fall. **The gradient is sourced, applying it here is reasoning.** See OQ-014. |
+| CTL-107 | stair_width | 12 | ft | none | D | PLACEHOLDER. The Brooklyn staircase down to Washington Street, and the Manhattan approach staircase. **Their existence and location are grade `A`/`B`** — SRC-011 annotates both as pinch points and puts the Brooklyn one in the Brooklyn Curve; SRC-012 and SRC-013 name the streets; SRC-014 is direct testimony. Only the *size* is a guess, which is exactly why these parts are `INFERRED` and not `ASSUMED`. See OQ-015. |
 | CTL-108 | tower_extent_x_at_top | 42 | ft | none | D | PLACEHOLDER. The towers taper. SRC-002 draws the taper but dimensions the plan only at mean high water (CTL-022, CTL-023). See OQ-004. |
 | CTL-109 | tower_extent_y_at_top | 116 | ft | none | D | PLACEHOLDER. As above, transverse. See OQ-004. |
 | CTL-110 | approach_bent_spacing | 100 | ft | none | D | PLACEHOLDER. Longitudinal spacing of approach supports, chosen only so the approaches read as supported viaducts rather than floating slabs. The **extent** they are applied over is grade `A` (CTL-005, CTL-006); the **rhythm** is not. SRC-004 describes the Brooklyn approach as brick piers and arches over blocks of roughly 250 ft, which suggests this is the right order of magnitude and nothing more. See OQ-007. |
@@ -237,7 +265,7 @@ different character would still fail.
 | ELV-TRUSS-BOTTOM | `ELV-CLEARANCE` | B | Bottom chord taken at the clearance plane. The clearance is grade `A`; equating it with the chord is reasoning. |
 | ELV-TRUSS-TOP | `ELV-CLEARANCE + stiffening_truss_depth_present` | A | 152 ft. Both inputs grade `A`. |
 | ELV-DECK | `ELV-TRUSS-BOTTOM + deck_structure_depth` | D | Placeholder depth. |
-| ELV-PROMENADE | `ELV-DECK + promenade_elevation_above_roadway` | D | Placeholder height, documented existence — `INFERRED`. |
+| ELV-PROMENADE | `ELV-DECK + promenade_elevation_above_roadway` | B | 18 ft above the roadway (CTL-097). Was a `D` placeholder at 12 ft before SRC-011 and SRC-015 were read. |
 | ELV-TOWER-TOP | `tower_height_above_mhw` | A | 276.5 ft. |
 | ELV-SADDLE | `ELV-TOWER-TOP − cable_saddle_drop_below_tower_top` | D | The drop is a placeholder, so the saddle elevation is `D` even though the tower height is `A`. Weakest link, applied honestly. |
 | ELV-CABLE-MID | `ELV-TRUSS-TOP + min_suspender_length_at_midspan` | D | **Derived, not guessed**: the cable must meet the top chord at midspan where the suspenders reach minimum length. |
@@ -292,6 +320,49 @@ anchorages and along both approaches — not stop at the anchorage face where th
 ends. Test `GRT-030` asserts there is no longitudinal gap anywhere in the chain. This is the single
 most expensive bug recorded in `HOW-TO-DESIGN.md` §11 and the test exists before the deck did.
 
+### 4.5 The promenade chain, and where it stops
+
+The promenade is **not** co-terminous with the roadway, and getting that wrong was a real defect in
+this model's first build, where the walkway simply ended at Adams Street with the road.
+
+| Segment | Extent | Width control | Confidence |
+|---|---|---|---|
+| Manhattan concrete approach | Park Row → Manhattan anchorage | CTL-088, 17 ft | A |
+| Manhattan side span | anchorage → tower | CTL-090, 13 ft | A |
+| Manhattan tower balcony | at the tower centerline | CTL-092, 43 ft | A |
+| Main span, Manhattan half | tower → crown | CTL-090, 13 ft | A |
+| Crown | 355 ft centred on midspan | CTL-093, 16 ft | A |
+| Main span, Brooklyn half | crown → tower | CTL-090, 13 ft | A |
+| Brooklyn tower balcony | at the tower centerline | CTL-092, 43 ft | A |
+| Brooklyn side span | tower → anchorage | CTL-090, 13 ft | A |
+| Brooklyn concrete approach | anchorage → Adams Street | CTL-088, 17 ft | A |
+| **Brooklyn Curve** | **Adams Street → 910 ft beyond it** | CTL-095, 11 ft | A length and width, `D` fall |
+
+The section lengths are grade `A` as totals, but their **split between the two ends** is reasoning,
+and so is the placement of each section along the bridge. Every promenade segment is therefore
+`INFERRED`, including the crown: SRC-011 gives the crown as 355 ft, but **it does not say the crown
+is centred on midspan** — that is inference from the cable profile, and the build derives `INFERRED`
+accordingly rather than taking credit for a grade-`A` position.
+
+**Consistency check CHK-006.** SRC-011's typologies that sit on the 1883 structure — everything
+except the concrete approaches and the Brooklyn Curve — sum to:
+
+```text
+750 + 1510 + 540 + 109 + 355 + 114  =  3378 ft
+bridge_proper_length (CTL-003)      =  3455.5 ft      residual 77.5 ft, 2.2%
+```
+
+A 2016 pedestrian study by the city and a 1980s HAER measured drawing of an 1883 structure agree on
+the length of the suspended bridge to within 78 ft, having been produced for entirely different
+purposes. Neither was derived from the other. The residual is small and positive in the direction you
+would expect, since the wood deck starts a little inside the anchorage faces.
+
+**The horizontal curve is not modelled.** SRC-011 calls this section the Brooklyn *Curve*, and
+SRC-014 describes the roadway diverging while the walkway continues in the middle. No read source
+gives the curve's radius or bearing, so the model runs it **straight** along the centerline, which is
+where the walkway sits relative to the road it is separating from. That is a known, registered
+omission — OQ-014 — not an oversight.
+
 ---
 
 ## 5. Open questions
@@ -300,7 +371,10 @@ most expensive bug recorded in `HOW-TO-DESIGN.md` §11 and the test exists befor
 |---|---|---|---|
 | OQ-001 | What is the main cable sag at midspan, and how far below the tower summit does the saddle sit? | CTL-101, CTL-102, the entire cable system's grade | J. A. Roebling's 1867 design report; NYCDOT record drawings |
 | OQ-002 | Where are the four present-day stiffening trusses transversely? | CTL-104, CTL-105 | NYCDOT drawings; a dimensioned section |
-| OQ-003 | What is the present-day deck arrangement — lanes, Promenade, the 2021 bike lane? | Any deck subdivision | NYCDOT; no read source describes the current deck |
+| OQ-003 | What is the present-day deck arrangement — lanes, Promenade, the 2021 bike lane? | Any deck subdivision | **Largely answered by SRC-011.** Five vehicle lanes, no trucks; a two-way protected bike lane on the Manhattan-bound roadway since September 2021; the promenade pedestrian-only since then. The **transverse position** of each lane is still unregistered, so the deck is still modelled as a single envelope. |
+| OQ-013 | How high is the promenade above the roadway, exactly, and how deep is the deck structure? | CTL-097, CTL-103 | **Half answered.** SRC-011 gives the promenade as 4 ft below the girders (CTL-096, grade `A`), but no read source gives the girder elevation, so the model uses SRC-015's 18 ft above the roadway at grade `B`. Registering a girder elevation would replace a `B` with an `A`. Promenade *widths* are now fully sourced and this question no longer covers them. |
+| OQ-014 | What is the Brooklyn Curve's horizontal alignment — radius, bearing, and where exactly does the roadway diverge from it? | The curve is modelled **straight**; its 910 ft length and 11 ft width are grade `A`, its plan geometry is absent | NYCDOT record drawings; aerial imagery; the 2017 LiDAR |
+| OQ-015 | What are the dimensions of the Washington Street staircase and the Manhattan approach staircase? | CTL-107 | NYCDOT drawings. Their existence and street locations are already sourced (SRC-011, SRC-012, SRC-013, SRC-014); only the size is open. |
 | OQ-004 | How do the towers taper, and what surface does SRC-004 call "the foundation" in its 345 ft statement? | CTL-108, CTL-109, CTL-032, CONF-004 | Municipal Archives tower drawings |
 | OQ-005 | Which caisson axis is which? 168 ft and 102 ft are sourced; the assignment to transverse/longitudinal is reasoned from the tower being 140 ft × 59 ft and having to sit on it. | Caisson orientation | SRC-005 plates; Municipal Archives |
 | OQ-006 | Is the Brooklyn anchorage the same size as the New York one? SRC-004 dimensions only New York; SRC-002 labels both `129'`. | Anchorage symmetry | SRC-004's Brooklyn sections; NYCDOT |
@@ -310,7 +384,6 @@ most expensive bug recorded in `HOW-TO-DESIGN.md` §11 and the test exists befor
 | OQ-010 | How many trusses were removed in 1953, and what is the resulting section? | CTL-077 | 1953 reconstruction drawings |
 | OQ-011 | Are the 1,520 eyebars and the 1,520 suspenders genuinely the same number, or a collision in SRC-001's table? | CTL-062 confidence | Vogel 1983 directly |
 | OQ-012 | The brief asks for four subway tracks. The Brooklyn Bridge carries no rail lines at all. | Nothing — resolved by not modelling any rail | **Closed.** Neither the Manhattan Bridge's subway tracks nor this bridge's own elevated and trolley tracks — removed in the mid-twentieth century — are modelled. Registered as SRC-902, enforced by `STT-008`. |
-| OQ-013 | Where is the Promenade, how wide is it now, and how deep is the deck structure? | CTL-103, CTL-106, CTL-107, CTL-078 | NYCDOT; SRC-007 photographs |
 
 ---
 
@@ -331,9 +404,10 @@ not a silent grey — see `scripts/control_model.py::material_for`.
 | MAT-007 | `truss_*` | steel_structural | SRC-003 | A | SRC-003: "the suspension system was initially designed in iron, but was changed to steel". |
 | MAT-008 | `floor_beam_*` | steel_structural | SRC-001 | A | |
 | MAT-009 | `deck_*` | roadway_surface | none | D | No read source states the present wearing surface. Graded `D` deliberately; **this does not lower the geometry grade of any deck part**. |
-| MAT-010 | `promenade_*` | roadway_surface | none | D | The Promenade decking is famously timber, but no *registered* source says so, and a photograph is not in the register. |
+| MAT-010 | `promenade_*` | roadway_surface | none | D | The Promenade decking is famously timber, and SRC-011 does call its sections "wood deck" — but that is a *typology name*, not a materials statement, and reading it as one would be exactly the over-claim this axis exists to prevent. Stays `D` until a source says what the planks are. |
 | MAT-011 | `approach_*` | masonry | SRC-004 | B | SRC-004 describes the Brooklyn approach as brick piers and arches; the Manhattan approach is not described in the passages read. |
 | MAT-012 | `station_*` | reference | none | D | Non-physical reference markers. |
+| MAT-014 | `stair_*` | steel_structural | none | D | The staircases exist and are located (SRC-011 puts the Brooklyn one in the Brooklyn Curve; SRC-012 and SRC-013 name the streets; SRC-014 is direct testimony). Nothing read says what they are made of. |
 | MAT-013 | `*` | reference | none | D | **Catch-all for reference geometry only.** Placed last, and deliberately mapped to `reference` so that a real structural part accidentally falling through reads as an obviously wrong ghost in the viewer rather than as plausible grey stone. |
 
 ---

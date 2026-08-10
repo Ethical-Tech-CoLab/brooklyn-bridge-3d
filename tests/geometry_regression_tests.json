@@ -65,6 +65,22 @@
       "rationale": "A two-centred arch of radius 46 ft spanning 33.75 ft rises 35.6 ft; SRC-002 annotates 36 ft. Three independently drawn numbers that did not have to agree."
     },
     {
+      "id": "GRT-015",
+      "title": "NYCDOT's 2016 promenade typology agrees with HAER's 1883 bridge length",
+      "rule": "build_check",
+      "check_id": "CHK-006",
+      "mode": "assert",
+      "rationale": "SRC-011's six on-structure typologies sum to 3378 ft against SRC-002's 3455.5 ft bridge proper length -- a residual of 77.5 ft, 2.2%. A 2016 pedestrian study by the city and a 1980s measured drawing of an 1883 structure, made for entirely unrelated purposes and neither derived from the other. The tolerance is 30 m, wide enough for the wood deck to start inside the anchorage faces and narrow enough to fail if a typology length were mistyped."
+    },
+    {
+      "id": "GRT-016",
+      "title": "The promenade's passage through a tower fits inside that tower",
+      "rule": "build_check",
+      "check_id": "CHK-007",
+      "mode": "assert",
+      "rationale": "SRC-011's 'Towers - 109 feet' is 54.5 ft per tower; SRC-002 dimensions the tower 59 ft thick along the bridge at mean high water. The promenade passage must fit inside the masonry, and it does -- by 4.5 ft, in the direction the taper predicts, since the promenade crosses the tower well above the waterline where the tower is narrower. Two sources a century apart, agreeing on something neither set out to measure."
+    },
+    {
       "id": "GRT-020",
       "title": "Count of parts whose provenance is MEASURED",
       "rule": "provenance_census",
@@ -109,6 +125,41 @@
       "mode": "assert"
     },
     {
+      "id": "GRT-033",
+      "title": "No longitudinal gap anywhere in the promenade chain",
+      "rule": "deck_chain_continuous",
+      "chain": "promenade_chain_ids",
+      "tolerance_m": 0.01,
+      "mode": "assert",
+      "rationale": "The same defect as GRT-030, one level up. The walkway is the part a visitor actually stands on, and a hole in it is a hole in the thing being modelled."
+    },
+    {
+      "id": "GRT-034",
+      "title": "The promenade runs past the roadway terminus by the sourced Brooklyn Curve length",
+      "rule": "promenade_outlasts_roadway",
+      "control_key": "promenade_length_brooklyn_curve",
+      "tolerance_m": 0.01,
+      "mode": "assert",
+      "rationale": "This model's first build ended the walkway at Adams Street with the road. That is wrong: SRC-011 names a 910 ft Brooklyn Curve beyond it, SRC-012 puts its far end at Tillary and Boerum, and SRC-014 describes walking it. The defect also left the tourist staircase to DUMBO attached to nothing. The test asserts the overhang equals the sourced curve length, so deleting the curve or truncating it both fail."
+    },
+    {
+      "id": "GRT-035",
+      "title": "Promenade segments abut rather than overlap",
+      "rule": "chain_segments_do_not_overlap",
+      "chain": "promenade_chain_ids",
+      "tolerance_m": 0.01,
+      "mode": "assert",
+      "rationale": "Continuity alone cannot catch this: an overlap has no gap, so GRT-033 passes while two slabs share the same space. The first build of this chain put each tower balcony inside its side span, at both ends, and every continuity test still reported clean."
+    },
+    {
+      "id": "GRT-036",
+      "title": "Deck segments abut rather than overlap",
+      "rule": "chain_segments_do_not_overlap",
+      "chain": "deck_chain_ids",
+      "tolerance_m": 0.01,
+      "mode": "assert"
+    },
+    {
       "id": "GRT-040",
       "title": "Every part matches a material rule",
       "rule": "parts_have_material",
@@ -137,7 +188,7 @@
       "title": "Sourced control count has not regressed",
       "rule": "ratchet_min",
       "metric": "controls_sourced",
-      "limit": 66,
+      "limit": 86,
       "mode": "assert"
     },
     {
@@ -145,7 +196,7 @@
       "title": "Part count has not regressed",
       "rule": "ratchet_min",
       "metric": "parts_total",
-      "limit": 93,
+      "limit": 102,
       "mode": "assert"
     },
     {

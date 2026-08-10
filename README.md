@@ -20,14 +20,15 @@ cd viewer; npm install; npm run dev          # http://localhost:5174
 
 | | |
 |---|---|
-| Controls | **78** — 66 sourced (64 grade `A`, 2 grade `B`), 12 placeholders |
-| Sources read | **8**, including two period primaries and the only measured drawing of any East River suspension bridge in the national record |
-| Parts | **93** across 8 systems |
-| Provenance | 0 measured · 11 documented · 80 inferred · 2 assumed |
-| Tests | **36** — 32 asserting, 4 report-only, **0 failing** |
-| Guards proven | 9 injected defects, each confirmed to fail its guard |
-| Registered conflicts | 6 — four settled with reasoning, two left open |
-| Open questions | 13 — one closed, one answered by the shared contract |
+| Controls | **98** — 86 sourced (64 grade `A`, 22 grade `B`), 12 placeholders |
+| Sources read | **13**, including two period primaries, the only measured drawing of any East River suspension bridge in the national record, and the bridge owner's own dimensioned promenade study |
+| Parts | **102** across 8 systems |
+| Provenance | 0 measured · 11 documented · 89 inferred · 2 assumed |
+| Tests | **42** — 38 asserting, 4 report-only, **0 failing** |
+| Guards proven | 12 injected defects, each confirmed to fail its guard |
+| Cross-source checks | 7, all closing — see below |
+| Registered conflicts | 7 — five settled with reasoning, two left open |
+| Open questions | 15 — one closed, one answered, two half-answered |
 
 Turning `INFERRED` and `ASSUMED` off in the viewer leaves the two anchorages and the seven station
 markers. **That emptiness is the honest picture of what these sources actually locate**, and it is
@@ -58,7 +59,8 @@ model is bluffing.
 | **Truss and cable transverse spacing** | CTL-104/105 put them at 38 ft and 15 ft off centreline, bounded only by the 85 ft deck. Sight down the bridge axis: this is the weakest visible geometry in the model. OQ-002. |
 | **Towers above the waterline** | The 59 × 140 ft plan is grade `A` *only at mean high water*. The taper to the top is invented, which is why `tower_*_shaft` is the one grade-`D` part in an otherwise grade-`A` system. OQ-004. |
 | **Caisson orientation** | 168/172 × 102 ft is solidly sourced, but *which axis is which* is reasoning. Rotated 90° the foundations are wrong, and no current test would catch it. OQ-005. |
-| **The Promenade** | `INFERRED` at a guessed 12 ft above the roadway — probably the first thing a New Yorker would notice being wrong. OQ-013. |
+| **The Brooklyn Curve is drawn straight** | Its 910 ft length and 11 ft width are grade `A`, but NYCDOT calls it a *curve* and the model has no radius for it, so it runs straight down the centreline. A known, registered omission — OQ-014 — and the most obvious remaining departure from what you would see standing on it. |
+| **The deck is one envelope** | Five vehicle lanes and a protected bike lane are sourced as *facts*, but nothing registered gives their transverse positions, so the roadway is still a single slab. OQ-003. |
 
 **Other ways in.** Drag `mesh/glb/control_skeleton.glb` onto any glTF viewer for pure shape critique
 without the metadata. Read [SOURCE-REGISTER.md](SOURCE-REGISTER.md) for the six conflicts — four are
@@ -98,6 +100,24 @@ area of seventeen thousand five hundred and forty-four square feet"*, which mult
 | Approach gradient chains, from both termini to the sourced anchorage roadway level | −2.65 ft and −2.51 ft — the same sign and size, which reads as a systematic curb-line versus grade-line offset rather than an error |
 | A two-centred arch of the sourced radius (46 ft) spanning the sourced width (33'-9") reaching the sourced arch height (36 ft) | −0.39 ft |
 | Span chain against the drawing's own stated overall length | 0.000 ft |
+
+**The walkway is not the roadway, and the model was wrong about that.** NYC DOT's own 2016
+*Brooklyn Bridge Promenade* study divides the promenade into eight named sections and dimensions
+every one of them. The last is the **Brooklyn Curve**: 910 ft, 11 ft wide, annotated *"excess space
+on north side of fence to accommodate staircase."* That is the section carrying the walkway past
+Adams Street where the roadway ends, and it holds the stair tourists use to reach DUMBO — down to
+Washington Street and Prospect Street, by Cadman Plaza East.
+
+The first build ended the walkway with the road, which also left that staircase attached to nothing.
+`GRT-034` now asserts the overhang equals the sourced curve length, and the model reports it at
+910.0 ft.
+
+That study also produced two more cross-source checks, and both close:
+
+| Check | Residual |
+|---|---|
+| NYCDOT's six on-structure promenade typologies vs HAER's bridge proper length | −77.5 ft on 3455.5 ft, **2.2%** — a 2016 pedestrian study against a measured drawing of an 1883 structure, neither derived from the other |
+| NYCDOT's promenade passage through one tower vs HAER's tower thickness at mean high water | −4.5 ft, and **narrower**, which is the direction the taper predicts since the walkway crosses well above the waterline |
 
 **A conflict resolved by arithmetic, not preference.** HAER's data pages give the tower height as
 `276.6 ft`; the measured drawing says `276'-6"` and ASCE says `276.5`. HAER decimalises its other

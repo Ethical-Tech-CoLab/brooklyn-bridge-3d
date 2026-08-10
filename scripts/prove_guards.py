@@ -93,6 +93,31 @@ def defect_subway_track(ctx: vd.Ctx) -> None:
     ctx.parts.append(dict(ctx.parts[0], part_id="subway_track_1"))
 
 
+def defect_promenade_stops_with_road(ctx: vd.Ctx) -> None:
+    """End the walkway at Adams Street with the roadway.
+
+    This is the defect the repository owner caught by eye after Milestone 1: the promenade was
+    co-terminous with the road, so the Brooklyn Curve did not exist and the tourist staircase down to
+    Washington Street was attached to nothing.
+    """
+    by_id = {p["part_id"]: p for p in ctx.parts}
+    curve = by_id["promenade_brooklyn_curve"]
+    curve["bbox_max_m"][0] = curve["bbox_min_m"][0] + 0.5
+
+
+def defect_promenade_gap(ctx: vd.Ctx) -> None:
+    """Open a hole in the walkway at the Brooklyn tower."""
+    by_id = {p["part_id"]: p for p in ctx.parts}
+    seg = by_id["promenade_brooklyn_side_span"]
+    seg["bbox_min_m"][0] += 60.0
+
+
+def defect_promenade_overlap(ctx: vd.Ctx) -> None:
+    """Put the tower balcony back inside the side span, as the first build of this chain did."""
+    by_id = {p["part_id"]: p for p in ctx.parts}
+    by_id["promenade_brooklyn_side_span"]["bbox_min_m"][0] -= 16.6  # back to the tower centerline
+
+
 def defect_callout_on_assumed(ctx: vd.Ctx) -> None:
     """Annotate a dimension on a part nothing locates."""
     for part in ctx.parts:
@@ -104,6 +129,9 @@ def defect_callout_on_assumed(ctx: vd.Ctx) -> None:
 
 CASES: list[tuple[str, Path, str, Callable[[vd.Ctx], None]]] = [
     ("deck develops a longitudinal gap at the anchorage", GRT, "GRT-030", defect_deck_gap),
+    ("the walkway stops at Adams Street with the road", GRT, "GRT-034", defect_promenade_stops_with_road),
+    ("a hole opens in the walkway at the Brooklyn tower", GRT, "GRT-033", defect_promenade_gap),
+    ("the tower balcony slides back inside the side span", GRT, "GRT-035", defect_promenade_overlap),
     ("control document edited without rebuilding", GRT, "GRT-001", defect_stale_hash),
     ("anchorage placed outside the approach dimension", GRT, "GRT-031", defect_deck_too_long),
     ("dimension annotated on an ASSUMED part", GRT, "GRT-070", defect_callout_on_assumed),

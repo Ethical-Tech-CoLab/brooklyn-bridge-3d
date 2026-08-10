@@ -1,5 +1,5 @@
 {
-  "control_document_sha256": "c3bc867a179bf499cb94ddbd73a148c2f04f271815c9f261e6ee65ff093ca6df",
+  "control_document_sha256": "95c504ae51f6f06f501469a4f5cbab9731206abdaecdd7efcf5d056bcfbb78c4",
   "controls": [
     {
       "control_id": "CTL-001",
@@ -880,7 +880,268 @@
       ],
       "confidence": "B",
       "is_placeholder": false,
-      "notes": "\"a 15-foot-wide walkway\", describing the original deck division. Whether the present Promenade matches is not registered. See OQ-013."
+      "notes": "\"a 15-foot-wide walkway\", describing the original 1883 deck division. The present-day widths are CTL-088 to CTL-095 and are quite different."
+    },
+    {
+      "control_id": "CTL-080",
+      "key": "promenade_length_concrete_approaches",
+      "value": 2365.0,
+      "unit": "ft",
+      "value_m": 720.852,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Concrete Approaches - 2365 feet: 35%\". Both ends combined."
+    },
+    {
+      "control_id": "CTL-081",
+      "key": "promenade_length_wood_deck_approaches",
+      "value": 750.0,
+      "unit": "ft",
+      "value_m": 228.6,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Wood Deck Approaches - 750 feet: 11%\"."
+    },
+    {
+      "control_id": "CTL-082",
+      "key": "promenade_length_wood_deck_with_cables",
+      "value": 1510.0,
+      "unit": "ft",
+      "value_m": 460.248,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Wood Deck with Cables \u2013 1,510 feet: 23%\". The stretch where the main cables descend alongside the path."
+    },
+    {
+      "control_id": "CTL-083",
+      "key": "promenade_length_tower_ramps",
+      "value": 540.0,
+      "unit": "ft",
+      "value_m": 164.592,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Tower Ramps - 540 feet: 8%\". Four ramps, two at each tower."
+    },
+    {
+      "control_id": "CTL-084",
+      "key": "promenade_length_towers",
+      "value": 109.0,
+      "unit": "ft",
+      "value_m": 33.2232,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Towers - 109 feet: 2%\". The passage through both towers."
+    },
+    {
+      "control_id": "CTL-085",
+      "key": "promenade_length_crown",
+      "value": 355.0,
+      "unit": "ft",
+      "value_m": 108.204,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Crown \u2013 355 feet: 5%\". The high point at midspan."
+    },
+    {
+      "control_id": "CTL-086",
+      "key": "promenade_length_trunk_cable_bases",
+      "value": 114.0,
+      "unit": "ft",
+      "value_m": 34.7472,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Trunk Cable Bases - 114 feet, 2%\". Where the cables reach path level \u2014 the narrowest points on the bridge."
+    },
+    {
+      "control_id": "CTL-087",
+      "key": "promenade_length_brooklyn_curve",
+      "value": 910.0,
+      "unit": "ft",
+      "value_m": 277.368,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Brooklyn Curve - 910 feet: 14%\". **The section that carries the promenade past the bridge's Adams Street terminus toward Tillary Street and Boerum Place (SRC-012), and the section that holds the Washington Street staircase.** See CONF-007."
+    },
+    {
+      "control_id": "CTL-088",
+      "key": "promenade_width_concrete_approach",
+      "value": 17.0,
+      "unit": "ft",
+      "value_m": 5.1816,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"1. CONCRETE APPROACHES 17'\". The widest section."
+    },
+    {
+      "control_id": "CTL-089",
+      "key": "promenade_width_wood_deck_approach",
+      "value": 16.0,
+      "unit": "ft",
+      "value_m": 4.8768,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Width of 16' is generally acceptable for a shared use path.\""
+    },
+    {
+      "control_id": "CTL-090",
+      "key": "promenade_width_wood_deck_with_cables",
+      "value": 13.0,
+      "unit": "ft",
+      "value_m": 3.9624,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Cable supports connect inside of fence narrowing effective width of pathway 13'\"."
+    },
+    {
+      "control_id": "CTL-091",
+      "key": "promenade_width_tower_ramp",
+      "value": 12.0,
+      "unit": "ft",
+      "value_m": 3.6576,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Approaching tower, fence moves from outside of cables to inside, narrowing path further 12'\"."
+    },
+    {
+      "control_id": "CTL-092",
+      "key": "promenade_width_at_towers",
+      "value": 43.0,
+      "unit": "ft",
+      "value_m": 13.1064,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"5. TOWERS 43'\". The path opens out into the tower balconies."
+    },
+    {
+      "control_id": "CTL-093",
+      "key": "promenade_width_crown",
+      "value": 16.0,
+      "unit": "ft",
+      "value_m": 4.8768,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"6. CROWN \u2026 16'\"."
+    },
+    {
+      "control_id": "CTL-094",
+      "key": "promenade_width_trunk_cable_base",
+      "value": 10.0,
+      "unit": "ft",
+      "value_m": 3.048,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"Narrowest point on bridge is at trunk cable bases where the path is 10'\"."
+    },
+    {
+      "control_id": "CTL-095",
+      "key": "promenade_width_brooklyn_curve",
+      "value": 11.0,
+      "unit": "ft",
+      "value_m": 3.3528,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"8. BROOKLYN CURVE \u2026 11'\", annotated \"Narrow path, excess space on north side of fence to accommodate staircase\". **This is the sourced statement that puts the staircase in this section.**"
+    },
+    {
+      "control_id": "CTL-096",
+      "key": "promenade_below_girder_height",
+      "value": 4.0,
+      "unit": "ft",
+      "value_m": 1.2192,
+      "source_ids": [
+        "SRC-011",
+        "SRC-015"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "\"The majority of the wood deck is 4' below girders except at the towers and tower ramps\" \u2014 79% of the length. Independently in SRC-015."
+    },
+    {
+      "control_id": "CTL-097",
+      "key": "promenade_elevation_above_roadway",
+      "value": 18.0,
+      "unit": "ft",
+      "value_m": 5.4864,
+      "source_ids": [
+        "SRC-015"
+      ],
+      "confidence": "B",
+      "is_placeholder": false,
+      "notes": "The promenade sits 18 ft above the automobile lanes. **Graded `B`, not `A`**: no primary or owner document read here states it, and SRC-015 is tertiary. It supersedes a 12 ft placeholder. SRC-011's grade-`A` \"4 ft below girders\" (CTL-096) is the relationship that will replace this once a girder elevation is registered \u2014 see OQ-013."
+    },
+    {
+      "control_id": "CTL-098",
+      "key": "vehicle_lane_count",
+      "value": 5.0,
+      "unit": "count",
+      "value_m": 5.0,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "Present-day. NYC DOT: the bridge \"supports five lanes of vehicles (no trucks), a pedestrian promenade and protected bike lane\". SRC-011's 2016 history page says six lanes; one was taken for the bike lane in 2021. See CTL-099."
+    },
+    {
+      "control_id": "CTL-099",
+      "key": "bike_lane_opened_year",
+      "value": 2021.0,
+      "unit": "count",
+      "value_m": 2021.0,
+      "source_ids": [
+        "SRC-011"
+      ],
+      "confidence": "A",
+      "is_placeholder": false,
+      "notes": "September 2021: a two-way protected bike lane replaced the leftmost Manhattan-bound vehicle lane, and the promenade became **pedestrian-only**. Recorded as a date, not a dimension; it is what makes CTL-098 current rather than historic."
     },
     {
       "control_id": "CTL-101",
@@ -939,25 +1200,25 @@
     },
     {
       "control_id": "CTL-106",
-      "key": "promenade_elevation_above_roadway",
+      "key": "brooklyn_curve_terminus_drop",
+      "value": 15.9,
+      "unit": "ft",
+      "value_m": 4.84632,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER, but bounded and not arbitrary. The Brooklyn Curve descends past Adams Street toward Tillary/Boerum (SRC-011, SRC-012). Its 910 ft length is grade `A` (CTL-087); carrying it down at this bridge's own sourced Brooklyn approach gradient (CTL-015, 1.75%) gives 15.9 ft of fall. **The gradient is sourced, applying it here is reasoning.** See OQ-014."
+    },
+    {
+      "control_id": "CTL-107",
+      "key": "stair_width",
       "value": 12.0,
       "unit": "ft",
       "value_m": 3.6576,
       "source_ids": [],
       "confidence": "D",
       "is_placeholder": true,
-      "notes": "PLACEHOLDER. The Promenade runs above the roadway on the Brooklyn Bridge \u2014 SRC-006 confirms it exists and photographs it, and SRC-002 draws it, but no read source dimensions its height. **The existence is documented; only the value is a guess**, so parts depending on it are `INFERRED`, not `ASSUMED`. See OQ-013."
-    },
-    {
-      "control_id": "CTL-107",
-      "key": "promenade_width_present",
-      "value": 15.0,
-      "unit": "ft",
-      "value_m": 4.572,
-      "source_ids": [],
-      "confidence": "D",
-      "is_placeholder": true,
-      "notes": "PLACEHOLDER. Present-day Promenade width. CTL-078 gives 15 ft for the *original* walkway; carrying that forward to today would be an unsourced claim about a deck that has been rebuilt at least twice. See OQ-013."
+      "notes": "PLACEHOLDER. The Brooklyn staircase down to Washington Street, and the Manhattan approach staircase. **Their existence and location are grade `A`/`B`** \u2014 SRC-011 annotates both as pinch points and puts the Brooklyn one in the Brooklyn Curve; SRC-012 and SRC-013 name the streets; SRC-014 is direct testimony. Only the *size* is a guess, which is exactly why these parts are `INFERRED` and not `ASSUMED`. See OQ-015."
     },
     {
       "control_id": "CTL-108",
@@ -1115,7 +1376,7 @@
       "material": "roadway_surface",
       "source_ids": [],
       "confidence": "D",
-      "notes": "The Promenade decking is famously timber, but no *registered* source says so, and a photograph is not in the register."
+      "notes": "The Promenade decking is famously timber, and SRC-011 does call its sections \"wood deck\" \u2014 but that is a *typology name*, not a materials statement, and reading it as one would be exactly the over-claim this axis exists to prevent. Stays `D` until a source says what the planks are."
     },
     {
       "material_id": "MAT-011",
@@ -1134,6 +1395,14 @@
       "source_ids": [],
       "confidence": "D",
       "notes": "Non-physical reference markers."
+    },
+    {
+      "material_id": "MAT-014",
+      "pattern": "stair_*",
+      "material": "steel_structural",
+      "source_ids": [],
+      "confidence": "D",
+      "notes": "The staircases exist and are located (SRC-011 puts the Brooklyn one in the Brooklyn Curve; SRC-012 and SRC-013 name the streets; SRC-014 is direct testimony). Nothing read says what they are made of."
     },
     {
       "material_id": "MAT-013",

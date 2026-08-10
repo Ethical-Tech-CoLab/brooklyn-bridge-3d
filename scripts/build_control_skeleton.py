@@ -368,6 +368,25 @@ def build(model: ControlModel) -> tuple[Skeleton, dict[str, Any]]:
         m("tower_arch_height_above_springing"),
         0.2,
     )
+    check(
+        "CHK-006",
+        "SRC-011's on-structure promenade typologies sum to the 1883 bridge proper length",
+        m("promenade_length_wood_deck_approaches")
+        + m("promenade_length_wood_deck_with_cables")
+        + m("promenade_length_tower_ramps")
+        + m("promenade_length_towers")
+        + m("promenade_length_crown")
+        + m("promenade_length_trunk_cable_bases"),
+        m("bridge_proper_length"),
+        30.0,
+    )
+    check(
+        "CHK-007",
+        "promenade passage through one tower is no longer than that tower is thick at MHW",
+        m("promenade_length_towers") / raw("tower_count"),
+        m("tower_extent_x_at_mhw"),
+        2.0,
+    )
 
     # ---- transverse layout (section 4.3)
     half_deck = m("deck_width") / 2.0
@@ -771,66 +790,224 @@ def build(model: ControlModel) -> tuple[Skeleton, dict[str, Any]]:
         )
 
     # ------------------------------------------------------------------ promenade
-    half_promenade = m("promenade_width_present") / 2.0
+    # SRC-011 (NYC DOT, 2016) dimensions the promenade end to end by typology. It is NOT
+    # co-terminous with the roadway: the Brooklyn Curve carries it 910 ft past Adams Street toward
+    # Tillary/Boerum, and that is where the staircase down to Washington Street sits.
     promenade_lift = m("promenade_elevation_above_roadway")
-    for part_id, x0, x1, z0, z1 in (
-        ("promenade_manhattan_approach", x_appr_m, x_anc_m, z_term_m, z_anchor_front),
-        ("promenade_suspended", x_anc_m, x_anc_b, z_anchor_front, z_anchor_front),
-        ("promenade_brooklyn_approach", x_anc_b, x_appr_b, z_anchor_front, z_term_b),
-    ):
-        if part_id == "promenade_suspended":
-            sk.add(
+    promenade_thickness = deck_thickness / 2.0
+    half_crown = m("promenade_length_crown") / 2.0
+    tower_half = m("promenade_length_towers") / (2.0 * int(raw("tower_count")))
+    x_curve_end = x_appr_b + m("promenade_length_brooklyn_curve")
+    z_curve_end = z_term_b - m("brooklyn_curve_terminus_drop")
+
+    def deck_z(x: float) -> float:
+        """Roadway elevation at station x, following the same chain the deck was built from."""
+        for _pid, x0, x1, z0, z1, *_rest in deck_chain:
+            lo, hi = (x0, x1) if x0 <= x1 else (x1, x0)
+            if lo - 1e-6 <= x <= hi + 1e-6:
+                t = 0.0 if abs(x1 - x0) < 1e-9 else (x - x0) / (x1 - x0)
+                return z0 + (z1 - z0) * t
+        return z_deck_mid
+
+    promenade_chain: list[tuple[str, float, float, float, float, float, list[str], list[str], list[str], str]] = []
+
+    def promenade_segment(
+        part_id: str,
+        x0: float,
+        x1: float,
+        width_key: str,
+        length_key: str,
+        open_questions: Sequence[str],
+        note: str,
+        z0: float | None = None,
+        z1: float | None = None,
+    ) -> None:
+        promenade_chain.append(
+            (
                 part_id,
-                "deck_system",
-                "promenade",
-                model.ids_of(
-                    "promenade_width_present",
-                    "promenade_elevation_above_roadway",
-                    "bridge_proper_length",
-                    "anchorage_roadway_front_above_mhw",
-                    "center_clearance_above_mhw",
-                ),
-                ["control_dimension", "inferred"],
-                [
-                    _slab(
-                        x0,
-                        0.0,
-                        z_anchor_front + promenade_lift,
-                        z_promenade_mid,
-                        half_promenade,
-                        deck_thickness / 2.0,
-                    ),
-                    _slab(
-                        0.0,
-                        x1,
-                        z_promenade_mid,
-                        z_anchor_front + promenade_lift,
-                        half_promenade,
-                        deck_thickness / 2.0,
-                    ),
-                ],
-                open_questions=["OQ-013"],
-                notes=(
-                    "The Promenade is documented to exist (SRC-006 photographs it as its own group "
-                    "of plates, SRC-002 draws it) but no read source dimensions it, so it is "
-                    "INFERRED, not ASSUMED."
-                ),
+                x0,
+                x1,
+                (deck_z(x0) + promenade_lift) if z0 is None else z0,
+                (deck_z(x1) + promenade_lift) if z1 is None else z1,
+                m(width_key) / 2.0,
+                model.ids_of(width_key, length_key, "promenade_elevation_above_roadway"),
+                ["control_dimension", "drawing", "inferred"],
+                list(open_questions),
+                note,
             )
-            continue
+        )
+
+    promenade_segment(
+        "promenade_manhattan_concrete_approach",
+        x_appr_m,
+        x_anc_m,
+        "promenade_width_concrete_approach",
+        "promenade_length_concrete_approaches",
+        ["OQ-013"],
+        "SRC-011 typology 1, 17 ft — the widest section. The 2365 ft is both ends combined, so the "
+        "split between them is reasoning.",
+    )
+    promenade_segment(
+        "promenade_manhattan_side_span",
+        x_anc_m,
+        x_twr_m - tower_half,
+        "promenade_width_wood_deck_with_cables",
+        "promenade_length_wood_deck_with_cables",
+        ["OQ-013"],
+        "SRC-011 typology 3, 13 ft — where the main cables come down alongside the path.",
+    )
+    promenade_segment(
+        "promenade_tower_manhattan",
+        x_twr_m - tower_half,
+        x_twr_m + tower_half,
+        "promenade_width_at_towers",
+        "promenade_length_towers",
+        [],
+        "SRC-011 typology 5, 43 ft — the path opens into the tower balcony. Position is grade A: "
+        "the tower centerline.",
+    )
+    promenade_segment(
+        "promenade_main_span_manhattan_half",
+        x_twr_m + tower_half,
+        -half_crown,
+        "promenade_width_wood_deck_with_cables",
+        "promenade_length_wood_deck_with_cables",
+        ["OQ-013"],
+        "SRC-011 typology 3.",
+    )
+    promenade_segment(
+        "promenade_crown",
+        -half_crown,
+        half_crown,
+        "promenade_width_crown",
+        "promenade_length_crown",
+        [],
+        "SRC-011 typology 6, 355 ft at 16 ft wide. The length is grade A; centring it on midspan is "
+        "inference from the cable profile, not a statement in the source, so this stays INFERRED.",
+    )
+    promenade_segment(
+        "promenade_main_span_brooklyn_half",
+        half_crown,
+        x_twr_b - tower_half,
+        "promenade_width_wood_deck_with_cables",
+        "promenade_length_wood_deck_with_cables",
+        ["OQ-013"],
+        "SRC-011 typology 3.",
+    )
+    promenade_segment(
+        "promenade_tower_brooklyn",
+        x_twr_b - tower_half,
+        x_twr_b + tower_half,
+        "promenade_width_at_towers",
+        "promenade_length_towers",
+        [],
+        "SRC-011 typology 5, 43 ft.",
+    )
+    promenade_segment(
+        "promenade_brooklyn_side_span",
+        x_twr_b + tower_half,
+        x_anc_b,
+        "promenade_width_wood_deck_with_cables",
+        "promenade_length_wood_deck_with_cables",
+        ["OQ-013"],
+        "SRC-011 typology 3.",
+    )
+    promenade_segment(
+        "promenade_brooklyn_concrete_approach",
+        x_anc_b,
+        x_appr_b,
+        "promenade_width_concrete_approach",
+        "promenade_length_concrete_approaches",
+        ["OQ-013"],
+        "SRC-011 typology 1. SRC-011 annotates this section: pedestrians coming up from the stairs "
+        "must cross the bike lane to enter the promenade.",
+    )
+    promenade_segment(
+        "promenade_brooklyn_curve",
+        x_appr_b,
+        x_curve_end,
+        "promenade_width_brooklyn_curve",
+        "promenade_length_brooklyn_curve",
+        ["OQ-014"],
+        "SRC-011 typology 8, 910 ft at 11 ft wide — **the section that carries the walkway past the "
+        "roadway's Adams Street terminus** toward Tillary Street and Boerum Place (SRC-012). Length "
+        "and width are grade A. Its horizontal curve is NOT modelled: no read source gives a radius, "
+        "so it is drawn straight along the centerline the walkway holds while the road diverges "
+        "(SRC-014). See OQ-014.",
+        z0=z_term_b + promenade_lift,
+        z1=z_curve_end,
+    )
+
+    for (
+        part_id,
+        x0,
+        x1,
+        z0,
+        z1,
+        half_w,
+        refs,
+        basis,
+        oqs,
+        note,
+    ) in promenade_chain:
         sk.add(
             part_id,
             "deck_system",
             "promenade",
-            model.ids_of(
-                "promenade_width_present",
-                "promenade_elevation_above_roadway",
-                "manhattan_approach_length" if "manhattan" in part_id else "brooklyn_approach_length",
-                "anchorage_roadway_front_above_mhw",
-            ),
-            ["control_dimension", "inferred"],
-            [_slab(x0, x1, z0 + promenade_lift, z1 + promenade_lift, half_promenade, deck_thickness / 2.0)],
-            open_questions=["OQ-013"],
+            refs,
+            basis,
+            [_slab(min(x0, x1), max(x0, x1), z0 if x0 <= x1 else z1, z1 if x0 <= x1 else z0, half_w, promenade_thickness)],
+            open_questions=oqs,
+            notes=note,
         )
+
+    # ---------------------------------------------------------------- staircases
+    # Existence and street location are sourced; only the size is a guess, which is why these are
+    # INFERRED rather than ASSUMED.
+    stair_half_w = m("stair_width") / 2.0
+    stair_run = m("stair_width") * 2.0
+    for part_id, x_c, z_top, note in (
+        (
+            "stair_brooklyn_washington_street",
+            x_appr_b + m("promenade_length_brooklyn_curve") * 0.35,
+            z_term_b + promenade_lift,
+            "The tourist stair between the promenade and DUMBO. SRC-011 places it in the Brooklyn "
+            "Curve — that section's 11 ft path has \"excess space on north side of fence to "
+            "accommodate staircase\". SRC-012 and SRC-013 both put its foot at Washington Street "
+            "and Prospect Street, in the underpass by Cadman Plaza East. SRC-014 confirms it from "
+            "the ground. Its dimensions are a placeholder (CTL-107), see OQ-015.",
+        ),
+        (
+            "stair_manhattan_approach",
+            x_appr_m + m("promenade_length_brooklyn_curve") * 0.10,
+            deck_z(x_appr_m + m("promenade_length_brooklyn_curve") * 0.10) + promenade_lift,
+            "SRC-011 marks a staircase on the Manhattan concrete approach as a pinch point: "
+            "\"Staircase creates pinch point. Bikes traveling at high downhill speed do not have "
+            "space to pass bikes entering the bridge.\" Dimensions are a placeholder, see OQ-015.",
+        ),
+    ):
+        # Descends on the north side, which is the side SRC-011 says has the space for it.
+        y_c = m("promenade_width_brooklyn_curve") / 2.0 + stair_half_w
+        sk.add(
+            part_id,
+            "deck_system",
+            "stair",
+            model.ids_of("stair_width", "promenade_elevation_above_roadway", "promenade_width_brooklyn_curve"),
+            ["control_dimension", "drawing", "inferred"],
+            [
+                _prism(
+                    _plan_ring(x_c - stair_run / 2.0, x_c + stair_run / 2.0, stair_half_w, z_top - promenade_lift),
+                    _plan_ring(x_c - stair_run / 2.0, x_c + stair_run / 2.0, stair_half_w, z_top),
+                )
+            ],
+            open_questions=["OQ-015"],
+            notes=note,
+        )
+        sk.parts[-1].primitives[0]["positions"] = [
+            (p[0], p[1] + y_c, p[2]) for p in sk.parts[-1].primitives[0]["positions"]
+        ]
+        lo, hi = _bounds(sk.parts[-1].primitives)
+        sk.parts[-1].bbox_min, sk.parts[-1].bbox_max = lo, hi
 
     # -------------------------------------------------------------- main cables
     cable_radius = m("main_cable_diameter") / 2.0
@@ -1122,6 +1299,26 @@ def build(model: ControlModel) -> tuple[Skeleton, dict[str, Any]]:
         "stays_per_group": stays_per_group,
         "stay_reach_ft": round(stay_reach / 0.3048, 2),
         "deck_chain_ids": [row[0] for row in deck_chain],
+        "promenade_chain_ids": [row[0] for row in promenade_chain],
+        "promenade_extends_past_roadway_ft": round(
+            (x_curve_end - x_appr_b) / 0.3048, 2
+        ),
+        "promenade_typology_total_ft": round(
+            sum(
+                raw(k)
+                for k in (
+                    "promenade_length_concrete_approaches",
+                    "promenade_length_wood_deck_approaches",
+                    "promenade_length_wood_deck_with_cables",
+                    "promenade_length_tower_ramps",
+                    "promenade_length_towers",
+                    "promenade_length_crown",
+                    "promenade_length_trunk_cable_bases",
+                    "promenade_length_brooklyn_curve",
+                )
+            ),
+            2,
+        ),
         "checks": checks,
     }
     return sk, derived
