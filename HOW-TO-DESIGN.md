@@ -317,6 +317,24 @@ failure instead of a silent error.
 
 Each of these cost real time on the Manhattan Bridge.
 
+**A sourced count with no geometry is a silent hole.** *(Contributed by `brooklyn-bridge-3d`.)* A
+reviewer said the main cables looked like they attached well below the tower tops. The saddle
+elevation was in fact right. The cause was that a grade-`A` control — "eight cast iron saddle
+bearings" — had been registered at Milestone 1 and **never modelled**, so the cable ran into a solid
+masonry block and disappeared some 25 ft before reaching its true high point. Nothing failed, because
+every test asked whether the geometry that existed was sourced, and none asked whether the sources
+that existed had geometry. **Add a test that named structural counts are referenced by at least one
+part, and a report-only census of sourced controls no part uses.** The census found a second instance
+on its first run.
+
+**Trusting a measurement whose own sanity check had already failed.** The same saddle figure was
+first measured at 16.5 ft from a pass whose isotropy check came out at 1.73 on a drawing that must be
+1.00. That should have stopped the measurement being used at all. It had latched onto a flagstaff
+instead of the masonry cap. **When you scale a drawing, measure a ratio rather than an absolute** —
+it is immune to scale error — **and validate the chain against a figure that played no part in
+setting it.** Reproducing the drawing's own stated 135 ft clearance to 1.1 ft is what finally made
+the second measurement trustworthy.
+
 **Geometry stopping where the model stopped, not where the bridge stops.** All deck geometry ended
 at the anchorage face because that is where the *suspended* structure ends — leaving the roadway and
 all four tracks terminating in mid-air and contradicting a grade-`A` control that described the
