@@ -1,0 +1,7 @@
+{
+  "$comment": "Declares whether this module uses the shared inspect shell from digital-3d-shared-contracts. Read by scripts/check_viewer_sync.mjs. While adopted is false the check warns loudly on every build instead of failing, so adoption is deliberate rather than something that breaks a live site the day the control lands.",
+  "adopted": false,
+  "package": "@d3d/bridge-viewer-ui",
+  "reason": "Build script emits its own document shape: assets/parts/build_report config, bbox_min_m + bbox_max_m rather than bbox_prototype_m, controls in a separate controls.json. Adoption means emitting the shared PartsDocument contract. See digital-3d-shared-contracts/VIEWER-ADOPTION.md.",
+  "tracking_issue": "https://github.com/Ethical-Tech-CoLab/brooklyn-bridge-3d/issues (adopt @d3d/bridge-viewer-ui)"
+}

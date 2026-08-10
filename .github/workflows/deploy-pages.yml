@@ -55,6 +55,12 @@ jobs:
           cache: npm
           cache-dependency-path: viewer/package-lock.json
 
+      # The inspect shell is owned by digital-3d-shared-contracts and vendored into viewer/shared.
+      # While this module has not adopted it, the check warns rather than fails -- see
+      # viewer/shared.lock.json. Once adopted it fails the deploy on any local edit.
+      - name: Check the shared viewer has not been forked
+        run: node scripts/check_viewer_sync.mjs
+
       - name: Install viewer dependencies
         working-directory: viewer
         run: npm ci
