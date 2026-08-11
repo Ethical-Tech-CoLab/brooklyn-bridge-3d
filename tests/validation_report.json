@@ -1,7 +1,7 @@
 {
-  "control_document_sha256": "c017cde11ea8e92853cbc8d311bab199bd2d675c7b69688dda76bb9e491c0031",
-  "tests_total": 51,
-  "asserting": 46,
+  "control_document_sha256": "656d76300560c23d4f13ed7b66ccf45d20f0476eb8aabd86cfc8b07d2bf61040",
+  "tests_total": 52,
+  "asserting": 47,
   "report_only": 5,
   "failures": 0,
   "results": [
@@ -12,7 +12,7 @@
       "rule": "control_document_hash_matches",
       "mode": "assert",
       "passed": true,
-      "detail": "sha256 c017cde11ea8",
+      "detail": "sha256 656d76300560",
       "value": null
     },
     {
@@ -226,8 +226,8 @@
       "rule": "ratchet_max",
       "mode": "assert",
       "passed": true,
-      "detail": "controls_placeholder = 12, limit 12",
-      "value": 12
+      "detail": "controls_placeholder = 14, limit 14",
+      "value": 14
     },
     {
       "suite": "geometry_regression",
@@ -326,7 +326,7 @@
       "rule": "placeholders_have_no_sources",
       "mode": "assert",
       "passed": true,
-      "detail": "12 placeholders, none sourced",
+      "detail": "14 placeholders, none sourced",
       "value": null
     },
     {
@@ -346,7 +346,7 @@
       "rule": "negative_control_values",
       "mode": "assert",
       "passed": true,
-      "detail": "13 forbidden value(s) checked against 99 controls",
+      "detail": "13 forbidden value(s) checked against 101 controls",
       "value": null
     },
     {
@@ -356,7 +356,7 @@
       "rule": "negative_control_values",
       "mode": "assert",
       "passed": true,
-      "detail": "2 forbidden value(s) checked against 99 controls",
+      "detail": "2 forbidden value(s) checked against 101 controls",
       "value": null
     },
     {
@@ -541,16 +541,26 @@
     },
     {
       "suite": "source_traceability",
+      "id": "STT-023",
+      "title": "A source that is a collection is not read until it is indexed",
+      "rule": "collection_sources_are_indexed",
+      "mode": "assert",
+      "passed": true,
+      "detail": "collections indexed: SRC-007=77, SRC-018=120",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
       "id": "STT-014",
       "title": "Census of controls by grade",
       "rule": "grade_census",
       "mode": "report_only",
       "passed": true,
-      "detail": "A=83, B=4, D=12",
+      "detail": "A=83, B=4, D=14",
       "value": {
         "A": 83,
         "B": 4,
-        "D": 12
+        "D": 14
       }
     }
   ]

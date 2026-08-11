@@ -309,6 +309,30 @@ def build(model: ControlModel) -> tuple[Skeleton, dict[str, Any]]:
             }
         )
 
+    def check_at_least(check_id: str, description: str, lhs: float, rhs: float) -> None:
+        """A one-sided check: `lhs` must be at least `rhs`.
+
+        Distinct from `check` on purpose. Most cross-source checks ask whether two independently
+        sourced numbers agree, and a tolerance is the right shape for that. A geometric
+        realisability constraint is not a near-miss question — an arch whose rise is below half its
+        clear span does not exist at any tolerance, so recording it as an equality with a fudge
+        factor would be describing the wrong thing.
+        """
+        residual = lhs - rhs
+        checks.append(
+            {
+                "id": check_id,
+                "description": description,
+                "value_m": round(lhs, 6),
+                "expected_m": round(rhs, 6),
+                "residual_m": round(residual, 6),
+                "residual_ft": round(residual / 0.3048, 4),
+                "tolerance_m": None,
+                "comparison": "at_least",
+                "passed": residual >= 0.0,
+            }
+        )
+
     check(
         "CHK-001",
         "main_span + 2 x side_span_each == bridge_proper_length",
@@ -1333,27 +1357,73 @@ def build(model: ControlModel) -> tuple[Skeleton, dict[str, Any]]:
             open_questions=["OQ-007"],
             notes="Extent is grade A; the structural depth is a placeholder.",
         )
-        segments = []
+        # The arcade. HAER NY-18-64 (SRC-007) is a near-square elevation of the Brooklyn approach
+        # and settles the KIND of structure: a continuous run of pointed arches springing from
+        # rectangular granite piers, carrying a balustraded parapet. It settles no dimension, so
+        # every number below is a placeholder and the whole group is graded accordingly. Building
+        # the right kind of object out of invented dimensions is better than building the wrong
+        # kind, because the error that remains is the one the register already describes.
+        piers: list[dict[str, Any]] = []
+        arches: list[Sequence[Sequence[float]]] = []
         span_len = abs(x1 - x0)
-        count = max(int(span_len / m("approach_bent_spacing")), 1)
-        for i in range(1, count):
-            x = x0 + (x1 - x0) * i / count
-            z_top = z0 + (z1 - z0) * i / count - deck_thickness - m("approach_girder_depth")
-            for y in (-half_deck * 0.6, half_deck * 0.6):
-                segments.append(((x, y, 0.0), (x, y, z_top)))
-        if segments:
+        count = max(int(span_len / m("approach_arcade_bay")), 1)
+        pier_half_x = m("approach_pier_width_x") / 2.0
+        pier_half_y = m("approach_pier_depth_y") / 2.0
+        rise = m("approach_arch_rise")
+
+        def soffit_at(t: float) -> float:
+            return z0 + (z1 - z0) * t - deck_thickness - m("approach_girder_depth")
+
+        for i in range(count + 1):
+            t = i / count
+            x = x0 + (x1 - x0) * t
+            z_top = soffit_at(t)
+            piers.append(_box((x - pier_half_x, -pier_half_y, 0.0), (x + pier_half_x, pier_half_y, z_top)))
+
+        for i in range(count):
+            ta, tb = i / count, (i + 1) / count
+            xa = x0 + (x1 - x0) * ta + pier_half_x
+            xb = x0 + (x1 - x0) * tb - pier_half_x
+            if xb <= xa:
+                continue
+            z_spring = min(soffit_at(ta), soffit_at(tb)) - rise
+            if z_spring <= 0.0:
+                continue
+            arches.append(_longitudinal_pointed_arch(xa, xb, z_spring, rise, pier_half_y))
+
+        # A two-centred pointed arch only exists when its rise is at least half its clear span;
+        # below that the two arcs bulge past the crown and the thing drawn is a segmental arch
+        # wearing a pointed arch's parameters. The first version of this ran with a 100 ft bay
+        # inherited from the bents and produced crowns 1.6 m above the deck soffit. Checking it
+        # here means the placeholder cannot quietly drift back to an impossible value.
+        clear_span = abs(m("approach_arcade_bay") - m("approach_pier_width_x"))
+        check_at_least(
+            f"CHK-009-{end[0].upper()}",
+            "the placeholder arch rise reaches at least half the placeholder clear span, "
+            "so a two-centred pointed arch of these dimensions exists",
+            m("approach_arch_rise"),
+            clear_span / 2.0,
+        )
+
+        if piers:
             sk.add(
-                f"approach_bent_group_{end}",
+                f"approach_arcade_{end}",
                 "approaches",
                 "viaduct",
-                model.ids_of("approach_bent_spacing", "approach_bent_width_x", length_ref),
+                model.ids_of(
+                    "approach_arcade_bay", "approach_pier_width_x",
+                    "approach_pier_depth_y", "approach_arch_rise", length_ref,
+                ),
                 ["placeholder"],
-                [_lines(segments)],
+                piers + [_lines([seg for arch in arches for seg in arch])],
                 open_questions=["OQ-007"],
                 notes=(
-                    "ASSUMED. Nothing in the register locates a single approach support. The "
-                    "rhythm exists only so the approaches read as supported viaducts; it is "
-                    "excluded from every dimension callout."
+                    "PLACEHOLDER GEOMETRY, CORRECT IN KIND. SRC-007 plate NY-18-64 shows a masonry "
+                    "arcade of pointed arches on rectangular piers; the model previously drew "
+                    "slender bents, which is not this object. Every dimension here -- bay spacing, "
+                    "pier width and depth, arch rise -- is invented, so the arcade is excluded "
+                    "from every dimension callout. What is now right is the shape; what is still "
+                    "wrong is every number in it."
                 ),
             )
 
@@ -1439,6 +1509,47 @@ def _parabola(x: float, half_span: float, z_end: float, z_vertex: float) -> floa
 
 def _linspace(a: float, b: float, n: int) -> list[float]:
     return [a + (b - a) * i / (n - 1) for i in range(n)]
+
+
+def _longitudinal_pointed_arch(
+    x0: float,
+    x1: float,
+    z_springing: float,
+    rise: float,
+    half_depth: float,
+) -> list[tuple[tuple[float, float, float], tuple[float, float, float]]]:
+    """Line segments outlining a pointed arch in the x-z plane, drawn on both faces.
+
+    A two-centred arch: each half is a circular arc struck from a centre on the springing line at
+    the opposite quarter point, which is what gives the pointed crown seen in NY-18-64. Drawn as an
+    outline rather than a solid because the model has no sourced thickness for the arch ring, and a
+    solid would assert one.
+    """
+    span = x1 - x0
+    half = span / 2.0
+    if half <= 0 or rise <= 0:
+        return []
+    # Two-centred arch. Each half is struck from a centre ON the springing line, positioned so the
+    # arc leaves its own springing point at zero height and reaches exactly `rise` at the crown:
+    #   R = (half^2 + rise^2) / (2 * half)
+    # with the left centre at x0 + R and the right at x1 - R. Deriving R from `half` rather than
+    # from `rise` is the whole of it -- the first version of this divided by `rise`, which put the
+    # springing points above the ground and drove the crowns clean through the deck soffit.
+    radius = (half**2 + rise**2) / (2.0 * half)
+    cx_left = x0 + radius
+    cx_right = x1 - radius
+    steps = 14
+    segs: list[tuple[tuple[float, float, float], tuple[float, float, float]]] = []
+    for y in (-half_depth, half_depth):
+        pts: list[tuple[float, float, float]] = []
+        for i in range(steps + 1):
+            x = x0 + half * (i / steps)
+            pts.append((x, y, z_springing + math.sqrt(max(radius**2 - (x - cx_left) ** 2, 0.0))))
+        for i in range(1, steps + 1):
+            x = x0 + half + half * (i / steps)
+            pts.append((x, y, z_springing + math.sqrt(max(radius**2 - (x - cx_right) ** 2, 0.0))))
+        segs.extend(zip(pts, pts[1:]))
+    return segs
 
 
 def _pointed_arch_outline(

@@ -419,6 +419,22 @@ document, it is a **collection**, and "read" is one bit describing many. Before 
 new evidence-gathering, index every registered source at the level of individual sheets and plates,
 and publish that index. It is a day's work that can save a fortnight's.
 
+**A placeholder inherited from one kind of structure can be impossible for another.** When the
+approach viaducts were rebuilt from bents into the masonry arcade the photographs showed, the bent
+spacing carried straight over — and a two-centred pointed arch needs a rise of at least half its
+clear span, so the inherited 100 ft bay drove arch crowns clean through the deck soffit. The number
+had been harmless for years because nothing built from it could contradict it. **A placeholder is
+only as safe as the geometry that consumes it**, so when you change what consumes one, add the
+realisability check at the same time. Note also that this is a one-sided constraint: an arch below
+that ratio does not exist at any tolerance, so it needs its own `at_least` check rather than an
+equality with a fudge factor.
+
+**Fixing the kind is not the same as fixing the accuracy, and it is worth saying which you did.**
+The rebuilt arcade contains not one sourced dimension — it is graded `ASSUMED`/`D` throughout, as
+the bents were. It is not more accurate. It is more *truthful*, because a reviewer now sees the
+right species of object with the same honest labelling. Conflating the two is how a model starts
+looking more authoritative than it is.
+
 **Re-arm a guard when the world changes underneath it.** A guard forbidding citation of an
 unreviewed photo corpus stopped being able to fail the moment the corpus was reviewed — the
 injected defect had become a legitimate act. Nothing alerted us except a defect-injection harness

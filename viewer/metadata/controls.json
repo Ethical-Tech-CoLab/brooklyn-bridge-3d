@@ -1,5 +1,5 @@
 {
-  "control_document_sha256": "c017cde11ea8e92853cbc8d311bab199bd2d675c7b69688dda76bb9e491c0031",
+  "control_document_sha256": "656d76300560c23d4f13ed7b66ccf45d20f0476eb8aabd86cfc8b07d2bf61040",
   "controls": [
     {
       "control_id": "CTL-001",
@@ -1257,25 +1257,25 @@
     },
     {
       "control_id": "CTL-110",
-      "key": "approach_bent_spacing",
-      "value": 100.0,
+      "key": "approach_arcade_bay",
+      "value": 30.0,
       "unit": "ft",
-      "value_m": 30.48,
+      "value_m": 9.144,
       "source_ids": [],
       "confidence": "D",
       "is_placeholder": true,
-      "notes": "PLACEHOLDER. Longitudinal spacing of approach supports, chosen only so the approaches read as supported viaducts rather than floating slabs. The **extent** they are applied over is grade `A` (CTL-005, CTL-006); the **rhythm** is not. SRC-004 describes the Brooklyn approach as brick piers and arches over blocks of roughly 250 ft, which suggests this is the right order of magnitude and nothing more. See OQ-007."
+      "notes": "PLACEHOLDER, and **constrained rather than free**. Longitudinal pier-to-pier bay of the approach arcade. Was 100 ft, invented when the model drew slender bents; that value is geometrically **impossible** for the arcade HAER NY-18-64 shows, because a two-centred pointed arch requires a rise of at least half its clear span and a 100 ft bay would need a rise of over 46 ft. CHK-009 now asserts that constraint on every build, so this number cannot drift back to a value that draws an arch which cannot exist. The **extent** the arcade covers is grade `A` (CTL-005, CTL-006); the rhythm within it is still invented. See OQ-007."
     },
     {
       "control_id": "CTL-111",
-      "key": "approach_bent_width_x",
+      "key": "approach_pier_width_x",
       "value": 8.0,
       "unit": "ft",
       "value_m": 2.4384,
       "source_ids": [],
       "confidence": "D",
       "is_placeholder": true,
-      "notes": "PLACEHOLDER. See OQ-007."
+      "notes": "PLACEHOLDER. Longitudinal width of an arcade pier. See OQ-007."
     },
     {
       "control_id": "CTL-112",
@@ -1287,6 +1287,28 @@
       "confidence": "D",
       "is_placeholder": true,
       "notes": "PLACEHOLDER. See OQ-007."
+    },
+    {
+      "control_id": "CTL-113",
+      "key": "approach_arch_rise",
+      "value": 22.0,
+      "unit": "ft",
+      "value_m": 6.7056,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER, and a *new* invention introduced deliberately. HAER NY-18-64 settles that the approach is a masonry arcade of pointed arches, not a line of bents \u2014 but a pointed arch cannot be drawn without a rise, and no read source gives one. Rather than leave the model showing an object of the wrong kind because the right kind needs one more number, the arch is built and the number is declared an invention. Chosen only so the arch springs below the deck soffit at every station along both approaches; it is excluded from every dimension callout, and the whole arcade is rendered as a placeholder. See OQ-007."
+    },
+    {
+      "control_id": "CTL-114",
+      "key": "approach_pier_depth_y",
+      "value": 26.0,
+      "unit": "ft",
+      "value_m": 7.9248,
+      "source_ids": [],
+      "confidence": "D",
+      "is_placeholder": true,
+      "notes": "PLACEHOLDER. Transverse depth of an arcade pier. The arcade carries the full deck width, so this is bounded above by `deck_width` (85 ft, grade A) and is nowhere near it in NY-18-64, where the piers read as substantially deeper than they are wide. Invented; see OQ-007."
     }
   ],
   "materials": [

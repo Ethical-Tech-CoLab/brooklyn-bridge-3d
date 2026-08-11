@@ -173,6 +173,17 @@ def defect_archival_photo_grades_current_fabric(ctx: vd.Ctx) -> None:
     }
 
 
+def defect_collection_read_without_index(ctx: vd.Ctx) -> None:
+    """Mark a collection source read while its index is absent.
+
+    This is the project's own history, reproduced. SRC-007's register row said `read` on the
+    strength of its data pages while its 77 photographs sat unopened, and the crowd was then asked
+    for pictures the collection already contained. The defect is invisible from the register,
+    because one bit cannot distinguish read-from a collection from read-through it.
+    """
+    ctx.suppressed_paths.add("sources/haer-ny18-photo-index.json")
+
+
 def defect_detail_view_invents_a_pose(ctx: vd.Ctx) -> None:
     """Give an interior detail photograph a camera pose.
 
@@ -260,6 +271,7 @@ CASES: list[tuple[str, Path, str, Callable[[vd.Ctx], None]]] = [
     ("a reviewed photo corpus is made to justify a dimension", STT, "STT-020", defect_photo_grades_a_dimension),
     ("an 1898 photograph is made to describe today's roadway", STT, "STT-021", defect_archival_photo_grades_current_fabric),
     ("an interior detail view is given an invented camera pose", STT, "STT-022", defect_detail_view_invents_a_pose),
+    ("a collection source is marked read but never indexed", STT, "STT-023", defect_collection_read_without_index),
 ]
 
 

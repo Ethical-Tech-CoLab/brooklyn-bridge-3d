@@ -1,6 +1,6 @@
 {
   "ho_scale_denominator": 87.1,
-  "control_document_sha256": "c017cde11ea8e92853cbc8d311bab199bd2d675c7b69688dda76bb9e491c0031",
+  "control_document_sha256": "656d76300560c23d4f13ed7b66ccf45d20f0476eb8aabd86cfc8b07d2bf61040",
   "controls": [
     {
       "prototype_m": 486.3084,
@@ -1043,14 +1043,14 @@
       "is_placeholder": true
     },
     {
-      "prototype_m": 30.48,
-      "prototype_ft": 100.0,
-      "prototype_in": 1200.0,
-      "ho_mm": 349.9,
-      "ho_in": 13.78,
-      "ho_ft": 1.15,
+      "prototype_m": 9.144,
+      "prototype_ft": 30.0,
+      "prototype_in": 360.0,
+      "ho_mm": 105.0,
+      "ho_in": 4.13,
+      "ho_ft": 0.34,
       "control_id": "CTL-110",
-      "key": "approach_bent_spacing",
+      "key": "approach_arcade_bay",
       "unit": "ft",
       "confidence": "D",
       "is_placeholder": true
@@ -1063,7 +1063,7 @@
       "ho_in": 1.1,
       "ho_ft": 0.09,
       "control_id": "CTL-111",
-      "key": "approach_bent_width_x",
+      "key": "approach_pier_width_x",
       "unit": "ft",
       "confidence": "D",
       "is_placeholder": true
@@ -1077,6 +1077,32 @@
       "ho_ft": 0.11,
       "control_id": "CTL-112",
       "key": "approach_girder_depth",
+      "unit": "ft",
+      "confidence": "D",
+      "is_placeholder": true
+    },
+    {
+      "prototype_m": 6.7056,
+      "prototype_ft": 22.0,
+      "prototype_in": 264.0,
+      "ho_mm": 77.0,
+      "ho_in": 3.03,
+      "ho_ft": 0.25,
+      "control_id": "CTL-113",
+      "key": "approach_arch_rise",
+      "unit": "ft",
+      "confidence": "D",
+      "is_placeholder": true
+    },
+    {
+      "prototype_m": 7.9248,
+      "prototype_ft": 26.0,
+      "prototype_in": 312.0,
+      "ho_mm": 91.0,
+      "ho_in": 3.58,
+      "ho_ft": 0.3,
+      "control_id": "CTL-114",
+      "key": "approach_pier_depth_y",
       "unit": "ft",
       "confidence": "D",
       "is_placeholder": true

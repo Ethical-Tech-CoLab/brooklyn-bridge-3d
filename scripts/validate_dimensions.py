@@ -67,6 +67,9 @@ class Ctx:
         # Lets prove_guards.py inject a corrupted corpus without touching the file on disk.
         self.photo_survey: dict[str, Any] | None = None
         self.reference_views: dict[str, Any] | None = None
+        # Paths prove_guards.py asks us to treat as absent, so a "the index was never written"
+        # defect can be injected without deleting a real file.
+        self.suppressed_paths: set[str] = set()
 
     def reference_doc(self, rel_path: str) -> dict[str, Any] | None:
         if self.reference_views is not None:
@@ -745,6 +748,60 @@ def _reference_views_sound(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
         ", ".join("%s=%d" % kv for kv in sorted(kinds.items())),
         len(doc.get("links", [])),
     ))
+
+
+@measure("collection_sources_are_indexed")
+def _collections_indexed(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
+    """`read` on a collection means read *through*, and an index is the proof.
+
+    A register row carries one bit of read-state for what may be seventy-seven separate plates.
+    That bit was true and useless: the data pages had been read, the photographs had not, and
+    nothing could tell the difference.
+    """
+    problems: list[str] = []
+    summary: list[str] = []
+
+    for spec in t["collections"]:
+        sid = spec["source_id"]
+        if sid not in ctx.registered_sources:
+            problems.append(f"{sid} is declared a collection but is not registered")
+            continue
+        if sid not in ctx.read_sources:
+            summary.append(f"{sid} not marked read")
+            continue
+
+        path = REPO / spec["index"]
+        if spec["index"] in ctx.suppressed_paths or not path.exists():
+            problems.append(
+                f"{sid} is marked read but {spec['index']} does not exist; "
+                f"{spec['what']} has not been indexed, so 'read' cannot mean read through"
+            )
+            continue
+        try:
+            doc = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            problems.append(f"{sid}'s index will not parse: {exc}")
+            continue
+
+        items_key = spec.get("items_key", "photographs")
+        items = doc.get(items_key)
+        if not isinstance(items, list) or not items:
+            problems.append(f"{sid}'s index has no '{items_key}' list")
+            continue
+        stated = doc.get("count")
+        if stated is not None and stated != len(items):
+            problems.append(
+                f"{sid}'s index states {stated} items and holds {len(items)}"
+            )
+            continue
+        if doc.get("source_id") not in (None, sid):
+            problems.append(f"{sid}'s index claims source_id {doc.get('source_id')!r}")
+            continue
+        summary.append(f"{sid}={len(items)}")
+
+    if problems:
+        return bad("%d collection(s) not properly indexed: %s" % (len(problems), "; ".join(problems[:2])))
+    return ok("collections indexed: %s" % ", ".join(summary))
 
 
 @measure("grade_census")

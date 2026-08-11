@@ -18,25 +18,34 @@ Ranked below by *impact per unit of effort*, not by severity.
 
 ---
 
-## 1. The approach viaducts are the wrong kind of structure — class A
+## 1. The approach viaducts — class A — **now correct in kind**
 
-**Status: evidenced, buildable now, biggest single visual win.**
+**Status: fixed in kind, still invented in every dimension.**
 
-`CTL-110`/`111`/`112` draw the approaches as slender bents at 100 ft spacing — a placeholder chosen
+`CTL-110`/`111`/`112` drew the approaches as slender bents at 100 ft spacing — a placeholder chosen
 only so the approaches reached the anchorages. [HAER NY-18-64](https://cdn.loc.gov/service/pnp/habshaer/ny/ny1200/ny1234/photos/120554pv.jpg)
 is a near-square elevation of the real thing: a continuous **masonry arcade of pointed arches on
 rectangular granite piers**, carrying a balustraded parapet, running unbroken to the tower.
 
-This is roughly 3,000 ft of structure at each end — more length than the main span — and it is
-currently the least truthful part of the model.
+The model now builds that arcade — 48 bays on the Manhattan approach, 29 on the Brooklyn — and the
+bents are gone. **This did not make the model more accurate; it made it less wrong in kind.** Every
+dimension in the arcade is still invented, the whole group is graded `ASSUMED`/`D`, and it is
+excluded from every dimension callout. What changed is that a reviewer now sees an object of the
+right species with honest labels, instead of an object of the wrong species with honest labels.
 
-- **What the photograph gives**: the kind of object, the arch profile, the pier proportion, the
-  parapet, and a *countable* number of bays over a known length. A count is an arrangement fact,
-  not a dimension.
-- **What it cannot give**: the bay spacing, pier width, arch span or rise as numbers.
-- **Route**: derive bay spacing as *approach length ÷ counted bays*, publish it as grade `C`
-  (derived from an image, per `CONFIDENCE-MODEL.md`) and label it plainly, **or** wait for the
-  FOIL drawings and get `A`. The first is honest and available today; the second is better.
+Two things fell out of building it that are worth recording:
+
+- **It cost two new placeholders** (`CTL-113` arch rise, `CTL-114` pier depth). An arch cannot be
+  drawn without a rise. `GRT-050` — the placeholder ratchet — failed on the increase and forced the
+  argument to be written into the test file before the limit moved. That is the ratchet working.
+- **The old 100 ft bay was geometrically impossible.** A two-centred pointed arch needs a rise of
+  at least half its clear span; a 100 ft bay would need a rise over 46 ft, and the first build
+  drove arch crowns 1.6 m *through* the deck soffit. `CHK-009` now asserts the constraint on every
+  build and has been confirmed to fail when the old value is restored. A placeholder inherited from
+  one kind of structure was not merely imprecise for another — it was impossible, and nothing had
+  been in a position to notice.
+
+Still open: the real bay spacing, pier size and arch rise. **Only drawings settle those.**
 
 ## 2. The tower tops are wrong where everyone looks — class A
 
@@ -82,7 +91,7 @@ argued about. Worth pursuing independently of FOIL.
 | `CTL-108`/`109` tower plan at top | 42 × 116 ft | The taper — visible on every elevation |
 | `CTL-103` deck structure depth | 3 ft | Deck thickness everywhere |
 | `CTL-107` stair width | 12 ft | The DUMBO staircase |
-| `CTL-110`–`112` approach supports | 100 / 8 / 10 ft | See #1 |
+| `CTL-110`–`114` approach arcade | 30 / 8 / 10 / 22 / 26 ft | Bay rhythm, pier size, arch rise — the whole arcade |
 | `CTL-101` min suspender length | 3 ft | Midspan cable-to-deck relationship |
 | `CTL-106` Brooklyn Curve drop | 15.9 ft | Where the promenade lands |
 
@@ -128,9 +137,12 @@ is one bit where the source is many documents.
 ## Order of work
 
 1. **File the FOIL request** ([FOIL-REQUEST.md](FOIL-REQUEST.md)). It is the long pole — weeks of
-   latency — and it unblocks #1, #2, #3, #5 and #6. File it before doing anything else.
+   latency — and it unblocks #2, #3, #5 and #6, and finishes #1. File it before anything else.
 2. **Class C visuals** (#7) while waiting. Low risk, high visible return, no dependency.
-3. **Approach arcade** (#1) as counted-bay grade `C`, clearly labelled, so the worst-looking part of
-   the model stops being wrong in kind.
-4. **Tower tops and stays** (#2, #3) when the drawings arrive.
-5. **Survey** (#4) as a separate, larger initiative.
+3. **Tower tops and stays** (#2, #3) when the drawings arrive — not before, for the reason in #2.
+4. **Survey** (#4) as a separate, larger initiative.
+
+Item #1 is done in kind. It is worth being precise about what that bought: the arcade is not more
+*accurate* than the bents were — every number in it is still invented — it is more *truthful*,
+because it is now the right kind of object with the same honest labelling. Those are different
+properties, and only the FOIL drawings buy the first.

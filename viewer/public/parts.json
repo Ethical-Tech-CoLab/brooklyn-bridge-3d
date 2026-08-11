@@ -1,5 +1,5 @@
 {
-  "control_document_sha256": "c017cde11ea8e92853cbc8d311bab199bd2d675c7b69688dda76bb9e491c0031",
+  "control_document_sha256": "656d76300560c23d4f13ed7b66ccf45d20f0476eb8aabd86cfc8b07d2bf61040",
   "generator": "build_control_skeleton.py@1.0.0",
   "vertical_datum": "mean high water (MHW)",
   "units": "meters",
@@ -4139,7 +4139,7 @@
       "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
     },
     {
-      "part_id": "approach_bent_group_manhattan",
+      "part_id": "approach_arcade_manhattan",
       "system": "approaches",
       "subsystem": "viaduct",
       "source_basis": [
@@ -4148,6 +4148,8 @@
       "control_refs": [
         "CTL-110",
         "CTL-111",
+        "CTL-114",
+        "CTL-113",
         "CTL-005"
       ],
       "confidence": "D",
@@ -4161,16 +4163,16 @@
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
-        -971.658857,
-        -7.7724,
+        -1004.0874,
+        -3.9624,
         0.0
       ],
       "bbox_max_m": [
-        -597.146743,
-        7.7724,
-        20.946727
+        -564.7182,
+        3.9624,
+        22.018752
       ],
-      "notes": "ASSUMED. Nothing in the register locates a single approach support. The rhythm exists only so the approaches read as supported viaducts; it is excluded from every dimension callout.",
+      "notes": "PLACEHOLDER GEOMETRY, CORRECT IN KIND. SRC-007 plate NY-18-64 shows a masonry arcade of pointed arches on rectangular piers; the model previously drew slender bents, which is not this object. Every dimension here -- bay spacing, pier width and depth, arch rise -- is invented, so the arcade is excluded from every dimension callout. What is now right is the shape; what is still wrong is every number in it.",
       "review_status": "milestone-1-unreviewed",
       "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
     },
@@ -4212,7 +4214,7 @@
       "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
     },
     {
-      "part_id": "approach_bent_group_brooklyn",
+      "part_id": "approach_arcade_brooklyn",
       "system": "approaches",
       "subsystem": "viaduct",
       "source_basis": [
@@ -4221,6 +4223,8 @@
       "control_refs": [
         "CTL-110",
         "CTL-111",
+        "CTL-114",
+        "CTL-113",
         "CTL-006"
       ],
       "confidence": "D",
@@ -4234,16 +4238,16 @@
       "prototype_units": "meters",
       "ho_scale_units": "millimeters",
       "bbox_min_m": [
-        598.0176,
-        -7.7724,
+        564.7182,
+        -3.9624,
         0.0
       ],
       "bbox_max_m": [
-        790.4988,
-        7.7724,
-        21.361908
+        823.7982,
+        3.9624,
+        22.018752
       ],
-      "notes": "ASSUMED. Nothing in the register locates a single approach support. The rhythm exists only so the approaches read as supported viaducts; it is excluded from every dimension callout.",
+      "notes": "PLACEHOLDER GEOMETRY, CORRECT IN KIND. SRC-007 plate NY-18-64 shows a masonry arcade of pointed arches on rectangular piers; the model previously drew slender bents, which is not this object. Every dimension here -- bay spacing, pier width and depth, arch rise -- is invented, so the arcade is excluded from every dimension callout. What is now right is the shape; what is still wrong is every number in it.",
       "review_status": "milestone-1-unreviewed",
       "last_modified_by_agent": "build_control_skeleton.py@1.0.0"
     }

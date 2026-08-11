@@ -26,13 +26,13 @@ cd viewer; npm install; npm run dev          # http://localhost:5174
 
 | | |
 |---|---|
-| Controls | **99** — 87 sourced (83 grade `A`, 4 grade `B`), 12 placeholders |
+| Controls | **101** — 87 sourced (83 grade `A`, 4 grade `B`), 14 placeholders |
 | Sources read | **17 registered and read**, plus 4 registered as linked-only or negative controls |
 | Parts | **106** across 8 systems |
 | Provenance | 0 measured · 11 documented · 93 inferred · 2 assumed |
-| Tests | **51** — 46 asserting, 5 report-only, **0 failing** |
-| Guards proven | 19 injected defects, each confirmed to fail its guard |
-| Cross-source checks | 8, all closing |
+| Tests | **52** — 47 asserting, 5 report-only, **0 failing** |
+| Guards proven | 20 injected defects, each confirmed to fail its guard |
+| Cross-source checks | 10, all closing |
 | Registered conflicts | 9 — five settled with reasoning, four left open |
 | Open questions | 17 — one closed, one answered, and OQ-007 and OQ-016 now answered *in kind* by HAER plates, which showed the model is wrong |
 
