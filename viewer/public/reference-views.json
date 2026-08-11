@@ -1,203 +1,348 @@
 {
-  "contract_version": "1.0.0",
-  "kind": "reference-views",
-  "module": "brooklyn-bridge-3d",
-  "description": "Reference imagery to compare the model against, and the camera pose that reproduces each one. Consumed by any viewer implementing the compare feature; see REFERENCE-VIEWS.md in digital-3d-shared-contracts.",
-  "pose_disclaimer": "Every camera pose in this file is AUTHOR-SET, graded D, and carries no source. No registered source states where a photographer stood or what focal length they used. A pose is a starting point for the eye, never evidence. Nudge it freely; nothing in the model depends on it.",
-  "views": [
-    {
-      "id": "haer-elevation",
-      "title": "HAER measured drawing — elevation",
-      "subtitle": "Park Row to Adams Street, datumed to mean high water",
-      "kind": "drawing",
-      "image": "reference/haer-ny18-elevation.png",
-      "source_id": "SRC-002",
-      "credit": "Historic American Engineering Record, HAER No. NY-18, sheet 1 of 1, delineator Paul Berry. Library of Congress, Prints & Photographs Division.",
-      "license": "Work of the U.S. Government. No known copyright restrictions.",
-      "source_url": "https://www.loc.gov/pictures/item/ny1234.sheet.00001a/",
-      "camera": {
-        "projection": "orthographic",
-        "position": [48, -2400, 42],
-        "target": [48, 0, 42],
-        "up": [0, 0, 1],
-        "ortho_height_m": 300
-      },
-      "pose_confidence": "D",
-      "notes": "The highest-value overlay in this file: a scaled orthographic elevation of the same structure, on the same vertical datum the model authors in. Use it to check the span chain, the tower heights and the deck profile in one glance."
-    },
-    {
-      "id": "haer-plan",
-      "title": "HAER measured drawing — plan",
-      "subtitle": "Street grid, anchorages, towers",
-      "kind": "drawing",
-      "image": "reference/haer-ny18-plan.png",
-      "source_id": "SRC-002",
-      "credit": "Historic American Engineering Record, HAER No. NY-18, sheet 1 of 1, delineator Paul Berry. Library of Congress, Prints & Photographs Division.",
-      "license": "Work of the U.S. Government. No known copyright restrictions.",
-      "source_url": "https://www.loc.gov/pictures/item/ny1234.sheet.00001a/",
-      "camera": {
-        "projection": "orthographic",
-        "position": [48, 0, 2400],
-        "target": [48, 0, 0],
-        "up": [0, 1, 0],
-        "ortho_height_m": 320
-      },
-      "pose_confidence": "D",
-      "notes": "Shows the Brooklyn Curve carrying the walkway away from the roadway, which is the arrangement OQ-014 records as not yet modelled in plan."
-    },
-    {
-      "id": "haer-tower",
-      "title": "HAER measured drawing — Manhattan tower detail",
-      "subtitle": "Arch geometry, caisson depth, clearances",
-      "kind": "drawing",
-      "image": "reference/haer-ny18-tower.png",
-      "source_id": "SRC-002",
-      "credit": "Historic American Engineering Record, HAER No. NY-18, sheet 1 of 1, delineator Paul Berry. Library of Congress, Prints & Photographs Division.",
-      "license": "Work of the U.S. Government. No known copyright restrictions.",
-      "source_url": "https://www.loc.gov/pictures/item/ny1234.sheet.00001a/",
-      "camera": {
-        "projection": "orthographic",
-        "position": [-243, -1200, 60],
-        "target": [-243, 0, 60],
-        "up": [0, 0, 1],
-        "ortho_height_m": 190
-      },
-      "pose_confidence": "D",
-      "notes": "The source of CTL-020, CTL-026 to CTL-030 and both caisson depths. Overlay this to see the arch and the taper the model still guesses at (OQ-004)."
-    },
-    {
-      "id": "elevation-from-water",
-      "title": "Broadside from the East River",
-      "subtitle": "Both towers, near-elevation",
-      "kind": "photograph",
-      "image": "reference/elevation-from-water.jpg",
-      "source_id": "SRC-007",
-      "credit": "Historic American Engineering Record, HAER No. NY-18. Library of Congress, Prints & Photographs Division, digital ID 570577c.",
-      "license": "Work of the U.S. Government. No known copyright restrictions.",
-      "source_url": "https://www.loc.gov/pictures/item/ny1234/",
-      "camera": {
-        "projection": "perspective",
-        "position": [-120, -1500, 90],
-        "target": [120, 0, 60],
-        "up": [0, 0, 1],
-        "fov_y_deg": 34
-      },
-      "pose_confidence": "D",
-      "notes": "The closest thing to a photographic elevation in the set. Best single check on the cable sag recorded as wrong in OQ-001."
-    },
-    {
-      "id": "brooklyn-tower",
-      "title": "Brooklyn tower, three-quarter view",
-      "kind": "photograph",
-      "image": "reference/brooklyn-tower.jpg",
-      "source_id": "SRC-007",
-      "credit": "Historic American Engineering Record, HAER No. NY-18. Library of Congress, Prints & Photographs Division, digital ID 349147c.",
-      "license": "Work of the U.S. Government. No known copyright restrictions.",
-      "source_url": "https://www.loc.gov/pictures/item/ny1234/",
-      "camera": {
-        "projection": "perspective",
-        "position": [700, -700, 120],
-        "target": [243, 0, 60],
-        "up": [0, 0, 1],
-        "fov_y_deg": 38
-      },
-      "pose_confidence": "D",
-      "notes": "Shows the two pointed arches and the tower taper above mean high water — the geometry CTL-108 and CTL-109 still place by guess."
-    },
-    {
-      "id": "aerial-oblique",
-      "title": "Aerial oblique along the span",
-      "kind": "photograph",
-      "image": "reference/aerial-oblique.jpg",
-      "source_id": "SRC-007",
-      "credit": "Historic American Engineering Record, HAER No. NY-18. Library of Congress, Prints & Photographs Division, digital ID 570575c.",
-      "license": "Work of the U.S. Government. No known copyright restrictions.",
-      "source_url": "https://www.loc.gov/pictures/item/ny1234/",
-      "camera": {
-        "projection": "perspective",
-        "position": [-900, -900, 700],
-        "target": [100, 0, 40],
-        "up": [0, 0, 1],
-        "fov_y_deg": 40
-      },
-      "pose_confidence": "D",
-      "notes": "Reads the deck, the four cables and the transverse spacing that CTL-104 and CTL-105 only guess at (OQ-002)."
-    },
-    {
-      "id": "span-from-brooklyn",
-      "title": "Span and tower from the Brooklyn shore",
-      "kind": "photograph",
-      "image": "reference/span-from-brooklyn.jpg",
-      "source_id": "SRC-007",
-      "credit": "Historic American Engineering Record, HAER No. NY-18. Library of Congress, Prints & Photographs Division, digital ID 570579c.",
-      "license": "Work of the U.S. Government. No known copyright restrictions.",
-      "source_url": "https://www.loc.gov/pictures/item/ny1234/",
-      "camera": {
-        "projection": "perspective",
-        "position": [900, -600, 80],
-        "target": [0, 0, 70],
-        "up": [0, 0, 1],
-        "fov_y_deg": 36
-      },
-      "pose_confidence": "D",
-      "notes": "Roughly the DUMBO vantage. Useful for the Brooklyn approach and the anchorage."
-    },
-    {
-      "id": "aerial-1978",
-      "title": "Aerial, 1978",
-      "kind": "photograph",
-      "image": "reference/aerial-1978.jpg",
-      "source_id": "SRC-007",
-      "credit": "Historic American Engineering Record, HAER No. NY-18, Jack Boucher, photographer, 1978. Library of Congress, Prints & Photographs Division, digital ID 120495p.",
-      "license": "Work of the U.S. Government. No known copyright restrictions.",
-      "source_url": "https://www.loc.gov/pictures/item/ny1234/",
-      "camera": {
-        "projection": "perspective",
-        "position": [-600, -1100, 600],
-        "target": [200, 0, 40],
-        "up": [0, 0, 1],
-        "fov_y_deg": 38
-      },
-      "pose_confidence": "D",
-      "notes": "Shows both approaches and how far the structure runs beyond the suspended span."
-    }
-  ],
-  "links": [
-    {
-      "id": "historicbridges-gallery-3",
-      "title": "Brooklyn Bridge photo gallery 3",
-      "publisher": "HistoricBridges.org",
-      "url": "https://historicbridges.org/bridges/browser/photosviewer.php?bridgebrowser=newyork/brooklyn/&gallerynum=3&gallerysize=2",
-      "license": "Copyright HistoricBridges.org. NOT redistributable — linked, never copied.",
-      "source_id": "SRC-016",
-      "notes": "Full-size modern detail photography: truss members, cable bands, suspender sockets, deck framing. The register's Tier B detail source, and the best available look at the members this model still draws as plain envelopes."
-    },
-    {
-      "id": "historicbridges-gallery-4",
-      "title": "Brooklyn Bridge photo gallery 4",
-      "publisher": "HistoricBridges.org",
-      "url": "https://historicbridges.org/bridges/browser/photosviewer.php?bridgebrowser=newyork/brooklyn/&gallerynum=4&gallerysize=2",
-      "license": "Copyright HistoricBridges.org. NOT redistributable — linked, never copied.",
-      "source_id": "SRC-016",
-      "notes": "Second gallery. Useful for the promenade, the tower balconies and the anchorage face."
-    },
-    {
-      "id": "historic-structures",
-      "title": "The Brooklyn Bridge, New York",
-      "publisher": "Historic-Structures.com",
-      "url": "https://www.historic-structures.com/ny/new_york/brooklyn-bridge/",
-      "license": "Copyright Historic-Structures.com. Linked, never copied. Its illustrations are LOC HAER plates, which this repository obtained from the Library of Congress directly.",
-      "source_id": "SRC-017",
-      "notes": "Narrative construction history. Its images carry LOC digital IDs (570574c, 120491p and others), which is how the HAER plates above were identified and then fetched from the LOC CDN at full resolution."
-    },
-    {
-      "id": "loc-haer-record",
-      "title": "HAER No. NY-18 — the complete record",
-      "publisher": "Library of Congress",
-      "url": "https://www.loc.gov/pictures/collection/hh/item/ny1234/",
-      "license": "Works of the U.S. Government. No known copyright restrictions.",
-      "source_id": "SRC-007",
-      "notes": "All 77 photographs, 8 colour transparencies, the data pages and the measured drawing. Everything embedded above came from here."
-    }
-  ]
+ "contract_version": "1.0.0",
+ "kind": "reference-views",
+ "module": "brooklyn-bridge-3d",
+ "description": "Reference imagery to compare the model against, and the camera pose that reproduces each one. Consumed by any viewer implementing the compare feature; see REFERENCE-VIEWS.md in digital-3d-shared-contracts.",
+ "pose_disclaimer": "Every camera pose in this file is AUTHOR-SET, graded D, and carries no source. No registered source states where a photographer stood or what focal length they used. A pose is a starting point for the eye, never evidence. Nudge it freely; nothing in the model depends on it.",
+ "views": [
+  {
+   "id": "haer-elevation",
+   "title": "HAER measured drawing — elevation",
+   "subtitle": "Park Row to Adams Street, datumed to mean high water",
+   "kind": "drawing",
+   "image": "reference/haer-ny18-elevation.png",
+   "source_id": "SRC-002",
+   "credit": "Historic American Engineering Record, HAER No. NY-18, sheet 1 of 1, delineator Paul Berry. Library of Congress, Prints & Photographs Division.",
+   "license": "Work of the U.S. Government. No known copyright restrictions.",
+   "source_url": "https://www.loc.gov/pictures/item/ny1234.sheet.00001a/",
+   "camera": {
+    "projection": "orthographic",
+    "position": [
+     48,
+     -2400,
+     42
+    ],
+    "target": [
+     48,
+     0,
+     42
+    ],
+    "up": [
+     0,
+     0,
+     1
+    ],
+    "ortho_height_m": 300
+   },
+   "pose_confidence": "D",
+   "notes": "The highest-value overlay in this file: a scaled orthographic elevation of the same structure, on the same vertical datum the model authors in. Use it to check the span chain, the tower heights and the deck profile in one glance."
+  },
+  {
+   "id": "haer-plan",
+   "title": "HAER measured drawing — plan",
+   "subtitle": "Street grid, anchorages, towers",
+   "kind": "drawing",
+   "image": "reference/haer-ny18-plan.png",
+   "source_id": "SRC-002",
+   "credit": "Historic American Engineering Record, HAER No. NY-18, sheet 1 of 1, delineator Paul Berry. Library of Congress, Prints & Photographs Division.",
+   "license": "Work of the U.S. Government. No known copyright restrictions.",
+   "source_url": "https://www.loc.gov/pictures/item/ny1234.sheet.00001a/",
+   "camera": {
+    "projection": "orthographic",
+    "position": [
+     48,
+     0,
+     2400
+    ],
+    "target": [
+     48,
+     0,
+     0
+    ],
+    "up": [
+     0,
+     1,
+     0
+    ],
+    "ortho_height_m": 320
+   },
+   "pose_confidence": "D",
+   "notes": "Shows the Brooklyn Curve carrying the walkway away from the roadway, which is the arrangement OQ-014 records as not yet modelled in plan."
+  },
+  {
+   "id": "haer-tower",
+   "title": "HAER measured drawing — Manhattan tower detail",
+   "subtitle": "Arch geometry, caisson depth, clearances",
+   "kind": "drawing",
+   "image": "reference/haer-ny18-tower.png",
+   "source_id": "SRC-002",
+   "credit": "Historic American Engineering Record, HAER No. NY-18, sheet 1 of 1, delineator Paul Berry. Library of Congress, Prints & Photographs Division.",
+   "license": "Work of the U.S. Government. No known copyright restrictions.",
+   "source_url": "https://www.loc.gov/pictures/item/ny1234.sheet.00001a/",
+   "camera": {
+    "projection": "orthographic",
+    "position": [
+     -243,
+     -1200,
+     60
+    ],
+    "target": [
+     -243,
+     0,
+     60
+    ],
+    "up": [
+     0,
+     0,
+     1
+    ],
+    "ortho_height_m": 190
+   },
+   "pose_confidence": "D",
+   "notes": "The source of CTL-020, CTL-026 to CTL-030 and both caisson depths. Overlay this to see the arch and the taper the model still guesses at (OQ-004)."
+  },
+  {
+   "id": "elevation-from-water",
+   "title": "Broadside from the East River",
+   "subtitle": "Both towers, near-elevation",
+   "kind": "photograph",
+   "image": "reference/elevation-from-water.jpg",
+   "source_id": "SRC-007",
+   "credit": "Historic American Engineering Record, HAER No. NY-18. Library of Congress, Prints & Photographs Division, digital ID 570577c.",
+   "license": "Work of the U.S. Government. No known copyright restrictions.",
+   "source_url": "https://www.loc.gov/pictures/item/ny1234/",
+   "camera": {
+    "projection": "perspective",
+    "position": [
+     -120,
+     -1500,
+     90
+    ],
+    "target": [
+     120,
+     0,
+     60
+    ],
+    "up": [
+     0,
+     0,
+     1
+    ],
+    "fov_y_deg": 34
+   },
+   "pose_confidence": "D",
+   "notes": "The closest thing to a photographic elevation in the set. Best single check on the cable sag recorded as wrong in OQ-001."
+  },
+  {
+   "id": "brooklyn-tower",
+   "title": "Brooklyn tower, three-quarter view",
+   "kind": "photograph",
+   "image": "reference/brooklyn-tower.jpg",
+   "source_id": "SRC-007",
+   "credit": "Historic American Engineering Record, HAER No. NY-18. Library of Congress, Prints & Photographs Division, digital ID 349147c.",
+   "license": "Work of the U.S. Government. No known copyright restrictions.",
+   "source_url": "https://www.loc.gov/pictures/item/ny1234/",
+   "camera": {
+    "projection": "perspective",
+    "position": [
+     700,
+     -700,
+     120
+    ],
+    "target": [
+     243,
+     0,
+     60
+    ],
+    "up": [
+     0,
+     0,
+     1
+    ],
+    "fov_y_deg": 38
+   },
+   "pose_confidence": "D",
+   "notes": "Shows the two pointed arches and the tower taper above mean high water — the geometry CTL-108 and CTL-109 still place by guess."
+  },
+  {
+   "id": "aerial-oblique",
+   "title": "Aerial oblique along the span",
+   "kind": "photograph",
+   "image": "reference/aerial-oblique.jpg",
+   "source_id": "SRC-007",
+   "credit": "Historic American Engineering Record, HAER No. NY-18. Library of Congress, Prints & Photographs Division, digital ID 570575c.",
+   "license": "Work of the U.S. Government. No known copyright restrictions.",
+   "source_url": "https://www.loc.gov/pictures/item/ny1234/",
+   "camera": {
+    "projection": "perspective",
+    "position": [
+     -900,
+     -900,
+     700
+    ],
+    "target": [
+     100,
+     0,
+     40
+    ],
+    "up": [
+     0,
+     0,
+     1
+    ],
+    "fov_y_deg": 40
+   },
+   "pose_confidence": "D",
+   "notes": "Reads the deck, the four cables and the transverse spacing that CTL-104 and CTL-105 only guess at (OQ-002)."
+  },
+  {
+   "id": "span-from-brooklyn",
+   "title": "Span and tower from the Brooklyn shore",
+   "kind": "photograph",
+   "image": "reference/span-from-brooklyn.jpg",
+   "source_id": "SRC-007",
+   "credit": "Historic American Engineering Record, HAER No. NY-18. Library of Congress, Prints & Photographs Division, digital ID 570579c.",
+   "license": "Work of the U.S. Government. No known copyright restrictions.",
+   "source_url": "https://www.loc.gov/pictures/item/ny1234/",
+   "camera": {
+    "projection": "perspective",
+    "position": [
+     900,
+     -600,
+     80
+    ],
+    "target": [
+     0,
+     0,
+     70
+    ],
+    "up": [
+     0,
+     0,
+     1
+    ],
+    "fov_y_deg": 36
+   },
+   "pose_confidence": "D",
+   "notes": "Roughly the DUMBO vantage. Useful for the Brooklyn approach and the anchorage."
+  },
+  {
+   "id": "aerial-1978",
+   "title": "Aerial, 1978",
+   "kind": "photograph",
+   "image": "reference/aerial-1978.jpg",
+   "source_id": "SRC-007",
+   "credit": "Historic American Engineering Record, HAER No. NY-18, Jack Boucher, photographer, 1978. Library of Congress, Prints & Photographs Division, digital ID 120495p.",
+   "license": "Work of the U.S. Government. No known copyright restrictions.",
+   "source_url": "https://www.loc.gov/pictures/item/ny1234/",
+   "camera": {
+    "projection": "perspective",
+    "position": [
+     -600,
+     -1100,
+     600
+    ],
+    "target": [
+     200,
+     0,
+     40
+    ],
+    "up": [
+     0,
+     0,
+     1
+    ],
+    "fov_y_deg": 38
+   },
+   "pose_confidence": "D",
+   "notes": "Shows both approaches and how far the structure runs beyond the suspended span."
+  },
+  {
+   "id": "haer-ny18-40-tower-saddles",
+   "title": "Cast-iron cable saddles, inside the Brooklyn tower",
+   "subtitle": "NY-18-40 — the eight bearings of CTL-046, photographed",
+   "kind": "detail",
+   "image": "reference/haer-ny18-40-tower-saddles.jpg",
+   "source_id": "SRC-007",
+   "credit": "Historic American Engineering Record, HAER No. NY-18. Library of Congress, Prints & Photographs Division, digital ID 120530.",
+   "license": "Work of the U.S. Government. No known copyright restrictions.",
+   "source_url": "https://www.loc.gov/pictures/item/ny1234/",
+   "notes": "CTL-046 registers eight cast-iron saddle bearings of 13 tons each and was, for most of this project, a sourced count with no geometry. This is what it looks like: the saddles stand in an enclosed chamber under a brick vault, between granite walls. Nothing here is a dimension — there is no scale in the frame — but it settles the arrangement, and it shows that the model's open cornice corridor is the wrong kind of object. See CONF-009."
+  },
+  {
+   "id": "haer-ny18-41-cable-openings",
+   "title": "Centre cables leaving the masonry openings",
+   "subtitle": "NY-18-41 — the direct answer to OQ-016",
+   "kind": "detail",
+   "image": "reference/haer-ny18-41-cable-openings.jpg",
+   "source_id": "SRC-007",
+   "credit": "Historic American Engineering Record, HAER No. NY-18. Library of Congress, Prints & Photographs Division, digital ID 120531.",
+   "license": "Work of the U.S. Government. No known copyright restrictions.",
+   "source_url": "https://www.loc.gov/pictures/item/ny1234/",
+   "notes": "Each main cable passes through its own tunnel in the granite with masonry continuous above it, cable bands and suspender sockets visible at the mouth, diagonal stays threading below. The model instead cuts one open corridor across all four cables. This photograph is why OQ-016 is now recorded as a known error rather than an open question — and why it still cannot be fixed: it gives the arrangement and not one dimension of it."
+  },
+  {
+   "id": "haer-ny18-64-approach-arcade",
+   "title": "Brooklyn approach arcade",
+   "subtitle": "NY-18-64 — the direct answer to OQ-007",
+   "kind": "detail",
+   "image": "reference/haer-ny18-64-approach-arcade.jpg",
+   "source_id": "SRC-007",
+   "credit": "Historic American Engineering Record, HAER No. NY-18. Library of Congress, Prints & Photographs Division, digital ID 120554.",
+   "license": "Work of the U.S. Government. No known copyright restrictions.",
+   "source_url": "https://www.loc.gov/pictures/item/ny1234/",
+   "notes": "A near-square elevation of the approach: a continuous arcade of pointed arches on rectangular granite piers under a balustraded parapet. The model draws slender bents, which is not this object. The arches can be counted from this frame; they cannot be measured from it, which is exactly the split between what a photograph settles and what the NYCDOT drawings are needed for."
+  },
+  {
+   "id": "haer-ny18-38-tower-top-stays",
+   "title": "From the tower top: stays, cornice, main cable",
+   "subtitle": "NY-18-38 — where the stays actually leave the tower",
+   "kind": "detail",
+   "image": "reference/haer-ny18-38-tower-top-stays.jpg",
+   "source_id": "SRC-007",
+   "credit": "Historic American Engineering Record, HAER No. NY-18. Library of Congress, Prints & Photographs Division, digital ID 120528.",
+   "license": "Work of the U.S. Government. No known copyright restrictions.",
+   "source_url": "https://www.loc.gov/pictures/item/ny1234/",
+   "notes": "The stay fan seen from above, against the tower cornice. The stays do not radiate from a single point: they leave the tower across a spread of heights and pass over the cornice edge. The model attaches them all at one node, which is a simplification this frame makes visible."
+  }
+ ],
+ "links": [
+  {
+   "id": "historicbridges-gallery-3",
+   "title": "Brooklyn Bridge photo gallery 3",
+   "publisher": "HistoricBridges.org",
+   "url": "https://historicbridges.org/bridges/browser/photosviewer.php?bridgebrowser=newyork/brooklyn/&gallerynum=3&gallerysize=2",
+   "license": "Copyright HistoricBridges.org. NOT redistributable — linked, never copied.",
+   "source_id": "SRC-016",
+   "notes": "Full-size modern detail photography: truss members, cable bands, suspender sockets, deck framing. The register's Tier B detail source, and the best available look at the members this model still draws as plain envelopes."
+  },
+  {
+   "id": "historicbridges-gallery-4",
+   "title": "Brooklyn Bridge photo gallery 4",
+   "publisher": "HistoricBridges.org",
+   "url": "https://historicbridges.org/bridges/browser/photosviewer.php?bridgebrowser=newyork/brooklyn/&gallerynum=4&gallerysize=2",
+   "license": "Copyright HistoricBridges.org. NOT redistributable — linked, never copied.",
+   "source_id": "SRC-016",
+   "notes": "Second gallery. Useful for the promenade, the tower balconies and the anchorage face."
+  },
+  {
+   "id": "historic-structures",
+   "title": "The Brooklyn Bridge, New York",
+   "publisher": "Historic-Structures.com",
+   "url": "https://www.historic-structures.com/ny/new_york/brooklyn-bridge/",
+   "license": "Copyright Historic-Structures.com. Linked, never copied. Its illustrations are LOC HAER plates, which this repository obtained from the Library of Congress directly.",
+   "source_id": "SRC-017",
+   "notes": "Narrative construction history. Its images carry LOC digital IDs (570574c, 120491p and others), which is how the HAER plates above were identified and then fetched from the LOC CDN at full resolution."
+  },
+  {
+   "id": "loc-haer-record",
+   "title": "HAER No. NY-18 — the complete record",
+   "publisher": "Library of Congress",
+   "url": "https://www.loc.gov/pictures/collection/hh/item/ny1234/",
+   "license": "Works of the U.S. Government. No known copyright restrictions.",
+   "source_id": "SRC-007",
+   "notes": "All 77 photographs, 8 colour transparencies, the data pages and the measured drawing. Everything embedded above came from here."
+  }
+ ],
+ "detail_disclaimer": "Detail views carry no camera pose. The model cannot reproduce a view from inside a tower chamber, and inventing a pose so the compare slider had something to do would be fabricating a viewpoint to dress up evidence. They are here to be read beside the model, not aligned to it."
 }

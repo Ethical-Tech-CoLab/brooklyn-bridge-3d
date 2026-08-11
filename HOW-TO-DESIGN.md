@@ -410,6 +410,15 @@ not the viaduct they drive under. Plan for this: put the categories you actually
 campaign so the gap is measured rather than assumed, and treat an empty category as a finding worth
 recording. It tells you to go and get the drawings instead of harvesting more.
 
+**Ask the sources you already hold before you ask the crowd.** The campaign above was, in the end,
+unnecessary for its two headline questions. A registered source — an archival photographic survey —
+contained a square elevation of the approach arcade and two interior views of the cable saddles and
+their masonry openings. It had been marked *read* in the register on the strength of its written
+data pages and its one measured drawing; nobody had indexed its 77 photographs. A source is not a
+document, it is a **collection**, and "read" is one bit describing many. Before commissioning any
+new evidence-gathering, index every registered source at the level of individual sheets and plates,
+and publish that index. It is a day's work that can save a fortnight's.
+
 **Re-arm a guard when the world changes underneath it.** A guard forbidding citation of an
 unreviewed photo corpus stopped being able to fail the moment the corpus was reviewed — the
 injected defect had become a legitimate act. Nothing alerted us except a defect-injection harness

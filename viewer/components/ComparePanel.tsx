@@ -27,6 +27,12 @@ export default function ComparePanel(props: Props) {
   const active = doc.views.find((v) => v.id === activeId) ?? null;
   const drawings = doc.views.filter((v) => v.kind === 'drawing');
   const photographs = doc.views.filter((v) => v.kind === 'photograph');
+  const details = doc.views.filter((v) => v.kind === 'detail');
+  // Anything whose kind matches no group would otherwise vanish from the panel while still
+  // sitting in the contract file, looking published. Surfacing it is louder than dropping it.
+  const ungrouped = doc.views.filter(
+    (v) => v.kind !== 'drawing' && v.kind !== 'photograph' && v.kind !== 'detail',
+  );
 
   const group = (label: string, views: ReferenceView[]) =>
     views.length === 0 ? null : (
@@ -79,13 +85,48 @@ export default function ComparePanel(props: Props) {
       {group('Measured drawings', drawings)}
       {group('Photographs', photographs)}
 
+      {details.length > 0 && (
+        <div className="cmp-group">
+          <h3>Detail evidence</h3>
+          <p className="hint">
+            Close views of things the model gets wrong or cannot yet build. These carry{' '}
+            <strong>no camera pose</strong> — the model has no interior, and inventing a viewpoint
+            so the slider had something to do would be dressing up evidence. Read them beside the
+            model, not aligned to it.
+          </p>
+          <ul className="cmp-list">
+            {details.map((v) => (
+              <li key={v.id}>
+                <a className="cmp-item" href={v.image} target="_blank" rel="noreferrer">
+                  <img src={v.image} alt="" loading="lazy" />
+                  <span className="cmp-item-text">
+                    <b>{v.title}</b>
+                    {v.subtitle && <em>{v.subtitle}</em>}
+                    <span className="src">{v.source_id}</span>
+                  </span>
+                </a>
+                {v.notes && <p className="cmp-note">{v.notes}</p>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {ungrouped.length > 0 && (
+        <p className="hint warn">
+          {ungrouped.length} reference view(s) declare a kind this panel does not render:{' '}
+          {[...new Set(ungrouped.map((v) => v.kind))].join(', ')}. They are in the contract file and
+          invisible here, which is the one state worse than being absent.
+        </p>
+      )}
+
       {active && (
         <div className="cmp-active">
           <h3>Alignment</h3>
           <p className="hint warn">
-            The camera pose is <strong>author-set and graded {active.pose_confidence}</strong>. No
-            source says where the photographer stood. Nudge it freely — nothing in the model depends
-            on it.
+            The camera pose is{' '}
+            <strong>author-set and graded {active.pose_confidence ?? 'D'}</strong>. No source says
+            where the photographer stood. Nudge it freely — nothing in the model depends on it.
           </p>
           <label className="cmp-slider">
             opacity

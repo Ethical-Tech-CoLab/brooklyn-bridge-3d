@@ -25,6 +25,7 @@ Run::
 from __future__ import annotations
 
 import copy
+import json
 import sys
 from pathlib import Path
 from typing import Any, Callable
@@ -172,6 +173,24 @@ def defect_archival_photo_grades_current_fabric(ctx: vd.Ctx) -> None:
     }
 
 
+def defect_detail_view_invents_a_pose(ctx: vd.Ctx) -> None:
+    """Give an interior detail photograph a camera pose.
+
+    The tempting version: the compare slider does nothing for a detail view, which feels like a
+    missing feature rather than an honest limit. Adding a plausible pose makes the UI complete and
+    quietly asserts that the model has a viewpoint reproducing the inside of a tower chamber.
+    """
+    path = vd.REPO / "viewer" / "public" / "reference-views.json"
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    for v in doc["views"]:
+        if v.get("kind") == "detail":
+            v["camera"] = {"projection": "perspective", "position": [0, -80, 260],
+                           "target": [0, 0, 250], "up": [0, 0, 1], "fov_y_deg": 40}
+            v["pose_confidence"] = "D"
+            break
+    ctx.reference_views = doc
+
+
 def defect_photo_position_dropped(ctx: vd.Ctx) -> None:
     """Lose a camera position without saying so.
 
@@ -240,6 +259,7 @@ CASES: list[tuple[str, Path, str, Callable[[vd.Ctx], None]]] = [
     ("scraped free text is stamped with day precision", STT, "STT-019", defect_photo_precision_overclaimed),
     ("a reviewed photo corpus is made to justify a dimension", STT, "STT-020", defect_photo_grades_a_dimension),
     ("an 1898 photograph is made to describe today's roadway", STT, "STT-021", defect_archival_photo_grades_current_fabric),
+    ("an interior detail view is given an invented camera pose", STT, "STT-022", defect_detail_view_invents_a_pose),
 ]
 
 

@@ -27,14 +27,14 @@ cd viewer; npm install; npm run dev          # http://localhost:5174
 | | |
 |---|---|
 | Controls | **99** — 87 sourced (83 grade `A`, 4 grade `B`), 12 placeholders |
-| Sources read | **13 registered and read**, plus 4 registered as linked-only or negative controls |
+| Sources read | **17 registered and read**, plus 4 registered as linked-only or negative controls |
 | Parts | **106** across 8 systems |
 | Provenance | 0 measured · 11 documented · 93 inferred · 2 assumed |
-| Tests | **50** — 45 asserting, 5 report-only, **0 failing** |
-| Guards proven | 18 injected defects, each confirmed to fail its guard |
+| Tests | **51** — 46 asserting, 5 report-only, **0 failing** |
+| Guards proven | 19 injected defects, each confirmed to fail its guard |
 | Cross-source checks | 8, all closing |
-| Registered conflicts | 8 — five settled with reasoning, three left open |
-| Open questions | 17 — one closed, one answered, two half-answered |
+| Registered conflicts | 9 — five settled with reasoning, four left open |
+| Open questions | 17 — one closed, one answered, and OQ-007 and OQ-016 now answered *in kind* by HAER plates, which showed the model is wrong |
 
 Turning `INFERRED` and `ASSUMED` off in the viewer leaves the two anchorages and the seven station
 markers. **That emptiness is the honest picture of what these sources actually locate**, and it is
@@ -139,6 +139,29 @@ Two limits stayed enforced throughout, in code rather than in prose:
 
 Built with the shared [`tools/photo-survey/`](https://github.com/Ethical-Tech-CoLab/digital-3d-shared-contracts/tree/main/tools/photo-survey)
 pipeline, so any structure in this programme can run the same campaign.
+
+**A postscript worth reading before you run one.** Both categories that came back empty were
+answered all along by HAER No. NY-18 — a source registered here since Milestone 1. Plate NY-18-64
+is a square elevation of the approach arcade; NY-18-40 and NY-18-41 photograph the cable saddles
+and the masonry openings from inside the Brooklyn tower. The register even said the plates were
+unread. All 77 are now indexed in
+[sources/haer-ny18-photo-index.json](sources/haer-ny18-photo-index.json), and the four that matter
+most are in the viewer's compare panel under **Detail evidence**. *Ask the sources you already hold
+before you ask the crowd.*
+
+---
+
+## What is still wrong, and what would fix it
+
+[**OPEN-PROBLEMS.md**](OPEN-PROBLEMS.md) is the honest register: the approach viaducts are the
+wrong *kind* of structure, the tower tops carry the cables the wrong *way*, the stay fan starts
+from an invented node, and twelve dimensions are placeholders. It separates problems a photograph
+can settle from problems only a drawing can, because conflating those is what sent a 272-image
+campaign after questions photographs cannot answer.
+
+[**FOIL-REQUEST.md**](FOIL-REQUEST.md) is the ready-to-file records request to NYC DOT that
+unblocks most of them — with the statutory clock, and a procedure for turning a pile of drawings
+into graded controls without laundering a proposal into an as-built.
 
 ---
 

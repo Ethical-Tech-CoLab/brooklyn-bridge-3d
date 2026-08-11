@@ -11,14 +11,20 @@ export interface ReferenceView {
   id: string;
   title: string;
   subtitle?: string;
-  kind: 'drawing' | 'photograph';
+  /**
+   * `detail` is a close view of something the model gets wrong or cannot build — an interior, a
+   * connection, a member. It deliberately carries no `camera`: the model has no viewpoint that
+   * could reproduce it, and a pose invented so the compare slider had something to do would be
+   * fabricating a viewpoint to dress up evidence.
+   */
+  kind: 'drawing' | 'photograph' | 'detail';
   image: string;
   source_id: string;
   credit: string;
   license: string;
   source_url?: string;
-  camera: ReferenceCamera;
-  pose_confidence: Confidence;
+  camera?: ReferenceCamera;
+  pose_confidence?: Confidence;
   notes?: string;
 }
 

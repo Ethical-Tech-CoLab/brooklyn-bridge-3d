@@ -181,6 +181,14 @@
       "rationale": "The accepted corpus spans 1867 to 2026. MAT-009 says the roadway is asphalt and MAT-010 says the promenade is timber -- both present-tense claims about surfaces that are renewed on a maintenance cycle, and neither was true of the 1883 bridge. The reviewer avoided the trap by instinct, tagging all 19 pre-1960 photographs `context` and nothing else, but nothing enforced it: one archival frame tagged `deck` would have made MAT-009 rest partly on a surface that no longer exists. Categories are now declared `renewed` or `stable` in the campaign, and a renewed subject may only be evidenced by photography after the stated cutoff. Granite is stable and an 1876 photograph of it is still evidence; asphalt is not."
     },
     {
+      "id": "STT-022",
+      "title": "Every reference view is licensed, resolvable, and honest about its camera pose",
+      "rule": "reference_views_are_sound",
+      "mode": "assert",
+      "document": "viewer/public/reference-views.json",
+      "rationale": "The compare panel is the part of this project a reviewer trusts most, because it puts the model beside the record. Nothing checked it. This asserts four things: every view names a registered source and a licence; every image path resolves to a file that exists, because a broken reference looks like a missing view rather than a bug; a `detail` view carries NO camera, since the model has no interior viewpoint and a pose invented to give the slider something to do would be fabricating evidence; and every non-detail view does carry one. The panel silently dropped any view whose kind it did not recognise, which is how a published-looking entry can be invisible."
+    },
+    {
       "id": "STT-014",
       "title": "Census of controls by grade",
       "rule": "grade_census",

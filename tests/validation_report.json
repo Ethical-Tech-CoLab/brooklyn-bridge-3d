@@ -1,7 +1,7 @@
 {
-  "control_document_sha256": "b02cb55085dd0d5a6110ce3196ef6ce7ebe684f97724ec5a4459055c9474ef9c",
-  "tests_total": 50,
-  "asserting": 45,
+  "control_document_sha256": "c017cde11ea8e92853cbc8d311bab199bd2d675c7b69688dda76bb9e491c0031",
+  "tests_total": 51,
+  "asserting": 46,
   "report_only": 5,
   "failures": 0,
   "results": [
@@ -12,7 +12,7 @@
       "rule": "control_document_hash_matches",
       "mode": "assert",
       "passed": true,
-      "detail": "sha256 b02cb55085dd",
+      "detail": "sha256 c017cde11ea8",
       "value": null
     },
     {
@@ -426,7 +426,7 @@
       "rule": "cited_sources_are_read",
       "mode": "assert",
       "passed": true,
-      "detail": "16 read sources: SRC-001, SRC-002, SRC-003, SRC-004, SRC-005, SRC-006, SRC-008, SRC-010, SRC-011, SRC-012, SRC-013, SRC-014, SRC-015, SRC-016, SRC-017, SRC-018",
+      "detail": "17 read sources: SRC-001, SRC-002, SRC-003, SRC-004, SRC-005, SRC-006, SRC-007, SRC-008, SRC-010, SRC-011, SRC-012, SRC-013, SRC-014, SRC-015, SRC-016, SRC-017, SRC-018",
       "value": null
     },
     {
@@ -527,6 +527,16 @@
       "mode": "assert",
       "passed": true,
       "detail": "25 photographs evidence renewed subjects, all dated 1960 or later",
+      "value": null
+    },
+    {
+      "suite": "source_traceability",
+      "id": "STT-022",
+      "title": "Every reference view is licensed, resolvable, and honest about its camera pose",
+      "rule": "reference_views_are_sound",
+      "mode": "assert",
+      "passed": true,
+      "detail": "12 views (detail=4, drawing=3, photograph=5) and 4 linked-only, all licensed and resolvable",
       "value": null
     },
     {

@@ -66,6 +66,15 @@ class Ctx:
         self.checks = {c["id"]: c for c in self.report["derived"]["checks"]}
         # Lets prove_guards.py inject a corrupted corpus without touching the file on disk.
         self.photo_survey: dict[str, Any] | None = None
+        self.reference_views: dict[str, Any] | None = None
+
+    def reference_doc(self, rel_path: str) -> dict[str, Any] | None:
+        if self.reference_views is not None:
+            return self.reference_views
+        path = REPO / rel_path
+        if not path.exists():
+            return None
+        return json.loads(path.read_text(encoding="utf-8"))
 
     def survey(self, rel_path: str) -> dict[str, Any] | None:
         if self.photo_survey is not None:
@@ -690,6 +699,52 @@ def _renewed_needs_current(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
             "establish they describe the bridge as it stands: %s" % (len(undated), "; ".join(undated[:3]))
         )
     return ok("%d photographs evidence renewed subjects, all dated %d or later" % (checked, cutoff))
+
+
+@measure("reference_views_are_sound")
+def _reference_views_sound(ctx: Ctx, t: dict[str, Any]) -> dict[str, Any]:
+    """The compare panel's contract: licensed, resolvable, and honest about camera poses."""
+    doc_path = REPO / t["document"]
+    doc = ctx.reference_doc(t["document"])
+    if doc is None:
+        return ok("no reference-views document")
+    root = doc_path.parent
+    problems: list[str] = []
+
+    for v in doc.get("views", []):
+        vid = v.get("id", "<no id>")
+        if v.get("source_id") not in ctx.registered_sources:
+            problems.append(f"{vid} cites unregistered source {v.get('source_id')!r}")
+        if not v.get("license"):
+            problems.append(f"{vid} has no licence")
+        img = v.get("image")
+        if not img:
+            problems.append(f"{vid} has no image")
+        elif not (root / img).exists():
+            problems.append(f"{vid} points at missing image {img}")
+        if v.get("kind") == "detail":
+            if v.get("camera"):
+                problems.append(
+                    f"{vid} is a detail view and carries a camera pose; the model has no viewpoint "
+                    "that reproduces it, so the pose would be invented"
+                )
+        elif not v.get("camera"):
+            problems.append(f"{vid} is a {v.get('kind')} view with no camera pose")
+
+    for l in doc.get("links", []):
+        if l.get("source_id") not in ctx.registered_sources:
+            problems.append(f"link {l.get('id')} cites unregistered source {l.get('source_id')!r}")
+
+    if problems:
+        return bad("%d reference-view problem(s): %s" % (len(problems), "; ".join(problems[:3])))
+    kinds: dict[str, int] = {}
+    for v in doc.get("views", []):
+        kinds[v.get("kind", "?")] = kinds.get(v.get("kind", "?"), 0) + 1
+    return ok("%d views (%s) and %d linked-only, all licensed and resolvable" % (
+        len(doc.get("views", [])),
+        ", ".join("%s=%d" % kv for kv in sorted(kinds.items())),
+        len(doc.get("links", [])),
+    ))
 
 
 @measure("grade_census")
