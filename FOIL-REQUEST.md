@@ -118,12 +118,67 @@ objection, which is the one genuinely likely to bite on a landmark bridge.
 | **20 business days** | If it acknowledged, that is the outside date for granting or denying; beyond it the agency must give a **date certain** and a reason |
 | **Failure to meet the above** | Is a **constructive denial** — appealable exactly like a written one |
 | **30 days** from a denial | Your window to appeal, in writing, to the Appeals Officers |
-| **10 business days** from your appeal | The agency must fully explain in writing or grant access |
+| **10 business days** from your appeal | The agency must fully explain in writing or grant access. Missing this is itself a denial (§89(4)(b)) and opens Article 78 review |
 
 Diary the 5-day and 20-day dates when you file. Agencies respond to requesters who track dates.
 
 If the appeal fails, the **NYS Committee on Open Government** issues free advisory opinions
 (docs@dos.ny.gov). They carry no force but agencies take them seriously and it costs nothing.
+
+## 4b. The appeal, ready to send
+
+The likeliest outcome is not a refusal on the merits — it is **silence**, or a partial release that
+omits the drawings. Both are appealable, and the appeal is a short letter. Statutory basis:
+Public Officers Law §89(4)(a) gives you thirty days and gives the agency ten business days to
+answer in full.
+
+Send to **foilappeal@dot.nyc.gov** (Edalia George and Michael Twomey), copying
+foiladmin@dot.nyc.gov, with the original request and any response attached.
+
+> **Subject: FOIL appeal — [request number] — Brooklyn Bridge structural records**
+>
+> To the Records Access Appeals Officer:
+>
+> Under Public Officers Law §89(4)(a) I appeal the determination on my request of [date],
+> reference [number], for record drawings and inspection reports for the Brooklyn Bridge
+> (BIN 2240019).
+>
+> *[Use whichever applies.]*
+>
+> **If nothing was received:** The agency has neither granted access, denied the request in
+> writing, nor furnished a written acknowledgement within five business days. Under §89(4)(a) and
+> the Committee on Open Government's guidance, that failure constitutes a constructive denial, and
+> I appeal it as such.
+>
+> **If the date has slipped:** The agency acknowledged the request on [date] with an approximate
+> date of [date], which has now passed without a determination or a further date certain. I appeal
+> that constructive denial.
+>
+> **If records were withheld:** The response withheld [describe] without citing a specific
+> exemption for each withheld record. FOIL presumes access; the burden of justifying a withholding
+> rests with the agency, and any reasonably segregable portion of an exempt record must still be
+> released. I ask that the withholding be reversed or, at minimum, that each exemption be cited
+> specifically and the segregable remainder produced.
+>
+> I remain willing to accept redacted drawings, or to narrow the request to the elevations and
+> sections carrying dimensions, if security review is the obstacle. I would also accept the drawing
+> index alone as a first step, which item 6 of the original request offered.
+>
+> Please respond within ten business days as §89(4)(a) requires. That subdivision also provides
+> that the agency shall immediately forward a copy of this appeal, and of your determination on it,
+> to the Committee on Open Government.
+>
+> [Name] · [Address] · [Email] · [Phone]
+
+That last sentence matters more than its length suggests: the forwarding duty is the agency's, not
+yours, and citing it signals that the deadline will be noticed by someone other than the requester.
+
+**If the appeal is not determined within ten business days**, that failure is itself a denial, and
+§89(4)(b) opens review by the courts under CPLR Article 78. That is a real step with real cost, so
+in practice the sequence before it is: a polite reminder at the ten-day mark, then a free advisory
+opinion from the Committee on Open Government (docs@dos.ny.gov), then Article 78 only if the
+records genuinely matter more than the effort. For this project they probably do not — the
+fallbacks in §6 are cheaper than litigation and often faster.
 
 ## 5. Processing the response — the part that matters
 
